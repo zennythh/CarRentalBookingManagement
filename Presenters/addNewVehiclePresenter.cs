@@ -27,10 +27,10 @@ namespace VehicleManagementSystem.Presentor {
                 LicensePlate = _view.VehiclePlateNum,
 
                 // Basic Info
-                Manufacturer = Helpers.ConvertToCapitalized(_view.VehicleManufacturer),
-                Model = Helpers.ConvertToCapitalized(_view.VehicleModel),
+                Manufacturer = VehicleManagementSystem.Classes.Helpers.ConvertToCapitalized(_view.VehicleManufacturer),
+                Model = VehicleManagementSystem.Classes.Helpers.ConvertToCapitalized(_view.VehicleModel),
                 YearModel = int.Parse(_view.VehicleYearModel),
-                Color = Helpers.ConvertToCapitalized(_view.VehicleColor),
+                Color = VehicleManagementSystem.Classes.Helpers.ConvertToCapitalized(_view.VehicleColor),
                 Category = _view.VehicleCatergory.Trim(),
 
                 // Purchase
@@ -63,7 +63,7 @@ namespace VehicleManagementSystem.Presentor {
 
         private string GetFinalVehicleImagePath(string imagePath, string plateNum) {
             string subFolderImagePath = Path.Combine(AppConfig.AppData.VehicleImagePath, plateNum);
-            return Helpers.SaveImageToAppData(imagePath, subFolderImagePath);
+            return VehicleManagementSystem.Classes.Helpers.SaveImageToAppData(imagePath, subFolderImagePath);
         }
 
         private bool IsImagePathValid(IAddNewVehicleView inputs) {

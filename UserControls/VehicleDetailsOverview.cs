@@ -49,7 +49,7 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void LoadVehicleImage() {
-            pictureVehicle.Image = Helpers.GetVehicleImage(_vehicle.ImagePath);
+            pictureVehicle.Image = VehicleManagementSystem.Classes.Helpers.GetVehicleImage(_vehicle.ImagePath);
         }
 
         private void LoadVehicleInformation() {

@@ -1,16 +1,19 @@
 ﻿
+using Guna.UI2.WinForms;
 using MySqlConnector;
+using VehicleManagementSystem.Data;
+using VehicleManagementSystem.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VehicleManagementSystem.Data;
 using VehicleManagementSystem.Dto;
 
 namespace PL_VehicleRental.Forms
@@ -37,17 +40,12 @@ namespace PL_VehicleRental.Forms
 
         }
 
+
         private void ToggleLoading(bool isLoading)
         {
             progressBar.Visible = isLoading;
-            progressBar.Style = ProgressBarStyle.Marquee;
-            progressBar.Enabled = true;
 
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl != progressBar)
-                    ctrl.Enabled = !isLoading;
-            }
+            pnlMain.Enabled = !isLoading;
         }
 
         private async Task LoadUserInfoAsync()
@@ -64,12 +62,13 @@ namespace PL_VehicleRental.Forms
 
             BindUser(user);
             ToggleLoading(false);
+            pnlProgress.Visible = false;
         }
 
         private async Task<UserInfoDto> GetUserByIdAsync(int userId)
         {
             const string query = @"
-                                SELECT id, userName, fullName, address, role, status
+                                SELECT id, userName, fullName, email, address, role, status, imagePath
                                 FROM users
                                 WHERE id = @id";
 
@@ -92,9 +91,13 @@ namespace PL_VehicleRental.Forms
                         Id = reader.GetInt32("id"),
                         UserName = reader.GetString("userName"),
                         FullName = reader.GetString("fullName"),
+                        Email = reader.GetString("email"),
                         Address = reader.GetString("address"),
                         Status = dbStatus,
-                        Role = reader.GetString("role")
+                        Role = reader.GetString("role"),
+                        ImagePath = reader.IsDBNull(reader.GetOrdinal("imagePath"))
+                        ? null
+                        : reader.GetString("imagePath")
                     };
                 }
             }
@@ -102,11 +105,39 @@ namespace PL_VehicleRental.Forms
 
         private void BindUser(UserInfoDto user)
         {
-            txtUserName.Text = user.UserName;
-            txtFullName.Text = user.FullName;
-            txtAddress.Text = user.Address;
+            lblUsername.Text = user.UserName;
+            lblFullName.Text = user.FullName;
+            lblEmail.Text = user.Email;
+            lblAddress.Text = user.Address;
             lblRole.Text = user.Role;
             lblStatus.Text = user.Status;
+
+            if (userImage.Image != null && userImage.Image != VehicleManagementSystem.Properties.Resources.avatar_default)
+                userImage.Image.Dispose();
+
+            if (!string.IsNullOrWhiteSpace(user.ImagePath))
+            {
+                var service = new UserImageService();
+                string fullPath = service.GetFullPath(user.ImagePath);
+
+                if (File.Exists(fullPath))
+                {
+                    using (var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                    {
+                        userImage.Image = Image.FromStream(fs);
+                    }
+                    return;
+                } 
+                else
+                {
+                    userImage.Image = VehicleManagementSystem.Properties.Resources.avatar_default;
+                }
+            } 
+            else
+            {
+                userImage.Image = VehicleManagementSystem.Properties.Resources.avatar_default;
+            }
+            
         }
 
         private Color GetStatusColor(UserStatus status)
@@ -131,7 +162,6 @@ namespace PL_VehicleRental.Forms
         {
             return Enum.TryParse(dbStatus, true, out UserStatus status) ? status : UserStatus.Inactive;
         }
-
         private void SetUserStatus(Label lblStatus, UserStatus status)
         {
             lblStatus.Text = status.ToString();
@@ -143,17 +173,18 @@ namespace PL_VehicleRental.Forms
 
         private void frmInfo_Load(object sender, EventArgs e)
         {
-            
+            userImage.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private async void frmInfo_Shown(object sender, EventArgs e)
         {
            await LoadUserInfoAsync();
-            txtUserName.ReadOnly = true;
-            txtFullName.ReadOnly = true;
-            txtAddress.ReadOnly = true;
-
             SetUserStatus(lblStatus, _userStatus);
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void label_Click(object sender, EventArgs e)
@@ -176,27 +207,7 @@ namespace PL_VehicleRental.Forms
 
         }
 
-        private void exitBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void exitBtn_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
-
-        private void progressBar_ValueChanged(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

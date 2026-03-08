@@ -1,4 +1,11 @@
-﻿using System;
+﻿
+using VehicleManagementSystem.Classes;
+using PL_VehicleRental.DAL.Repositories;
+using VehicleManagementSystem.Data;
+using PL_VehicleRental.Services.Security;
+using PL_VehicleRental.UI.Layout;
+using PL_VehicleRental.UserControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -9,32 +16,72 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using Guna.UI2.WinForms;
-using VehicleManagementSystem.Classes;
-using MySqlConnector;
-using VehicleManagementSystem.Data;
 using VehicleManagementSystem.Dto;
-using VehicleManagementSystem.View.Forms;
 
 namespace PL_VehicleRental.Forms
 {
     public partial class UserManagementForm : Form
     {
+        private System.Windows.Forms.Timer _searchTimer;
 
-        enum ActionButton
-        {
-            Info,
-            Edit,
-            Delete,
-        }
+        private int _currentPage = 1;
+        private int _pageSize = 10;
+        private int _totalPages = 1;
+        private string currentSearch = "";
+
+        private readonly userRepository _repository = new userRepository();
+
+
         public UserManagementForm()
         {
             InitializeComponent();
+            InitializeSearchDebounce();
+            flowUsers.Resize += flowUsers_Resize;
 
-            dgvRolesPermission.CellPainting -= dgvRolesPermission_CellPainting;
-            dgvRolesPermission.CellPainting += dgvRolesPermission_CellPainting;
-            dgvRolesPermission.CellClick -= dgvRolesPermission_CellClick;
-            dgvRolesPermission.CellClick += dgvRolesPermission_CellClick;
+            pnlOverlay.Dock = DockStyle.Fill;
+            pnlOverlay.BackColor = Color.FromArgb(120, Color.White);
+            pnlOverlay.Visible = false;
+            progressBar.Anchor = AnchorStyles.None;
+
+            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.Dock = DockStyle.None;
+            progressBar.Size = new Size(150, 10);
+            progressBar.Location = new Point((pnlOverlay.Width - progressBar.Width) / 2,
+                                             (pnlOverlay.Height - progressBar.Height) / 2);
+            pnlOverlay.Controls.Add(progressBar);
+        }
+
+        private async Task LoadPageAsync()
+        {
+            ToggleLoading(true);
+
+            var (users, totalCount) = await _repository.GetPagedUsersAsync(
+                currentSearch,
+                _currentPage,
+                _pageSize);
+
+            flowUsers.Controls.Clear();
+
+            foreach (var user in users)
+            {
+                var item = new ucItemControl(user);
+
+                flowUsers.Controls.Add(item);
+                item.Width = flowUsers.ClientSize.Width;
+
+                item.InfoClicked += (_, __) => OpenInfo(user.Id);
+                item.EditClicked += (_, __) => OpenEditForm(user.Id);
+                item.DeleteClicked += (_, __) => DeleteUser(user.Id, user.UserName);
+            }
+
+            _totalPages = (int)Math.Ceiling((double)totalCount / _pageSize);
+
+            lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
+
+            btnPrev.Enabled = _currentPage > 1;
+            btnNext.Enabled = _currentPage < _totalPages;
+
+            ToggleLoading(false);
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
@@ -42,330 +89,200 @@ namespace PL_VehicleRental.Forms
 
         }
 
-        private void UserManagementForm_Load(object sender, EventArgs e)
+        private async void UserManagementForm_Load(object sender, EventArgs e)
         {
+            TableHeader();
+            FixHeaderScrollbarAlignment();
+            ApplyPermission();
+            await LoadPageAsync();
+        }
 
-            DataGridViewStyle.ApplyStandard(dgvRolesPermission);
-            RefreshUserData();
+        private void UserManagementForm_Shown(object sender, EventArgs e)
+        {
 
         }
 
-        public void RefreshUserData()
+        private void ToggleLoading(bool isLoading)
         {
-            DataTable users = LoadUsers();
-            dgvRolesPermission.DataSource = users;
-            SetupActionsButtons();
-            CenterGridHeaders();
-
-        }
-
-        private DataTable LoadUsers()
-        {
-            DataTable dt = new DataTable();
-
-            using (MySqlConnection conn = MySQLConnectionContext.Create())
+            pnlOverlay.Visible = isLoading;
+            if (isLoading)
             {
-                conn.Open();
-
-                string query = @"SELECT id AS ID, 
-                                        userName AS Username, 
-                                        fullName AS FullName,
-                                        address AS Address,
-                                        role As Role, 
-                                        status AS Status
-                                FROM users";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                {
-                    da.Fill(dt);
-                }
+                pnlOverlay.BringToFront();
+            } else
+            {
+                pnlOverlay.Visible = false;
             }
-            return dt;
-        }
-
-        private void addBtn_Click(object sender, EventArgs e)
-        {
             
         }
-
-        private ActionButton? GetActionButton(DataGridView dgv, int row, int col)
+        
+        private void InitializeSearchDebounce()
         {
-            var cell = dgv.GetCellDisplayRectangle(col, row, false);
-
-            int padding = 5;
-            int buttonCount = 3;
-            int totalPadding = padding * (buttonCount + 1);
-            int buttonWidth = (cell.Width - totalPadding) / buttonCount;
-
-            Point click = dgv.PointToClient(Cursor.Position);
-            int x = click.X - cell.Left;
-
-            int infoStart = padding;
-            int editStart = infoStart + buttonWidth + padding;
-            int deleteStart = editStart + buttonWidth + padding;
-
-            if (x >= infoStart && x < infoStart + buttonWidth) return ActionButton.Info;
-            if (x >= editStart && x < editStart + buttonWidth) return ActionButton.Edit;
-            if (x >= deleteStart && x < deleteStart + buttonWidth) return ActionButton.Delete;
-
-            return null;
+            _searchTimer = new System.Windows.Forms.Timer();
+            _searchTimer.Interval = 400;
+            _searchTimer.Tick += SearchTimer_Tick;
         }
 
-        private void dgvRolesPermission_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (dgvRolesPermission.Columns[e.ColumnIndex].Name != "Status")
-                return;
+            _searchTimer.Stop();
+            _searchTimer.Start();
+        }
 
-            if (e.Value == null)
-                return;
+        private async void SearchTimer_Tick(object sender, EventArgs e)
+        {
+            _searchTimer.Stop();
 
-            string status = e.Value.ToString();
+            currentSearch = txtSearch.Text.Trim();
+            _currentPage = 1;
 
-            switch (status)
+            await LoadPageAsync();
+        }
+
+        private void TableHeader()
+        {
+            TableHeaderPanel.SuspendLayout();
+            TableHeaderPanel.Controls.Clear();
+
+            TableHeaderPanel.Height = 45;
+            TableHeaderPanel.Dock = DockStyle.Top;
+            TableHeaderPanel.BackColor = Color.FromArgb(42, 132, 191);
+            TableHeaderPanel.Padding = new Padding(0, 10, 0, 10);
+
+            TableLayoutPanel headerLayout = new TableLayoutPanel
             {
-                case "Active":
-                    e.CellStyle.ForeColor = Color.Green;
-                    e.CellStyle.Font = new Font(dgvRolesPermission.Font, FontStyle.Bold);
-                    break;
+                Dock = DockStyle.Fill,
+                ColumnCount = 8,
+                RowCount = 1,
+                CellBorderStyle = TableLayoutPanelCellBorderStyle.None,
+                Margin = Padding.Empty,
+            };
 
-                case "Inactive":
-                    e.CellStyle.ForeColor = Color.Red;
-                    break;
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, UserTableLayout.IdWidth));
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, UserTableLayout.UsernameWidth));
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, UserTableLayout.FullnameWidth));
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, UserTableLayout.EmailWidth));
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, UserTableLayout.RoleWidth));
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, UserTableLayout.StatusWidth));
+            headerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, UserTableLayout.ActionWidth));
 
-                case "Suspended":
-                    e.CellStyle.ForeColor = Color.DarkOrange;
-                    break;
+            Label CreateHeader(string text)
+            {
+                return new Label
+                {
+                    Text = text,
+                    Dock = DockStyle.Fill,
+                    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                    Font = new Font("Segoe UI", 9.5f, FontStyle.Bold),
+                    Padding = new Padding(5, 0, 5, 0),
+                    Margin = new Padding(0),
+                    ForeColor = Color.White
+                };
+            }
+
+            headerLayout.Controls.Add(CreateHeader("USER ID"), 0, 0);
+            headerLayout.Controls.Add(CreateHeader("USERNAME"), 1, 0);
+            headerLayout.Controls.Add(CreateHeader("FULLNAME"), 2, 0);
+            headerLayout.Controls.Add(CreateHeader("EMAIL"), 3, 0);
+            headerLayout.Controls.Add(CreateHeader("ADDRESS"), 4, 0);
+            headerLayout.Controls.Add(CreateHeader("ROLE"), 5, 0);
+            headerLayout.Controls.Add(CreateHeader("STATUS"), 6, 0);
+            headerLayout.Controls.Add(CreateHeader("ACTION"), 7, 0);
+
+            headerLayout.Paint += (sender, e) =>
+            {
+                ControlPaint.DrawBorder(e.Graphics, headerLayout.ClientRectangle,
+                    Color.Transparent, 0, ButtonBorderStyle.None,
+                    Color.Transparent, 0, ButtonBorderStyle.None,
+                    Color.Transparent, 0, ButtonBorderStyle.None,
+                    Color.FromArgb(230, 230, 230), 1, ButtonBorderStyle.Solid);
+            };
+
+            TableHeaderPanel.Controls.Add(headerLayout);
+            TableHeaderPanel.ResumeLayout();
+        }
+
+        private void FixHeaderScrollbarAlignment()
+        {
+            int scrollBarWidth = SystemInformation.VerticalScrollBarWidth;
+            TableHeaderPanel.Padding = new Padding(0, 0, scrollBarWidth, 0);
+        }
+
+        private void ApplyPermission()
+        {
+            var tip = new ToolTip();
+
+            if (!AuthorizationService.HasPermission(Permission.AddUser))
+            {
+                tip.SetToolTip(btnUserForm, "You don't have permission to add user.");
+                btnUserForm.Enabled = false;
             }
         }
 
-        private void CenterGridHeaders()
+        public void OpenInfo(int userId)
         {
-            dgvRolesPermission.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-            dgvRolesPermission.EnableHeadersVisualStyles = false;
-        }
-
-        private void SetupActionsButtons()
-        {
-            if (dgvRolesPermission.Columns["Actions"] == null)
+            using (frmInfo frm = new frmInfo(userId))
             {
-                DataGridViewTextBoxColumn actionsCol = new DataGridViewTextBoxColumn();
-                actionsCol.Name = "Actions";
-                actionsCol.HeaderText = "Actions";
-                actionsCol.ReadOnly = true;
-                actionsCol.Width = 150;
-                actionsCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-                dgvRolesPermission.Columns.Add(actionsCol);
+                frm.ShowDialog(this);
             }
         }
 
-        private void dgvRolesPermission_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void OpenEditForm(int userId)
         {
-            if (e.RowIndex < 0) return;
-            if (dgvRolesPermission.Columns[e.ColumnIndex].Name != "Actions") return;
-
-            var action = GetActionButton(dgvRolesPermission, e.RowIndex, e.ColumnIndex);
-            if (action == null) return;
-
-            int userId = Convert.ToInt32(dgvRolesPermission.Rows[e.RowIndex].Cells["id"].Value);
-
-            switch (action)
+            using (frmEdit form = new frmEdit(userId))
             {
-                case ActionButton.Info:
-                    using (var form = new frmInfo(userId))
-                    {
-                        form.FormBorderStyle = FormBorderStyle.None;
-                        form.StartPosition = FormStartPosition.CenterParent;
-                        form.ShowDialog();
-                    }
-                    break;
-
-                case ActionButton.Edit:
-                    using (var form = new frmEditUser())
-                        form.ShowDialog();
-                    break;
-
-                case ActionButton.Delete:
-                    MessageBox.Show("Are you sure you want to delete this user?", "Delete User" ,MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    break;
+                if(form.ShowDialog() == DialogResult.OK)
+                {
+                    await LoadPageAsync();
+                }
             }
         }
 
-
-        private void dgvRolesPermission_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private async void DeleteUser(int userId, string userName)
         {
-            if (e.RowIndex < 0) return;
+            var confirm = MessageBox.Show($"Are you sure you want to delete user '{userName}'?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
-            if (dgvRolesPermission.Columns[e.ColumnIndex].Name == "Actions")
+            if (confirm != DialogResult.Yes) return;
+
+            try
             {
-                e.PaintBackground(e.ClipBounds, true);
+                ToggleLoading(true);
 
-                int padding = 5;
-                int buttonCount = 3;
+                if (!AuthorizationService.HasPermission(Permission.DeleteUser))
+                {
+                    MessageBox.Show("Access Denied.");
+                    return;
+                }
 
-                int totalPadding = padding * (buttonCount + 1);
-                int buttonWidth = (e.CellBounds.Width - totalPadding) / buttonCount;
-                int buttonHeight = e.CellBounds.Height - (padding * 2);
+                bool success = await _repository.DeleteUserAsync(userId);
 
-                Rectangle infoButton = new Rectangle(
-                    e.CellBounds.Left + padding,
-                    e.CellBounds.Top + padding,
-                    buttonWidth,
-                    buttonHeight
-                );
+                if (success)
+                {
+                    MessageBox.Show("User deleted successfully.", 
+                        "Success", 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information);
 
-                Rectangle editButton = new Rectangle(
-                    infoButton.Right + padding,
-                    e.CellBounds.Top + padding,
-                    buttonWidth,
-                    buttonHeight
-                );
-
-                Rectangle deleteButton = new Rectangle(
-                    editButton.Right + padding,
-                    e.CellBounds.Top + padding,
-                    buttonWidth,
-                    buttonHeight
-                );
-
-                using (SolidBrush infoBrush = new SolidBrush(Color.FromArgb(250, 250, 250)))
-                    e.Graphics.FillRectangle(infoBrush, infoButton);
-
-                using (SolidBrush editBrush = new SolidBrush(Color.FromArgb(94, 148, 255)))
-                    e.Graphics.FillRectangle(editBrush, editButton);
-
-                using (SolidBrush deleteBrush = new SolidBrush(Color.FromArgb(255, 77, 79)))
-                    e.Graphics.FillRectangle(deleteBrush, deleteButton);
-
-                DrawCenteredIcon(e.Graphics, VehicleManagementSystem.Properties.Resources.infoIcon, infoButton);
-                DrawCenteredIcon(e.Graphics, VehicleManagementSystem.Properties.Resources.editIcon, editButton);
-                DrawCenteredIcon(e.Graphics, VehicleManagementSystem.Properties.Resources.deleteIcon, deleteButton);
-
-                e.Handled = true;
+                    await LoadPageAsync();
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting users\n" + ex.Message, 
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+            } finally
+            {
+                ToggleLoading(false);
             }
-        }
-        private void DrawCenteredIcon(Graphics g, Image icon, Rectangle button)
-        {
-            int x = button.Left + (button.Width - icon.Width) / 2;
-            int y = button.Top + (button.Height - icon.Height) / 2;
-            g.DrawImage(icon, x, y, icon.Width, icon.Height);
-        }
-
-
-
-
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void firstNameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lastNameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addressLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addressTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void roleLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void roleCmb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusCmb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void userPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2Panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void userManagementTab_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void totalUserData_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void totalUserLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void activeUserData_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void activeUserData_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void activeUserLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvRolesPermission_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvRolesPermission_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void btnUserForm_Click(object sender, EventArgs e)
         {
-            frmAddUser form = new frmAddUser();
-
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.StartPosition = FormStartPosition.CenterParent;
-            form.ShowDialog();
+            OpenAddUserForm();
         }
 
         private void headerLabel_Click(object sender, EventArgs e)
@@ -374,23 +291,19 @@ namespace PL_VehicleRental.Forms
         }
 
         private void OpenAddUserForm()
-        {
-            frmAddUser form = new frmAddUser();
-
-            form.UserAdded += (sender, e) =>
+        { 
+            using (frmAddUser form = new frmAddUser())
             {
-                this.RefreshUserData();
-            };
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.StartPosition = FormStartPosition.CenterParent;
-            form.ShowDialog();
-        }
+                form.UserAdded += async (sender, e) =>
+                {
+                    await LoadPageAsync();
+                };
 
-        private void btnUserForm_Click_1(object sender, EventArgs e)
-        {
-            OpenAddUserForm();
+                form.FormBorderStyle = FormBorderStyle.None;
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog();
+            }
         }
-
 
         // Double buffer
         protected override CreateParams CreateParams
@@ -401,6 +314,64 @@ namespace PL_VehicleRental.Forms
                 cp.ExStyle |= 0x02000000;
                 return cp;
             }
+        }   
+
+        private void flowUsers_Resize(object sender, EventArgs e)
+        {
+            foreach (Control c in flowUsers.Controls)
+            {
+                if (c is ucItemControl itemControl)
+                {
+                    itemControl.Width = flowUsers.ClientSize.Width;
+                    itemControl.UpdateWidth(flowUsers.ClientSize.Width);
+                }
+                else
+                {
+                    c.Width = flowUsers.ClientSize.Width;
+                }
+            }
+        }
+
+        private void progressBar_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnPrev_Click(object sender, EventArgs e)
+        { 
+            if (_currentPage > 1)
+            {
+                _currentPage--;
+                await LoadPageAsync();
+            }
+            
+        }
+
+        private async void btnNext_Click(object sender, EventArgs e)
+        {
+            if (_currentPage < _totalPages)
+            {
+                _currentPage++;
+                await LoadPageAsync();
+            }
+        }
+
+        private void cboPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentPage = 1;
+        }
+
+        private void UserManagementForm_Resize(object sender, EventArgs e)
+        {
+        }
+
+        private void rolesTablePanel_Resize(object sender, EventArgs e)
+        {
+        }
+
+        private void pnlOverlay_Resize(object sender, EventArgs e)
+        {
+            
         }
     }
 }

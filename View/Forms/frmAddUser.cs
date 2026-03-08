@@ -1,110 +1,120 @@
-﻿using System;
+﻿using MySqlConnector;
+using PL_VehicleRental.DAL.Repositories;
+using VehicleManagementSystem.Data;
+using VehicleManagementSystem.Helpers;
+using PL_VehicleRental.Services;
+using PL_VehicleRental.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySqlConnector;
-using VehicleManagementSystem.Data;
+using VehicleManagementSystem.Dto;
 
 namespace PL_VehicleRental.Forms
 {
     public partial class frmAddUser : Form
     {
         public event EventHandler UserAdded;
+        private Validator _validator;
+        private UserService _userService;
+        private readonly userRepository _repository = new userRepository();
+        private readonly int _userId;
+        private CancellationTokenSource _usernameCts;
+        private bool _isUsernameAvailable = false;
+        private bool _isSubmitting = false;
+        private const long MaxFileSize = 2 * 1024 * 1024;
         public frmAddUser()
         {
             InitializeComponent();
+            _validator = new Validator(errorProvider1);
+            _userService = new UserService();
+            userNameTextBox.TextChanged += userNameTextBox_TextChanged;
         }
 
-        private void AddUsers()
+        private void ClearFields()
         {
-            string sql = "INSERT INTO users (userName, fullName, address, role, status) VALUES (@userName, @fullName, @address, @role, @status)";
+            fullNameTxt.Clear();
+            userNameTextBox.Clear();
+            emaiTextBox.Clear();
+            phoneTxt.Clear();
+            addressTextBox.Clear();
+            roleCmb.StartIndex = 0;
+            statusCmb.StartIndex = 0;
+            userImage.Image = null;
 
-            using (MySqlConnection conn = MySQLConnectionContext.Create())
+        }
+
+        private async void addBtn_Click(object sender, EventArgs e)
+        {
+            if (_isSubmitting) return;
+
+            _isSubmitting = true;
+            addBtn.Enabled = false;
+
+            try
             {
-                try
+                _validator.Clear();
+
+                _validator.Required(userNameTextBox, "Username is required");
+                _validator.Required(fullNameTxt, "Full name is required");
+                _validator.Required(addressTextBox, "Address is required");
+                _validator.IsEmail(emaiTextBox, "Invalid email format");
+
+                _validator.Custom(userNameTextBox, () => userNameTextBox.Text.Length >= 5, "Username must be at least 5 characters");
+                _validator.Custom(userNameTextBox, () => Regex.IsMatch(userNameTextBox.Text, @"^[a-zA-Z0-9]+$"), "Username can only contain letters and numbers.");
+
+                if (!_validator.Validate() || !_isUsernameAvailable) return;
+
+                var dto = new UserInfoDto
                 {
-                    conn.Open();
+                    UserName = userNameTextBox.Text.Trim(),
+                    FullName = fullNameTxt.Text.Trim(),
+                    Email = emaiTextBox.Text.Trim(),
+                    Address = addressTextBox.Text.Trim(),
+                    Role = roleCmb.Text,
+                    Status = statusCmb.Text
+                };
 
-                    string checkQuery = @"
-                                        SELECT COUNT(*) 
-                                        FROM users 
-                                        WHERE userName = @userName 
-                                        OR (fullName = @fullName AND userName = @userName)";
+                Image imageToSave = userImage.Image != null
+                    ? ImageHelper.Resize(userImage.Image, 256, 256)
+                    : null;
 
-                    MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn);
-                    checkCmd.Parameters.AddWithValue("@userName", userNameTextBox.Text.Trim());
-                    checkCmd.Parameters.AddWithValue("@fullName", fullNameTxt.Text.Trim());
+                var result = await _userService.CreateUserAsync(dto, imageToSave);
 
-                    int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
-
-                    if (exists > 0)
-                    {
-                        MessageBox.Show(
-                            "Username or full name already exists.",
-                            "Duplicate Entry",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning
-                        );
-                        return;
-                    }
-
-                    if (string.IsNullOrEmpty(fullNameTxt.Text) || string.IsNullOrEmpty(userNameTextBox.Text) || string.IsNullOrEmpty(addressTextBox.Text))
-                    {
-                        MessageBox.Show("All fields are required.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@userName", userNameTextBox.Text);
-                    cmd.Parameters.AddWithValue("@fullName", fullNameTxt.Text);
-                    cmd.Parameters.AddWithValue("@address", addressTextBox.Text);
-                    cmd.Parameters.AddWithValue("@role", roleCmb.Text);
-                    cmd.Parameters.AddWithValue("@status", statusCmb.Text);
-
-                    int result = cmd.ExecuteNonQuery();
-
-                    if (result > 0)
-                    {
-                        MessageBox.Show("User Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        userNameTextBox.Clear();
-                        fullNameTxt.Clear();
-                        addressTextBox.Clear();
-                        roleCmb.StartIndex = 0;
-                        statusCmb.StartIndex = 0;
-
-                        OnUserAdded();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to add user.");
-                    }
-                }
-                catch (Exception ex)
+                if (!result.Success)
                 {
-                    MessageBox.Show("Error:", ex.Message);
+                    MessageBox.Show(result.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                MessageBox.Show(result.Message, "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ClearFields();
+                OnUserAdded();
+                Close();
             }
-        }
-
-        private void addBtn_Click(object sender, EventArgs e)
-        {
-            
+            finally
+            {
+                _isSubmitting = false;
+                UpdateAddButtonState();
+            }
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            fullNameTxt.Clear();
-            userNameTextBox.Clear();
-            addressTextBox.Clear();
-            roleCmb.StartIndex = 0;
-            statusCmb.StartIndex = 0;
+            
+            ClearFields();
         }
 
         private void headerLabel_Click(object sender, EventArgs e)
@@ -117,17 +127,10 @@ namespace PL_VehicleRental.Forms
             this.Close();
         }
 
-        private void addBtn_Click_1(object sender, EventArgs e)
-        {
-            AddUsers();
-        }
-
         protected virtual void OnUserAdded()
         {
             UserAdded?.Invoke(this, EventArgs.Empty);
         }
-
-        // Double buffer
         protected override CreateParams CreateParams
         {
             get {
@@ -144,6 +147,138 @@ namespace PL_VehicleRental.Forms
             addressTextBox.Clear();
             roleCmb.StartIndex = 0;
             statusCmb.StartIndex = 0;
+        }
+
+        private void UpdateAddButtonState()
+        {
+            bool basicValid =
+                !string.IsNullOrWhiteSpace(userNameTextBox.Text) &&
+                !string.IsNullOrWhiteSpace(fullNameTxt.Text) &&
+                !string.IsNullOrWhiteSpace(emaiTextBox.Text) &&
+                !string.IsNullOrWhiteSpace(addressTextBox.Text) &&
+                roleCmb.SelectedIndex != -1 &&
+                statusCmb.SelectedIndex != -1;
+
+            addBtn.Enabled = basicValid && _isUsernameAvailable;
+        }
+
+        private async void userNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _usernameCts?.Cancel();
+            _usernameCts = new CancellationTokenSource();
+            var token = _usernameCts.Token;
+
+            string username = userNameTextBox.Text.Trim();
+
+            if(string.IsNullOrWhiteSpace(username))
+            {
+                errorProvider1.SetError(userNameTextBox, "Username is required");
+                _isUsernameAvailable = false;
+                return;
+            }
+
+            try
+            {
+                await Task.Delay(500, token);
+
+                bool exists = await _userService.UsernameExistsAsync(username);
+
+                if(exists)
+                {
+                    errorProvider1.SetError(userNameTextBox, "Username already taken.");
+                    _isUsernameAvailable = false;
+                } else
+                {
+                    errorProvider1.SetError(userNameTextBox, "");
+                   _isUsernameAvailable = true;
+                }
+
+            } catch (TaskCanceledException)
+            {
+                return;
+            }
+
+            UpdateAddButtonState();
+        }
+
+        private void fullNameTxt_TextChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void emaiTxt_TextChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void addressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void roleCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void statusCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void userImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+
+                ofd.Filter = "Image Files |*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    FileInfo fileInfo = new FileInfo(ofd.FileName);
+
+                    if (fileInfo.Length > MaxFileSize)
+                    {
+                        MessageBox.Show("Image is too large. Maximum allowed size is 2MB.",
+                                 "File Too Large",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    Image img = Image.FromFile(ofd.FileName);
+
+                    if (img.Width > 3000 || img.Height > 3000)
+                    {
+                        MessageBox.Show("Image resolution is too high. Max 3000x3000 allowed.",
+                                "Image Too Large",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+
+                        return;
+                    }
+
+                    userImage.Image = Image.FromFile(ofd.FileName);
+                }
+            }
+        }
+
+        private void roleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmAddUser_Load(object sender, EventArgs e)
+        {
+            userImage.SizeMode = PictureBoxSizeMode.Zoom;
+            userImage.Anchor = AnchorStyles.None;
+            userImage.Location = new Point((pnlUserImage.Width - userImage.Width) / 2,
+                                            (pnlUserImage.Height - userImage.Height) / 2);
+        }
+
+        private void guna2Separator1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

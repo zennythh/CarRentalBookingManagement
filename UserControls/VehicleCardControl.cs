@@ -25,7 +25,7 @@ namespace VehicleManagementSystem.UserControls {
         public void Bind(VehicleDto vehicle) {
             _vehicle = vehicle;
 
-            pictureVehicle.Image = Helpers.GetVehicleImage(vehicle.ImagePath);
+            pictureVehicle.Image = VehicleManagementSystem.Classes.Helpers.GetVehicleImage(vehicle.ImagePath);
             labelMainHeader.Text = vehicle.LicensePlate;
             labelSubHader.Text = GetCardSubHeader(vehicle);
             labelDailyRate.Text = GetFormattedDialyRate(vehicle.DailyRate);
@@ -33,7 +33,7 @@ namespace VehicleManagementSystem.UserControls {
             pictureBoxTransmission.Image = GetTransmissionIcon(vehicle.Transmission);
 
             labelStatus.Text = vehicle.CurrentStatus;
-            labelStatus.ForeColor = Helpers.GetStatusColor(vehicle.CurrentStatus);
+            labelStatus.ForeColor = VehicleManagementSystem.Classes.Helpers.GetStatusColor(vehicle.CurrentStatus);
 
         }
 

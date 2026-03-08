@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL_VehicleRental.Forms;
+using System;
 using System.Windows.Forms;
 using VehicleManagementSystem.View.Forms;
 
@@ -12,7 +13,7 @@ namespace VehicleManagementSystem {
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmLogin());
         }
     }
 }
