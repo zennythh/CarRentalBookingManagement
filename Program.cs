@@ -1,5 +1,6 @@
 ﻿using PL_VehicleRental.Forms;
 using System;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using VehicleManagementSystem.View.Forms;
 
@@ -12,14 +13,22 @@ namespace VehicleManagementSystem {
 
         [STAThread]
         static void Main() {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var loginForm = new frmLogin();
-            loginForm.Show();
+            frmMain mainForm = new frmMain();
 
-            Application.Run();
+            var context = new ApplicationContext(mainForm);
+
+           
+            using (frmLogin login = new frmLogin()) {
+                if (login.ShowDialog() == DialogResult.OK) {
+                    mainForm.Show();
+                    Application.Run(context);
+                } else {
+                    Application.Exit();
+                }
+            }
         }
     }
 }

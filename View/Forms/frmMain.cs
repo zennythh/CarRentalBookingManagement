@@ -1,12 +1,8 @@
-﻿using FontAwesome.Sharp;
-using System;
+﻿using System;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using VehicleManagementSystem.Forms;
 using VehicleManagementSystem.Classes;
-using Guna.UI2.WinForms;
 using PL_VehicleRental.Forms;
 using Dshboard;
 using ActivityLogs;
@@ -32,6 +28,7 @@ namespace VehicleManagementSystem {
 
         public frmMain() {
             Instance = this;
+           
             InitializeComponent();
 
             // Initialize Helpers Classes
@@ -40,6 +37,7 @@ namespace VehicleManagementSystem {
 
             ChildFormContainer = panelDesktop;
             LoadDefaultView();
+           
         }
 
         public void AddHeaderLabel(string label) {

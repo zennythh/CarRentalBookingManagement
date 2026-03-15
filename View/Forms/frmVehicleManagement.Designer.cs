@@ -89,14 +89,14 @@ namespace VehicleManagementSystem.Forms {
             this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutVehicles.Location = new System.Drawing.Point(14, 102);
-            this.tableLayoutVehicles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutVehicles.Location = new System.Drawing.Point(11, 91);
+            this.tableLayoutVehicles.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutVehicles.Name = "tableLayoutVehicles";
             this.tableLayoutVehicles.RowCount = 3;
             this.tableLayoutVehicles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 320F));
             this.tableLayoutVehicles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 320F));
             this.tableLayoutVehicles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 320F));
-            this.tableLayoutVehicles.Size = new System.Drawing.Size(1040, 960);
+            this.tableLayoutVehicles.Size = new System.Drawing.Size(1088, 960);
             this.tableLayoutVehicles.TabIndex = 2;
             // 
             // guna2Panel2
@@ -190,7 +190,7 @@ namespace VehicleManagementSystem.Forms {
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 1062);
+            this.panel1.Location = new System.Drawing.Point(0, 1051);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1087, 42);

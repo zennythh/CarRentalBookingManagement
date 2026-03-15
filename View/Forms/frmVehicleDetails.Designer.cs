@@ -58,7 +58,7 @@ namespace VehicleManagementSystem.View.Forms {
             this.panelBg.Location = new System.Drawing.Point(0, 0);
             this.panelBg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelBg.Name = "panelBg";
-            this.panelBg.Size = new System.Drawing.Size(1274, 682);
+            this.panelBg.Size = new System.Drawing.Size(1132, 546);
             this.panelBg.TabIndex = 2;
             // 
             // panelMain
@@ -78,10 +78,10 @@ namespace VehicleManagementSystem.View.Forms {
             this.panelMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
             this.panelMain.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
             this.panelMain.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.panelMain.Location = new System.Drawing.Point(25, 0);
+            this.panelMain.Location = new System.Drawing.Point(22, 0);
             this.panelMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1249, 685);
+            this.panelMain.Size = new System.Drawing.Size(1110, 548);
             this.panelMain.TabIndex = 1;
             // 
             // hr
@@ -89,9 +89,10 @@ namespace VehicleManagementSystem.View.Forms {
             this.hr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hr.BackColor = System.Drawing.Color.Transparent;
-            this.hr.Location = new System.Drawing.Point(16, 104);
+            this.hr.Location = new System.Drawing.Point(14, 83);
+            this.hr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hr.Name = "hr";
-            this.hr.Size = new System.Drawing.Size(1203, 5);
+            this.hr.Size = new System.Drawing.Size(1069, 4);
             this.hr.TabIndex = 35;
             // 
             // panelNav
@@ -101,10 +102,10 @@ namespace VehicleManagementSystem.View.Forms {
             this.panelNav.Controls.Add(this.overviewBtn);
             this.panelNav.Controls.Add(this.maintenanceBtn);
             this.panelNav.Controls.Add(this.documentsBtn);
-            this.panelNav.Location = new System.Drawing.Point(666, 28);
+            this.panelNav.Location = new System.Drawing.Point(592, 22);
             this.panelNav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelNav.Name = "panelNav";
-            this.panelNav.Size = new System.Drawing.Size(554, 76);
+            this.panelNav.Size = new System.Drawing.Size(492, 61);
             this.panelNav.TabIndex = 34;
             // 
             // overviewBtn
@@ -117,10 +118,10 @@ namespace VehicleManagementSystem.View.Forms {
             this.overviewBtn.FillColor = System.Drawing.Color.Transparent;
             this.overviewBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overviewBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.overviewBtn.Location = new System.Drawing.Point(10, 0);
+            this.overviewBtn.Location = new System.Drawing.Point(9, 0);
             this.overviewBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.overviewBtn.Name = "overviewBtn";
-            this.overviewBtn.Size = new System.Drawing.Size(179, 76);
+            this.overviewBtn.Size = new System.Drawing.Size(159, 61);
             this.overviewBtn.TabIndex = 3;
             this.overviewBtn.Text = "Overview";
             this.overviewBtn.Click += new System.EventHandler(this.overviewBtn_Click);
@@ -135,10 +136,10 @@ namespace VehicleManagementSystem.View.Forms {
             this.maintenanceBtn.FillColor = System.Drawing.Color.Transparent;
             this.maintenanceBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maintenanceBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.maintenanceBtn.Location = new System.Drawing.Point(189, 0);
+            this.maintenanceBtn.Location = new System.Drawing.Point(168, 0);
             this.maintenanceBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maintenanceBtn.Name = "maintenanceBtn";
-            this.maintenanceBtn.Size = new System.Drawing.Size(179, 76);
+            this.maintenanceBtn.Size = new System.Drawing.Size(159, 61);
             this.maintenanceBtn.TabIndex = 4;
             this.maintenanceBtn.Text = "Maintenance";
             this.maintenanceBtn.Click += new System.EventHandler(this.maintenanceBtn_Click);
@@ -153,10 +154,10 @@ namespace VehicleManagementSystem.View.Forms {
             this.documentsBtn.FillColor = System.Drawing.Color.Transparent;
             this.documentsBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.documentsBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.documentsBtn.Location = new System.Drawing.Point(368, 0);
+            this.documentsBtn.Location = new System.Drawing.Point(327, 0);
             this.documentsBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.documentsBtn.Name = "documentsBtn";
-            this.documentsBtn.Size = new System.Drawing.Size(186, 76);
+            this.documentsBtn.Size = new System.Drawing.Size(165, 61);
             this.documentsBtn.TabIndex = 4;
             this.documentsBtn.Text = "Documents";
             this.documentsBtn.Click += new System.EventHandler(this.documentsBtn_Click);
@@ -165,10 +166,12 @@ namespace VehicleManagementSystem.View.Forms {
             // 
             this.panelSubMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSubMain.Location = new System.Drawing.Point(14, 106);
+            this.panelSubMain.AutoSize = true;
+            this.panelSubMain.BackColor = System.Drawing.Color.Transparent;
+            this.panelSubMain.Location = new System.Drawing.Point(12, 102);
             this.panelSubMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSubMain.Name = "panelSubMain";
-            this.panelSubMain.Size = new System.Drawing.Size(1205, 666);
+            this.panelSubMain.Size = new System.Drawing.Size(1072, 533);
             this.panelSubMain.TabIndex = 33;
             // 
             // backBtn
@@ -185,11 +188,11 @@ namespace VehicleManagementSystem.View.Forms {
             this.backBtn.ForeColor = System.Drawing.Color.White;
             this.backBtn.Image = global::VehicleManagementSystem.Properties.Resources.chevron_backward_icon;
             this.backBtn.ImageSize = new System.Drawing.Size(40, 40);
-            this.backBtn.Location = new System.Drawing.Point(14, 34);
+            this.backBtn.Location = new System.Drawing.Point(12, 27);
             this.backBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.backBtn.Name = "backBtn";
             this.backBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.backBtn.Size = new System.Drawing.Size(54, 54);
+            this.backBtn.Size = new System.Drawing.Size(48, 43);
             this.backBtn.TabIndex = 18;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
@@ -199,9 +202,9 @@ namespace VehicleManagementSystem.View.Forms {
             this.labelSubHeader.BackColor = System.Drawing.Color.Transparent;
             this.labelSubHeader.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelSubHeader.Location = new System.Drawing.Point(85, 44);
+            this.labelSubHeader.Location = new System.Drawing.Point(76, 35);
             this.labelSubHeader.Name = "labelSubHeader";
-            this.labelSubHeader.Size = new System.Drawing.Size(119, 37);
+            this.labelSubHeader.Size = new System.Drawing.Size(103, 32);
             this.labelSubHeader.TabIndex = 0;
             this.labelSubHeader.Text = "Toyota";
             // 
@@ -234,10 +237,9 @@ namespace VehicleManagementSystem.View.Forms {
             // 
             // frmVehicleDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1274, 682);
+            this.ClientSize = new System.Drawing.Size(1132, 546);
             this.Controls.Add(this.panelBg);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmVehicleDetails";

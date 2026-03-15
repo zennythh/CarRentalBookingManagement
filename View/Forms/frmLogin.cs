@@ -90,14 +90,20 @@ namespace PL_VehicleRental.Forms
 
             Console.WriteLine($"Role from DB: '{user.Role}'");
 
-            var mainForm = new frmMain();
-            mainForm.Show();
-            this.Dispose();
+            //this.Hide();
+
+            ////var mainForm = new frmMain();
+            //mainForm.Show();
+
+
+            // Send a sucess Result for Program.cs to handle and show the mainForm
+            this.DialogResult = DialogResult.OK;
+           
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
