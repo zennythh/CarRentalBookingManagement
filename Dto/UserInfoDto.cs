@@ -29,7 +29,10 @@ namespace VehicleManagementSystem.Dto
     public class CurrentUser
     {
         public int Id { get; set; }
+
+        public string FullName { get; set; }
         public string UserName { get; set; }
         public UserRole Role { get; set; }
+        public string UserImagePath { get; set; }
     }
 }

@@ -20,16 +20,20 @@ namespace VehicleManagementSystem {
 
             var context = new ApplicationContext(mainForm);
 
-            Application.Run(context);
+            //Application.Run(context);
 
-            //using (frmLogin login = new frmLogin()) {
-            //    if (login.ShowDialog() == DialogResult.OK) {
-            //        mainForm.Show();
-            //        Application.Run(context);
-            //    } else {
-            //        Application.Exit();
-            //    }
-            //}
+            using (frmLogin login = new frmLogin())
+            {
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    mainForm.Show();
+                    Application.Run(context);
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }

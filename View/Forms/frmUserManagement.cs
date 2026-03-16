@@ -314,7 +314,19 @@ namespace PL_VehicleRental.Forms
                 cp.ExStyle |= 0x02000000;
                 return cp;
             }
-        }   
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x115 || m.Msg == 0x114)
+            {
+                if ((m.WParam.ToInt32() & 0xFFFF) == 5)
+                {
+                    m.WParam = (IntPtr)((m.WParam.ToInt32() & ~0xFFFF) | 4);
+                }
+            }
+            base.WndProc(ref m);
+        }
 
         private void flowUsers_Resize(object sender, EventArgs e)
         {

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem;
+using VehicleManagementSystem.Classes;
 using VehicleManagementSystem.Dto;
 
 namespace PL_VehicleRental.Forms
@@ -41,62 +42,68 @@ namespace PL_VehicleRental.Forms
                 return;
             }
 
-            var user = await _repository.ValidateLoginAsync(username, password);
+            btnLogin.Enabled = true;
 
-            if (user == null)
+            try
             {
-                MessageBox.Show("Invalid username or password.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var user = await _repository.ValidateLoginAsync(username, password);
 
-                return;
-            }
-
-            if(user.isDefaultPassword)
-            {
-                MessageBox.Show("You are using a default password. Please change it before continuing.",
-                                "Security Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                using (var changePassForm = new frmChangePassword(user.UserName))
+                if (user == null)
                 {
-                    changePassForm.ShowDialog();
+                    MessageBox.Show("Invalid username or password.", "Login Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
                 }
 
-                usernameTxt.Clear();
-                passwordTxt.Clear();
-                usernameTxt.Focus();
+                if (user.isDefaultPassword)
+                {
+                    MessageBox.Show("You are using a default password. Please change it before continuing.",
+                                    "Security Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                MessageBox.Show(
-                    "Password changed successfully. Please log in again using your new password.",
-                    "Login Required",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                    using (var changePassForm = new frmChangePassword(user.UserName))
+                    {
+                        changePassForm.ShowDialog();
+                    }
 
-                return;
+                    usernameTxt.Clear();
+                    passwordTxt.Clear();
+                    usernameTxt.Focus();
+
+                    MessageBox.Show(
+                        "Password changed successfully. Please log in again using your new password.",
+                        "Login Required",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(user.Role) ||
+                    !Enum.TryParse<UserRole>(user.Role.Trim(), true, out var parsedRole))
+                {
+                    MessageBox.Show("Invalid role value in database.");
+                    return;
+                }
+
+                Session.User = new CurrentUser
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    FullName = user.FullName,
+                    Role = parsedRole,
+                    UserImagePath = user.ImagePath,
+                };
+
+                Console.WriteLine($"'{user.ImagePath}'");
+                Console.WriteLine($"Logged in user: '{user.Id}' - '{user.UserName}'");
+
+                Console.WriteLine($"Role from DB: '{user.Role}'");
+            } finally
+            {
+                btnLogin.Enabled = true;
             }
 
-            if (string.IsNullOrWhiteSpace(user.Role) ||
-                !Enum.TryParse<UserRole>(user.Role.Trim(), true, out var parsedRole))
-            {
-                MessageBox.Show("Invalid role value in database.");
-                return;
-            }
-
-            Session.User = new CurrentUser
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                Role = parsedRole
-            };
-
-            Console.WriteLine($"Role from DB: '{user.Role}'");
-
-            //this.Hide();
-
-            ////var mainForm = new frmMain();
-            //mainForm.Show();
-
-
-            // Send a sucess Result for Program.cs to handle and show the mainForm
             this.DialogResult = DialogResult.OK;
            
         }

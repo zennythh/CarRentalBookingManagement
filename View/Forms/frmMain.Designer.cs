@@ -36,7 +36,7 @@ namespace VehicleManagementSystem {
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelMenuLine = new Guna.UI2.WinForms.Guna2Panel();
             this.panelUserDetails = new System.Windows.Forms.Panel();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.pictureUser = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelPage = new System.Windows.Forms.Label();
@@ -44,10 +44,11 @@ namespace VehicleManagementSystem {
             this.minimizeBtn = new FontAwesome.Sharp.IconButton();
             this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.panelDesktop = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.labelRole = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelUserDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,7 +256,8 @@ namespace VehicleManagementSystem {
             // panelUserDetails
             // 
             this.panelUserDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelUserDetails.Controls.Add(this.guna2CirclePictureBox1);
+            this.panelUserDetails.Controls.Add(this.labelRole);
+            this.panelUserDetails.Controls.Add(this.pictureUser);
             this.panelUserDetails.Controls.Add(this.labelUserName);
             this.panelUserDetails.Location = new System.Drawing.Point(6, 78);
             this.panelUserDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -263,21 +265,21 @@ namespace VehicleManagementSystem {
             this.panelUserDetails.Size = new System.Drawing.Size(308, 76);
             this.panelUserDetails.TabIndex = 13;
             // 
-            // guna2CirclePictureBox1
+            // pictureUser
             // 
-            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.IndianRed;
-            this.guna2CirclePictureBox1.Image = global::VehicleManagementSystem.Properties.Resources.account_circle;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(6, 12);
-            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(67, 58);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2CirclePictureBox1.TabIndex = 11;
-            this.guna2CirclePictureBox1.TabStop = false;
+            this.pictureUser.BackColor = System.Drawing.Color.Transparent;
+            this.pictureUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureUser.FillColor = System.Drawing.Color.IndianRed;
+            this.pictureUser.Image = global::VehicleManagementSystem.Properties.Resources.account_circle;
+            this.pictureUser.ImageRotate = 0F;
+            this.pictureUser.Location = new System.Drawing.Point(6, 12);
+            this.pictureUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureUser.Name = "pictureUser";
+            this.pictureUser.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pictureUser.Size = new System.Drawing.Size(67, 58);
+            this.pictureUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureUser.TabIndex = 11;
+            this.pictureUser.TabStop = false;
             // 
             // labelUserName
             // 
@@ -287,7 +289,7 @@ namespace VehicleManagementSystem {
             this.labelUserName.ForeColor = System.Drawing.Color.DimGray;
             this.labelUserName.Location = new System.Drawing.Point(79, 30);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(202, 24);
+            this.labelUserName.Size = new System.Drawing.Size(148, 16);
             this.labelUserName.TabIndex = 12;
             this.labelUserName.Text = "Firstname Lastname";
             // 
@@ -315,7 +317,7 @@ namespace VehicleManagementSystem {
             this.labelPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.labelPage.Location = new System.Drawing.Point(19, 18);
             this.labelPage.Name = "labelPage";
-            this.labelPage.Size = new System.Drawing.Size(226, 25);
+            this.labelPage.Size = new System.Drawing.Size(153, 17);
             this.labelPage.TabIndex = 5;
             this.labelPage.Text = "Vehicle Management";
             // 
@@ -395,6 +397,18 @@ namespace VehicleManagementSystem {
             this.panelDesktop.Size = new System.Drawing.Size(1095, 633);
             this.panelDesktop.TabIndex = 2;
             // 
+            // labelRole
+            // 
+            this.labelRole.AutoSize = true;
+            this.labelRole.BackColor = System.Drawing.Color.Transparent;
+            this.labelRole.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRole.ForeColor = System.Drawing.Color.DimGray;
+            this.labelRole.Location = new System.Drawing.Point(79, 46);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(31, 14);
+            this.labelRole.TabIndex = 13;
+            this.labelRole.Text = "Role";
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -408,12 +422,13 @@ namespace VehicleManagementSystem {
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelUserDetails.ResumeLayout(false);
             this.panelUserDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.ResumeLayout(false);
@@ -433,12 +448,13 @@ namespace VehicleManagementSystem {
         private FontAwesome.Sharp.IconButton minimizeBtn;
         private Guna.UI2.WinForms.Guna2GradientPanel panelDesktop;
         private System.Windows.Forms.Label labelPage;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox pictureUser;
         private System.Windows.Forms.Label labelUserName;
         private IconButton activityLogsBtn;
         private IconButton userManagementBtn;
         private IconButton dashboardBtn;
         private System.Windows.Forms.Panel panelUserDetails;
         private Guna.UI2.WinForms.Guna2Panel panelMenuLine;
+        private System.Windows.Forms.Label labelRole;
     }
 }

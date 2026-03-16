@@ -6,6 +6,9 @@ using VehicleManagementSystem.Classes;
 using PL_VehicleRental.Forms;
 using Dshboard;
 using ActivityLogs;
+using PL_VehicleRental.Services.Security;
+using VehicleManagementSystem.Dto;
+using System.IO;
 
 namespace VehicleManagementSystem {
 
@@ -106,6 +109,43 @@ namespace VehicleManagementSystem {
             NavigationHelper.OpenForm(new frmMaintenanceManagement());
         }
 
+        private void LoadUserImage()
+        {
+            try
+            {
+                if (Session.User == null) return;
+
+                string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    AppDomain.CurrentDomain.BaseDirectory, "UserImages");
+
+                string fullPath = Path.Combine(folder, Session.User.UserImagePath ?? "");
+
+                if (!string.IsNullOrWhiteSpace(Session.User.UserImagePath) && File.Exists(fullPath))
+                {
+                    pictureUser.Image = Image.FromFile(fullPath);
+                } 
+                else
+                {
+                    pictureUser.Image = Properties.Resources.avatar_default;
+                }
+            }
+            catch
+            {
+                pictureUser.Image = Properties.Resources.avatar_default;
+            }
+        }
+
+        private void LoadCurrentUser()
+        {
+            if (Session.User != null)
+            {
+                labelUserName.Text = $"{Session.User.FullName}";
+                labelRole.Text = $"{Session.User.Role}";
+
+                LoadUserImage();
+            }
+        }
+
         // Make the scroll more responsive
         // Boiler plate from stacks overflow
         protected override void WndProc(ref Message m) {
@@ -117,5 +157,9 @@ namespace VehicleManagementSystem {
             base.WndProc(ref m);
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            LoadCurrentUser();
+        }
     }
 }

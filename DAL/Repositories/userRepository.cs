@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using Org.BouncyCastle.Bcpg;
 using System.Drawing;
 using VehicleManagementSystem.Helpers;
+using System.Runtime.InteropServices;
 
 namespace PL_VehicleRental.DAL.Repositories
 {
@@ -81,7 +82,7 @@ namespace PL_VehicleRental.DAL.Repositories
             {
                 await conn.OpenAsync();
 
-                const string sql = @"SELECT id, userName, fullName, email, address, role, status, passwordHash, isDefaultPassword
+                const string sql = @"SELECT id, userName, fullName, email, address, role, status, passwordHash, isDefaultPassword, imagePath
                                      FROM users WHERE (userName = @input OR email = @input) AND status = 'Active'";
 
                 using (var cmd = new MySqlCommand(sql, conn))
@@ -104,8 +105,12 @@ namespace PL_VehicleRental.DAL.Repositories
                             Address = reader.GetString("address"),
                             Role = reader.GetString("role"),
                             Status = reader.GetString("status"),
-                            isDefaultPassword = reader.GetBoolean("isDefaultPassword")
+                            isDefaultPassword = reader.GetBoolean("isDefaultPassword"),
+                            ImagePath = reader.IsDBNull(reader.GetOrdinal("imagePath"))
+                                        ? null
+                                        : reader.GetString("imagePath")
                         };
+
                     }
                 }
                     
