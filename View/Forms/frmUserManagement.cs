@@ -252,10 +252,10 @@ namespace PL_VehicleRental.Forms
                 ToggleLoading(true);
 
                 if (!AuthorizationService.HasPermission(Permission.DeleteUser))
-                {
-                    MessageBox.Show("Access Denied.");
-                    return;
-                }
+            {
+                MessageBox.Show("Access Denied.");
+                return;
+            }
 
                 bool success = await _repository.DeleteUserAsync(userId);
 

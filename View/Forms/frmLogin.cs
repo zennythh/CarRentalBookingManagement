@@ -48,14 +48,6 @@ namespace PL_VehicleRental.Forms
             try
             {
                 var user = await _repository.ValidateLoginAsync(username, password);
-                await AuditService.LogAsync(new AuditLog
-                {
-                    UserId = user.Id,
-                    ActionType = "LOGIN",
-                    Description = "User logged in",
-                    TableAffected = "users",
-                    RecordId = user.Id
-                });
 
                 if (user == null)
                 {
@@ -103,6 +95,15 @@ namespace PL_VehicleRental.Forms
                     Role = parsedRole,
                     UserImagePath = user.ImagePath,
                 };
+
+                await AuditService.LogAsync(new AuditLog
+                {
+                    UserId = user.Id,
+                    ActionType = "LOGIN",
+                    Description = "User logged in",
+                    TableAffected = "users",
+                    RecordId = user.Id
+                });
 
                 Console.WriteLine($"'{user.ImagePath}'");
                 Console.WriteLine($"Logged in user: '{user.Id}' - '{user.UserName}'");
