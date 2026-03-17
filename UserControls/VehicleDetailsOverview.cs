@@ -14,18 +14,11 @@ namespace VehicleManagementSystem.UserControls {
         public VehicleDetailsOverview(VehicleDto vehicle) {
             _vehicle = vehicle;
             InitializeComponent();
+            LoadVehicleImage();
             InitializeCombos();
-
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
-                      ControlStyles.UserPaint |
-                      ControlStyles.OptimizedDoubleBuffer,
-                      true);
-
-            this.UpdateStyles();
 
             LoadVehicleInformation();
             LoadComboBoxInformation();
-            LoadVehicleImage();
         }
 
         private void editBtn_Click(object sender, EventArgs e) {        
@@ -42,7 +35,7 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void saveBtn_Click(object sender, EventArgs e) {
-            // Require Validation
+            // Require Validationr
 
             ToggleUIVisibility();
             ToggleInputsEnable();
@@ -98,7 +91,7 @@ namespace VehicleManagementSystem.UserControls {
 
 
         private void ToggleUIVisibility() {
-            labelEdittingModeNotice.Visible = !labelEdittingModeNotice.Visible;
+            //labelEdittingModeNotice.Visible = !labelEdittingModeNotice.Visible;
             editBtn.Visible = !editBtn.Visible;
             saveBtn.Visible = !saveBtn.Visible;
             cancelBtn.Visible = !cancelBtn.Visible;

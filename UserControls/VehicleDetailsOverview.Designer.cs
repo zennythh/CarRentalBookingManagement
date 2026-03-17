@@ -48,7 +48,6 @@
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
             this.label34 = new System.Windows.Forms.Label();
             this.cancelBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.labelEdittingModeNotice = new System.Windows.Forms.Label();
             this.saveBtn = new Guna.UI2.WinForms.Guna2Button();
             this.editBtn = new Guna.UI2.WinForms.Guna2Button();
             this.tableMiddle = new System.Windows.Forms.TableLayoutPanel();
@@ -123,6 +122,7 @@
             this.progressTillChangeOil = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelMain.SuspendLayout();
             this.tableBottom.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
@@ -154,18 +154,18 @@
             this.guna2CircleProgressBar2.SuspendLayout();
             this.guna2CircleProgressBar1.SuspendLayout();
             this.progressTillChangeOil.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
             // 
+            this.panelMain.Controls.Add(this.tableLayoutPanel2);
             this.panelMain.Controls.Add(this.tableBottom);
             this.panelMain.Controls.Add(this.cancelBtn);
-            this.panelMain.Controls.Add(this.labelEdittingModeNotice);
             this.panelMain.Controls.Add(this.saveBtn);
             this.panelMain.Controls.Add(this.editBtn);
             this.panelMain.Controls.Add(this.tableMiddle);
             this.panelMain.Controls.Add(this.panel1);
-            this.panelMain.Controls.Add(this.tableTop);
             this.panelMain.CustomizableEdges.BottomLeft = false;
             this.panelMain.CustomizableEdges.BottomRight = false;
             this.panelMain.CustomizableEdges.TopRight = false;
@@ -481,20 +481,6 @@
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.Visible = false;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
-            // labelEdittingModeNotice
-            // 
-            this.labelEdittingModeNotice.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelEdittingModeNotice.AutoSize = true;
-            this.labelEdittingModeNotice.BackColor = System.Drawing.Color.Transparent;
-            this.labelEdittingModeNotice.Font = new System.Drawing.Font("Impact", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEdittingModeNotice.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelEdittingModeNotice.Location = new System.Drawing.Point(301, 15);
-            this.labelEdittingModeNotice.Name = "labelEdittingModeNotice";
-            this.labelEdittingModeNotice.Size = new System.Drawing.Size(371, 42);
-            this.labelEdittingModeNotice.TabIndex = 28;
-            this.labelEdittingModeNotice.Text = "YOU ARE IN EDITTING MODE";
-            this.labelEdittingModeNotice.Visible = false;
             // 
             // saveBtn
             // 
@@ -1158,19 +1144,19 @@
             // 
             // tableTop
             // 
-            this.tableTop.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tableTop.BackColor = System.Drawing.Color.Transparent;
             this.tableTop.ColumnCount = 2;
             this.tableTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 194F));
             this.tableTop.Controls.Add(this.panelTopLeft, 0, 0);
             this.tableTop.Controls.Add(this.panelTopRight, 1, 0);
-            this.tableTop.Location = new System.Drawing.Point(12, 76);
+            this.tableTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableTop.Location = new System.Drawing.Point(49, 2);
             this.tableTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableTop.Name = "tableTop";
             this.tableTop.RowCount = 1;
             this.tableTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableTop.Size = new System.Drawing.Size(1099, 466);
+            this.tableTop.Size = new System.Drawing.Size(981, 479);
             this.tableTop.TabIndex = 22;
             // 
             // panelTopLeft
@@ -1185,7 +1171,7 @@
             this.panelTopLeft.Location = new System.Drawing.Point(0, 0);
             this.panelTopLeft.Margin = new System.Windows.Forms.Padding(0);
             this.panelTopLeft.Name = "panelTopLeft";
-            this.panelTopLeft.Size = new System.Drawing.Size(905, 466);
+            this.panelTopLeft.Size = new System.Drawing.Size(787, 479);
             this.panelTopLeft.TabIndex = 0;
             // 
             // panel2
@@ -1196,7 +1182,7 @@
             this.panel2.Controls.Add(this.guna2GradientPanel3);
             this.panel2.Controls.Add(this.guna2GradientPanel1);
             this.panel2.Controls.Add(this.guna2GradientPanel2);
-            this.panel2.Location = new System.Drawing.Point(-4, 318);
+            this.panel2.Location = new System.Drawing.Point(-63, 331);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(907, 145);
             this.panel2.TabIndex = 6;
@@ -1211,10 +1197,10 @@
             this.guna2GradientPanel5.FillColor = System.Drawing.Color.Transparent;
             this.guna2GradientPanel5.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2GradientPanel5.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.guna2GradientPanel5.Location = new System.Drawing.Point(12, 26);
+            this.guna2GradientPanel5.Location = new System.Drawing.Point(12, 10);
             this.guna2GradientPanel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel5.Name = "guna2GradientPanel5";
-            this.guna2GradientPanel5.Size = new System.Drawing.Size(171, 90);
+            this.guna2GradientPanel5.Size = new System.Drawing.Size(171, 126);
             this.guna2GradientPanel5.TabIndex = 41;
             // 
             // labelStatus
@@ -1232,7 +1218,7 @@
             this.labelStatus.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.labelStatus.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.labelStatus.Location = new System.Drawing.Point(0, 50);
+            this.labelStatus.Location = new System.Drawing.Point(0, 68);
             this.labelStatus.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.PlaceholderText = "";
@@ -1257,11 +1243,11 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkGray;
-            this.label4.Location = new System.Drawing.Point(4, 67);
+            this.label4.Location = new System.Drawing.Point(4, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 23);
             this.label4.TabIndex = 18;
@@ -1278,10 +1264,10 @@
             this.guna2GradientPanel4.FillColor = System.Drawing.Color.Transparent;
             this.guna2GradientPanel4.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2GradientPanel4.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.guna2GradientPanel4.Location = new System.Drawing.Point(188, 24);
+            this.guna2GradientPanel4.Location = new System.Drawing.Point(188, 8);
             this.guna2GradientPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel4.Name = "guna2GradientPanel4";
-            this.guna2GradientPanel4.Size = new System.Drawing.Size(171, 90);
+            this.guna2GradientPanel4.Size = new System.Drawing.Size(171, 126);
             this.guna2GradientPanel4.TabIndex = 40;
             // 
             // labelLastInspect
@@ -1299,7 +1285,7 @@
             this.labelLastInspect.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLastInspect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.labelLastInspect.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.labelLastInspect.Location = new System.Drawing.Point(0, 50);
+            this.labelLastInspect.Location = new System.Drawing.Point(0, 68);
             this.labelLastInspect.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.labelLastInspect.Name = "labelLastInspect";
             this.labelLastInspect.PlaceholderText = "";
@@ -1324,11 +1310,11 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(4, 67);
+            this.label2.Location = new System.Drawing.Point(4, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(164, 23);
             this.label2.TabIndex = 18;
@@ -1345,10 +1331,10 @@
             this.guna2GradientPanel3.FillColor = System.Drawing.Color.Transparent;
             this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2GradientPanel3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.guna2GradientPanel3.Location = new System.Drawing.Point(724, 24);
+            this.guna2GradientPanel3.Location = new System.Drawing.Point(724, 8);
             this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
-            this.guna2GradientPanel3.Size = new System.Drawing.Size(171, 90);
+            this.guna2GradientPanel3.Size = new System.Drawing.Size(171, 126);
             this.guna2GradientPanel3.TabIndex = 4;
             // 
             // guna2PictureBox3
@@ -1389,11 +1375,11 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.DarkGray;
-            this.label9.Location = new System.Drawing.Point(4, 67);
+            this.label9.Location = new System.Drawing.Point(4, 103);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(164, 23);
             this.label9.TabIndex = 18;
@@ -1410,10 +1396,10 @@
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(364, 24);
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(364, 8);
             this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(171, 90);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(171, 126);
             this.guna2GradientPanel1.TabIndex = 2;
             // 
             // inputOdomter
@@ -1431,7 +1417,7 @@
             this.inputOdomter.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputOdomter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.inputOdomter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputOdomter.Location = new System.Drawing.Point(0, 50);
+            this.inputOdomter.Location = new System.Drawing.Point(0, 68);
             this.inputOdomter.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.inputOdomter.Name = "inputOdomter";
             this.inputOdomter.PlaceholderText = "";
@@ -1456,11 +1442,11 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DarkGray;
-            this.label7.Location = new System.Drawing.Point(4, 67);
+            this.label7.Location = new System.Drawing.Point(4, 103);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(164, 23);
             this.label7.TabIndex = 18;
@@ -1477,10 +1463,10 @@
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.Transparent;
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2GradientPanel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-            this.guna2GradientPanel2.Location = new System.Drawing.Point(543, 24);
+            this.guna2GradientPanel2.Location = new System.Drawing.Point(543, 8);
             this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(171, 90);
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(171, 126);
             this.guna2GradientPanel2.TabIndex = 3;
             // 
             // inputTransmissionType
@@ -1521,11 +1507,11 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(4, 67);
+            this.label1.Location = new System.Drawing.Point(4, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 23);
             this.label1.TabIndex = 18;
@@ -1545,7 +1531,7 @@
             this.pictureVehicle.Location = new System.Drawing.Point(84, 31);
             this.pictureVehicle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureVehicle.Name = "pictureVehicle";
-            this.pictureVehicle.Size = new System.Drawing.Size(754, 291);
+            this.pictureVehicle.Size = new System.Drawing.Size(636, 304);
             this.pictureVehicle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureVehicle.TabIndex = 2;
             this.pictureVehicle.TabStop = false;
@@ -1560,10 +1546,10 @@
             this.panelTopRight.CustomizableEdges.TopLeft = false;
             this.panelTopRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTopRight.FillColor = System.Drawing.Color.Transparent;
-            this.panelTopRight.Location = new System.Drawing.Point(905, 0);
+            this.panelTopRight.Location = new System.Drawing.Point(787, 0);
             this.panelTopRight.Margin = new System.Windows.Forms.Padding(0);
             this.panelTopRight.Name = "panelTopRight";
-            this.panelTopRight.Size = new System.Drawing.Size(194, 466);
+            this.panelTopRight.Size = new System.Drawing.Size(194, 479);
             this.panelTopRight.TabIndex = 1;
             // 
             // guna2CircleProgressBar2
@@ -1701,6 +1687,22 @@
             this.label5.Text = "Until change \r\noil";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.347798F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.30441F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.347798F));
+            this.tableLayoutPanel2.Controls.Add(this.tableTop, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(20, 68);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1081, 483);
+            this.tableLayoutPanel2.TabIndex = 31;
+            // 
             // VehicleDetailsOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1711,7 +1713,6 @@
             this.Name = "VehicleDetailsOverview";
             this.Size = new System.Drawing.Size(1113, 1133);
             this.panelMain.ResumeLayout(false);
-            this.panelMain.PerformLayout();
             this.tableBottom.ResumeLayout(false);
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
@@ -1750,6 +1751,7 @@
             this.guna2CircleProgressBar2.ResumeLayout(false);
             this.guna2CircleProgressBar1.ResumeLayout(false);
             this.progressTillChangeOil.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1780,7 +1782,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
         private System.Windows.Forms.Label label34;
         private Guna.UI2.WinForms.Guna2Button cancelBtn;
-        private System.Windows.Forms.Label labelEdittingModeNotice;
         private Guna.UI2.WinForms.Guna2Button saveBtn;
         private System.Windows.Forms.TableLayoutPanel tableMiddle;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
@@ -1855,5 +1856,6 @@
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Button editBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

@@ -26,11 +26,12 @@ namespace VehicleManagementSystem.View.Forms {
             OpenSubPanel(new VehicleDetailsOverview(_vehicle));
         }
 
-        public void OpenSubPanel(UserControl control) { 
+        public void OpenSubPanel(UserControl control) {
+            if (ActiveUserControl?.GetType() == control.GetType())  return;
+
             ActiveUserControl = control;
 
             panelSubMain.Controls.Clear();
-            panelSubMain.SuspendLayout();
 
             panelSubMain.Height = ActiveUserControl.Height;
             panelSubMain.Controls.Clear();
@@ -39,7 +40,6 @@ namespace VehicleManagementSystem.View.Forms {
             panelSubMain.AutoScroll = true;
             panelSubMain.Controls.Add(ActiveUserControl);
             
-            panelSubMain.ResumeLayout(true);
             RenderActiveButton();
         }
 
