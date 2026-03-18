@@ -37,17 +37,17 @@ namespace PL_VehicleRental.Forms
             this.flowUsers = new System.Windows.Forms.FlowLayoutPanel();
             this.TableHeaderPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.headerPanel = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnUserForm = new Guna.UI2.WinForms.Guna2Button();
             this.headerLabel = new System.Windows.Forms.Label();
             this.pnlOverlay = new Guna.UI2.WinForms.Guna2Panel();
-            this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
+            this.progressBar = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.rolesTablePanel = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPagination = new System.Windows.Forms.TableLayoutPanel();
             this.pnlPagination = new Guna.UI2.WinForms.Guna2Panel();
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.lblPageInfo = new System.Windows.Forms.Label();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnUserForm = new Guna.UI2.WinForms.Guna2Button();
             this.BackgroundPanel.SuspendLayout();
             this.UserManagementPanel.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -133,6 +133,54 @@ namespace PL_VehicleRental.Forms
             this.headerPanel.Size = new System.Drawing.Size(1272, 100);
             this.headerPanel.TabIndex = 1;
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BorderRadius = 5;
+            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.DefaultText = "";
+            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.txtSearch.IconLeft = global::VehicleManagementSystem.Properties.Resources.searchIcon;
+            this.txtSearch.IconLeftOffset = new System.Drawing.Point(5, 0);
+            this.txtSearch.Location = new System.Drawing.Point(729, 30);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Search user...";
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.Size = new System.Drawing.Size(267, 44);
+            this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnUserForm
+            // 
+            this.btnUserForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUserForm.BorderColor = System.Drawing.Color.Transparent;
+            this.btnUserForm.BorderRadius = 5;
+            this.btnUserForm.BorderThickness = 2;
+            this.btnUserForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUserForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUserForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUserForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUserForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUserForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnUserForm.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnUserForm.ForeColor = System.Drawing.Color.White;
+            this.btnUserForm.Image = ((System.Drawing.Image)(resources.GetObject("btnUserForm.Image")));
+            this.btnUserForm.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnUserForm.Location = new System.Drawing.Point(1041, 28);
+            this.btnUserForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUserForm.Name = "btnUserForm";
+            this.btnUserForm.Size = new System.Drawing.Size(203, 46);
+            this.btnUserForm.TabIndex = 2;
+            this.btnUserForm.Text = "Add User";
+            this.btnUserForm.Click += new System.EventHandler(this.btnUserForm_Click);
+            // 
             // headerLabel
             // 
             this.headerLabel.AutoSize = true;
@@ -156,17 +204,24 @@ namespace PL_VehicleRental.Forms
             // 
             // progressBar
             // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.BorderRadius = 5;
-            this.progressBar.BorderThickness = 1;
-            this.progressBar.Location = new System.Drawing.Point(276, 282);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar.Animated = true;
+            this.progressBar.BackColor = System.Drawing.Color.Transparent;
+            this.progressBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.progressBar.FillThickness = 8;
+            this.progressBar.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.progressBar.ForeColor = System.Drawing.Color.White;
+            this.progressBar.Location = new System.Drawing.Point(0, 0);
+            this.progressBar.Minimum = 0;
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(715, 14);
+            this.progressBar.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.progressBar.ProgressEndCap = System.Drawing.Drawing2D.LineCap.Round;
+            this.progressBar.ProgressStartCap = System.Drawing.Drawing2D.LineCap.Round;
+            this.progressBar.ProgressThickness = 8;
+            this.progressBar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.progressBar.Size = new System.Drawing.Size(60, 60);
             this.progressBar.TabIndex = 0;
-            this.progressBar.Text = "guna2ProgressBar1";
-            this.progressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.progressBar.ValueChanged += new System.EventHandler(this.progressBar_ValueChanged);
+            this.progressBar.Text = "guna2CircleProgressBar1";
+            this.progressBar.Value = 75;
             // 
             // rolesTablePanel
             // 
@@ -219,12 +274,12 @@ namespace PL_VehicleRental.Forms
             this.btnPrev.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.btnPrev.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnPrev.ForeColor = System.Drawing.Color.White;
+            this.btnPrev.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.Image")));
             this.btnPrev.Location = new System.Drawing.Point(23, 13);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(45, 30);
             this.btnPrev.TabIndex = 0;
-            this.btnPrev.Text = "<";
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // btnNext
@@ -237,12 +292,12 @@ namespace PL_VehicleRental.Forms
             this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnNext.ForeColor = System.Drawing.Color.White;
+            this.btnNext.Image = global::VehicleManagementSystem.Properties.Resources.chevron_right;
             this.btnNext.Location = new System.Drawing.Point(260, 13);
             this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(45, 30);
             this.btnNext.TabIndex = 2;
-            this.btnNext.Text = ">";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // lblPageInfo
@@ -254,54 +309,6 @@ namespace PL_VehicleRental.Forms
             this.lblPageInfo.TabIndex = 1;
             this.lblPageInfo.Text = "label1";
             this.lblPageInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.BorderRadius = 5;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.txtSearch.IconLeft = global::VehicleManagementSystem.Properties.Resources.searchIcon;
-            this.txtSearch.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.txtSearch.Location = new System.Drawing.Point(729, 30);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search user...";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(267, 44);
-            this.txtSearch.TabIndex = 4;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // btnUserForm
-            // 
-            this.btnUserForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUserForm.BorderColor = System.Drawing.Color.Transparent;
-            this.btnUserForm.BorderRadius = 5;
-            this.btnUserForm.BorderThickness = 2;
-            this.btnUserForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUserForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnUserForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnUserForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnUserForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnUserForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.btnUserForm.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnUserForm.ForeColor = System.Drawing.Color.White;
-            this.btnUserForm.Image = ((System.Drawing.Image)(resources.GetObject("btnUserForm.Image")));
-            this.btnUserForm.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnUserForm.Location = new System.Drawing.Point(1041, 28);
-            this.btnUserForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUserForm.Name = "btnUserForm";
-            this.btnUserForm.Size = new System.Drawing.Size(203, 46);
-            this.btnUserForm.TabIndex = 2;
-            this.btnUserForm.Text = "Add User";
-            this.btnUserForm.Click += new System.EventHandler(this.btnUserForm_Click);
             // 
             // UserManagementForm
             // 
@@ -340,12 +347,12 @@ namespace PL_VehicleRental.Forms
         private System.Windows.Forms.FlowLayoutPanel flowUsers;
         private Guna.UI2.WinForms.Guna2Panel TableHeaderPanel;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Guna.UI2.WinForms.Guna2ProgressBar progressBar;
         private Guna.UI2.WinForms.Guna2Panel pnlOverlay;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private Guna.UI2.WinForms.Guna2Button btnPrev;
         private Label lblPageInfo;
         private TableLayoutPanel tableLayoutPagination;
         private Guna.UI2.WinForms.Guna2Panel pnlPagination;
+        private Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
     }
 }

@@ -14,6 +14,7 @@ namespace VehicleManagementSystem.Dto
         public string UserName { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
+        public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string Role { get; set; }
         public string Status { get; set; }
@@ -44,5 +45,7 @@ namespace VehicleManagementSystem.Dto
         public string TableAffected { get; set; }
         public DateTime CreatedAt { get; set; }
         public int RecordId { get; set; }
+        public string OldValues { get; set; }
+        public string NewValues { get; set; }
     }
 }

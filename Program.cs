@@ -17,26 +17,26 @@ namespace VehicleManagementSystem {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            frmMain mainForm = new frmMain();
+            //frmMain mainForm = new frmMain();
 
             //var context = new ApplicationContext(mainForm);
 
-            Application.Run(mainForm);
+            //Application.Run(mainForm);
 
-            //while (true)
-            //{
-            //    using (frmLogin login = new frmLogin())
-            //    {
-            //        if (login.ShowDialog() != DialogResult.OK) break;
-            //    }
+            while (true)
+            {
+                using (frmLogin login = new frmLogin())
+                {
+                    if (login.ShowDialog() != DialogResult.OK) break;
+                }
 
-            //    using (frmMain mainForm = new frmMain())
-            //    {
-            //        Application.Run(mainForm);
+                using (frmMain mainForm = new frmMain())
+                {
+                    Application.Run(mainForm);
 
-            //        if (Session.User != null) break;
-            //    }
-            //}
+                    if (Session.User != null) break;
+                }
+            }
         }
     }
 }

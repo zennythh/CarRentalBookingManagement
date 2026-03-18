@@ -14,9 +14,9 @@ namespace PL_VehicleRental.Services
         public static async Task LogAsync(AuditLog log)
         {
             string query = @"INSERT INTO AuditLogs
-                            (userId, actionType, description, tableAffected, recordId)
+                            (userId, actionType, description, tableAffected, recordId, oldValues, newValues)
                             VALUES
-                            (@userId, @actionType, @description, @tableAffected, @recordId)";
+                            (@userId, @actionType, @description, @tableAffected, @recordId, @oldValues, @newValues)";
 
             using (var conn = MySQLConnectionContext.Create())
             using (var cmd = new MySqlCommand(query, conn))
@@ -26,6 +26,8 @@ namespace PL_VehicleRental.Services
                 cmd.Parameters.AddWithValue("@description", log.Description);
                 cmd.Parameters.AddWithValue("@tableAffected", log.TableAffected);
                 cmd.Parameters.AddWithValue("@recordId", log.RecordId);
+                cmd.Parameters.AddWithValue("@oldValues", log.OldValues);
+                cmd.Parameters.AddWithValue("@newValues", log.NewValues);
 
                 await conn.OpenAsync();
                 await cmd.ExecuteNonQueryAsync();

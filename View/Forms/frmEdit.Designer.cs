@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.pnlMain = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.resetImg = new Guna.UI2.WinForms.Guna2Button();
             this.userImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
@@ -49,7 +50,6 @@
             this.roleCmb = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
-            this.resetImg = new Guna.UI2.WinForms.Guna2Button();
             this.pnlProgress.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -234,6 +234,23 @@
             this.pnlMain.Size = new System.Drawing.Size(468, 584);
             this.pnlMain.TabIndex = 15;
             // 
+            // resetImg
+            // 
+            this.resetImg.BorderRadius = 5;
+            this.resetImg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.resetImg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.resetImg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.resetImg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.resetImg.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.resetImg.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.resetImg.ForeColor = System.Drawing.Color.White;
+            this.resetImg.Location = new System.Drawing.Point(182, 173);
+            this.resetImg.Name = "resetImg";
+            this.resetImg.Size = new System.Drawing.Size(96, 26);
+            this.resetImg.TabIndex = 22;
+            this.resetImg.Text = "Reset";
+            this.resetImg.Click += new System.EventHandler(this.resetImg_Click);
+            // 
             // userImage
             // 
             this.userImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -274,6 +291,9 @@
             this.txtPhone.SelectedText = "";
             this.txtPhone.Size = new System.Drawing.Size(208, 48);
             this.txtPhone.TabIndex = 19;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            this.txtPhone.Load += new System.EventHandler(this.txtPhone_Load);
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // label6
             // 
@@ -379,23 +399,6 @@
             this.txtAddress.SelectedText = "";
             this.txtAddress.Size = new System.Drawing.Size(440, 64);
             this.txtAddress.TabIndex = 13;
-            // 
-            // resetImg
-            // 
-            this.resetImg.BorderRadius = 5;
-            this.resetImg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.resetImg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.resetImg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.resetImg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.resetImg.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.resetImg.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.resetImg.ForeColor = System.Drawing.Color.White;
-            this.resetImg.Location = new System.Drawing.Point(182, 173);
-            this.resetImg.Name = "resetImg";
-            this.resetImg.Size = new System.Drawing.Size(96, 26);
-            this.resetImg.TabIndex = 22;
-            this.resetImg.Text = "Reset";
-            this.resetImg.Click += new System.EventHandler(this.resetImg_Click);
             // 
             // frmEdit
             // 

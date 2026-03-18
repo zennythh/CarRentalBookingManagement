@@ -43,9 +43,9 @@ namespace PL_VehicleRental.Forms
             pnlOverlay.Visible = false;
             progressBar.Anchor = AnchorStyles.None;
 
-            progressBar.Style = ProgressBarStyle.Marquee;
+            //progressBar.Style = ProgressBarStyle.Marquee;
             progressBar.Dock = DockStyle.None;
-            progressBar.Size = new Size(150, 10);
+            //progressBar.Size = new Size(150, 10);
             progressBar.Location = new Point((pnlOverlay.Width - progressBar.Width) / 2,
                                              (pnlOverlay.Height - progressBar.Height) / 2);
             pnlOverlay.Controls.Add(progressBar);
@@ -58,7 +58,8 @@ namespace PL_VehicleRental.Forms
             var (users, totalCount) = await _repository.GetPagedUsersAsync(
                 currentSearch,
                 _currentPage,
-                _pageSize);
+                _pageSize,
+                Session.User.Role.ToString());
 
             flowUsers.Controls.Clear();
 

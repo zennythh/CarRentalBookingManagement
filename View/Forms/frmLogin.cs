@@ -47,6 +47,9 @@ namespace PL_VehicleRental.Forms
 
             try
             {
+                btnLogin.Enabled = false;
+                btnLogin.Text = "Logging in...";
+
                 var user = await _repository.ValidateLoginAsync(username, password);
 
                 if (user == null)
@@ -112,6 +115,7 @@ namespace PL_VehicleRental.Forms
             } finally
             {
                 btnLogin.Enabled = true;
+                btnLogin.Text = "Login";
             }
 
             this.DialogResult = DialogResult.OK;

@@ -95,5 +95,15 @@ namespace PL_VehicleRental.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void newPassTxt_TextChanged(object sender, EventArgs e)
+        {
+            newPassTxt.UseSystemPasswordChar = !chkShowNewPassword.Checked;
+        }
+
+        private void chkShowNewPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            confirmPassTxt.UseSystemPasswordChar = !chkShowNewPassword.Checked;
+        }
     }
 }

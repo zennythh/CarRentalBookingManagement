@@ -60,6 +60,46 @@ namespace PL_VehicleRental.Validation
             });
         }
 
+        public void IsPhoneNumber(Control control, string message)
+        {
+            _rules.Add(() =>
+            {
+                string input = control.Text;
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    _errorProvider.SetError(control, "");
+                    return true;
+                }
+
+                string cleaned = Regex.Replace(input, @"[^\d+]", "");
+
+                if (cleaned.StartsWith("09") && cleaned.Length == 1)
+                {
+                    cleaned = "+63" + cleaned.Substring(1);
+                }
+                else if (cleaned.StartsWith("9") && cleaned.Length == 10)
+                {
+                    cleaned = "+63" + cleaned;
+                }
+                else if (cleaned.StartsWith("639") && cleaned.Length == 12)
+                {
+                    cleaned = "+" + cleaned;
+                }
+
+                bool isValid = Regex.IsMatch(cleaned, @"^\+639\d{9}$");
+
+                if (isValid && control.Text != cleaned)
+                {
+                    control.Text = cleaned;
+                }
+
+                _errorProvider.SetError(control, isValid ? "" : message);
+
+                return isValid;
+            });
+        }
+
         public void IsEmail(Control control, string message)
         {
             _rules.Add(() =>

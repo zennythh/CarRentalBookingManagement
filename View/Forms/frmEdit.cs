@@ -67,7 +67,7 @@ namespace PL_VehicleRental.Forms
         private async Task<UserInfoDto> GetUserByIdAsync(int userId)
         {
             const string query = @"
-                                SELECT id, userName, fullName, email, address, role, status, imagePath
+                                SELECT id, userName, fullName, email, phoneNumber, address, role, status, imagePath
                                 FROM users
                                 WHERE id = @id";
 
@@ -91,6 +91,7 @@ namespace PL_VehicleRental.Forms
                         UserName = reader.GetString("userName"),
                         FullName = reader.GetString("fullName"),
                         Email = reader.GetString("email"),
+                        PhoneNumber = reader.IsDBNull(reader.GetOrdinal("phoneNumber")) ? null : reader.GetString("phoneNumber"),
                         Address = reader.GetString("address"),
                         Status = dbStatus,
                         Role = reader.GetString("role"),
@@ -127,6 +128,7 @@ namespace PL_VehicleRental.Forms
             txtFullName.Text = user.FullName;
             txtEmail.Text = user.Email;
             txtAddress.Text = user.Address;
+            txtPhone.Text = user.PhoneNumber;
             roleCmb.SelectedItem = user.Role;
             statusCmb.SelectedItem = user.Status;
 
@@ -185,6 +187,7 @@ namespace PL_VehicleRental.Forms
                     UserName = txtUserName.Text,
                     FullName = txtFullName.Text,
                     Email = txtEmail.Text,
+                    PhoneNumber = txtPhone.Text,
                     Address = txtAddress.Text,
                     Role = roleCmb.SelectedItem.ToString(),
                     Status = statusCmb.SelectedItem.ToString(),
@@ -269,6 +272,32 @@ namespace PL_VehicleRental.Forms
         private void resetImg_Click(object sender, EventArgs e)
         {
             userImage.Image = VehicleManagementSystem.Properties.Resources.avatar_default;
+        }
+
+        private void txtPhone_Load(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                txtPhone.Text = "+63";
+                txtPhone.SelectionStart = txtPhone.Text.Length;
+            }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtPhone.Text.StartsWith("+63"))
+            {
+                txtPhone.Text = "+63";
+                txtPhone.SelectionStart = txtPhone.Text.Length;
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

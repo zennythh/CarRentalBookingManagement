@@ -54,8 +54,8 @@ namespace PL_VehicleRental.DAL.Repositories
             {
                 await conn.OpenAsync();
 
-                const string sql = @"INSERT INTO users (userName, fullName, email, address, role, status, passwordHash, isDefaultPassword, isDeleted, imagePath)
-                                     VALUES (@userName, @fullName, @email, @address, @role, @status, @passwordHash, 1, 0, @ImagePath);
+                const string sql = @"INSERT INTO users (userName, fullName, email, phoneNumber, address, role, status, passwordHash, isDefaultPassword, isDeleted, imagePath)
+                                     VALUES (@userName, @fullName, @email, @phoneNumber, @address, @role, @status, @passwordHash, 1, 0, @ImagePath);
                                      SELECT LAST_INSERT_ID();";
 
                 using (var cmd = new MySqlCommand(sql, conn))
@@ -63,6 +63,7 @@ namespace PL_VehicleRental.DAL.Repositories
                     cmd.Parameters.AddWithValue("@userName", dto.UserName);
                     cmd.Parameters.AddWithValue("@fullName", dto.FullName);
                     cmd.Parameters.AddWithValue("@email", dto.Email);
+                    cmd.Parameters.AddWithValue("@phoneNumber", dto.PhoneNumber);
                     cmd.Parameters.AddWithValue("@address", dto.Address);
                     cmd.Parameters.AddWithValue("@role", dto.Role);
                     cmd.Parameters.AddWithValue("@status", dto.Status);
@@ -136,7 +137,7 @@ namespace PL_VehicleRental.DAL.Repositories
             }
         }
 
-        public async Task<(List<UserInfoDto> Users, int TotalCount)> GetPagedUsersAsync(string search, int pageNumber, int pageSize)
+        public async Task<(List<UserInfoDto> Users, int TotalCount)> GetPagedUsersAsync(string search, int pageNumber, int pageSize, string currentUserRole)
         {
             var users = new List<UserInfoDto>();
             int totalCount = 0;
@@ -147,35 +148,43 @@ namespace PL_VehicleRental.DAL.Repositories
 
                 string searchParam = $"%{search}%";
 
-                string countQuery = @"
+                string whereClause = @"
+                                        WHERE
+                                        (
+                                            (@CurrentUserRole = 'Superadmin' AND isDeleted = 0)
+                                            OR
+                                            (@CurrentUserRole != 'Superadmin' AND isDeleted = 0 AND status = 'Active')
+                                        )
+                                        AND (
+                                             userName LIKE @Search
+                                             OR fullName LIKE @Search
+                                             OR email LIKE @Search
+                                             OR address LIKE @Search
+                                             )";
+
+
+                string countQuery = $@"
                                     SELECT COUNT(*) 
-                                    FROM users WHERE isDeleted = 0
-                                    AND (
-                                    userName LIKE @Search
-                                      OR fullName LIKE @Search
-                                      OR email LIKE @Search
-                                      OR address LIKE @Search)";
+                                    FROM users 
+                                    {whereClause}";
 
                 using (var countCmd = new MySqlCommand(countQuery, conn))
                 {
                     countCmd.Parameters.AddWithValue("@Search", searchParam);
+                    countCmd.Parameters.AddWithValue("@CurrentUserRole", currentUserRole);
                     totalCount = Convert.ToInt32(await countCmd.ExecuteScalarAsync());
                 }
 
-                string dataQuery = @"
+                string dataQuery = $@"
                 SELECT id, userName, fullName, email, address, role, status
                 FROM users 
-                WHERE isDeleted = 0
-                AND (
-                userName LIKE @Search
-                   OR fullName LIKE @Search
-                   OR email LIKE @Search
-                   OR address LIKE @Search)
+                {whereClause}
                 ORDER BY created_at DESC LIMIT @PageSize OFFSET @Offset";
 
                 using (var cmd = new MySqlCommand(dataQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@Search", searchParam);
+                    cmd.Parameters.AddWithValue("@CurrentUserRole", currentUserRole);
                     cmd.Parameters.AddWithValue("PageSize", pageSize);
                     cmd.Parameters.AddWithValue("Offset", (pageNumber - 1) * pageSize);
 
@@ -217,6 +226,7 @@ namespace PL_VehicleRental.DAL.Repositories
                     userName = @Username,
                     fullName = @Fullname,
                     email = @Email,
+                    phoneNumber = @PhoneNumber,
                     address = @Address,
                     role = @Role,
                     status = @Status,
@@ -231,6 +241,7 @@ namespace PL_VehicleRental.DAL.Repositories
                     userName = @Username,
                     fullName = @Fullname,
                     email = @Email,
+                    phoneNumber = @PhoneNumber,
                     address = @Address,
                     role = @Role,
                     status = @Status
@@ -261,6 +272,7 @@ namespace PL_VehicleRental.DAL.Repositories
                         cmd.Parameters.AddWithValue("@Username", user.UserName);
                         cmd.Parameters.AddWithValue("@Fullname", user.FullName);
                         cmd.Parameters.AddWithValue("@Email", user.Email);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
                         cmd.Parameters.AddWithValue("@Address", user.Address);
                         cmd.Parameters.AddWithValue("@Role", user.Role);
                         cmd.Parameters.AddWithValue("@Status", user.Status);

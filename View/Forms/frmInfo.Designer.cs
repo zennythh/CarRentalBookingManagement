@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlMain = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblRole = new System.Windows.Forms.Label();
@@ -45,16 +47,16 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
-            this.pnlProgress = new Guna.UI2.WinForms.Guna2Panel();
             this.userImage = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            this.pnlProgress = new Guna.UI2.WinForms.Guna2Panel();
+            this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            this.pnlProgress.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
+            this.pnlProgress.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -77,6 +79,20 @@
             this.pnlMain.Size = new System.Drawing.Size(468, 505);
             this.pnlMain.TabIndex = 0;
             this.pnlMain.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel1_Paint);
+            // 
+            // guna2Separator2
+            // 
+            this.guna2Separator2.Location = new System.Drawing.Point(11, 209);
+            this.guna2Separator2.Name = "guna2Separator2";
+            this.guna2Separator2.Size = new System.Drawing.Size(446, 10);
+            this.guna2Separator2.TabIndex = 21;
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.Location = new System.Drawing.Point(11, 201);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(446, 10);
+            this.guna2Separator1.TabIndex = 20;
             // 
             // exitBtn
             // 
@@ -102,6 +118,8 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.lblPhone, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.lblRole, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblAddress, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblEmail, 1, 2);
@@ -124,6 +142,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.72241F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.72241F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.72241F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(443, 267);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
@@ -133,9 +152,9 @@
             this.lblRole.BackColor = System.Drawing.Color.Transparent;
             this.lblRole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRole.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblRole.Location = new System.Drawing.Point(90, 173);
+            this.lblRole.Location = new System.Drawing.Point(90, 160);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(345, 42);
+            this.lblRole.Size = new System.Drawing.Size(345, 39);
             this.lblRole.TabIndex = 5;
             this.lblRole.Text = "label2";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -146,9 +165,9 @@
             this.lblAddress.AutoSize = true;
             this.lblAddress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAddress.Location = new System.Drawing.Point(90, 131);
+            this.lblAddress.Location = new System.Drawing.Point(90, 121);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(345, 42);
+            this.lblAddress.Size = new System.Drawing.Size(345, 39);
             this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "label6";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,9 +177,9 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.Location = new System.Drawing.Point(90, 89);
+            this.lblEmail.Location = new System.Drawing.Point(90, 82);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(345, 42);
+            this.lblEmail.Size = new System.Drawing.Size(345, 39);
             this.lblEmail.TabIndex = 16;
             this.lblEmail.Text = "label6";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -171,9 +190,9 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(8, 131);
+            this.label4.Location = new System.Drawing.Point(8, 121);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 42);
+            this.label4.Size = new System.Drawing.Size(76, 39);
             this.label4.TabIndex = 11;
             this.label4.Text = "Address:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -184,9 +203,9 @@
             this.label.BackColor = System.Drawing.Color.Transparent;
             this.label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(8, 173);
+            this.label.Location = new System.Drawing.Point(8, 160);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(76, 42);
+            this.label.Size = new System.Drawing.Size(76, 39);
             this.label.TabIndex = 4;
             this.label.Text = "Role:";
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -198,9 +217,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 215);
+            this.label2.Location = new System.Drawing.Point(8, 199);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 47);
+            this.label2.Size = new System.Drawing.Size(76, 39);
             this.label2.TabIndex = 7;
             this.label2.Text = "Status:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,9 +230,9 @@
             this.lblFullName.AutoSize = true;
             this.lblFullName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblFullName.Location = new System.Drawing.Point(90, 47);
+            this.lblFullName.Location = new System.Drawing.Point(90, 43);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(345, 42);
+            this.lblFullName.Size = new System.Drawing.Size(345, 39);
             this.lblFullName.TabIndex = 14;
             this.lblFullName.Text = "label6";
             this.lblFullName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -225,7 +244,7 @@
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Location = new System.Drawing.Point(90, 5);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(345, 42);
+            this.lblUsername.Size = new System.Drawing.Size(345, 38);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "label6";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -238,7 +257,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(8, 5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 42);
+            this.label3.Size = new System.Drawing.Size(76, 38);
             this.label3.TabIndex = 10;
             this.label3.Text = "Username:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -249,9 +268,9 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(8, 47);
+            this.label5.Location = new System.Drawing.Point(8, 43);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 42);
+            this.label5.Size = new System.Drawing.Size(76, 39);
             this.label5.TabIndex = 12;
             this.label5.Text = "Full Name:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -263,9 +282,9 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(8, 89);
+            this.label7.Location = new System.Drawing.Point(8, 82);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 42);
+            this.label7.Size = new System.Drawing.Size(76, 39);
             this.label7.TabIndex = 15;
             this.label7.Text = "Email:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -276,9 +295,9 @@
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStatus.Location = new System.Drawing.Point(90, 215);
+            this.lblStatus.Location = new System.Drawing.Point(90, 199);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(345, 47);
+            this.lblStatus.Size = new System.Drawing.Size(345, 39);
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "label2";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -306,6 +325,28 @@
             this.guna2Panel1.Size = new System.Drawing.Size(446, 188);
             this.guna2Panel1.TabIndex = 18;
             // 
+            // userImage
+            // 
+            this.userImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.userImage.ImageRotate = 0F;
+            this.userImage.Location = new System.Drawing.Point(160, 63);
+            this.userImage.Name = "userImage";
+            this.userImage.Size = new System.Drawing.Size(132, 122);
+            this.userImage.TabIndex = 7;
+            this.userImage.TabStop = false;
+            // 
+            // pnlProgress
+            // 
+            this.pnlProgress.BackColor = System.Drawing.Color.Transparent;
+            this.pnlProgress.Controls.Add(this.progressBar);
+            this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlProgress.FillColor = System.Drawing.Color.Transparent;
+            this.pnlProgress.Location = new System.Drawing.Point(0, 0);
+            this.pnlProgress.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlProgress.Name = "pnlProgress";
+            this.pnlProgress.Size = new System.Drawing.Size(468, 12);
+            this.pnlProgress.TabIndex = 14;
+            // 
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -320,41 +361,30 @@
             this.progressBar.TextMode = Guna.UI2.WinForms.Enums.ProgressBarTextMode.Value;
             this.progressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
-            // pnlProgress
+            // label6
             // 
-            this.pnlProgress.BackColor = System.Drawing.Color.Transparent;
-            this.pnlProgress.Controls.Add(this.progressBar);
-            this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlProgress.FillColor = System.Drawing.Color.Transparent;
-            this.pnlProgress.Location = new System.Drawing.Point(0, 0);
-            this.pnlProgress.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlProgress.Name = "pnlProgress";
-            this.pnlProgress.Size = new System.Drawing.Size(468, 12);
-            this.pnlProgress.TabIndex = 14;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(8, 238);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 24);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Phone:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // userImage
+            // lblPhone
             // 
-            this.userImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userImage.ImageRotate = 0F;
-            this.userImage.Location = new System.Drawing.Point(160, 63);
-            this.userImage.Name = "userImage";
-            this.userImage.Size = new System.Drawing.Size(132, 122);
-            this.userImage.TabIndex = 7;
-            this.userImage.TabStop = false;
-            // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.Location = new System.Drawing.Point(11, 201);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(446, 10);
-            this.guna2Separator1.TabIndex = 20;
-            // 
-            // guna2Separator2
-            // 
-            this.guna2Separator2.Location = new System.Drawing.Point(11, 209);
-            this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(446, 10);
-            this.guna2Separator2.TabIndex = 21;
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPhone.Location = new System.Drawing.Point(90, 238);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(345, 24);
+            this.lblPhone.TabIndex = 18;
+            this.lblPhone.Text = "label6";
+            this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmInfo
             // 
@@ -375,8 +405,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
-            this.pnlProgress.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
+            this.pnlProgress.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -394,7 +424,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Panel pnlProgress;
-        private Guna.UI2.WinForms.Guna2ProgressBar progressBar;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Label lblUsername;
@@ -405,5 +434,8 @@
         private Guna.UI2.WinForms.Guna2PictureBox userImage;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private Guna.UI2.WinForms.Guna2ProgressBar progressBar;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label label6;
     }
 }
