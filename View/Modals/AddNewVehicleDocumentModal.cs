@@ -12,6 +12,7 @@ using VehicleManagementSystem.Data.Enums;
 
 namespace VehicleManagementSystem.View.Modals {
     public partial class AddNewVehicleDocumentModal : Form {
+
         public AddNewVehicleDocumentModal(string PlateNumber) {
             InitializeComponent();
             InitializeComboBox();
@@ -21,7 +22,7 @@ namespace VehicleManagementSystem.View.Modals {
 
         private void InitializeComboBox() {
             inputDocumentType.DataSource = Enum.GetValues(typeof(VehicleDocumentEnums.Type));
-            inputIssuingAuthority.DataSource = Enum.GetValues(typeof(VehicleDocumentEnums.IssuingAuthority));
+            
         }
 
         // Should have a notice before closing the modal if there was change/s in the input fields
@@ -31,6 +32,11 @@ namespace VehicleManagementSystem.View.Modals {
 
         private void cancelBtn_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void inputHasExpirationDate_CheckedChanged(object sender, EventArgs e) {
+            inputExpirationDate.Visible = inputHasExpirationDate.Checked;
+            labelExpirationDate.Visible = inputHasExpirationDate.Checked;
         }
     }
 }
