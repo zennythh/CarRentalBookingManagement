@@ -17,5 +17,7 @@ namespace VehicleManagementSystem.View.Interfaces {
         string DocumentPath { get; }
 
         void ShowError(string error);
+        void ShowSuccess(string message);
+        void CloseModal();
     }
 }

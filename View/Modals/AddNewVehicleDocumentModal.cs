@@ -27,6 +27,14 @@ namespace VehicleManagementSystem.View.Modals {
             MessageBox.Show(error, "Error");
         }
 
+        public void ShowSuccess(string message) {
+            MessageBox.Show(message, "Success");
+        }
+
+        public void CloseModal() {
+            this.Close();
+        }
+
         public AddNewVehicleDocumentModal(string PlateNumber) {
             InitializeComponent();
             _presenter = new addNewVehicleDocumentPresenter(this, new Services.Implementations.VehicleDocumentServices());

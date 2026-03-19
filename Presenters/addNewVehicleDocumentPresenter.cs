@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VehicleManagementSystem.Classes;
+using VehicleManagementSystem.Data.Enums;
 using VehicleManagementSystem.Dto;
 using VehicleManagementSystem.Services.Implementations;
 using VehicleManagementSystem.View.Interfaces;
@@ -20,13 +21,8 @@ namespace VehicleManagementSystem.Presenters {
         }
 
         public void SaveDocument() {
-            //if (!IsAllInputsValid(_view))
-            //    return;
-
-            string to = GetFinalVehicDocumentPath(_view.DocumentPath, _view.VehiclePlateNum);
-            _view.ShowError("might saved:" + to);
-
-            return;
+            if (!IsAllInputsValid(_view))
+                return;
 
             try {
                 VehicleDocumentDto newDocument = new VehicleDocumentDto {
@@ -42,12 +38,13 @@ namespace VehicleManagementSystem.Presenters {
                                      : DateTime.Parse(_view.DocumentExpirationDate),
 
                     FilePath = GetFinalVehicDocumentPath(_view.DocumentPath, _view.VehiclePlateNum),
-                    Extension = System.IO.Path.GetExtension(_view.DocumentPath).ToLower()
+                    Extension = Path.GetExtension(_view.DocumentPath).ToLower()
                 };
 
                 _vehicleDocumentServices.AddVehicleDocument(newDocument);
 
-                //_view.ShowSuccess($"Document '{newDocument.Title}' for Plate {_view.VehiclePlateNum} has been added.");
+                _view.ShowSuccess($"Document '{newDocument.Title}' for Plate {_view.VehiclePlateNum} has been added.");
+                _view.CloseModal();
             } catch (Exception ex) {
                 _view.ShowError($"Failed to save document: {ex.Message}");
             }
@@ -57,6 +54,31 @@ namespace VehicleManagementSystem.Presenters {
             string subFolderImagePath = Path.Combine(AppConfig.AppData.VehicleImagePath, plateNum);
             string fileName = _view.DocumentType+"-"+_view.DocumentTitle+Path.GetExtension(docPath);
             return VehicleManagementSystem.Classes.Helpers.SaveDocumentToAppData(docPath, subFolderImagePath, fileName);
+        }
+
+        private bool IsAllInputsValid(IAddNewVehicleDocumentView inputs) {
+            bool hadNoError = true;
+
+            if (string.IsNullOrWhiteSpace(inputs.DocumentTitle)) {
+                //_view.SetFieldError(AddNewVehicleInputEnums.VehicleIdentificationNumber, "Required.");
+                hadNoError = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(inputs.DocumentPath)) {
+                //_view.SetFieldError(AddNewVehicleInputEnums.VehicleIdentificationNumber, "Required.");
+                hadNoError = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(inputs.DocumentIssuingAuthority)) {
+                //_view.SetFieldError(AddNewVehicleInputEnums.VehicleIdentificationNumber, "Required.");
+                hadNoError = false;
+            }
+
+            if (string.IsNullOrEmpty(inputs.DocumentType)) {
+                hadNoError = false;
+            }
+
+            return hadNoError;
         }
     }
 }
