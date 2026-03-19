@@ -244,4 +244,10 @@
   <data name="reset-pass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lock_reset_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="close-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close_small_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="person-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\person_add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

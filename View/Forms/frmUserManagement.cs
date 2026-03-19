@@ -1,5 +1,4 @@
-﻿
-using VehicleManagementSystem.Classes;
+﻿using VehicleManagementSystem.Classes;
 using PL_VehicleRental.DAL.Repositories;
 using VehicleManagementSystem.Data;
 using PL_VehicleRental.Services.Security;
@@ -30,8 +29,7 @@ namespace PL_VehicleRental.Forms
         private string currentSearch = "";
 
         private readonly userRepository _repository = new userRepository();
-
-
+        private frmAddUser _addUserControl;
         public UserManagementForm()
         {
             InitializeComponent();
@@ -293,17 +291,49 @@ namespace PL_VehicleRental.Forms
 
         private void OpenAddUserForm()
         { 
-            using (frmAddUser form = new frmAddUser())
+            if (_addUserControl != null)
             {
-                form.UserAdded += async (sender, e) =>
-                {
-                    await LoadPageAsync();
-                };
-
-                form.FormBorderStyle = FormBorderStyle.None;
-                form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog();
+                UserManagementPanel.Controls.Remove( _addUserControl);
+                _addUserControl.Dispose();
             }
+
+            _addUserControl = new frmAddUser();
+            //_addUserControl.Dock = DockStyle.Fill;
+            _addUserControl.UserAdded += async (sender, e) =>
+            {
+                HideAddUserForm();
+                await LoadPageAsync();
+            };
+
+            _addUserControl.FormClosed += (sender, e) =>
+            {
+                HideAddUserForm();
+            };
+
+            RecenterAddUserForm();
+
+            UserManagementPanel.Controls.Add(_addUserControl);
+            _addUserControl.BringToFront();
+
+            headerPanel.Visible = false;
+            TableHeaderPanel.Visible = false;
+            flowUsers.Visible = false;
+            rolesTablePanel.Visible = false;
+        }
+
+        private void HideAddUserForm()
+        {
+            if (_addUserControl != null)
+            {
+                UserManagementPanel.Controls.Remove(_addUserControl);
+                _addUserControl.Dispose();
+                _addUserControl = null;
+            }
+
+            headerPanel.Visible = true;
+            TableHeaderPanel.Visible = true;
+            flowUsers.Visible = true;
+            rolesTablePanel.Visible = true;
         }
 
         // Double buffer
@@ -376,15 +406,36 @@ namespace PL_VehicleRental.Forms
 
         private void UserManagementForm_Resize(object sender, EventArgs e)
         {
+            RecenterAddUserForm();
         }
 
-        private void rolesTablePanel_Resize(object sender, EventArgs e)
+        private void UserManagementPanel_Resize(object sender, EventArgs e)
         {
+            RecenterAddUserForm();
         }
 
-        private void pnlOverlay_Resize(object sender, EventArgs e)
+        private void RecenterAddUserForm()
         {
-            
+            if (_addUserControl != null && _addUserControl.Visible)
+            {
+                int newX = (UserManagementPanel.Width - _addUserControl.Width) / 2;
+                int newY = (UserManagementPanel.Height - _addUserControl.Height) / 2;
+
+                newX = Math.Max(0, newX);
+                newY = Math.Max(0, newY);
+
+                _addUserControl.Location = new Point(newX, newY);
+            }
+        }
+
+        private void UserManagementForm_ResizeEnd(object sender, EventArgs e)
+        {
+            RecenterAddUserForm();
+        }
+
+        private void UserManagementForm_ResizeBegin(object sender, EventArgs e)
+        {
+            RecenterAddUserForm();
         }
     }
 }

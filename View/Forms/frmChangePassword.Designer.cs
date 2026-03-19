@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChangePassword));
             this.pnlMain = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.chkShowCnfrmPassword = new Guna.UI2.WinForms.Guna2ImageCheckBox();
-            this.chkShowNewPassword = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cancelBtn = new Guna.UI2.WinForms.Guna2Button();
             this.saveBtn = new Guna.UI2.WinForms.Guna2Button();
             this.confirmPassTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.newPassTxt = new Guna.UI2.WinForms.Guna2TextBox();
+            this.chkShowCnfrmPassword = new Guna.UI2.WinForms.Guna2ImageCheckBox();
+            this.chkShowNewPassword = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,36 +59,8 @@
             this.pnlMain.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(167)))), ((int)(((byte)(161)))));
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(317, 298);
+            this.pnlMain.Size = new System.Drawing.Size(317, 356);
             this.pnlMain.TabIndex = 0;
-            // 
-            // chkShowCnfrmPassword
-            // 
-            this.chkShowCnfrmPassword.BackColor = System.Drawing.Color.White;
-            this.chkShowCnfrmPassword.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.chkShowCnfrmPassword.Image = global::VehicleManagementSystem.Properties.Resources.showPassIcon;
-            this.chkShowCnfrmPassword.ImageOffset = new System.Drawing.Point(0, 0);
-            this.chkShowCnfrmPassword.ImageRotate = 0F;
-            this.chkShowCnfrmPassword.Location = new System.Drawing.Point(232, 173);
-            this.chkShowCnfrmPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.chkShowCnfrmPassword.Name = "chkShowCnfrmPassword";
-            this.chkShowCnfrmPassword.Size = new System.Drawing.Size(22, 26);
-            this.chkShowCnfrmPassword.TabIndex = 13;
-            this.chkShowCnfrmPassword.CheckedChanged += new System.EventHandler(this.chkShowCnfrmPassword_CheckedChanged);
-            // 
-            // chkShowNewPassword
-            // 
-            this.chkShowNewPassword.BackColor = System.Drawing.Color.White;
-            this.chkShowNewPassword.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.chkShowNewPassword.Image = global::VehicleManagementSystem.Properties.Resources.showPassIcon;
-            this.chkShowNewPassword.ImageOffset = new System.Drawing.Point(0, 0);
-            this.chkShowNewPassword.ImageRotate = 0F;
-            this.chkShowNewPassword.Location = new System.Drawing.Point(233, 120);
-            this.chkShowNewPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.chkShowNewPassword.Name = "chkShowNewPassword";
-            this.chkShowNewPassword.Size = new System.Drawing.Size(22, 26);
-            this.chkShowNewPassword.TabIndex = 12;
-            this.chkShowNewPassword.CheckedChanged += new System.EventHandler(this.chkShowNewPassword_CheckedChanged);
             // 
             // label2
             // 
@@ -116,32 +88,36 @@
             // 
             // cancelBtn
             // 
+            this.cancelBtn.BackColor = System.Drawing.Color.Transparent;
             this.cancelBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.cancelBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.cancelBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.cancelBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.cancelBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(140)))));
+            this.cancelBtn.FillColor = System.Drawing.Color.Transparent;
             this.cancelBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cancelBtn.ForeColor = System.Drawing.Color.White;
-            this.cancelBtn.Location = new System.Drawing.Point(59, 226);
+            this.cancelBtn.Image = global::VehicleManagementSystem.Properties.Resources.close_icon;
+            this.cancelBtn.ImageSize = new System.Drawing.Size(25, 25);
+            this.cancelBtn.Location = new System.Drawing.Point(285, 3);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(97, 35);
+            this.cancelBtn.Size = new System.Drawing.Size(29, 26);
             this.cancelBtn.TabIndex = 9;
-            this.cancelBtn.Text = "Cancel";
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // saveBtn
             // 
+            this.saveBtn.BorderRadius = 5;
+            this.saveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.saveBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.saveBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.saveBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.saveBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(140)))));
-            this.saveBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.saveBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveBtn.ForeColor = System.Drawing.Color.White;
-            this.saveBtn.Location = new System.Drawing.Point(162, 226);
+            this.saveBtn.Location = new System.Drawing.Point(59, 228);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(97, 35);
+            this.saveBtn.Size = new System.Drawing.Size(200, 35);
             this.saveBtn.TabIndex = 8;
             this.saveBtn.Text = "Save";
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -157,7 +133,7 @@
             this.confirmPassTxt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.confirmPassTxt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.confirmPassTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.confirmPassTxt.Location = new System.Drawing.Point(59, 167);
+            this.confirmPassTxt.Location = new System.Drawing.Point(59, 174);
             this.confirmPassTxt.Name = "confirmPassTxt";
             this.confirmPassTxt.PlaceholderText = "Confirm password";
             this.confirmPassTxt.SelectedText = "";
@@ -175,7 +151,7 @@
             this.newPassTxt.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.newPassTxt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.newPassTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.newPassTxt.Location = new System.Drawing.Point(59, 115);
+            this.newPassTxt.Location = new System.Drawing.Point(59, 122);
             this.newPassTxt.Name = "newPassTxt";
             this.newPassTxt.PlaceholderText = "New password";
             this.newPassTxt.SelectedText = "";
@@ -183,12 +159,40 @@
             this.newPassTxt.TabIndex = 6;
             this.newPassTxt.TextChanged += new System.EventHandler(this.newPassTxt_TextChanged);
             // 
+            // chkShowCnfrmPassword
+            // 
+            this.chkShowCnfrmPassword.BackColor = System.Drawing.Color.White;
+            this.chkShowCnfrmPassword.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.chkShowCnfrmPassword.Image = global::VehicleManagementSystem.Properties.Resources.showPassIcon;
+            this.chkShowCnfrmPassword.ImageOffset = new System.Drawing.Point(0, 0);
+            this.chkShowCnfrmPassword.ImageRotate = 0F;
+            this.chkShowCnfrmPassword.Location = new System.Drawing.Point(232, 180);
+            this.chkShowCnfrmPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.chkShowCnfrmPassword.Name = "chkShowCnfrmPassword";
+            this.chkShowCnfrmPassword.Size = new System.Drawing.Size(22, 26);
+            this.chkShowCnfrmPassword.TabIndex = 13;
+            this.chkShowCnfrmPassword.CheckedChanged += new System.EventHandler(this.chkShowCnfrmPassword_CheckedChanged);
+            // 
+            // chkShowNewPassword
+            // 
+            this.chkShowNewPassword.BackColor = System.Drawing.Color.White;
+            this.chkShowNewPassword.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.chkShowNewPassword.Image = global::VehicleManagementSystem.Properties.Resources.showPassIcon;
+            this.chkShowNewPassword.ImageOffset = new System.Drawing.Point(0, 0);
+            this.chkShowNewPassword.ImageRotate = 0F;
+            this.chkShowNewPassword.Location = new System.Drawing.Point(233, 127);
+            this.chkShowNewPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.chkShowNewPassword.Name = "chkShowNewPassword";
+            this.chkShowNewPassword.Size = new System.Drawing.Size(22, 26);
+            this.chkShowNewPassword.TabIndex = 12;
+            this.chkShowNewPassword.CheckedChanged += new System.EventHandler(this.chkShowNewPassword_CheckedChanged);
+            // 
             // frmChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.ClientSize = new System.Drawing.Size(317, 298);
+            this.ClientSize = new System.Drawing.Size(317, 356);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmChangePassword";

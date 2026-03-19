@@ -22,9 +22,10 @@ using Guna.UI2.WinForms;
 
 namespace PL_VehicleRental.Forms
 {
-    public partial class frmAddUser : Form
+    public partial class frmAddUser : System.Windows.Forms.UserControl
     {
         public event EventHandler UserAdded;
+        public event EventHandler FormClosed;
         private Validator _validator;
         private UserService _userService;
         private readonly userRepository _repository = new userRepository();
@@ -120,7 +121,7 @@ namespace PL_VehicleRental.Forms
 
                 ClearFields();
                 OnUserAdded();
-                Close();
+                Parent?.Controls.Remove(this);
             }
             finally
             {
@@ -142,12 +143,18 @@ namespace PL_VehicleRental.Forms
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            OnFormClosed();
+            Parent?.Controls.Remove(this);
         }
 
         protected virtual void OnUserAdded()
         {
             UserAdded?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnFormClosed()
+        {
+            FormClosed?.Invoke(this, EventArgs.Empty);
         }
         protected override CreateParams CreateParams
         {
@@ -250,6 +257,13 @@ namespace PL_VehicleRental.Forms
 
         private void fullNameTxt_TextChanged(object sender, EventArgs e)
         {
+            string fullname = fullNameTxt.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(fullname))
+            {
+                SetAsyncError(fullNameTxt, "Name is required");
+                return;
+            }
             UpdateAddButtonState();
         }
 
@@ -376,6 +390,25 @@ namespace PL_VehicleRental.Forms
         }
 
         private void lblImagePlaceholder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmAddUser_Resize(object sender, EventArgs e)
+        {
+            if (Parent != null)
+            {
+                int newX = (Parent.Width - this.Width) / 2;
+                int newY = (Parent.Height - this.Height) / 2;
+
+                newX = Math.Max(0, newX);
+                newY = Math.Max(0, newY);
+
+                this.Location = new Point(newX, newY);
+            }
+        }
+
+        private void userImage_Resize(object sender, EventArgs e)
         {
 
         }

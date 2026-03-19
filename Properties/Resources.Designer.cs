@@ -193,6 +193,16 @@ namespace VehicleManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_icon {
+            get {
+                object obj = ResourceManager.GetObject("close-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap closeIcon {
             get {
                 object obj = ResourceManager.GetObject("closeIcon", resourceCulture);
@@ -376,6 +386,16 @@ namespace VehicleManagementSystem.Properties {
         internal static System.Drawing.Bitmap pen_icon {
             get {
                 object obj = ResourceManager.GetObject("pen-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person_add {
+            get {
+                object obj = ResourceManager.GetObject("person-add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

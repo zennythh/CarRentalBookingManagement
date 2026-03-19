@@ -67,7 +67,7 @@ namespace PL_VehicleRental.Forms
             this.BackgroundPanel.BorderThickness = 1;
             this.BackgroundPanel.Controls.Add(this.UserManagementPanel);
             this.BackgroundPanel.Location = new System.Drawing.Point(9, 10);
-            this.BackgroundPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BackgroundPanel.Margin = new System.Windows.Forms.Padding(2);
             this.BackgroundPanel.Name = "BackgroundPanel";
             this.BackgroundPanel.Size = new System.Drawing.Size(992, 626);
             this.BackgroundPanel.TabIndex = 0;
@@ -78,6 +78,7 @@ namespace PL_VehicleRental.Forms
             this.UserManagementPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserManagementPanel.AutoScroll = true;
             this.UserManagementPanel.BorderColor = System.Drawing.Color.Transparent;
             this.UserManagementPanel.Controls.Add(this.flowUsers);
             this.UserManagementPanel.Controls.Add(this.TableHeaderPanel);
@@ -85,11 +86,12 @@ namespace PL_VehicleRental.Forms
             this.UserManagementPanel.Controls.Add(this.pnlOverlay);
             this.UserManagementPanel.Controls.Add(this.rolesTablePanel);
             this.UserManagementPanel.Location = new System.Drawing.Point(10, 12);
-            this.UserManagementPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UserManagementPanel.Margin = new System.Windows.Forms.Padding(2);
             this.UserManagementPanel.Name = "UserManagementPanel";
-            this.UserManagementPanel.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.UserManagementPanel.Padding = new System.Windows.Forms.Padding(8);
             this.UserManagementPanel.Size = new System.Drawing.Size(970, 601);
             this.UserManagementPanel.TabIndex = 0;
+            this.UserManagementPanel.Resize += new System.EventHandler(this.UserManagementPanel_Resize);
             // 
             // flowUsers
             // 
@@ -97,7 +99,7 @@ namespace PL_VehicleRental.Forms
             this.flowUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowUsers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowUsers.Location = new System.Drawing.Point(8, 170);
-            this.flowUsers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowUsers.Margin = new System.Windows.Forms.Padding(2);
             this.flowUsers.Name = "flowUsers";
             this.flowUsers.Size = new System.Drawing.Size(954, 371);
             this.flowUsers.TabIndex = 1;
@@ -108,7 +110,7 @@ namespace PL_VehicleRental.Forms
             // 
             this.TableHeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TableHeaderPanel.Location = new System.Drawing.Point(8, 89);
-            this.TableHeaderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TableHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.TableHeaderPanel.Name = "TableHeaderPanel";
             this.TableHeaderPanel.Size = new System.Drawing.Size(954, 81);
             this.TableHeaderPanel.TabIndex = 0;
@@ -128,7 +130,7 @@ namespace PL_VehicleRental.Forms
             this.headerPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(232)))));
             this.headerPanel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.headerPanel.Location = new System.Drawing.Point(8, 8);
-            this.headerPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.headerPanel.Margin = new System.Windows.Forms.Padding(2);
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(954, 81);
             this.headerPanel.TabIndex = 1;
@@ -174,7 +176,7 @@ namespace PL_VehicleRental.Forms
             this.btnUserForm.Image = ((System.Drawing.Image)(resources.GetObject("btnUserForm.Image")));
             this.btnUserForm.ImageSize = new System.Drawing.Size(25, 25);
             this.btnUserForm.Location = new System.Drawing.Point(781, 23);
-            this.btnUserForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUserForm.Margin = new System.Windows.Forms.Padding(2);
             this.btnUserForm.Name = "btnUserForm";
             this.btnUserForm.Size = new System.Drawing.Size(152, 37);
             this.btnUserForm.TabIndex = 2;
@@ -200,7 +202,6 @@ namespace PL_VehicleRental.Forms
             this.pnlOverlay.Name = "pnlOverlay";
             this.pnlOverlay.Size = new System.Drawing.Size(954, 533);
             this.pnlOverlay.TabIndex = 1;
-            this.pnlOverlay.Resize += new System.EventHandler(this.pnlOverlay_Resize);
             // 
             // progressBar
             // 
@@ -211,7 +212,7 @@ namespace PL_VehicleRental.Forms
             this.progressBar.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.progressBar.ForeColor = System.Drawing.Color.White;
             this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Minimum = 0;
             this.progressBar.Name = "progressBar";
             this.progressBar.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
@@ -232,10 +233,9 @@ namespace PL_VehicleRental.Forms
             this.rolesTablePanel.Location = new System.Drawing.Point(8, 541);
             this.rolesTablePanel.Margin = new System.Windows.Forms.Padding(2, 4, 2, 2);
             this.rolesTablePanel.Name = "rolesTablePanel";
-            this.rolesTablePanel.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.rolesTablePanel.Padding = new System.Windows.Forms.Padding(8);
             this.rolesTablePanel.Size = new System.Drawing.Size(954, 52);
             this.rolesTablePanel.TabIndex = 1;
-            this.rolesTablePanel.Resize += new System.EventHandler(this.rolesTablePanel_Resize);
             // 
             // tableLayoutPagination
             // 
@@ -276,7 +276,7 @@ namespace PL_VehicleRental.Forms
             this.btnPrev.ForeColor = System.Drawing.Color.White;
             this.btnPrev.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.Image")));
             this.btnPrev.Location = new System.Drawing.Point(17, 11);
-            this.btnPrev.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(34, 24);
             this.btnPrev.TabIndex = 0;
@@ -295,7 +295,7 @@ namespace PL_VehicleRental.Forms
             this.btnNext.ForeColor = System.Drawing.Color.White;
             this.btnNext.Image = global::VehicleManagementSystem.Properties.Resources.chevron_right;
             this.btnNext.Location = new System.Drawing.Point(195, 11);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(34, 24);
             this.btnNext.TabIndex = 2;
@@ -318,7 +318,7 @@ namespace PL_VehicleRental.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1015, 652);
             this.Controls.Add(this.BackgroundPanel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Management";

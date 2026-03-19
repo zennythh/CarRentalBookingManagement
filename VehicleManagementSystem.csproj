@@ -315,7 +315,7 @@
     </Compile>
     <Compile Include="Validation\Validator.cs" />
     <Compile Include="View\Forms\frmAddUser.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Forms\frmAddUser.Designer.cs">
       <DependentUpon>frmAddUser.cs</DependentUpon>
@@ -516,6 +516,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Resources\person_add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 %281%29.png" />
+    <None Include="Resources\close_small_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\lock_reset_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\document.png" />
     <None Include="Resources\chevron-left.png" />
