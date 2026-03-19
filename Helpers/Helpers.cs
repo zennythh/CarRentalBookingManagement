@@ -49,6 +49,22 @@ namespace VehicleManagementSystem.Classes {
             return Path.Combine(AppConfig.AppData.ImagesPath, subFolder, fileName);
         }
 
+        static public string SaveDocumentToAppData(string sourceImagePath, string subFolder, string fileName) {
+            string targetPath = Path.Combine(
+                AppConfig.AppData.RootPath,
+                AppConfig.AppData.DocumentsPath,
+                subFolder
+            );
+
+            Directory.CreateDirectory(targetPath);
+
+            string destinationPath = Path.Combine(targetPath, fileName);
+
+            File.Copy(sourceImagePath, destinationPath, true);
+
+            return Path.Combine(AppConfig.AppData.DocumentsPath, subFolder, fileName);
+        }
+
         static public string ConvertToCapitalized(string value) {
             if(string.IsNullOrEmpty(value)) return value;
 

@@ -1,30 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
-using VehicleManagementSystem.Data;
-using VehicleManagementSystem.Data.Enums;
+using VehicleManagementSystem.Presenters;
+using VehicleManagementSystem.View.Interfaces;
 
 namespace VehicleManagementSystem.View.Modals {
-    public partial class AddNewVehicleDocumentModal : Form {
-        string documentType;
-        string documentTitle => inputDocumentTitle.Text;
-        string _tempSelectedImagePath;
+    public partial class AddNewVehicleDocumentModal : Form, IAddNewVehicleDocumentView {
+        private addNewVehicleDocumentPresenter _presenter;
+
+        public string DocumentType => this.Controls.OfType<RadioButton>()
+                                        .FirstOrDefault(r => r.Checked)?.Text ?? "";
+        public string DocumentTitle => inputDocumentTitle.Text;
+        public string DocumentIssuingAuthority => inputIssuingAuthority.Text;
+
+        public string VehiclePlateNum => _tempPlateNum;
+
+        public string DocumentExpirationDate => inputExpirationDate.Text;
+        public string DocumentIssueDate => inputIssueDate.Text;
+        public string DocumentPath => _tempSelectedFilePath;
+
+        string _tempSelectedFilePath;
+        string _tempPlateNum;
+
+        public void ShowError(string error) {
+            MessageBox.Show(error, "Error");
+        }
 
         public AddNewVehicleDocumentModal(string PlateNumber) {
             InitializeComponent();
-
+            _presenter = new addNewVehicleDocumentPresenter(this, new Services.Implementations.VehicleDocumentServices());
+            _tempPlateNum = PlateNumber;
             labelHeader.Text = "Adding new document to " + PlateNumber;
         }
-
-   
 
         // Should have a notice before closing the modal if there was change/s in the input fields
         private void closeBtn_Click(object sender, EventArgs e) {
@@ -36,12 +44,7 @@ namespace VehicleManagementSystem.View.Modals {
         }
 
         private void Radio_CheckedChanged(object sender, EventArgs e) {
-            var selectedRadio = this.Controls.OfType<System.Windows.Forms.RadioButton>()
-                                       .FirstOrDefault(r => r.Checked);
-
-            documentType = selectedRadio.Text;
-
-            if(documentType != "Permanent") {
+            if(DocumentType != "Permanent") {
                 ToggleExpirationDateVisibility(true);
             } else {
                 ToggleExpirationDateVisibility(false);
@@ -93,7 +96,7 @@ namespace VehicleManagementSystem.View.Modals {
                         break;
                 }
 
-                _tempSelectedImagePath = fullPath;
+                _tempSelectedFilePath = fullPath;
                 closeImageBtn.BringToFront();
                 closeImageBtn.Visible = true;
             }
@@ -109,25 +112,28 @@ namespace VehicleManagementSystem.View.Modals {
         }
 
         private void btnViewAttached_Click(object sender, EventArgs e) {
-            if (!string.IsNullOrEmpty(_tempSelectedImagePath))
-            {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(_tempSelectedImagePath) { UseShellExecute = true });
+            if (!string.IsNullOrEmpty(_tempSelectedFilePath)){
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(_tempSelectedFilePath) { UseShellExecute = true });
             }
         }
 
         private void closeImageBtn_Click(object sender, EventArgs e) {
             if (documentPictureBox.Image != null) {
                 documentPictureBox.Image.Dispose();
+                documentPictureBox.Image = null;
             }
             panelFile.Visible = false;
             documentPictureBox.Visible = false;
 
-            //if (_tempSelectedImagePath != null) {
-            //    _tempSelectedImagePath = null;
-            //}
+            _tempSelectedFilePath = null;
 
             closeImageBtn.Visible = false;
             addImageBtn.Visible = true;
+            labelFileName.Text = "No file selected";
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e) {
+            _presenter.SaveDocument();
         }
     }
 }
