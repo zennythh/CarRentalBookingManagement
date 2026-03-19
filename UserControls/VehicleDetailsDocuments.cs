@@ -17,26 +17,32 @@ namespace VehicleManagementSystem.UserControls {
         public VehicleDetailsDocuments(VehicleDto vehicle) {
             _vehicle = vehicle;
             InitializeComponent();
+        }
 
+        public void DisplayVehicles(List<VehicleDocumentDto> documents) {
             tableMain.SuspendLayout();
+            const int DocumentCardHeight = 84;
 
-            var documentCard = new VehicleDocumentCardControl();
-            documentCard.Dock = DockStyle.Fill;
+            tableMain.Controls.Clear();
+            tableMain.RowStyles.Clear();
+            tableMain.RowCount = 0;
+            tableMain.Height = DocumentCardHeight * documents.Count;
 
-            var documentCard1 = new VehicleDocumentCardControl();
-            documentCard1.Dock = DockStyle.Fill;
+            int col = 0;
+            int row = 0;
 
-            var documentCard2 = new VehicleDocumentCardControl();
-            documentCard2.Dock = DockStyle.Fill;
+            foreach (var document in documents) {
+                var card = new VehicleDocumentCardControl();
+                card.Bind(document);
+                card.Dock = DockStyle.Fill;
+                //card.Margin = new Padding(10);
 
-            tableMain.Controls.Add(documentCard);
-            tableMain.Controls.Add(documentCard1);
-            tableMain.Controls.Add(documentCard2);
+                tableMain.Controls.Add(card, col, row);
 
+                row++;
+            }
 
             tableMain.ResumeLayout();
-
-            tableMain.Controls.Add(documentCard2);
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e) {

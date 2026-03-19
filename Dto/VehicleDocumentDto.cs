@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace VehicleManagementSystem.Dto {
-    internal class VehicleDocumentDto {
+    public class VehicleDocumentDto {
         public string Title { get; set; }
         public string Category { get; set; } // e.g., "Registration", "Insurance"
         public string IssuingAuthority { get; set; }

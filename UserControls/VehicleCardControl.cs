@@ -22,11 +22,9 @@ namespace VehicleManagementSystem.UserControls {
             labelMainHeader.Text = vehicle.LicensePlate;
             labelSubHader.Text = GetCardSubHeader(vehicle);
             labelDailyRate.Text = GetFormattedDialyRate(vehicle.DailyRate);
-            labelStatus.Text = _vehicle.CurrentStatus;
-            //labelCurrentOdometer.Text = vehicle.CurrentOdometerReading + " Km";
-            //pictureBoxTransmission.Image = GetTransmissionIcon(vehicle.Transmission);
+            labelStatus.Text = vehicle.CurrentStatus;
 
-            panelStatusColor.FillColor= VehicleManagementSystem.Classes.Helpers.GetStatusColor(_vehicle.CurrentStatus);
+            panelStatusColor.FillColor= VehicleManagementSystem.Classes.Helpers.GetStatusColor(vehicle.CurrentStatus);
 
         }
 
