@@ -216,11 +216,10 @@ namespace VehicleManagementSystem.Forms {
         private void CloseImageInput() {
             if (vehiclePictureBox.Image != null) {
                 vehiclePictureBox.Image.Dispose();
+                vehiclePictureBox.Image = null;
             }
 
-            if (_tempSelectedImagePath != null) {
-                _tempSelectedImagePath = null;
-            }
+            _tempSelectedImagePath = null;
 
             closeImageBtn.Visible = false;
             addImageBtn.Visible = true;

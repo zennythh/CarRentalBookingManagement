@@ -238,6 +238,7 @@
   <ItemGroup>
     <Compile Include="Classes\DataGridViewStyle.cs" />
     <Compile Include="Data\Enums\VehicleDocumentEnums.cs" />
+    <Compile Include="Dto\VehicleDocumentDto.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Classes\UIRenderer.cs" />
     <Compile Include="Classes\NavigationHelper.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Helpers\UserImageService.cs" />
     <Compile Include="Models\CreateUserResult.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Presenters\addNewVehicleDocumentPresenter.cs" />
     <Compile Include="Presenters\addNewVehiclePresenter.cs" />
     <Compile Include="Presenters\vehicleManagementPresenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -262,6 +264,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\AuditService.cs" />
+    <Compile Include="Services\Implementations\VehicleDocumentServices.cs" />
     <Compile Include="Services\Implementations\VehicleServices.cs" />
     <Compile Include="Services\Interfaces\IVehicleService.cs" />
     <Compile Include="Services\Security\AuthorizationService.cs" />
@@ -406,6 +409,7 @@
     <Compile Include="View\Forms\frmUserManagement.Designer.cs">
       <DependentUpon>frmUserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Interfaces\IAddNewVehicleDocumentView.cs" />
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
     <Compile Include="View\Modals\AddNewVehicleMaintenanceModal.cs">
       <SubType>Form</SubType>

@@ -36,6 +36,7 @@ namespace VehicleManagementSystem.Classes {
 
         public static class AppData {
             public const string ImagesPath = "Images";
+            public const string DocumentsPath = "Docs";
             public const string VehicleImagePath = "Vehicles";
             public static string RootPath =>
                ConfigurationManager.AppSettings["AppDataRootPath"];
