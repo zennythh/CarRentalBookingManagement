@@ -136,6 +136,8 @@
             // 
             // txtFullName
             // 
+            this.txtFullName.BorderRadius = 5;
+            this.txtFullName.BorderThickness = 2;
             this.txtFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFullName.DefaultText = "";
             this.txtFullName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

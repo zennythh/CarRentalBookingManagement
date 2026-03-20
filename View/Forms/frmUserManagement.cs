@@ -24,7 +24,7 @@ namespace PL_VehicleRental.Forms
         private System.Windows.Forms.Timer _searchTimer;
 
         private int _currentPage = 1;
-        private int _pageSize = 10;
+        private int _pageSize = 14;
         private int _totalPages = 1;
         private string currentSearch = "";
 

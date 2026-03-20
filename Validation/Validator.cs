@@ -2,20 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PL_VehicleRental.Validation
 {
     public class Validator
     {
-        private readonly List<Func<bool>> _rules = new List<Func<bool>>();
-        
+        private sealed class ValidationRule
+        {
+            public Control Control { get; set; }
+            public Func<bool> Validate { get; set; }
+            public string Message { get; set; }
+            public Label ErrorLabel { get; set; }
+        }
+
+        private readonly List<ValidationRule> _rules = new List<ValidationRule>();
+        private readonly HashSet<Control> _wiredControls = new HashSet<Control>();
         private readonly Dictionary<Guna2TextBox, Color> _originalBorderColors = new Dictionary<Guna2TextBox, Color>();
         private readonly Dictionary<Guna2ComboBox, Color> _originalComboColors = new Dictionary<Guna2ComboBox, Color>();
+        private readonly HashSet<Control> _validatingControls = new HashSet<Control>();
 
         private readonly ToolTip _toolTip;
         private readonly Color _errorBorderColor = Color.Red;
@@ -41,7 +47,6 @@ namespace PL_VehicleRental.Validation
                 kvp.Key.BorderColor = kvp.Value;
                 kvp.Key.HoverState.BorderColor = kvp.Value;
                 kvp.Key.FocusedState.BorderColor = kvp.Value;
-                _toolTip.SetToolTip(kvp.Key, null);
             }
 
             foreach (var kvp in _originalComboColors)
@@ -49,16 +54,66 @@ namespace PL_VehicleRental.Validation
                 kvp.Key.BorderColor = kvp.Value;
                 kvp.Key.HoverState.BorderColor = kvp.Value;
                 kvp.Key.FocusedState.BorderColor = kvp.Value;
-                _toolTip.SetToolTip(kvp.Key, null);
             }
 
-            _originalBorderColors.Clear();
-            _originalComboColors.Clear();
-            _rules.Clear();
+            foreach (var rule in _rules)
+            {
+                if (rule.ErrorLabel != null)
+                {
+                    rule.ErrorLabel.Text = string.Empty;
+                    rule.ErrorLabel.Visible = false;
+                }
+            }
+
+            _toolTip.RemoveAll();
         }
 
-        private void SetError(Control control, bool isValid, string message)
+        private void WireValidationEvents(Control control)
         {
+            if (!_wiredControls.Add(control))
+            {
+                return;
+            }
+
+            if (control is Guna2ComboBox gunaCmb)
+            {
+                gunaCmb.SelectedIndexChanged += (sender, e) => ValidateControl(gunaCmb);
+                return;
+            }
+
+            control.TextChanged += (sender, e) =>
+            {
+                if (!_validatingControls.Contains(control))
+                {
+                    ValidateControl(control);
+                }
+            };
+        }
+
+        private void RestoreOriginalStyle(Control control)
+        {
+            if (control is Guna2TextBox gunaTxt && _originalBorderColors.TryGetValue(gunaTxt, out Color originalTextBorder))
+            {
+                gunaTxt.BorderColor = originalTextBorder;
+                gunaTxt.HoverState.BorderColor = originalTextBorder;
+                gunaTxt.FocusedState.BorderColor = originalTextBorder;
+                _toolTip.SetToolTip(gunaTxt, null);
+                return;
+            }
+
+            if (control is Guna2ComboBox gunaCombo && _originalComboColors.TryGetValue(gunaCombo, out Color originalComboBorder))
+            {
+                gunaCombo.BorderColor = originalComboBorder;
+                gunaCombo.HoverState.BorderColor = originalComboBorder;
+                gunaCombo.FocusedState.BorderColor = originalComboBorder;
+                _toolTip.SetToolTip(gunaCombo, null);
+            }
+        }
+
+        private void SetError(Control control, string message, Label errorLabel)
+        {
+            bool hasError = !string.IsNullOrWhiteSpace(message);
+
             if (control is Guna2TextBox gunaTxt)
             {
                 if (!_originalBorderColors.ContainsKey(gunaTxt))
@@ -66,22 +121,16 @@ namespace PL_VehicleRental.Validation
                     _originalBorderColors[gunaTxt] = gunaTxt.BorderColor;
                 }
 
-                if (isValid)
-                {
-                    if (gunaTxt.BorderColor == _errorBorderColor)
-                    {
-                        gunaTxt.BorderColor = _originalBorderColors[gunaTxt];
-                        gunaTxt.HoverState.BorderColor = _originalBorderColors[gunaTxt];
-                        gunaTxt.FocusedState.BorderColor = _originalBorderColors[gunaTxt];
-                    }
-                    _toolTip.SetToolTip(gunaTxt, null);
-                }
-                else
+                if (hasError)
                 {
                     gunaTxt.BorderColor = _errorBorderColor;
                     gunaTxt.HoverState.BorderColor = _errorBorderColor;
                     gunaTxt.FocusedState.BorderColor = _errorBorderColor;
                     _toolTip.SetToolTip(gunaTxt, message);
+                }
+                else
+                {
+                    RestoreOriginalStyle(gunaTxt);
                 }
             }
             else if (control is Guna2ComboBox gunaCmb)
@@ -91,86 +140,79 @@ namespace PL_VehicleRental.Validation
                     _originalComboColors[gunaCmb] = gunaCmb.BorderColor;
                 }
 
-                if (isValid)
-                {
-                    if (gunaCmb.BorderColor == _errorBorderColor)
-                    {
-                        gunaCmb.BorderColor = _originalComboColors[gunaCmb];
-                        gunaCmb.HoverState.BorderColor = _originalComboColors[gunaCmb];
-                        gunaCmb.FocusedState.BorderColor = _originalComboColors[gunaCmb];
-                    }
-                    _toolTip.SetToolTip(gunaCmb, null);
-                }
-                else
+                if (hasError)
                 {
                     gunaCmb.BorderColor = _errorBorderColor;
                     gunaCmb.HoverState.BorderColor = _errorBorderColor;
                     gunaCmb.FocusedState.BorderColor = _errorBorderColor;
                     _toolTip.SetToolTip(gunaCmb, message);
                 }
+                else
+                {
+                    RestoreOriginalStyle(gunaCmb);
+                }
+            }
+
+            if (errorLabel != null)
+            {
+                errorLabel.Text = message ?? string.Empty;
+                errorLabel.Visible = hasError;
             }
         }
 
-        public void Required(Control control, string message)
+        private void AddRule(Control control, Func<bool> validationFunc, string message, Label errorLabel = null)
         {
-            _rules.Add(() =>
+            _rules.Add(new ValidationRule
             {
-                bool isValid = !string.IsNullOrWhiteSpace(control.Text);
-                SetError(control, isValid, message);
-                return isValid;
+                Control = control,
+                Validate = validationFunc,
+                Message = message,
+                ErrorLabel = errorLabel
             });
+
+            if (errorLabel != null)
+            {
+                errorLabel.Text = string.Empty;
+                errorLabel.Visible = false;
+            }
+
+            WireValidationEvents(control);
         }
 
-        public void Required(ComboBox comboBox, string message)
+        public void Required(Control control, string message, Label errorLabel = null)
+        {
+            AddRule(control, () => !string.IsNullOrWhiteSpace(control.Text), message, errorLabel);
+        }
+
+        public void Required(ComboBox comboBox, string message, Label errorLabel = null)
         {
             if (comboBox is Guna2ComboBox gunaCmb)
             {
-                _rules.Add(() =>
-                {
-                    bool isValid = gunaCmb.SelectedIndex > -1;
-                    SetError(gunaCmb, isValid, message);
-                    return isValid;
-                });
+                Required(gunaCmb, message, errorLabel);
+                return;
             }
-            else
-            {
-                _rules.Add(() =>
-                {
-                    bool isValid = comboBox.SelectedIndex > -1;
-                    return isValid;
-                });
-            }
-        }
-        
-        public void Required(Guna2ComboBox comboBox, string message)
-        {
-            _rules.Add(() =>
-            {
-                bool isValid = comboBox.SelectedIndex > -1;
-                SetError(comboBox, isValid, message);
-                return isValid;
-            });
+
+            AddRule(comboBox, () => comboBox.SelectedIndex > -1, message, errorLabel);
         }
 
-        public void IsInteger(Control control, string message)
+        public void Required(Guna2ComboBox comboBox, string message, Label errorLabel = null)
         {
-            _rules.Add(() =>
-            {
-                bool isValid = int.TryParse(control.Text, out _);
-                SetError(control, isValid, message);
-                return isValid;
-            });
+            AddRule(comboBox, () => comboBox.SelectedIndex > -1, message, errorLabel);
         }
 
-        public void IsPhoneNumber(Control control, string message)
+        public void IsInteger(Control control, string message, Label errorLabel = null)
         {
-            _rules.Add(() =>
+            AddRule(control, () => int.TryParse(control.Text, out _), message, errorLabel);
+        }
+
+        public void IsPhoneNumber(Control control, string message, Label errorLabel = null)
+        {
+            AddRule(control, () =>
             {
-                string input = control.Text;
+                string input = control.Text.Trim();
 
                 if (string.IsNullOrWhiteSpace(input))
                 {
-                    SetError(control, true, message);
                     return true;
                 }
 
@@ -193,47 +235,91 @@ namespace PL_VehicleRental.Validation
 
                 if (isValid && control.Text != cleaned)
                 {
+                    _validatingControls.Add(control);
                     control.Text = cleaned;
+                    _validatingControls.Remove(control);
+                }
+                return isValid;
+            }, message, errorLabel);
+        }
+
+        public void IsEmail(Control control, string message, Label errorLabel = null)
+        {
+            AddRule(control, () => Regex.IsMatch(control.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"), message, errorLabel);
+        }
+
+        public void Custom(Control control, Func<bool> validationFunc, string message, Label errorLabel = null)
+        {
+            AddRule(control, validationFunc, message, errorLabel);
+        }
+
+        public bool ValidateControl(Control control)
+        {
+            bool isValid = true;
+            string firstErrorMessage = null;
+            Label firstErrorLabel = null;
+            var errorLabelsToClear = new HashSet<Label>();
+
+            foreach (var rule in _rules)
+            {
+                if (!ReferenceEquals(rule.Control, control))
+                {
+                    continue;
                 }
 
-                SetError(control, isValid, message);
-                return isValid;
-            });
-        }
+                if (rule.ErrorLabel != null)
+                {
+                    errorLabelsToClear.Add(rule.ErrorLabel);
+                }
 
-        public void IsEmail(Control control, string message)
-        {
-            _rules.Add(() =>
-            {
-                bool isValid = Regex.IsMatch(control.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-                SetError(control, isValid, message);
-                return isValid;
-            });
-        }
+                bool rulePassed = rule.Validate();
+                if (!rulePassed)
+                {
+                    isValid = false;
+                    if (firstErrorMessage == null)
+                    {
+                        firstErrorMessage = rule.Message;
+                        firstErrorLabel = rule.ErrorLabel;
+                    }
+                }
+            }
 
-        public void Custom(Control control, Func<bool> validationFunc, string message)
-        {
-            _rules.Add(() =>
+            SetError(control, firstErrorMessage, firstErrorLabel);
+
+            if (isValid)
             {
-                bool isValid = validationFunc();
-                SetError(control, isValid, message);
-                return isValid;
-            });
+                foreach (var errorLabel in errorLabelsToClear)
+                {
+                    if (errorLabel != null && errorLabel != firstErrorLabel)
+                    {
+                        errorLabel.Text = string.Empty;
+                        errorLabel.Visible = false;
+                    }
+                }
+            }
+
+            return isValid;
         }
 
         public bool Validate()
         {
             bool isValid = true;
+            var controls = new HashSet<Control>();
 
             foreach (var rule in _rules)
             {
-                if (!rule())
+                controls.Add(rule.Control);
+            }
+
+            foreach (var control in controls)
+            {
+                if (!ValidateControl(control))
                 {
                     isValid = false;
                 }
             }
 
-            return isValid; 
+            return isValid;
         }
     }
 }
