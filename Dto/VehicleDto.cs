@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace VehicleManagementSystem.Dto {
     public class VehicleDto {

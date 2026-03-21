@@ -26,13 +26,13 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
+            this.maximizeBtn = new FontAwesome.Sharp.IconButton();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.labelHeader = new System.Windows.Forms.Label();
             this.pictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.maximizeBtn = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,26 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(577, 71);
             this.panelTop.TabIndex = 104;
+            // 
+            // maximizeBtn
+            // 
+            this.maximizeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maximizeBtn.BackColor = System.Drawing.Color.White;
+            this.maximizeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.maximizeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.maximizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.maximizeBtn.ForeColor = System.Drawing.Color.White;
+            this.maximizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.maximizeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
+            this.maximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.maximizeBtn.IconSize = 25;
+            this.maximizeBtn.Location = new System.Drawing.Point(464, 11);
+            this.maximizeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.maximizeBtn.Name = "maximizeBtn";
+            this.maximizeBtn.Size = new System.Drawing.Size(48, 30);
+            this.maximizeBtn.TabIndex = 105;
+            this.maximizeBtn.UseVisualStyleBackColor = false;
+            this.maximizeBtn.Click += new System.EventHandler(this.maximizeBtn_Click);
             // 
             // guna2Panel2
             // 
@@ -124,30 +144,11 @@
             this.guna2DragControl1.TargetControl = this.panelTop;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // maximizeBtn
-            // 
-            this.maximizeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maximizeBtn.BackColor = System.Drawing.Color.White;
-            this.maximizeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.maximizeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.maximizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.maximizeBtn.ForeColor = System.Drawing.Color.White;
-            this.maximizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.maximizeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
-            this.maximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.maximizeBtn.IconSize = 25;
-            this.maximizeBtn.Location = new System.Drawing.Point(464, 11);
-            this.maximizeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.maximizeBtn.Name = "maximizeBtn";
-            this.maximizeBtn.Size = new System.Drawing.Size(48, 30);
-            this.maximizeBtn.TabIndex = 105;
-            this.maximizeBtn.UseVisualStyleBackColor = false;
-            this.maximizeBtn.Click += new System.EventHandler(this.maximizeBtn_Click);
-            // 
             // ImagePreviewModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 717);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox);

@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using VehicleManagementSystem.Dto;
+
+namespace VehicleManagementSystem.View.Modals {
+    public partial class DeleteVehcleDocumentModal : Form {
+        public DeleteVehcleDocumentModal(VehicleDocumentDto document) {
+            InitializeComponent();
+
+            labelHeader.Text = "Deleting document of " + document.VehiclePlateNum;
+            labelDocumentTitle.Text = document.Title;
+            labelDocumentType.Text = document.Category;
+            labelIssueDate.Text = document.IssueDate.ToString("d");
+            labelIssuingAuthority.Text = document.IssuingAuthority;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+    }
+}

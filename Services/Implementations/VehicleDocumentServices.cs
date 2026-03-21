@@ -55,6 +55,21 @@ namespace VehicleManagementSystem.Services.Implementations {
             }
         }
 
+        public void DeleteVehicleDocument(int documentId) {
+            using (MySqlConnection conn = MySQLConnectionContext.Create()) {
+                conn.Open();
+
+                string sql = @"UPDATE VehicleDocuments 
+                       SET IsActive = 0 
+                       WHERE DocumentID = @id;";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
+                    cmd.Parameters.AddWithValue("@id", documentId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public List<VehicleDocumentDto> GetDocumentsByPlateNumber(string plateNumber) {
             List<VehicleDocumentDto> documents = new List<VehicleDocumentDto>();
 
@@ -62,7 +77,7 @@ namespace VehicleManagementSystem.Services.Implementations {
                 conn.Open();
                 string sql = @"
                         SELECT 
-                            VehiclePlateNum, DocumentTitle, Category, IssuingAuthority, 
+                            DocumentID, VehiclePlateNum, DocumentTitle, Category, IssuingAuthority, 
                             IssueDate, ExpirationDate, FilePath, FileExtension 
                         FROM VehicleDocuments 
                         WHERE VehiclePlateNum = @plate AND IsActive = 1
@@ -74,13 +89,13 @@ namespace VehicleManagementSystem.Services.Implementations {
                     using (MySqlDataReader reader = cmd.ExecuteReader()) {
                         while (reader.Read()) {
                             documents.Add(new VehicleDocumentDto {
+                                DocumentID = (int)reader["DocumentID"],
                                 VehiclePlateNum = reader["VehiclePlateNum"].ToString(),
                                 Title = reader["DocumentTitle"].ToString(),
                                 Category = reader["Category"].ToString(),
                                 IssuingAuthority = reader["IssuingAuthority"].ToString(),
                                 IssueDate = Convert.ToDateTime(reader["IssueDate"]),
 
-                                // Handle DBNull for ExpirationDate
                                 ExpirationDate = reader["ExpirationDate"] == DBNull.Value
                                                  ? (DateTime?)null
                                                  : Convert.ToDateTime(reader["ExpirationDate"]),

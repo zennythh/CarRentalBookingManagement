@@ -425,6 +425,12 @@
     <Compile Include="View\Modals\AddNewVehicleDocumentModal.Designer.cs">
       <DependentUpon>AddNewVehicleDocumentModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Modals\DeleteVehcleDocumentModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Modals\DeleteVehcleDocumentModal.Designer.cs">
+      <DependentUpon>DeleteVehcleDocumentModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Modals\ImagePreviewModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -508,6 +514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Modals\AddNewVehicleDocumentModal.resx">
       <DependentUpon>AddNewVehicleDocumentModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Modals\DeleteVehcleDocumentModal.resx">
+      <DependentUpon>DeleteVehcleDocumentModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Modals\ImagePreviewModal.resx">
       <DependentUpon>ImagePreviewModal.cs</DependentUpon>

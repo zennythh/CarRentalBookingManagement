@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleManagementSystem.Dto {
     public class VehicleDocumentDto {
+        public int DocumentID { get; set; }
         public string Title { get; set; }
         public string Category { get; set; } // e.g., "Registration", "Insurance"
         public string IssuingAuthority { get; set; }

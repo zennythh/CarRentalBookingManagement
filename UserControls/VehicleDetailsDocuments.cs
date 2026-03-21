@@ -53,7 +53,7 @@ namespace VehicleManagementSystem.UserControls {
 
             foreach (var document in documents) {
                 var card = new VehicleDocumentCardControl();
-                card.Bind(document);
+                card.Bind(document, _presenter.LoadAllDocuments);
                 card.Dock = DockStyle.Fill;
 
                 tableMain.Controls.Add(card, col, row);
