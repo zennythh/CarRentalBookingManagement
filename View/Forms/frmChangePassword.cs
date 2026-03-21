@@ -30,6 +30,7 @@ namespace PL_VehicleRental.Forms
         {
             PasswordChanged = false;
             _allowClose = true;
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -71,6 +72,7 @@ namespace PL_VehicleRental.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     PasswordChanged = true;
+                    this.DialogResult = DialogResult.OK;
                     _allowClose = true;
                     this.Close();
                 }
@@ -98,12 +100,17 @@ namespace PL_VehicleRental.Forms
 
         private void newPassTxt_TextChanged(object sender, EventArgs e)
         {
-            newPassTxt.UseSystemPasswordChar = !chkShowNewPassword.Checked;
+           
         }
 
         private void chkShowNewPassword_CheckedChanged(object sender, EventArgs e)
         {
-            confirmPassTxt.UseSystemPasswordChar = !chkShowNewPassword.Checked;
+            newPassTxt.UseSystemPasswordChar = !chkShowNewPassword.Checked;
+        }
+
+        private void chkShowCnfrmPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            confirmPassTxt.UseSystemPasswordChar = !chkShowCnfrmPassword.Checked;
         }
     }
 }

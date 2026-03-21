@@ -115,6 +115,19 @@ namespace VehicleManagementSystem {
 
         private void ShowUserMenu(Control control)
         {
+            userMenuStrip.AutoSize = false;
+            userMenuStrip.Width = control.Width;
+            userMenuStrip.Height = 85;
+
+            foreach (ToolStripItem item in userMenuStrip.Items)
+            {
+                item.AutoSize = false;
+                item.Width = userMenuStrip.Width - 10;
+                item.Height = 35;
+                item.Margin = new Padding(2);
+                item.Padding = new Padding(5, 10, 5, 10);
+            }
+
             userMenuStrip.Show(control, new Point(0, control.Height));
         }
         private void menuBtn_Click(object sender, EventArgs e)

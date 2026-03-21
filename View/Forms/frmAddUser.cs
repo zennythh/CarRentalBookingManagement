@@ -18,71 +18,190 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
+using Guna.UI2.WinForms;
 
 namespace PL_VehicleRental.Forms
 {
-    public partial class frmAddUser : Form
+    public partial class frmAddUser : System.Windows.Forms.UserControl
     {
         public event EventHandler UserAdded;
-        private Validator _validator;
-        private UserService _userService;
+        public event EventHandler FormClosed;
+        private readonly Validator _validator;
+        private readonly UserService _userService;
         private readonly userRepository _repository = new userRepository();
         private readonly int _userId;
         private CancellationTokenSource _usernameCts;
-        private bool _isUsernameAvailable = false;
-        private bool _isSubmitting = false;
+        private CancellationTokenSource _emailCts;
+        private bool _isUsernameAvailable;
+        private bool _isEmailAvailable;
+        private bool _isSubmitting;
         private const long MaxFileSize = 2 * 1024 * 1024;
+        private readonly ToolTip _asyncToolTip;
+        private readonly Color _defaultBorderColor = Color.FromArgb(213, 218, 223);
+        private readonly Color _focusBorderColor = Color.FromArgb(94, 148, 255);
+        
         public frmAddUser()
         {
             InitializeComponent();
-            _validator = new Validator(errorProvider1);
+            _validator = new Validator();
             _userService = new UserService();
-            userNameTextBox.TextChanged += userNameTextBox_TextChanged;
+            _asyncToolTip = new ToolTip
+            {
+                InitialDelay = 100,
+                ReshowDelay = 100,
+                AutoPopDelay = 5000,
+                ShowAlways = true,
+                IsBalloon = true,
+                ToolTipIcon = ToolTipIcon.Warning,
+                ToolTipTitle = "Validation Error"
+            };
+
+            ConfigureValidation();
+            UpdateAddButtonState();
+        }
+
+        private void ConfigureValidation()
+        {
+            _validator.Required(userNameTextBox, "Username is required.", lblUsernameError);
+            _validator.Custom(userNameTextBox,
+                () => userNameTextBox.Text.Trim().Length >= 5,
+                "Username must be at least 5 characters.",
+                lblUsernameError);
+            _validator.Custom(userNameTextBox,
+                () => Regex.IsMatch(userNameTextBox.Text.Trim(), @"^[a-zA-Z0-9]+$"),
+                "Username can only contain letters and numbers.",
+                lblUsernameError);
+
+            _validator.Required(fullNameTxt, "Full name is required.", lblFullNameError);
+            _validator.Required(emaiTextBox, "Email is required.", lblEmailError);
+            _validator.IsEmail(emaiTextBox, "Invalid email format.", lblEmailError);
+            _validator.Required(phoneTxt, "Phone number is required.", lblPhoneError);
+            _validator.IsPhoneNumber(phoneTxt, "Phone number must be +639 followed by 9 digits.", lblPhoneError);
+            _validator.Required(addressTextBox, "Address is required.", lblAddressError);
         }
 
         private void ClearFields()
         {
+            _usernameCts?.Cancel();
+            _emailCts?.Cancel();
+
             fullNameTxt.Clear();
             userNameTextBox.Clear();
             emaiTextBox.Clear();
             phoneTxt.Clear();
             addressTextBox.Clear();
+            genderCmb.StartIndex = 0;
             roleCmb.StartIndex = 0;
             statusCmb.StartIndex = 0;
             userImage.Image = null;
+            lblImagePlaceholder.Visible = true;
 
+            _isUsernameAvailable = false;
+            _isEmailAvailable = false;
+
+            _validator.Clear();
+            _asyncToolTip.RemoveAll();
+            UpdateAddButtonState();
+        }
+
+        private bool IsUsernameInputValid()
+        {
+            string username = userNameTextBox.Text.Trim();
+            return !string.IsNullOrWhiteSpace(username)
+                && username.Length >= 5
+                && Regex.IsMatch(username, @"^[a-zA-Z0-9]+$");
+        }
+
+        private bool IsEmailInputValid()
+        {
+            string email = emaiTextBox.Text.Trim();
+            return !string.IsNullOrWhiteSpace(email)
+                && Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        private bool IsPhoneInputValid()
+        {
+            string text = phoneTxt.Text.Trim();
+            if (text.StartsWith("+63"))
+            {
+                text = text.Substring(3);
+            }
+            return text.Length == 9 && Regex.IsMatch(text, @"^\d{9}$");
+        }
+
+        private void UpdateAddButtonState()
+        {
+            bool basicValid =
+                IsUsernameInputValid() &&
+                !string.IsNullOrWhiteSpace(fullNameTxt.Text) &&
+                IsEmailInputValid() &&
+                IsPhoneInputValid() &&
+                !string.IsNullOrWhiteSpace(addressTextBox.Text) &&
+                genderCmb.SelectedIndex != -1 &&
+                roleCmb.SelectedIndex != -1 &&
+                statusCmb.SelectedIndex != -1;
+
+            addBtn.Enabled = !_isSubmitting && basicValid && _isUsernameAvailable && _isEmailAvailable;
+        }
+
+        private void SetAsyncError(Control control, Label errorLabel, string message)
+        {
+            if (!(control is Guna2TextBox gunaTxt))
+            {
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                _validator.ValidateControl(control);
+                _asyncToolTip.SetToolTip(control, null);
+                _asyncToolTip.Hide(control);
+                return;
+            }
+
+            gunaTxt.BorderColor = Color.Red;
+            gunaTxt.HoverState.BorderColor = Color.Red;
+            gunaTxt.FocusedState.BorderColor = Color.Red;
+
+            if (errorLabel != null)
+            {
+                errorLabel.Text = message;
+                errorLabel.Visible = true;
+            }
+
+            _asyncToolTip.SetToolTip(control, message);
+            _asyncToolTip.Show(message, control, 0, gunaTxt.Height + 4, 3000);
         }
 
         private async void addBtn_Click(object sender, EventArgs e)
         {
-            if (_isSubmitting) return;
+            if (_isSubmitting)
+            {
+                return;
+            }
             addBtn.Enabled = false;
 
             try
             {
                 _isSubmitting = true;
-                _validator.Clear();
+                bool hasValidationErrors = !_validator.Validate();
 
-                _validator.Required(userNameTextBox, "Username is required");
-                _validator.Required(fullNameTxt, "Full name is required");
-                _validator.Required(addressTextBox, "Address is required");
-                _validator.IsEmail(emaiTextBox, "Invalid email format");
-                _validator.IsPhoneNumber(phoneTxt, "Invalid phone number.");
-
-                _validator.Custom(phoneTxt, () =>
+                if (!hasValidationErrors && !_isUsernameAvailable)
                 {
-                    return phoneTxt.Text.Length == 13 && phoneTxt.Text.StartsWith("+639");
-                }, "Phone number must be +639 followed by 9 digits.");
+                    SetAsyncError(userNameTextBox, lblUsernameError, "Username already taken.");
+                    hasValidationErrors = true;
+                }
 
-                _validator.Custom(userNameTextBox, () => userNameTextBox.Text.Length >= 5, "Username must be at least 5 characters");
-                _validator.Custom(userNameTextBox, () => Regex.IsMatch(userNameTextBox.Text, @"^[a-zA-Z0-9]+$"), "Username can only contain letters and numbers.");
+                if (hasValidationErrors)
+                {
+                    return;
+                }
 
-                if (!_validator.Validate() || !_isUsernameAvailable) return;
-
-                var dto = new UserInfoDto
+                    var dto = new UserInfoDto
                 {
                     UserName = userNameTextBox.Text.Trim(),
                     FullName = fullNameTxt.Text.Trim(),
+                    Gender = genderCmb.Text,
                     Email = emaiTextBox.Text.Trim(),
                     PhoneNumber = phoneTxt.Text.Trim(),
                     Address = addressTextBox.Text.Trim(),
@@ -108,7 +227,7 @@ namespace PL_VehicleRental.Forms
 
                 ClearFields();
                 OnUserAdded();
-                Close();
+                Parent?.Controls.Remove(this);
             }
             finally
             {
@@ -119,7 +238,6 @@ namespace PL_VehicleRental.Forms
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            
             ClearFields();
         }
 
@@ -130,13 +248,20 @@ namespace PL_VehicleRental.Forms
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            OnFormClosed();
+            Parent?.Controls.Remove(this);
         }
 
         protected virtual void OnUserAdded()
         {
             UserAdded?.Invoke(this, EventArgs.Empty);
         }
+
+        protected virtual void OnFormClosed()
+        {
+            FormClosed?.Invoke(this, EventArgs.Empty);
+        }
+        
         protected override CreateParams CreateParams
         {
             get {
@@ -148,26 +273,7 @@ namespace PL_VehicleRental.Forms
 
         private void clearBtn_Click_1(object sender, EventArgs e)
         {
-            fullNameTxt.Clear();
-            userNameTextBox.Clear();
-            addressTextBox.Clear();
-            phoneTxt.Clear();
-            roleCmb.StartIndex = 0;
-            statusCmb.StartIndex = 0;
-        }
-
-        private void UpdateAddButtonState()
-        {
-            bool basicValid =
-                !string.IsNullOrWhiteSpace(userNameTextBox.Text) &&
-                !string.IsNullOrWhiteSpace(fullNameTxt.Text) &&
-                !string.IsNullOrWhiteSpace(emaiTextBox.Text) &&
-                !string.IsNullOrWhiteSpace(phoneTxt.Text) &&
-                !string.IsNullOrWhiteSpace(addressTextBox.Text) &&
-                roleCmb.SelectedIndex != -1 &&
-                statusCmb.SelectedIndex != -1;
-
-            addBtn.Enabled = basicValid && _isUsernameAvailable;
+            ClearFields();
         }
 
         private async void userNameTextBox_TextChanged(object sender, EventArgs e)
@@ -176,15 +282,15 @@ namespace PL_VehicleRental.Forms
             _usernameCts = new CancellationTokenSource();
             var token = _usernameCts.Token;
 
-            string username = userNameTextBox.Text.Trim();
+            _isUsernameAvailable = false;
 
-            if(string.IsNullOrWhiteSpace(username))
+            if (!_validator.ValidateControl(userNameTextBox))
             {
-                errorProvider1.SetError(userNameTextBox, "Username is required");
-                _isUsernameAvailable = false;
+                UpdateAddButtonState();
                 return;
             }
 
+            string username = userNameTextBox.Text.Trim();
 
             try
             {
@@ -194,12 +300,12 @@ namespace PL_VehicleRental.Forms
 
                 if(exists)
                 {
-                    errorProvider1.SetError(userNameTextBox, "Username already taken.");
+                    SetAsyncError(userNameTextBox, lblUsernameError, "Username already taken.");
                     _isUsernameAvailable = false;
                 } else
                 {
-                    errorProvider1.SetError(userNameTextBox, "");
-                   _isUsernameAvailable = true;
+                    SetAsyncError(userNameTextBox, lblUsernameError, string.Empty);
+                    _isUsernameAvailable = true;
                 }
 
             } catch (TaskCanceledException)
@@ -212,16 +318,52 @@ namespace PL_VehicleRental.Forms
 
         private void fullNameTxt_TextChanged(object sender, EventArgs e)
         {
+            _validator.ValidateControl(fullNameTxt);
             UpdateAddButtonState();
         }
 
-        private void emaiTxt_TextChanged(object sender, EventArgs e)
+        private async void emaiTxt_TextChanged(object sender, EventArgs e)
         {
-            UpdateAddButtonState();
+            _emailCts?.Cancel();
+            _emailCts = new CancellationTokenSource();
+            var token = _emailCts.Token;
+
+            _isEmailAvailable = false;
+
+            if (!_validator.ValidateControl(emaiTextBox))
+            {
+                UpdateAddButtonState();
+                return;
+            }
+
+            string email = emaiTextBox.Text.Trim();
+
+
+            try
+            {
+                await Task.Delay(500, token);
+
+                bool exists = await _userService.EmailExistsAsync(email);
+
+                if (exists)
+                {
+                    SetAsyncError(emaiTextBox, lblEmailError, "This email is already used by another user.");
+                    _isEmailAvailable = false;
+                } else
+                {
+                    SetAsyncError(emaiTextBox, lblEmailError, string.Empty);
+                    _isEmailAvailable = true;
+                }
+            } catch (TaskCanceledException)
+            {
+                return;
+            }
+                UpdateAddButtonState();
         }
 
         private void addressTextBox_TextChanged(object sender, EventArgs e)
         {
+            _validator.ValidateControl(addressTextBox);
             UpdateAddButtonState();
         }
 
@@ -233,6 +375,42 @@ namespace PL_VehicleRental.Forms
         private void statusCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateAddButtonState();
+        }
+
+        private void phoneTxt_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
+            {
+                phoneTxt.Text = "+63";
+                phoneTxt.SelectionStart = phoneTxt.Text.Length;
+            }
+        }
+        private void phoneTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (!phoneTxt.Text.StartsWith("+63"))
+            {
+                phoneTxt.Text = "+63";
+                phoneTxt.SelectionStart = phoneTxt.Text.Length;
+            }
+            _validator.ValidateControl(phoneTxt);
+            UpdateAddButtonState();
+        }
+
+        private void phoneTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void phoneTxt_Load(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
+            {
+                phoneTxt.Text = "+63";
+                phoneTxt.SelectionStart = phoneTxt.Text.Length;
+            }
         }
 
         private void userImage_Click(object sender, EventArgs e)
@@ -267,6 +445,11 @@ namespace PL_VehicleRental.Forms
                         return;
                     }
 
+                    if (userImage != null)
+                    {
+                        lblImagePlaceholder.Visible = false;
+                    }
+
                     userImage.Image = Image.FromFile(ofd.FileName);
                 }
             }
@@ -279,10 +462,17 @@ namespace PL_VehicleRental.Forms
 
         private void frmAddUser_Load(object sender, EventArgs e)
         {
+
             userImage.SizeMode = PictureBoxSizeMode.Zoom;
             userImage.Anchor = AnchorStyles.None;
             userImage.Location = new Point((pnlUserImage.Width - userImage.Width) / 2,
                                             (pnlUserImage.Height - userImage.Height) / 2);
+
+            lblImagePlaceholder.Anchor = AnchorStyles.None;
+            lblImagePlaceholder.Location = new Point((pnlUserImage.Width - lblImagePlaceholder.Width) / 2,
+                                                      (pnlUserImage.Height - lblImagePlaceholder.Height) / 2);
+
+            lblImagePlaceholder.Click += userImage_Click;
         }
 
         private void guna2Separator1_Click(object sender, EventArgs e)
@@ -290,40 +480,28 @@ namespace PL_VehicleRental.Forms
 
         }
 
-        private void phoneTxt_Enter(object sender, EventArgs e)
+        private void lblImagePlaceholder_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
+
+        }
+
+        private void frmAddUser_Resize(object sender, EventArgs e)
+        {
+            if (Parent != null)
             {
-                phoneTxt.Text = "+63";
-                phoneTxt.SelectionStart = phoneTxt.Text.Length;
+                int newX = (Parent.Width - this.Width) / 2;
+                int newY = (Parent.Height - this.Height) / 2;
+
+                newX = Math.Max(0, newX);
+                newY = Math.Max(0, newY);
+
+                this.Location = new Point(newX, newY);
             }
         }
 
-        private void phoneTxt_TextChanged(object sender, EventArgs e)
+        private void userImage_Resize(object sender, EventArgs e)
         {
-            if (!phoneTxt.Text.StartsWith("+63"))
-            {
-                phoneTxt.Text = "+63";
-                phoneTxt.SelectionStart = phoneTxt.Text.Length;
-            }
-            UpdateAddButtonState();
-        }
 
-        private void phoneTxt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void phoneTxt_Load(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
-            {
-                phoneTxt.Text = "+63";
-                phoneTxt.SelectionStart = phoneTxt.Text.Length;
-            }
         }
     }
 }

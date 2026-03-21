@@ -19,12 +19,15 @@ using VehicleManagementSystem.Dto;
 
 namespace PL_VehicleRental.Forms
 {
-    public partial class frmEdit : Form
+    public partial class frmEdit : System.Windows.Forms.UserControl
     {
+        public event EventHandler UserUpdated;
+        public event EventHandler FormClosed;
         private readonly int _userId;
         private UserStatus _userStatus;
         private readonly userRepository _repository;
         private bool _isImageChanged;
+        private bool _hasStartedInitialLoad;
         private const long MaxFileSize = 2 * 1024 * 1024;
         public enum UserStatus
         {
@@ -38,6 +41,27 @@ namespace PL_VehicleRental.Forms
             _userId = userId;
             _repository = new userRepository();
             _isImageChanged = false;
+            _hasStartedInitialLoad = false;
+        }
+
+        protected virtual void OnUserUpdated()
+        {
+            UserUpdated?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnFormClosed()
+        {
+            FormClosed?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
         }
 
         private void ToggleLoading(bool isLoading)
@@ -50,24 +74,43 @@ namespace PL_VehicleRental.Forms
         private async Task LoadUserInfoAsync()
         {
             ToggleLoading(true);
-            UserInfoDto user = await GetUserByIdAsync(_userId);
+            pnlProgress.Visible = true;
 
-            if (user == null)
+            try
             {
-                MessageBox.Show("User not found.");
-                Close();
-                return;
-            }
+                UserInfoDto user = await GetUserByIdAsync(_userId);
 
-            BindUser(user);
-            ToggleLoading(false);
-            pnlProgress.Visible = false;
+
+                if (user == null)
+                {
+                    MessageBox.Show("User not found.");
+                    OnFormClosed();
+                    Parent?.Controls.Remove(this);
+                    return;
+                }
+                BindUser(user);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading user information:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                OnFormClosed();
+                Parent?.Controls.Remove(this);
+            }
+            finally
+            {
+                ToggleLoading(false);
+                pnlProgress.Visible = false;
+            }
         }
 
         private async Task<UserInfoDto> GetUserByIdAsync(int userId)
         {
             const string query = @"
-                                SELECT id, userName, fullName, email, phoneNumber, address, role, status, imagePath
+                                SELECT id, userName, fullName, gender, email, phoneNumber, address, role, status, imagePath
                                 FROM users
                                 WHERE id = @id";
 
@@ -90,6 +133,7 @@ namespace PL_VehicleRental.Forms
                         Id = reader.GetInt32("id"),
                         UserName = reader.GetString("userName"),
                         FullName = reader.GetString("fullName"),
+                        Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString("gender"),
                         Email = reader.GetString("email"),
                         PhoneNumber = reader.IsDBNull(reader.GetOrdinal("phoneNumber")) ? null : reader.GetString("phoneNumber"),
                         Address = reader.GetString("address"),
@@ -126,6 +170,7 @@ namespace PL_VehicleRental.Forms
 
             txtUserName.Text = user.UserName;
             txtFullName.Text = user.FullName;
+            genderCmb.SelectedItem = user.Gender;
             txtEmail.Text = user.Email;
             txtAddress.Text = user.Address;
             txtPhone.Text = user.PhoneNumber;
@@ -159,14 +204,15 @@ namespace PL_VehicleRental.Forms
             return Enum.TryParse(dbStatus, true, out UserStatus status) ? status : UserStatus.Inactive;
         }
 
-        private async void frmEdit_Shown(object sender, EventArgs e)
+        private void frmEdit_Shown(object sender, EventArgs e)
         {
-            await LoadUserInfoAsync();
+            
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            OnFormClosed();
+            Parent?.Controls.Remove(this);
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -186,6 +232,7 @@ namespace PL_VehicleRental.Forms
                     Id = _userId,
                     UserName = txtUserName.Text,
                     FullName = txtFullName.Text,
+                    Gender = genderCmb.SelectedItem.ToString(),
                     Email = txtEmail.Text,
                     PhoneNumber = txtPhone.Text,
                     Address = txtAddress.Text,
@@ -204,8 +251,8 @@ namespace PL_VehicleRental.Forms
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
-                    DialogResult = DialogResult.OK;
-                    Close();
+                    OnUserUpdated();
+                    Parent?.Controls.Remove(this);
                 } else
                 {
                     MessageBox.Show("No changes were made.",
@@ -267,6 +314,13 @@ namespace PL_VehicleRental.Forms
         private void frmEdit_Load(object sender, EventArgs e)
         {
             userImage.SizeMode = PictureBoxSizeMode.Zoom;
+            
+            if (_hasStartedInitialLoad)
+            {
+                return;
+            }
+            _hasStartedInitialLoad = true;
+            BeginInvoke(new Action(async () => await LoadUserInfoAsync()));
         }
 
         private void resetImg_Click(object sender, EventArgs e)
@@ -350,6 +404,16 @@ namespace PL_VehicleRental.Forms
             {
                 ToggleLoading(false);
             }
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

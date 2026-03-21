@@ -68,6 +68,24 @@ namespace PL_VehicleRental.DAL.Repositories
             }
         }
 
+        public async Task<bool> EmailExistsAsync(string email)
+        {
+            using (var conn = MySQLConnectionContext.Create())
+            {
+                await conn.OpenAsync();
+
+                const string query = @"SELECT COUNT(*) FROM users WHERE email = @email";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    int count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+                    return count > 0;
+                }
+            }
+        }
+
         public async Task<CreateUserResult> InsertAsync(UserInfoDto dto, string userImage)
         {
             string tempPassword = PasswordHelper.GenerateTemporaryPassword();
@@ -76,14 +94,15 @@ namespace PL_VehicleRental.DAL.Repositories
             {
                 await conn.OpenAsync();
 
-                const string sql = @"INSERT INTO users (userName, fullName, email, phoneNumber, address, role, status, passwordHash, isDefaultPassword, isDeleted, imagePath)
-                                     VALUES (@userName, @fullName, @email, @phoneNumber, @address, @role, @status, @passwordHash, 1, 0, @ImagePath);
+                const string sql = @"INSERT INTO users (userName, fullName, gender, email, phoneNumber, address, role, status, passwordHash, isDefaultPassword, isDeleted, imagePath)
+                                     VALUES (@userName, @fullName, @gender, @email, @phoneNumber, @address, @role, @status, @passwordHash, 1, 0, @ImagePath);
                                      SELECT LAST_INSERT_ID();";
 
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@userName", dto.UserName);
                     cmd.Parameters.AddWithValue("@fullName", dto.FullName);
+                    cmd.Parameters.AddWithValue("@gender", dto.Gender);
                     cmd.Parameters.AddWithValue("@email", dto.Email);
                     cmd.Parameters.AddWithValue("@phoneNumber", dto.PhoneNumber);
                     cmd.Parameters.AddWithValue("@address", dto.Address);
@@ -110,7 +129,7 @@ namespace PL_VehicleRental.DAL.Repositories
             {
                 await conn.OpenAsync();
 
-                const string sql = @"SELECT id, userName, fullName, email, address, role, status, passwordHash, isDefaultPassword, imagePath
+                const string sql = @"SELECT id, userName, fullName, gender, email, address, role, status, passwordHash, isDefaultPassword, imagePath
                                      FROM users WHERE (userName = @input OR email = @input) AND status = 'Active'";
 
                 using (var cmd = new MySqlCommand(sql, conn))
@@ -129,6 +148,7 @@ namespace PL_VehicleRental.DAL.Repositories
                             Id = reader.GetInt32("id"),
                             UserName = reader.GetString("userName"),
                             FullName = reader.GetString("fullName"),
+                            Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString("gender"),
                             Email = reader.GetString("email"),
                             Address = reader.GetString("address"),
                             Role = reader.GetString("role"),
@@ -292,6 +312,7 @@ namespace PL_VehicleRental.DAL.Repositories
                 SET
                     userName = @Username,
                     fullName = @Fullname,
+                    gender = @Gender,
                     email = @Email,
                     phoneNumber = @PhoneNumber,
                     address = @Address,
@@ -307,6 +328,7 @@ namespace PL_VehicleRental.DAL.Repositories
                 SET
                     userName = @Username,
                     fullName = @Fullname,
+                    gender = @Gender,
                     email = @Email,
                     phoneNumber = @PhoneNumber,
                     address = @Address,
@@ -338,6 +360,7 @@ namespace PL_VehicleRental.DAL.Repositories
                         cmd.Parameters.AddWithValue("@Id", user.Id);
                         cmd.Parameters.AddWithValue("@Username", user.UserName);
                         cmd.Parameters.AddWithValue("@Fullname", user.FullName);
+                        cmd.Parameters.AddWithValue("@Gender", user.Gender);
                         cmd.Parameters.AddWithValue("@Email", user.Email);
                         cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
                         cmd.Parameters.AddWithValue("@Address", user.Address);

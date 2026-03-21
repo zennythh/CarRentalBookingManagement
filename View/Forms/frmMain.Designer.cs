@@ -27,7 +27,7 @@ namespace VehicleManagementSystem {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            Guna.UI2.AnimatorNS.Animation animation3 = new Guna.UI2.AnimatorNS.Animation();
+            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.activityLogsBtn = new FontAwesome.Sharp.IconButton();
@@ -72,6 +72,7 @@ namespace VehicleManagementSystem {
             this.panelMenu.Controls.Add(this.vehManagementBtn);
             this.panelMenu.Controls.Add(this.dashboardBtn);
             this.panelMenu.Controls.Add(this.panelLogo);
+            this.guna2Transition1.SetDecoration(this.panelMenu, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -83,6 +84,7 @@ namespace VehicleManagementSystem {
             // 
             this.activityLogsBtn.BackColor = System.Drawing.Color.Transparent;
             this.activityLogsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.activityLogsBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.activityLogsBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.activityLogsBtn.FlatAppearance.BorderSize = 0;
             this.activityLogsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
@@ -110,6 +112,7 @@ namespace VehicleManagementSystem {
             // 
             this.userManagementBtn.BackColor = System.Drawing.Color.Transparent;
             this.userManagementBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.userManagementBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.userManagementBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.userManagementBtn.FlatAppearance.BorderSize = 0;
             this.userManagementBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
@@ -137,6 +140,7 @@ namespace VehicleManagementSystem {
             // 
             this.damageAndInspecBtn.BackColor = System.Drawing.Color.Transparent;
             this.damageAndInspecBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.damageAndInspecBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.damageAndInspecBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.damageAndInspecBtn.FlatAppearance.BorderSize = 0;
             this.damageAndInspecBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
@@ -163,6 +167,7 @@ namespace VehicleManagementSystem {
             // 
             this.maintenanceMangementBtn.BackColor = System.Drawing.Color.Transparent;
             this.maintenanceMangementBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.maintenanceMangementBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.maintenanceMangementBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.maintenanceMangementBtn.FlatAppearance.BorderSize = 0;
             this.maintenanceMangementBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
@@ -190,6 +195,7 @@ namespace VehicleManagementSystem {
             // 
             this.vehManagementBtn.BackColor = System.Drawing.Color.Transparent;
             this.vehManagementBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.vehManagementBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.vehManagementBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.vehManagementBtn.FlatAppearance.BorderSize = 0;
             this.vehManagementBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
@@ -217,6 +223,7 @@ namespace VehicleManagementSystem {
             // 
             this.dashboardBtn.BackColor = System.Drawing.Color.Transparent;
             this.dashboardBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.dashboardBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.dashboardBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.dashboardBtn.FlatAppearance.BorderSize = 0;
             this.dashboardBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
@@ -244,6 +251,7 @@ namespace VehicleManagementSystem {
             // 
             this.panelLogo.Controls.Add(this.panelMenuLine);
             this.panelLogo.Controls.Add(this.panelUserDetails);
+            this.guna2Transition1.SetDecoration(this.panelLogo, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -256,6 +264,7 @@ namespace VehicleManagementSystem {
             this.panelMenuLine.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panelMenuLine.AutoSize = true;
             this.panelMenuLine.BorderRadius = 4;
+            this.guna2Transition1.SetDecoration(this.panelMenuLine, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelMenuLine.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.panelMenuLine.Location = new System.Drawing.Point(12, 159);
             this.panelMenuLine.MaximumSize = new System.Drawing.Size(326, 5);
@@ -270,6 +279,7 @@ namespace VehicleManagementSystem {
             this.panelUserDetails.Controls.Add(this.labelRole);
             this.panelUserDetails.Controls.Add(this.pictureUser);
             this.panelUserDetails.Controls.Add(this.labelUserName);
+            this.guna2Transition1.SetDecoration(this.panelUserDetails, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelUserDetails.Location = new System.Drawing.Point(6, 78);
             this.panelUserDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelUserDetails.Name = "panelUserDetails";
@@ -280,6 +290,7 @@ namespace VehicleManagementSystem {
             // 
             this.menuBtn.BackColor = System.Drawing.Color.Transparent;
             this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.menuBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.menuBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.menuBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.menuBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -298,11 +309,12 @@ namespace VehicleManagementSystem {
             // 
             this.labelRole.AutoSize = true;
             this.labelRole.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.labelRole, Guna.UI2.AnimatorNS.DecorationType.None);
             this.labelRole.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRole.ForeColor = System.Drawing.Color.DimGray;
             this.labelRole.Location = new System.Drawing.Point(79, 46);
             this.labelRole.Name = "labelRole";
-            this.labelRole.Size = new System.Drawing.Size(39, 16);
+            this.labelRole.Size = new System.Drawing.Size(31, 14);
             this.labelRole.TabIndex = 13;
             this.labelRole.Text = "Role";
             // 
@@ -311,6 +323,7 @@ namespace VehicleManagementSystem {
             this.pictureUser.BackColor = System.Drawing.Color.Transparent;
             this.pictureUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureUser.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.guna2Transition1.SetDecoration(this.pictureUser, Guna.UI2.AnimatorNS.DecorationType.None);
             this.pictureUser.FillColor = System.Drawing.Color.IndianRed;
             this.pictureUser.Image = global::VehicleManagementSystem.Properties.Resources.account_circle;
             this.pictureUser.ImageRotate = 0F;
@@ -327,11 +340,12 @@ namespace VehicleManagementSystem {
             // 
             this.labelUserName.AutoSize = true;
             this.labelUserName.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.labelUserName, Guna.UI2.AnimatorNS.DecorationType.None);
             this.labelUserName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUserName.ForeColor = System.Drawing.Color.DimGray;
             this.labelUserName.Location = new System.Drawing.Point(79, 30);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(168, 19);
+            this.labelUserName.Size = new System.Drawing.Size(148, 16);
             this.labelUserName.TabIndex = 12;
             this.labelUserName.Text = "Firstname Lastname";
             // 
@@ -356,11 +370,12 @@ namespace VehicleManagementSystem {
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.labelPage, Guna.UI2.AnimatorNS.DecorationType.None);
             this.labelPage.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.labelPage.Location = new System.Drawing.Point(29, 20);
             this.labelPage.Name = "labelPage";
-            this.labelPage.Size = new System.Drawing.Size(206, 23);
+            this.labelPage.Size = new System.Drawing.Size(153, 17);
             this.labelPage.TabIndex = 5;
             this.labelPage.Text = "Vehicle Management";
             // 
@@ -368,6 +383,7 @@ namespace VehicleManagementSystem {
             // 
             this.maximizeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.maximizeBtn.BackColor = System.Drawing.Color.White;
+            this.guna2Transition1.SetDecoration(this.maximizeBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.maximizeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.maximizeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.maximizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -388,6 +404,7 @@ namespace VehicleManagementSystem {
             // 
             this.minimizeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minimizeBtn.BackColor = System.Drawing.Color.White;
+            this.guna2Transition1.SetDecoration(this.minimizeBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.minimizeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.minimizeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.minimizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -409,6 +426,7 @@ namespace VehicleManagementSystem {
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeBtn.BackColor = System.Drawing.Color.White;
+            this.guna2Transition1.SetDecoration(this.closeBtn, Guna.UI2.AnimatorNS.DecorationType.None);
             this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -432,6 +450,7 @@ namespace VehicleManagementSystem {
             this.panelDesktop.CustomizableEdges.BottomLeft = false;
             this.panelDesktop.CustomizableEdges.BottomRight = false;
             this.panelDesktop.CustomizableEdges.TopRight = false;
+            this.guna2Transition1.SetDecoration(this.panelDesktop, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.FillColor = System.Drawing.Color.White;
             this.panelDesktop.Location = new System.Drawing.Point(317, 73);
@@ -442,54 +461,57 @@ namespace VehicleManagementSystem {
             // 
             // userMenuStrip
             // 
+            this.userMenuStrip.AutoSize = false;
+            this.guna2Transition1.SetDecoration(this.userMenuStrip, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.userMenuStrip.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.userMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.profileToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.userMenuStrip.Name = "userMenuStrip";
-            this.userMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.userMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(135)))), ((int)(((byte)(200)))));
             this.userMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
             this.userMenuStrip.RenderStyle.ColorTable = null;
             this.userMenuStrip.RenderStyle.RoundedEdges = true;
             this.userMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.userMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.userMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.userMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.userMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.userMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.userMenuStrip.Size = new System.Drawing.Size(126, 52);
+            this.userMenuStrip.Size = new System.Drawing.Size(181, 70);
             // 
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.profileToolStripMenuItem.Text = "Profile";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // guna2Transition1
             // 
             this.guna2Transition1.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.guna2Transition1.DefaultAnimation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation1;
             // 
             // frmMain
             // 

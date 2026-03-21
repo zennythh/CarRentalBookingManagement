@@ -28,6 +28,9 @@ namespace PL_VehicleRental.Services
             if (await _repository.UsernameExistsAsync(dto.UserName))
                 return (false, "Username already exists.", 0);
 
+            if (await _repository.EmailExistsAsync(dto.Email))
+                return (false, "Email already exists.", 0);
+
             string imagePath = null;
             var imageService = new UserImageService();
             
@@ -37,7 +40,7 @@ namespace PL_VehicleRental.Services
             }
 
             var insertResult = await _repository.InsertAsync(dto, imagePath);
-            MessageBox.Show($"User created! \n Temporary password: {insertResult.TemporaryPassword}");
+            MessageBox.Show($"User created! \n Temporary password: {insertResult.TemporaryPassword}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             if (insertResult <= 0) return (false, "Failed to insert user.", 0);
 
@@ -47,6 +50,11 @@ namespace PL_VehicleRental.Services
         public async Task<bool> UsernameExistsAsync(string username)
         {
             return await _repository.UsernameExistsAsync(username);
+        }
+
+        public async Task<bool> EmailExistsAsync(string email)
+        {
+            return await _repository.EmailExistsAsync(email);
         }
     }
 }
