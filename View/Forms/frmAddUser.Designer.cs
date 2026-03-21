@@ -197,9 +197,9 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(987, 117);
+            this.label4.Location = new System.Drawing.Point(987, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 17);
+            this.label4.Size = new System.Drawing.Size(66, 23);
             this.label4.TabIndex = 8;
             this.label4.Text = "Gender";
             // 
@@ -238,7 +238,7 @@
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.statusLabel.Location = new System.Drawing.Point(415, 361);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(49, 17);
+            this.statusLabel.Size = new System.Drawing.Size(61, 23);
             this.statusLabel.TabIndex = 0;
             this.statusLabel.Text = "Status:";
             // 
@@ -298,7 +298,7 @@
             this.roleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.roleLabel.Location = new System.Drawing.Point(167, 361);
             this.roleLabel.Name = "roleLabel";
-            this.roleLabel.Size = new System.Drawing.Size(37, 17);
+            this.roleLabel.Size = new System.Drawing.Size(48, 23);
             this.roleLabel.TabIndex = 0;
             this.roleLabel.Text = "Role:";
             // 
@@ -312,7 +312,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(675, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 17);
+            this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Phone no.";
             // 
@@ -394,7 +394,7 @@
             this.lblEmail.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblEmail.Location = new System.Drawing.Point(189, 117);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(40, 17);
+            this.lblEmail.Size = new System.Drawing.Size(51, 23);
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Email";
             // 
@@ -406,7 +406,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.label1.Location = new System.Drawing.Point(165, 308);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 25);
+            this.label1.Size = new System.Drawing.Size(183, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Account Details";
             // 
@@ -420,7 +420,7 @@
             this.fullNameLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fullNameLabel.Location = new System.Drawing.Point(675, 28);
             this.fullNameLabel.Name = "fullNameLabel";
-            this.fullNameLabel.Size = new System.Drawing.Size(69, 17);
+            this.fullNameLabel.Size = new System.Drawing.Size(88, 23);
             this.fullNameLabel.TabIndex = 0;
             this.fullNameLabel.Text = "Full Name";
             // 
@@ -434,7 +434,7 @@
             this.addressLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.addressLabel.Location = new System.Drawing.Point(184, 210);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(57, 17);
+            this.addressLabel.Size = new System.Drawing.Size(70, 23);
             this.addressLabel.TabIndex = 0;
             this.addressLabel.Text = "Address";
             // 
@@ -446,9 +446,9 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(180, 28);
+            this.label3.Location = new System.Drawing.Point(189, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 17);
+            this.label3.Size = new System.Drawing.Size(87, 23);
             this.label3.TabIndex = 0;
             this.label3.Text = "Username";
             // 
@@ -641,7 +641,7 @@
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.headerLabel.Location = new System.Drawing.Point(165, 22);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(201, 25);
+            this.headerLabel.Size = new System.Drawing.Size(241, 31);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Personal Information";
             // 

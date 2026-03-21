@@ -31,10 +31,12 @@ namespace PL_VehicleRental.Forms
         private readonly userRepository _repository = new userRepository();
         private frmAddUser _addUserControl;
         private frmEdit _editUserControl;
+        private Guna.UI2.WinForms.Guna2ComboBox cboPageSelect;
         public UserManagementForm()
         {
             InitializeComponent();
             InitializeSearchDebounce();
+            InitializePageSelect();
             flowUsers.Resize += flowUsers_Resize;
 
             pnlOverlay.Dock = DockStyle.Fill;
@@ -48,6 +50,37 @@ namespace PL_VehicleRental.Forms
             progressBar.Location = new Point((pnlOverlay.Width - progressBar.Width) / 2,
                                              (pnlOverlay.Height - progressBar.Height) / 2);
             pnlOverlay.Controls.Add(progressBar);
+        }
+
+        private void InitializePageSelect()
+        {
+            cboPageSelect = new Guna.UI2.WinForms.Guna2ComboBox
+            {
+                Size = new Size(70, 30),
+                BorderRadius = 2,
+                Font = new Font("Segoe UI", 9F),
+                Cursor = Cursors.Hand,
+                DropDownHeight = 150,
+                BorderColor = Color.FromArgb(213, 218, 223),
+                ForeColor = Color.Black,
+                TextAlign = HorizontalAlignment.Center
+            };
+
+            cboPageSelect.FocusedState.BorderColor = Color.FromArgb(42, 132, 191);
+            cboPageSelect.SelectedIndexChanged += CboPageSelect_SelectedIndexChanged;
+            pnlPagination.Controls.Add(cboPageSelect);
+        }
+
+        private async void CboPageSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPageSelect.SelectedItem != null && int.TryParse(cboPageSelect.SelectedItem.ToString(), out int page))
+            {
+                if (page != _currentPage)
+                {
+                    _currentPage = page;
+                    await LoadPageAsync();
+                }
+            }
         }
 
         private async Task LoadPageAsync()
@@ -76,11 +109,7 @@ namespace PL_VehicleRental.Forms
 
             _totalPages = (int)Math.Ceiling((double)totalCount / _pageSize);
 
-            //lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
             UpdatePageButtons();
-
-            //btnPrev.Enabled = _currentPage > 1;
-            //btnNext.Enabled = _currentPage < _totalPages;
 
             ToggleLoading(false);
         }
@@ -126,6 +155,49 @@ namespace PL_VehicleRental.Forms
 
             btnPrev.Enabled = _currentPage > 1;
             btnNext.Enabled = _currentPage < _totalPages;
+
+            cboPageSelect.SelectedIndexChanged -= CboPageSelect_SelectedIndexChanged;
+
+            if (cboPageSelect.Items.Count != _totalPages)
+            {
+                cboPageSelect.Items.Clear();
+                if (_totalPages > 0)
+                {
+                    for (int i = 1; i <= _totalPages; i++)
+                    {
+                        cboPageSelect.Items.Add(i.ToString());
+                    }
+                }
+            }
+
+            if (_currentPage > 0 && _currentPage <= cboPageSelect.Items.Count)
+            {
+                cboPageSelect.SelectedIndex = _currentPage - 1;
+            }
+
+            cboPageSelect.SelectedIndexChanged += CboPageSelect_SelectedIndexChanged;
+
+            AlignPagination();
+        }
+
+        private void AlignPagination()
+        {
+            int spacing = 10;
+
+            flowPageNumbers.PerformLayout();
+            int totalWidth = btnPrev.Width + spacing + flowPageNumbers.Width + spacing + btnNext.Width + spacing + cboPageSelect.Width;
+
+            pnlPagination.Width = totalWidth;
+
+            int centerY = pnlPagination.Height / 2;
+            int btnY = centerY - (btnPrev.Height / 2);
+            int flowY = centerY - (flowPageNumbers.Height / 2);
+            int comboY = centerY - (cboPageSelect.Height / 2);
+
+            btnPrev.Location = new Point(0, btnY);
+            flowPageNumbers.Location = new Point(btnPrev.Width + spacing, flowY);
+            btnNext.Location = new Point(flowPageNumbers.Location.X + flowPageNumbers.Width + spacing, btnY);
+            cboPageSelect.Location = new Point(btnNext.Location.X + btnNext.Width + spacing, comboY);
         }
 
         private async void PageButton_Click(object sender, EventArgs e)
@@ -487,11 +559,6 @@ namespace PL_VehicleRental.Forms
                 _currentPage++;
                 await LoadPageAsync();
             }
-        }
-
-        private void cboPageSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _currentPage = 1;
         }
 
         private void UserManagementForm_Resize(object sender, EventArgs e)

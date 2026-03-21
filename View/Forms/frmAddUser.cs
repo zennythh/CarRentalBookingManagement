@@ -377,6 +377,42 @@ namespace PL_VehicleRental.Forms
             UpdateAddButtonState();
         }
 
+        private void phoneTxt_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
+            {
+                phoneTxt.Text = "+63";
+                phoneTxt.SelectionStart = phoneTxt.Text.Length;
+            }
+        }
+        private void phoneTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (!phoneTxt.Text.StartsWith("+63"))
+            {
+                phoneTxt.Text = "+63";
+                phoneTxt.SelectionStart = phoneTxt.Text.Length;
+            }
+            _validator.ValidateControl(phoneTxt);
+            UpdateAddButtonState();
+        }
+
+        private void phoneTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void phoneTxt_Load(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
+            {
+                phoneTxt.Text = "+63";
+                phoneTxt.SelectionStart = phoneTxt.Text.Length;
+            }
+        }
+
         private void userImage_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -442,43 +478,6 @@ namespace PL_VehicleRental.Forms
         private void guna2Separator1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void phoneTxt_Enter(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
-            {
-                phoneTxt.Text = "+63";
-                phoneTxt.SelectionStart = phoneTxt.Text.Length;
-            }
-        }
-
-        private void phoneTxt_TextChanged(object sender, EventArgs e)
-        {
-            if (!phoneTxt.Text.StartsWith("+63"))
-            {
-                phoneTxt.Text = "+63";
-                phoneTxt.SelectionStart = phoneTxt.Text.Length;
-            }
-            _validator.ValidateControl(phoneTxt);
-            UpdateAddButtonState();
-        }
-
-        private void phoneTxt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void phoneTxt_Load(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(phoneTxt.Text))
-            {
-                phoneTxt.Text = "+63";
-                phoneTxt.SelectionStart = phoneTxt.Text.Length;
-            }
         }
 
         private void lblImagePlaceholder_Click(object sender, EventArgs e)

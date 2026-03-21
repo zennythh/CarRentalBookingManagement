@@ -46,8 +46,8 @@ namespace PL_VehicleRental.Forms
             this.tableLayoutPagination = new System.Windows.Forms.TableLayoutPanel();
             this.pnlPagination = new Guna.UI2.WinForms.Guna2Panel();
             this.btnPrev = new Guna.UI2.WinForms.Guna2Button();
+            this.flowPageNumbers = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
-            //this.lblPageInfo = new System.Windows.Forms.Label();
             this.BackgroundPanel.SuspendLayout();
             this.UserManagementPanel.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -189,7 +189,7 @@ namespace PL_VehicleRental.Forms
             this.headerLabel.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headerLabel.Location = new System.Drawing.Point(29, 28);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(250, 32);
+            this.headerLabel.Size = new System.Drawing.Size(299, 38);
             this.headerLabel.TabIndex = 3;
             this.headerLabel.Text = "User Management";
             // 
@@ -198,7 +198,7 @@ namespace PL_VehicleRental.Forms
             this.pnlOverlay.Controls.Add(this.progressBar);
             this.pnlOverlay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlOverlay.Location = new System.Drawing.Point(11, 10);
-            this.pnlOverlay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOverlay.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOverlay.Name = "pnlOverlay";
             this.pnlOverlay.Size = new System.Drawing.Size(1271, 656);
             this.pnlOverlay.TabIndex = 1;
@@ -246,35 +246,21 @@ namespace PL_VehicleRental.Forms
             this.tableLayoutPagination.Controls.Add(this.pnlPagination, 1, 0);
             this.tableLayoutPagination.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPagination.Location = new System.Drawing.Point(11, -10);
-            this.tableLayoutPagination.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPagination.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPagination.Name = "tableLayoutPagination";
             this.tableLayoutPagination.RowCount = 1;
             this.tableLayoutPagination.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPagination.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPagination.Size = new System.Drawing.Size(1249, 64);
             this.tableLayoutPagination.TabIndex = 4;
-            //
-            // flowPageNumbers
-            //
-            this.flowPageNumbers = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowPageNumbers.AutoSize = true;
-            this.flowPageNumbers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowPageNumbers.Location = new System.Drawing.Point(75, 13);
-            this.flowPageNumbers.Margin = new System.Windows.Forms.Padding(2);
-            this.flowPageNumbers.Name = "flowPageNumbers";
-            this.flowPageNumbers.TabIndex = 1;
-            this.flowPageNumbers.WrapContents = false;
-            this.flowPageNumbers.Anchor = AnchorStyles.None;
             // 
             // pnlPagination
             // 
             this.pnlPagination.Controls.Add(this.btnPrev);
             this.pnlPagination.Controls.Add(this.flowPageNumbers);
             this.pnlPagination.Controls.Add(this.btnNext);
-            //this.pnlPagination.Size = new System.Drawing.Size(350, 46);
-            //this.pnlPagination.Controls.Add(this.lblPageInfo);
             this.pnlPagination.Location = new System.Drawing.Point(458, 4);
-            this.pnlPagination.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlPagination.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPagination.Name = "pnlPagination";
             this.pnlPagination.Size = new System.Drawing.Size(333, 56);
             this.pnlPagination.TabIndex = 0;
@@ -298,6 +284,18 @@ namespace PL_VehicleRental.Forms
             this.btnPrev.TabIndex = 0;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
+            // flowPageNumbers
+            // 
+            this.flowPageNumbers.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flowPageNumbers.AutoSize = true;
+            this.flowPageNumbers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowPageNumbers.Location = new System.Drawing.Point(75, 13);
+            this.flowPageNumbers.Margin = new System.Windows.Forms.Padding(2);
+            this.flowPageNumbers.Name = "flowPageNumbers";
+            this.flowPageNumbers.Size = new System.Drawing.Size(0, 0);
+            this.flowPageNumbers.TabIndex = 1;
+            this.flowPageNumbers.WrapContents = false;
+            // 
             // btnNext
             // 
             this.btnNext.BorderRadius = 2;
@@ -316,16 +314,6 @@ namespace PL_VehicleRental.Forms
             this.btnNext.Size = new System.Drawing.Size(45, 30);
             this.btnNext.TabIndex = 2;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // lblPageInfo
-            // 
-            //this.lblPageInfo.AutoSize = true;
-            //this.lblPageInfo.Location = new System.Drawing.Point(89, 17);
-            //this.lblPageInfo.Name = "lblPageInfo";
-            //this.lblPageInfo.Size = new System.Drawing.Size(50, 19);
-            //this.lblPageInfo.TabIndex = 1;
-            //this.lblPageInfo.Text = "label1";
-            //this.lblPageInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserManagementForm
             // 
