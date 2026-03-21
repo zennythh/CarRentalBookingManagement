@@ -31,7 +31,6 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void SetStatus() {
-            // 1. If ExpirationDate is null, it's a Permanent document
             if (!_document.ExpirationDate.HasValue) {
                 labelStatus.Text = "Active";
                 panelStatus.FillColor = System.Drawing.Color.FromArgb(82, 183, 136);
@@ -51,7 +50,7 @@ namespace VehicleManagementSystem.UserControls {
             } else {
                 // More than 30 days remaining
                 labelStatus.Text = "Active";
-                panelStatus.FillColor = System.Drawing.Color.Green;
+                panelStatus.FillColor = System.Drawing.Color.FromArgb(82, 183, 136);
             }
         }
 
@@ -63,6 +62,7 @@ namespace VehicleManagementSystem.UserControls {
 
             if(_document.Category != "Required Renewal") {
                 btnRenew.Visible = false;
+                btnDelete.Location = new Point(btnDelete.Location.X - btnDelete.Width - 5, btnDelete.Location.Y);
             }
         }
 
@@ -118,6 +118,17 @@ namespace VehicleManagementSystem.UserControls {
                 ReloadDocuments?.Invoke();
             }
         }
+
+        private void btnRenew_Click(object sender, EventArgs e) {
+            using (var RenewVehicleDocumentModal = new RenewVehicleDocumentModal(_document)) {
+                DialogResult result = RenewVehicleDocumentModal.ShowDialog();
+
+                if (result != DialogResult.OK) return;
+                ReloadDocuments?.Invoke();
+            }
+        }
+
+
 
     }
 }

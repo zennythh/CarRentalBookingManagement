@@ -31,12 +31,11 @@
             this.labelHeader = new System.Windows.Forms.Label();
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
             this.closeImageBtn = new FontAwesome.Sharp.IconButton();
-            this.addImageBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panelFile = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.labelFileName = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.documentPictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.addImageBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2RadioButton2 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.radioPermanent = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -129,9 +128,9 @@
             // 
             this.panelPreview.BorderRadius = 15;
             this.panelPreview.Controls.Add(this.closeImageBtn);
-            this.panelPreview.Controls.Add(this.addImageBtn);
             this.panelPreview.Controls.Add(this.panelFile);
             this.panelPreview.Controls.Add(this.documentPictureBox);
+            this.panelPreview.Controls.Add(this.addImageBtn);
             this.panelPreview.Location = new System.Drawing.Point(28, 397);
             this.panelPreview.Name = "panelPreview";
             this.panelPreview.Size = new System.Drawing.Size(520, 236);
@@ -159,6 +158,60 @@
             this.closeImageBtn.UseVisualStyleBackColor = false;
             this.closeImageBtn.Click += new System.EventHandler(this.closeImageBtn_Click);
             // 
+            // panelFile
+            // 
+            this.panelFile.BackColor = System.Drawing.Color.Transparent;
+            this.panelFile.Controls.Add(this.labelFileName);
+            this.panelFile.Controls.Add(this.guna2PictureBox1);
+            this.panelFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFile.FillColor = System.Drawing.SystemColors.Control;
+            this.panelFile.Location = new System.Drawing.Point(0, 0);
+            this.panelFile.Name = "panelFile";
+            this.panelFile.Size = new System.Drawing.Size(520, 236);
+            this.panelFile.TabIndex = 125;
+            this.panelFile.Visible = false;
+            // 
+            // labelFileName
+            // 
+            this.labelFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileName.BackColor = System.Drawing.Color.Transparent;
+            this.labelFileName.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFileName.ForeColor = System.Drawing.Color.Gray;
+            this.labelFileName.Location = new System.Drawing.Point(57, 134);
+            this.labelFileName.Name = "labelFileName";
+            this.labelFileName.Size = new System.Drawing.Size(397, 54);
+            this.labelFileName.TabIndex = 106;
+            this.labelFileName.Text = "Document Type";
+            this.labelFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::VehicleManagementSystem.Properties.Resources.document;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(217, 58);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(81, 73);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            // 
+            // documentPictureBox
+            // 
+            this.documentPictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.documentPictureBox.BorderRadius = 15;
+            this.documentPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.documentPictureBox.ImageRotate = 0F;
+            this.documentPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.documentPictureBox.Name = "documentPictureBox";
+            this.documentPictureBox.Size = new System.Drawing.Size(520, 236);
+            this.documentPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.documentPictureBox.TabIndex = 0;
+            this.documentPictureBox.TabStop = false;
+            this.documentPictureBox.Visible = false;
+            // 
             // addImageBtn
             // 
             this.addImageBtn.BorderColor = System.Drawing.Color.Red;
@@ -181,81 +234,6 @@
             this.addImageBtn.Text = "Click here to add documents file.";
             this.addImageBtn.Visible = false;
             this.addImageBtn.Click += new System.EventHandler(this.addImageBtn_Click);
-            // 
-            // panelFile
-            // 
-            this.panelFile.BackColor = System.Drawing.Color.Transparent;
-            this.panelFile.Controls.Add(this.guna2Button1);
-            this.panelFile.Controls.Add(this.labelFileName);
-            this.panelFile.Controls.Add(this.guna2PictureBox1);
-            this.panelFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFile.Location = new System.Drawing.Point(0, 0);
-            this.panelFile.Name = "panelFile";
-            this.panelFile.Size = new System.Drawing.Size(520, 236);
-            this.panelFile.TabIndex = 125;
-            this.panelFile.Visible = false;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BorderColor = System.Drawing.Color.Silver;
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.BorderThickness = 3;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button1.Location = new System.Drawing.Point(172, 164);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(170, 38);
-            this.guna2Button1.TabIndex = 117;
-            this.guna2Button1.Text = "View attached file.";
-            // 
-            // labelFileName
-            // 
-            this.labelFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFileName.BackColor = System.Drawing.Color.Transparent;
-            this.labelFileName.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFileName.ForeColor = System.Drawing.Color.Gray;
-            this.labelFileName.Location = new System.Drawing.Point(112, 108);
-            this.labelFileName.Name = "labelFileName";
-            this.labelFileName.Size = new System.Drawing.Size(293, 54);
-            this.labelFileName.TabIndex = 106;
-            this.labelFileName.Text = "Document Type";
-            this.labelFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::VehicleManagementSystem.Properties.Resources.document;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(213, 32);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(81, 73);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // documentPictureBox
-            // 
-            this.documentPictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.documentPictureBox.BorderRadius = 15;
-            this.documentPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.documentPictureBox.ImageRotate = 0F;
-            this.documentPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.documentPictureBox.Name = "documentPictureBox";
-            this.documentPictureBox.Size = new System.Drawing.Size(520, 236);
-            this.documentPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.documentPictureBox.TabIndex = 0;
-            this.documentPictureBox.TabStop = false;
-            this.documentPictureBox.Visible = false;
             // 
             // guna2RadioButton2
             // 
@@ -599,7 +577,6 @@
         private Guna.UI2.WinForms.Guna2Panel panelPreview;
         private FontAwesome.Sharp.IconButton closeImageBtn;
         private Guna.UI2.WinForms.Guna2Panel panelFile;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Label labelFileName;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox documentPictureBox;

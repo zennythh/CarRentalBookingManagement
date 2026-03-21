@@ -143,9 +143,9 @@ namespace VehicleManagementSystem.View.Modals {
 
         private void saveBtn_Click(object sender, EventArgs e) {
             saveBtn.Text = "Saving...";
-            saveBtn.Enabled = false;
-            closeBtn.Enabled = false;
+            saveBtn.Click -= saveBtn_Click;
             _presenter.SaveDocument();
+            saveBtn.Click += saveBtn_Click;
         }
     }
 }

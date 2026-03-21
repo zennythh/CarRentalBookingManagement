@@ -27,6 +27,7 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.labelHeader = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.label10 = new System.Windows.Forms.Label();
@@ -46,14 +47,12 @@
             this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2RadioButton2 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
-            this.panelFile = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.labelFileName = new System.Windows.Forms.Label();
             this.closeImageBtn = new FontAwesome.Sharp.IconButton();
+            this.panelFile = new Guna.UI2.WinForms.Guna2Panel();
+            this.labelFileName = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.documentPictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.saveBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             this.panelPreview.SuspendLayout();
             this.panelFile.SuspendLayout();
@@ -91,6 +90,26 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(533, 4);
             this.guna2Panel2.TabIndex = 104;
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeBtn.BackColor = System.Drawing.Color.White;
+            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeBtn.ForeColor = System.Drawing.Color.White;
+            this.closeBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
+            this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
+            this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.closeBtn.IconSize = 28;
+            this.closeBtn.Location = new System.Drawing.Point(518, 11);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(43, 30);
+            this.closeBtn.TabIndex = 11;
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // labelHeader
             // 
@@ -409,56 +428,6 @@
             this.panelPreview.Size = new System.Drawing.Size(520, 236);
             this.panelPreview.TabIndex = 125;
             // 
-            // panelFile
-            // 
-            this.panelFile.BackColor = System.Drawing.Color.Transparent;
-            this.panelFile.Controls.Add(this.guna2Button1);
-            this.panelFile.Controls.Add(this.labelFileName);
-            this.panelFile.Controls.Add(this.guna2PictureBox1);
-            this.panelFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFile.Location = new System.Drawing.Point(0, 0);
-            this.panelFile.Name = "panelFile";
-            this.panelFile.Size = new System.Drawing.Size(520, 236);
-            this.panelFile.TabIndex = 125;
-            this.panelFile.Visible = false;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BorderColor = System.Drawing.Color.Silver;
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.BorderThickness = 3;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button1.Location = new System.Drawing.Point(172, 164);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(170, 38);
-            this.guna2Button1.TabIndex = 117;
-            this.guna2Button1.Text = "View attached file.";
-            this.guna2Button1.Click += new System.EventHandler(this.btnViewAttached_Click);
-            // 
-            // labelFileName
-            // 
-            this.labelFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFileName.BackColor = System.Drawing.Color.Transparent;
-            this.labelFileName.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFileName.ForeColor = System.Drawing.Color.Gray;
-            this.labelFileName.Location = new System.Drawing.Point(112, 108);
-            this.labelFileName.Name = "labelFileName";
-            this.labelFileName.Size = new System.Drawing.Size(293, 54);
-            this.labelFileName.TabIndex = 106;
-            this.labelFileName.Text = "Document Type";
-            this.labelFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // closeImageBtn
             // 
             this.closeImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -482,12 +451,40 @@
             this.closeImageBtn.Visible = false;
             this.closeImageBtn.Click += new System.EventHandler(this.closeImageBtn_Click);
             // 
+            // panelFile
+            // 
+            this.panelFile.BackColor = System.Drawing.Color.Transparent;
+            this.panelFile.Controls.Add(this.labelFileName);
+            this.panelFile.Controls.Add(this.guna2PictureBox1);
+            this.panelFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFile.FillColor = System.Drawing.SystemColors.Control;
+            this.panelFile.Location = new System.Drawing.Point(0, 0);
+            this.panelFile.Name = "panelFile";
+            this.panelFile.Size = new System.Drawing.Size(520, 236);
+            this.panelFile.TabIndex = 125;
+            this.panelFile.Visible = false;
+            // 
+            // labelFileName
+            // 
+            this.labelFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileName.BackColor = System.Drawing.Color.Transparent;
+            this.labelFileName.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFileName.ForeColor = System.Drawing.Color.Gray;
+            this.labelFileName.Location = new System.Drawing.Point(68, 133);
+            this.labelFileName.Name = "labelFileName";
+            this.labelFileName.Size = new System.Drawing.Size(389, 54);
+            this.labelFileName.TabIndex = 106;
+            this.labelFileName.Text = "Document Type";
+            this.labelFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.Image = global::VehicleManagementSystem.Properties.Resources.document;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(213, 32);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(218, 57);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(81, 73);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -529,26 +526,6 @@
             this.saveBtn.TabIndex = 117;
             this.saveBtn.Text = "Save Document";
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.BackColor = System.Drawing.Color.White;
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBtn.ForeColor = System.Drawing.Color.White;
-            this.closeBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
-            this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
-            this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.closeBtn.IconSize = 28;
-            this.closeBtn.Location = new System.Drawing.Point(518, 11);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(43, 30);
-            this.closeBtn.TabIndex = 11;
-            this.closeBtn.UseVisualStyleBackColor = false;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // AddNewVehicleDocumentModal
             // 
@@ -622,6 +599,5 @@
         private Guna.UI2.WinForms.Guna2Panel panelFile;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.Label labelFileName;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

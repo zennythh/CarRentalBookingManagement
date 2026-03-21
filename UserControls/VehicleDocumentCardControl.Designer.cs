@@ -135,7 +135,7 @@
             this.btnDelete.FillColor = System.Drawing.Color.Transparent;
             this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.btnDelete.Location = new System.Drawing.Point(118, 9);
+            this.btnDelete.Location = new System.Drawing.Point(172, 9);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(48, 42);
@@ -167,7 +167,7 @@
             // btnRenew
             // 
             this.btnRenew.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRenew.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.infoIcon;
+            this.btnRenew.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.resend__1_;
             this.btnRenew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRenew.BorderColor = System.Drawing.Color.Silver;
             this.btnRenew.BorderRadius = 10;
@@ -179,11 +179,13 @@
             this.btnRenew.FillColor = System.Drawing.Color.Transparent;
             this.btnRenew.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRenew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRenew.Location = new System.Drawing.Point(172, 9);
+            this.btnRenew.Location = new System.Drawing.Point(118, 9);
             this.btnRenew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRenew.Name = "btnRenew";
+            this.btnRenew.Padding = new System.Windows.Forms.Padding(10);
             this.btnRenew.Size = new System.Drawing.Size(48, 42);
             this.btnRenew.TabIndex = 1;
+            this.btnRenew.Click += new System.EventHandler(this.btnRenew_Click);
             // 
             // viewBtn
             // 
