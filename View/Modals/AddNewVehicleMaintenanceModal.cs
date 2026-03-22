@@ -12,6 +12,7 @@ namespace VehicleManagementSystem.View.Modals {
         VehicleDto _vehicle;
 
         public string VehiclePlateNum => _vehicle.LicensePlate;
+        public decimal VehicleCurrentOdometer => _vehicle.CurrentOdometerReading;
         public int MaintenanceTypeID => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.MaintenanceTypeID ?? 0;
         public string ScheduleType => inputScheduleType.Text;
         public string Description => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.Description.ToString() ?? " ";
@@ -39,6 +40,10 @@ namespace VehicleManagementSystem.View.Modals {
 
         public void CloseModal() {
             this.Close();
+        }
+
+        public void ShowSuccess(string message) {
+            MessageBox.Show(message, "Success");
         }
 
         public void ShowError(string message) {

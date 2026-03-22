@@ -38,8 +38,8 @@ namespace VehicleManagementSystem.UserControls {
             progressCIrcle.ProgressColor = GetStatusColor(currentStatus);
             progressCIrcle.ProgressColor2 = GetStatusColor(currentStatus);
 
-            //double progress = CalculateOverallProgress(maintenanceSchedule, mileageInt);
-            //progressCIrcle.Value = (int)progress;
+            
+            progressCIrcle.Value = (int)maintenanceSchedule.MaintenanceProgressPercentage;
 
             labelDueDate.Text = maintenanceSchedule.NextDueDate?
                                 .ToString("MMM dd, yyyy")
@@ -49,7 +49,7 @@ namespace VehicleManagementSystem.UserControls {
                                 "—";
             
 
-            labelDueOdometer.Text = $"{maintenanceSchedule.MilesUntilDue} (At {nextDueMillage})";
+            labelDueOdometer.Text = $"In {maintenanceSchedule.MilesUntilDue}Km (At {nextDueMillage})";
             ;
         }
 

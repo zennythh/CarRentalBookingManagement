@@ -413,7 +413,7 @@
             this.panelIntervalSettings.Controls.Add(this.inputLastServiceDate);
             this.panelIntervalSettings.Controls.Add(this.inputMonthlyInterval);
             this.panelIntervalSettings.Controls.Add(this.label5);
-            this.panelIntervalSettings.Location = new System.Drawing.Point(3, 172);
+            this.panelIntervalSettings.Location = new System.Drawing.Point(0, 162);
             this.panelIntervalSettings.Name = "panelIntervalSettings";
             this.panelIntervalSettings.Size = new System.Drawing.Size(577, 230);
             this.panelIntervalSettings.TabIndex = 156;
@@ -480,6 +480,7 @@
             this.inputDueMileige.SelectedText = "";
             this.inputDueMileige.Size = new System.Drawing.Size(241, 44);
             this.inputDueMileige.TabIndex = 143;
+            this.inputDueMileige.TextChanged += new System.EventHandler(this.PreviewCard_Load);
             // 
             // inputDueDate
             // 
@@ -499,6 +500,7 @@
             this.inputDueDate.Size = new System.Drawing.Size(244, 44);
             this.inputDueDate.TabIndex = 150;
             this.inputDueDate.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
+            this.inputDueDate.ValueChanged += new System.EventHandler(this.PreviewCard_Load);
             // 
             // label12
             // 

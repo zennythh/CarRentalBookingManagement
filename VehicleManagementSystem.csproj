@@ -311,6 +311,7 @@
     <Compile Include="Presenters\addNewVehiclePresenter.cs" />
     <Compile Include="Presenters\maintenanceManagementPresenter.cs" />
     <Compile Include="Presenters\vehicleDetailsDocumentPresenter.cs" />
+    <Compile Include="Presenters\vehicleDetailsMaintenancePresenter.cs" />
     <Compile Include="Presenters\vehicleManagementPresenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -482,6 +483,7 @@
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
     <Compile Include="View\Interfaces\IVehicleDetailsDocumentView.cs" />
     <Compile Include="View\Interfaces\IMaintenanceManagementView.cs" />
+    <Compile Include="View\Interfaces\IVehicleDetialsMaintenanceView.cs" />
     <Compile Include="View\Modals\AddNewVehicleMaintenanceTypeModal.cs">
       <SubType>Form</SubType>
     </Compile>

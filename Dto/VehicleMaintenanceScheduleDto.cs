@@ -27,6 +27,8 @@ namespace VehicleManagementSystem.Dto {
         public decimal? LastServiceMileage { get; set; }
         public DateTime? LastServiceDate { get; set; }
 
+        public DateTime? CompletedDate { get; set; }
+
         public decimal CurrentVehicleMileage { get; set; }
 
         public DateTime? NextDueDate {
@@ -71,6 +73,45 @@ namespace VehicleManagementSystem.Dto {
                     return NextDueMileage.Value - CurrentVehicleMileage;
                 }
                 return null;
+            }
+        }
+
+        public int MaintenanceProgressPercentage {
+            get {
+                if (ScheduleType == "Recurring") {
+                    if (MileageInterval.HasValue && LastServiceMileage.HasValue && NextDueMileage.HasValue) {
+                        decimal milesSinceLastService = CurrentVehicleMileage - LastServiceMileage.Value;
+                        decimal progress = (milesSinceLastService / MileageInterval.Value) * 100;
+                        return (int)Math.Min(100, Math.Max(0, progress));
+                    }
+
+                    if (MonthInterval.HasValue && LastServiceDate.HasValue && NextDueDate.HasValue) {
+                        double totalDays = (NextDueDate.Value - LastServiceDate.Value).TotalDays;
+                        double daysPassed = (DateTime.Now - LastServiceDate.Value).TotalDays;
+                        double progress = (daysPassed / totalDays) * 100;
+                        return (int)Math.Min(100, Math.Max(0, progress));
+                    }
+                } else // OneTime
+                  {
+                    if (DueMileage.HasValue) {
+                        // Calculate how close we are to due mileage
+                        decimal milesRemaining = DueMileage.Value - CurrentVehicleMileage;
+                        if (milesRemaining <= 0) return 100;
+                        if (milesRemaining >= 1000) return 0;
+
+                        return (int)((1000 - milesRemaining) / 1000 * 100);
+                    }
+
+                    if (DueDate.HasValue) {
+                        int daysRemaining = (DueDate.Value - DateTime.Now).Days;
+                        if (daysRemaining <= 0) return 100;
+                        if (daysRemaining >= 30) return 0;
+
+                        return (int)((30 - daysRemaining) / 30.0 * 100);
+                    }
+                }
+
+                return 0;
             }
         }
 
