@@ -22,7 +22,7 @@ namespace VehicleManagementSystem.UserControls {
             int mileageInt = (int)currentMileage;
             string currentStatus = maintenanceSchedule.GetStatus(mileageInt);
 
-            labelMaintenanceType.Text = maintenanceSchedule.MaintenanceType;
+            labelMaintenanceType.Text = maintenanceSchedule.TypeId.ToString();
             labelMaintenanceType.ForeColor = GetStatusColor(currentStatus);
             labelInterval.Text = GetInterval(maintenanceSchedule);
             labelStatus.Text = currentStatus;

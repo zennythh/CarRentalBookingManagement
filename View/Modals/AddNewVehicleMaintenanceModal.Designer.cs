@@ -44,8 +44,8 @@
             this.inputLastServiceDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.maintenanceCardControl = new VehicleManagementSystem.UserControls.MaintenanceCardControl();
+            this.label6 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.panelPreview.SuspendLayout();
             this.SuspendLayout();
@@ -176,7 +176,8 @@
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(204, 44);
             this.saveBtn.TabIndex = 117;
-            this.saveBtn.Text = "Save Document";
+            this.saveBtn.Text = "Save Schedule";
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // cancelBtn
             // 
@@ -370,6 +371,15 @@
             this.panelPreview.Size = new System.Drawing.Size(507, 236);
             this.panelPreview.TabIndex = 152;
             // 
+            // maintenanceCardControl
+            // 
+            this.maintenanceCardControl.BackColor = System.Drawing.Color.Transparent;
+            this.maintenanceCardControl.Location = new System.Drawing.Point(20, 12);
+            this.maintenanceCardControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.maintenanceCardControl.Name = "maintenanceCardControl";
+            this.maintenanceCardControl.Size = new System.Drawing.Size(466, 208);
+            this.maintenanceCardControl.TabIndex = 0;
+            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -384,15 +394,6 @@
             this.label6.Size = new System.Drawing.Size(122, 23);
             this.label6.TabIndex = 153;
             this.label6.Text = "Live Preview";
-            // 
-            // maintenanceCardControl
-            // 
-            this.maintenanceCardControl.BackColor = System.Drawing.Color.Transparent;
-            this.maintenanceCardControl.Location = new System.Drawing.Point(20, 12);
-            this.maintenanceCardControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.maintenanceCardControl.Name = "maintenanceCardControl";
-            this.maintenanceCardControl.Size = new System.Drawing.Size(466, 208);
-            this.maintenanceCardControl.TabIndex = 0;
             // 
             // AddNewVehicleMaintenanceModal
             // 

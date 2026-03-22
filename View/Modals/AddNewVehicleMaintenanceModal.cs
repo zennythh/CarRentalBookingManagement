@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
@@ -10,9 +11,12 @@ using VehicleManagementSystem.View.Interfaces;
 namespace VehicleManagementSystem.View.Modals {
     public partial class AddNewVehicleMaintenanceModal : Form, IAddNewVehicleMaintenanceView {
         AddNewVehicleMaintenancePresenter _presenter;
+        VehicleDto _vehicle;
 
-        public string MaintenanceType => inputType.Text;
-        public int SelectedMainId => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.TaskID ?? 0;
+        public string PlateNumber => _vehicle.LicensePlate;
+        public int TypeId => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.TaskID ?? 0;
+        public string Description => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.Description.ToString() ?? " ";
+
         public int? IntervalKm { get {
                 if (int.TryParse(inputMilleageInterval.Text, out int result)) return result;
                 return null;
@@ -31,6 +35,14 @@ namespace VehicleManagementSystem.View.Modals {
                 return 0;
             }
         }
+        
+        public void CloseModal() {
+            this.Close();
+        }
+
+        public void ShowError(string message) {
+            MessageBox.Show(message, "Error");
+        }
 
         public DateTime LastPerformedDate => inputLastServiceDate.Value;
 
@@ -44,7 +56,7 @@ namespace VehicleManagementSystem.View.Modals {
             get { return inputType.SelectedItem as VehicleMaintenanceTypeDto; }
         }
 
-        VehicleDto _vehicle;
+        
 
         public AddNewVehicleMaintenanceModal(VehicleDto vehicle) {
             InitializeComponent();
@@ -60,8 +72,7 @@ namespace VehicleManagementSystem.View.Modals {
         private void LoadPreviewCard() {
        
             var newMaintenanceSchedule = new VehicleMaintenanceScheduleDto {
-                TaskId = SelectedMainId,
-                MaintenanceType = MaintenanceType,
+                TypeId = TypeId,
                 Description = SelectedType?.Description,
 
                 IntervalKm = IntervalKm,
@@ -103,6 +114,14 @@ namespace VehicleManagementSystem.View.Modals {
             }
 
             LoadPreviewCard();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e) {
+            saveBtn.Click -= saveBtn_Click;
+            saveBtn.Text = "Saving...";
+            _presenter.SaveMaintenanceSchedule();
+            saveBtn.Text = "Save Schedule";
+            saveBtn.Click += saveBtn_Click;
         }
     }
 }

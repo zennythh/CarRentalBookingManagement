@@ -9,9 +9,8 @@ using VehicleManagementSystem.Models;
 
 namespace VehicleManagementSystem.Dto {
     public class VehicleMaintenanceScheduleDto {
-        public int TaskId { get; set; }
         public string PlateNumber { get; set; }
-        public string MaintenanceType { get; set; }
+        public int TypeId { get; set; }
         public string Description { get; set; }
 
         public int? IntervalKm { get; set; }
