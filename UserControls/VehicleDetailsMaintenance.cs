@@ -32,6 +32,35 @@ namespace VehicleManagementSystem.UserControls {
             _presenter.LoadMaintenance();
         }
 
+        public void DisplayDashboard(List<VehicleMaintenanceScheduleDto> schedules) {
+            int total = schedules.Count;
+            int upcoming = schedules.Count(s => s.IsUpcoming);
+            int dueSoon = schedules.Count(s => s.IsDueSoon);
+            int overdue = schedules.Count(s => s.IsOverdue);
+
+            labelTotalCount.Text = total.ToString();
+            labelUpcomingCount.Text = upcoming.ToString();
+            labelDueSoonCount.Text = dueSoon.ToString();
+            labelOverDueCount.Text = overdue.ToString();
+
+            DisplayMostUpcoming(schedules);
+        }
+
+        public void DisplayMostUpcoming(List<VehicleMaintenanceScheduleDto> schedules) {
+            var mostUrgent = schedules
+                .Where(s => s.Status == "Scheduled")
+                .OrderByDescending(s => s.MaintenanceProgressPercentage)
+                .FirstOrDefault();
+
+            if (mostUrgent != null) {
+                labelMostUpcomingName.Text = mostUrgent.MaintenanceName;
+
+                labelMostUpcomingDetials.Text = mostUrgent.MilesUntilDue < mostUrgent.DaysUntilDue * 50
+                    ? $"{mostUrgent.MilesUntilDue:N0} km remaining"
+                    : $"{mostUrgent.DaysUntilDue} days remaining";
+            }
+        }
+
         public void DisplayMaintenanceSchedule(List<VehicleMaintenanceScheduleDto> maintenanceSchedule) {
             tableMain.SuspendLayout();
 
@@ -74,8 +103,18 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void addNewVehBtn_Click(object sender, EventArgs e) {
-            var addVehicleMaintenanceForm = new AddNewVehicleMaintenanceModal(_vehicle);
-            addVehicleMaintenanceForm.ShowDialog();
+            using(var addVehicleMaintenanceForm = new AddNewVehicleMaintenanceModal(_vehicle)) {
+                DialogResult dialogResult = addVehicleMaintenanceForm.ShowDialog();
+
+                if (dialogResult != DialogResult.OK) return;
+
+                _presenter.LoadDashboard();
+                _presenter.LoadMaintenance();
+            }
+            
         }
+
+
+
     }
 }

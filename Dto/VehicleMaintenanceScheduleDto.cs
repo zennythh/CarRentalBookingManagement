@@ -78,36 +78,44 @@ namespace VehicleManagementSystem.Dto {
 
         public int MaintenanceProgressPercentage {
             get {
+             
                 if (ScheduleType == "Recurring") {
-                    if (MileageInterval.HasValue && LastServiceMileage.HasValue && NextDueMileage.HasValue) {
-                        decimal milesSinceLastService = CurrentVehicleMileage - LastServiceMileage.Value;
-                        decimal progress = (milesSinceLastService / MileageInterval.Value) * 100;
+                    if (MileageInterval.HasValue && MileageInterval.Value > 0) {
+               
+                        decimal startPoint = LastServiceMileage ?? CurrentVehicleMileage;
+
+                        decimal milesSinceStart = CurrentVehicleMileage - startPoint;
+                        decimal progress = (milesSinceStart / MileageInterval.Value) * 100;
                         return (int)Math.Min(100, Math.Max(0, progress));
                     }
 
-                    if (MonthInterval.HasValue && LastServiceDate.HasValue && NextDueDate.HasValue) {
-                        double totalDays = (NextDueDate.Value - LastServiceDate.Value).TotalDays;
-                        double daysPassed = (DateTime.Now - LastServiceDate.Value).TotalDays;
+                  
+                    if (MonthInterval.HasValue && NextDueDate.HasValue) {
+                        DateTime startDate = LastServiceDate ?? DateTime.Today;
+
+                        double totalDays = (NextDueDate.Value - startDate).TotalDays;
+                        if (totalDays <= 0) return 100;
+
+                        double daysPassed = (DateTime.Today - startDate).TotalDays;
                         double progress = (daysPassed / totalDays) * 100;
                         return (int)Math.Min(100, Math.Max(0, progress));
                     }
-                } else // OneTime
-                  {
-                    if (DueMileage.HasValue) {
-                        // Calculate how close we are to due mileage
-                        decimal milesRemaining = DueMileage.Value - CurrentVehicleMileage;
-                        if (milesRemaining <= 0) return 100;
-                        if (milesRemaining >= 1000) return 0;
+                }
 
-                        return (int)((1000 - milesRemaining) / 1000 * 100);
+                else if (ScheduleType == "OneTime") {
+                    if (DueMileage.HasValue && DueMileage.Value > 0) {
+                        decimal progress = (CurrentVehicleMileage / (CurrentVehicleMileage + DueMileage.Value)) * 100;
+                        return (int)Math.Min(100, Math.Max(0, progress));
                     }
 
                     if (DueDate.HasValue) {
-                        int daysRemaining = (DueDate.Value - DateTime.Now).Days;
-                        if (daysRemaining <= 0) return 100;
-                        if (daysRemaining >= 30) return 0;
+                        DateTime startDate = LastServiceDate ?? DateTime.Today;
+                        double totalWindow = (DueDate.Value - startDate).TotalDays;
+                        if (totalWindow <= 0) return 100;
 
-                        return (int)((30 - daysRemaining) / 30.0 * 100);
+                        double daysPassed = (DateTime.Today - startDate).TotalDays;
+                        double progress = (daysPassed / totalWindow) * 100;
+                        return (int)Math.Min(100, Math.Max(0, progress));
                     }
                 }
 
@@ -134,6 +142,13 @@ namespace VehicleManagementSystem.Dto {
                 bool mileageDueSoon = MilesUntilDue.HasValue && MilesUntilDue.Value > 0 && MilesUntilDue.Value <= 500;
 
                 return dateDueSoon || mileageDueSoon;
+            }
+        }
+
+        public bool IsUpcoming {
+            get {
+                if (Status != "Scheduled") return false;
+                return !IsOverdue && !IsDueSoon;
             }
         }
 

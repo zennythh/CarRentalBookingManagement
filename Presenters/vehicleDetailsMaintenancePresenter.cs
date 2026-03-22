@@ -19,12 +19,21 @@ namespace VehicleManagementSystem.Presenters {
         public void LoadMaintenance() {
             try {
                 var schedules = _services.GetMaintenanceSchedulesByVehicle(_view.VehiclePlateNum);
+                _view.DisplayDashboard(schedules);
                 _view.DisplayMaintenanceSchedule(schedules);
             } catch (Exception ex) { 
                 _view.ShowError(ex.Message);
             }
         }
 
+        public void LoadDashboard() {
+            try {
+                var schedules = _services.GetMaintenanceSchedulesByVehicle(_view.VehiclePlateNum);
+                _view.DisplayDashboard(schedules);
+            } catch (Exception ex) {
+                _view.ShowError(ex.Message);
+            }
+        }
 
     }   
 }

@@ -32,15 +32,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox8 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.labelOverDueCount = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labelUpcomingCount = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelMostUpcomingDetials = new System.Windows.Forms.Label();
+            this.labelMostUpcomingName = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -49,10 +49,10 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelTotalCount = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelDueSoonCount = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.addNewVehBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -191,7 +191,7 @@
             // 
             this.guna2Panel6.BorderRadius = 10;
             this.guna2Panel6.Controls.Add(this.guna2PictureBox8);
-            this.guna2Panel6.Controls.Add(this.label16);
+            this.guna2Panel6.Controls.Add(this.labelOverDueCount);
             this.guna2Panel6.Controls.Add(this.label17);
             this.guna2Panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel6.FillColor = System.Drawing.Color.White;
@@ -216,17 +216,17 @@
             this.guna2PictureBox8.TabIndex = 44;
             this.guna2PictureBox8.TabStop = false;
             // 
-            // label16
+            // labelOverDueCount
             // 
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(11, 33);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(140, 31);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "1";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelOverDueCount.BackColor = System.Drawing.Color.Transparent;
+            this.labelOverDueCount.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOverDueCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelOverDueCount.Location = new System.Drawing.Point(11, 33);
+            this.labelOverDueCount.Name = "labelOverDueCount";
+            this.labelOverDueCount.Size = new System.Drawing.Size(140, 31);
+            this.labelOverDueCount.TabIndex = 1;
+            this.labelOverDueCount.Text = "1";
+            this.labelOverDueCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label17
             // 
@@ -244,7 +244,7 @@
             // 
             this.guna2Panel5.BorderRadius = 10;
             this.guna2Panel5.Controls.Add(this.guna2PictureBox7);
-            this.guna2Panel5.Controls.Add(this.label13);
+            this.guna2Panel5.Controls.Add(this.labelUpcomingCount);
             this.guna2Panel5.Controls.Add(this.label15);
             this.guna2Panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel5.FillColor = System.Drawing.Color.White;
@@ -269,17 +269,17 @@
             this.guna2PictureBox7.TabIndex = 44;
             this.guna2PictureBox7.TabStop = false;
             // 
-            // label13
+            // labelUpcomingCount
             // 
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(11, 33);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(140, 31);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "5";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelUpcomingCount.BackColor = System.Drawing.Color.Transparent;
+            this.labelUpcomingCount.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUpcomingCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelUpcomingCount.Location = new System.Drawing.Point(11, 33);
+            this.labelUpcomingCount.Name = "labelUpcomingCount";
+            this.labelUpcomingCount.Size = new System.Drawing.Size(140, 31);
+            this.labelUpcomingCount.TabIndex = 1;
+            this.labelUpcomingCount.Text = "5";
+            this.labelUpcomingCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label15
             // 
@@ -296,8 +296,8 @@
             // guna2Panel4
             // 
             this.guna2Panel4.BorderRadius = 10;
-            this.guna2Panel4.Controls.Add(this.label18);
-            this.guna2Panel4.Controls.Add(this.label11);
+            this.guna2Panel4.Controls.Add(this.labelMostUpcomingDetials);
+            this.guna2Panel4.Controls.Add(this.labelMostUpcomingName);
             this.guna2Panel4.Controls.Add(this.label12);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
@@ -307,29 +307,28 @@
             this.guna2Panel4.Size = new System.Drawing.Size(241, 83);
             this.guna2Panel4.TabIndex = 46;
             // 
-            // label18
+            // labelMostUpcomingDetials
             // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Location = new System.Drawing.Point(14, 58);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(164, 17);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "in 120km (at 12120km)";
+            this.labelMostUpcomingDetials.AutoSize = true;
+            this.labelMostUpcomingDetials.BackColor = System.Drawing.Color.Transparent;
+            this.labelMostUpcomingDetials.Font = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMostUpcomingDetials.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelMostUpcomingDetials.Location = new System.Drawing.Point(14, 58);
+            this.labelMostUpcomingDetials.Name = "labelMostUpcomingDetials";
+            this.labelMostUpcomingDetials.Size = new System.Drawing.Size(164, 17);
+            this.labelMostUpcomingDetials.TabIndex = 2;
+            this.labelMostUpcomingDetials.Text = "in 120km (at 12120km)";
             // 
-            // label11
+            // labelMostUpcomingName
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(14, 33);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(138, 18);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Change Engine oil";
+            this.labelMostUpcomingName.BackColor = System.Drawing.Color.Transparent;
+            this.labelMostUpcomingName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMostUpcomingName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelMostUpcomingName.Location = new System.Drawing.Point(14, 33);
+            this.labelMostUpcomingName.Name = "labelMostUpcomingName";
+            this.labelMostUpcomingName.Size = new System.Drawing.Size(218, 18);
+            this.labelMostUpcomingName.TabIndex = 1;
+            this.labelMostUpcomingName.Text = "Change Engine oil";
             // 
             // label12
             // 
@@ -401,7 +400,7 @@
             this.guna2Panel2.BorderRadius = 10;
             this.guna2Panel2.Controls.Add(this.label8);
             this.guna2Panel2.Controls.Add(this.guna2PictureBox3);
-            this.guna2Panel2.Controls.Add(this.label6);
+            this.guna2Panel2.Controls.Add(this.labelTotalCount);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel2.FillColor = System.Drawing.Color.White;
             this.guna2Panel2.Location = new System.Drawing.Point(9, 0);
@@ -437,23 +436,23 @@
             this.guna2PictureBox3.TabIndex = 46;
             this.guna2PictureBox3.TabStop = false;
             // 
-            // label6
+            // labelTotalCount
             // 
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(11, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 31);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "8";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelTotalCount.BackColor = System.Drawing.Color.Transparent;
+            this.labelTotalCount.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelTotalCount.Location = new System.Drawing.Point(11, 33);
+            this.labelTotalCount.Name = "labelTotalCount";
+            this.labelTotalCount.Size = new System.Drawing.Size(140, 31);
+            this.labelTotalCount.TabIndex = 1;
+            this.labelTotalCount.Text = "8";
+            this.labelTotalCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.Controls.Add(this.guna2PictureBox2);
-            this.guna2Panel1.Controls.Add(this.label5);
+            this.guna2Panel1.Controls.Add(this.labelDueSoonCount);
             this.guna2Panel1.Controls.Add(this.label4);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
@@ -478,17 +477,17 @@
             this.guna2PictureBox2.TabIndex = 44;
             this.guna2PictureBox2.TabStop = false;
             // 
-            // label5
+            // labelDueSoonCount
             // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(11, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 31);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "2";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelDueSoonCount.BackColor = System.Drawing.Color.Transparent;
+            this.labelDueSoonCount.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDueSoonCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelDueSoonCount.Location = new System.Drawing.Point(11, 33);
+            this.labelDueSoonCount.Name = "labelDueSoonCount";
+            this.labelDueSoonCount.Size = new System.Drawing.Size(140, 31);
+            this.labelDueSoonCount.TabIndex = 1;
+            this.labelDueSoonCount.Text = "2";
+            this.labelDueSoonCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
@@ -589,13 +588,13 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelDueSoonCount;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label labelOverDueCount;
         private System.Windows.Forms.Label label17;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox7;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelUpcomingCount;
         private System.Windows.Forms.Label label15;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private System.Windows.Forms.Label label12;
@@ -603,10 +602,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelTotalCount;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelMostUpcomingDetials;
+        private System.Windows.Forms.Label labelMostUpcomingName;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox5;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox8;

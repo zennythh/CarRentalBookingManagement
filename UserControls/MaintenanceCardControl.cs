@@ -21,7 +21,9 @@ namespace VehicleManagementSystem.UserControls {
             }
 
             int mileageInt = (int)maintenanceSchedule.CurrentVehicleMileage;
-            string currentStatus = maintenanceSchedule.Status;
+            string currentStatus = maintenanceSchedule.IsUpcoming ? "Upcoming" :
+                                   maintenanceSchedule.IsDueSoon ? "Due Soon" :
+                                   maintenanceSchedule.IsOverdue ? "Over Due" : "";
 
             if(maintenanceSchedule.ScheduleType == "OneTime") {
                 labelInterval.Text = "One time maintenance";
@@ -30,16 +32,15 @@ namespace VehicleManagementSystem.UserControls {
             }
 
             labelMaintenanceType.Text = maintenanceSchedule.MaintenanceName.ToString();
-            labelMaintenanceType.ForeColor = GetStatusColor(currentStatus);
+            labelMaintenanceType.ForeColor = GetStatusColor(maintenanceSchedule);
             
             labelStatus.Text = currentStatus;
-            labelStatus.ForeColor = GetStatusColor(currentStatus);
+            labelStatus.ForeColor = GetStatusColor(maintenanceSchedule);
 
-            progressCIrcle.ProgressColor = GetStatusColor(currentStatus);
-            progressCIrcle.ProgressColor2 = GetStatusColor(currentStatus);
-
+            progressCIrcle.ProgressColor = GetStatusColor(maintenanceSchedule);
+            progressCIrcle.ProgressColor2 = GetStatusColor(maintenanceSchedule);
             
-            progressCIrcle.Value = (int)maintenanceSchedule.MaintenanceProgressPercentage;
+            progressCIrcle.Value = maintenanceSchedule.MaintenanceProgressPercentage;
 
             labelDueDate.Text = maintenanceSchedule.NextDueDate?
                                 .ToString("MMM dd, yyyy")
@@ -68,16 +69,16 @@ namespace VehicleManagementSystem.UserControls {
                     return Math.Round(progress, 2);
         }
 
-        private Color GetStatusColor(string status) {
-            if (status == "Upcoming") {
+        private Color GetStatusColor(VehicleMaintenanceScheduleDto maintenanceSchedule) {
+            if (maintenanceSchedule.Status == "Completed") {
+                return Color.SeaGreen;
+            } else if (maintenanceSchedule.IsUpcoming) {
                 return Color.SteelBlue; 
-            } else if (status == "Due Soon") {
+            } else if (maintenanceSchedule.IsDueSoon) {
                 return Color.Goldenrod; 
-            } else if (status == "Overdue") {
+            } else if (maintenanceSchedule.IsOverdue) {
                 return Color.IndianRed; 
-            } else if (status == "Completed") {
-                return Color.SeaGreen; 
-            } else {
+            }  else {
                 return Color.Gray; 
             }
         }
