@@ -62,6 +62,34 @@ namespace VehicleManagementSystem.Services.Implementations {
             return tasks;
         }
 
+        public void AddMaintenanceSchedule(VehicleMaintenanceScheduleDto schedule) {
+            using (MySqlConnection conn = MySQLConnectionContext.Create()) {
+                string sql = @"
+            INSERT INTO VehicleMaintenanceSchedules 
+            (VehiclePlateNum, TypeId, CustomMileageInterval, CustomMonthInterval, 
+             LastServiceOdometer, LastServiceDate, NextServiceOdometer, NextServiceDate) 
+            VALUES 
+            (@Plate, @TypeId, @IntervalKm, @IntervalMonths, 
+             @LastOdo, @LastDate, @NextOdo, @NextDate);";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
+                    cmd.Parameters.AddWithValue("@Plate", schedule.PlateNumber);
+                    cmd.Parameters.AddWithValue("@TypeId", schedule.TypeId);
+
+                    cmd.Parameters.AddWithValue("@IntervalKm", (object)schedule.IntervalKm ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@IntervalMonths", (object)schedule.IntervalMonths ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@LastOdo", schedule.LastPerformedOdometer);
+                    cmd.Parameters.AddWithValue("@LastDate", schedule.LastPerformedDate);
+
+                    cmd.Parameters.AddWithValue("@NextOdo", (object)schedule.NextDueOdometer ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@NextDate", (object)schedule.NextDueDate ?? DBNull.Value);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
 
 
