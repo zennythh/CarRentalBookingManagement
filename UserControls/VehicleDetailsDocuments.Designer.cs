@@ -78,7 +78,7 @@
             this.searchBox.SelectedText = "";
             this.searchBox.Size = new System.Drawing.Size(354, 48);
             this.searchBox.TabIndex = 10;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged_1);
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // addNewVehBtn
             // 

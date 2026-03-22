@@ -69,7 +69,8 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e) {
-
+            _searchTimer.Stop();
+            _searchTimer.Start();
         }
 
         private void addNewVehBtn_Click(object sender, EventArgs e) {
@@ -91,14 +92,10 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void SearchTimer_Tick(object sender, EventArgs e) {
-            _searchTimer.Stop(); // IMPORTANT: run only once
-            _presenter.SearchDocument();
+            _searchTimer.Stop(); 
+            _presenter.LoadSearchDocument();
         }
 
-        private void searchBox_TextChanged_1(object sender, EventArgs e) {
-            _searchTimer.Stop();
-            _searchTimer.Start();
-        }
     }
 }
 
