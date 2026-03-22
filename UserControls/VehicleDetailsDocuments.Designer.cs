@@ -27,13 +27,13 @@
             this.searchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.addNewVehBtn = new Guna.UI2.WinForms.Guna2Button();
             this.tableHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.labelNoDocument = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +78,7 @@
             this.searchBox.SelectedText = "";
             this.searchBox.Size = new System.Drawing.Size(354, 48);
             this.searchBox.TabIndex = 10;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged_1);
             // 
             // addNewVehBtn
             // 
@@ -127,6 +128,45 @@
             this.tableHeader.Size = new System.Drawing.Size(1109, 43);
             this.tableHeader.TabIndex = 13;
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoEllipsis = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(490, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 28);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Extension";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoEllipsis = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(169, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(214, 28);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Document Name";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoEllipsis = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(3, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 28);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Type";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -166,32 +206,6 @@
             this.label7.Text = "Expiration Date";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoEllipsis = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(169, 7);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(214, 28);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Document Name";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoEllipsis = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(3, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 28);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Type";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // labelNoDocument
             // 
             this.labelNoDocument.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -205,19 +219,6 @@
             this.labelNoDocument.Text = "No documents found. Click \'Add Document\' to upload registration or insurance.";
             this.labelNoDocument.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelNoDocument.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoEllipsis = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(490, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 28);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Extension";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // VehicleDetailsDocuments
             // 

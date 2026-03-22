@@ -18,6 +18,10 @@ namespace VehicleManagementSystem.UserControls {
         private VehicleDto _vehicle;
         private vehicleDetailsDocumentPresenter _presenter;
 
+        private Timer _searchTimer;
+
+        public string SearchInput => searchBox.Text.ToLower();
+
         public string VehiclePlateNum => _vehicle.LicensePlate;
 
         public VehicleDetailsDocuments(VehicleDto vehicle) {
@@ -81,6 +85,19 @@ namespace VehicleManagementSystem.UserControls {
 
         private void VehicleDetailsDocuments_Load(object sender, EventArgs e) {
             _presenter.LoadAllDocuments();
+            _searchTimer = new Timer();
+            _searchTimer.Interval = 350; // 0.35 seconds
+            _searchTimer.Tick += SearchTimer_Tick;
+        }
+
+        private void SearchTimer_Tick(object sender, EventArgs e) {
+            _searchTimer.Stop(); // IMPORTANT: run only once
+            _presenter.SearchDocument();
+        }
+
+        private void searchBox_TextChanged_1(object sender, EventArgs e) {
+            _searchTimer.Stop();
+            _searchTimer.Start();
         }
     }
 }
