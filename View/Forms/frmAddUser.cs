@@ -71,6 +71,11 @@ namespace PL_VehicleRental.Forms
                 "Username can only contain letters and numbers.",
                 lblUsernameError);
 
+            _validator.Custom(fullNameTxt, () => fullNameTxt.Text.Trim().Length >= 5, "Name must be atleast 5 characters.", lblFullNameError);
+            _validator.Custom(fullNameTxt, () => Regex.IsMatch(fullNameTxt.Text.Trim(), @"^[a-zA-Z\s\-']+$"), "Invalid character.", lblFullNameError);
+
+            _validator.Custom(addressTextBox, () => Regex.IsMatch(addressTextBox.Text.Trim(), @"^[a-zA-Z0-9\s.,'#-]+$"), "Invalid character.", lblAddressError);
+
             _validator.Required(fullNameTxt, "Full name is required.", lblFullNameError);
             _validator.Required(emaiTextBox, "Email is required.", lblEmailError);
             _validator.IsEmail(emaiTextBox, "Invalid email format.", lblEmailError);
@@ -111,11 +116,24 @@ namespace PL_VehicleRental.Forms
                 && Regex.IsMatch(username, @"^[a-zA-Z0-9]+$");
         }
 
+        private bool IsFullNameInputValid()
+        {
+            string fullName = fullNameTxt.Text.Trim();
+            return !string.IsNullOrWhiteSpace(fullName) && fullName.Length >= 5 && Regex.IsMatch(fullName, @"^[a-zA-Z\s\-']+$");
+        }
+
         private bool IsEmailInputValid()
         {
             string email = emaiTextBox.Text.Trim();
             return !string.IsNullOrWhiteSpace(email)
                 && Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        private bool IsAddressInputValid()
+        {
+            string address = addressTextBox.Text.Trim();
+            return !string.IsNullOrWhiteSpace(address)
+                && Regex.IsMatch(address, @"^[a-zA-Z0-9\s.,'#-]+$");
         }
 
         private bool IsPhoneInputValid()
@@ -132,10 +150,10 @@ namespace PL_VehicleRental.Forms
         {
             bool basicValid =
                 IsUsernameInputValid() &&
-                !string.IsNullOrWhiteSpace(fullNameTxt.Text) &&
+                IsFullNameInputValid() &&
                 IsEmailInputValid() &&
                 IsPhoneInputValid() &&
-                !string.IsNullOrWhiteSpace(addressTextBox.Text) &&
+                IsAddressInputValid() &&
                 genderCmb.SelectedIndex != -1 &&
                 roleCmb.SelectedIndex != -1 &&
                 statusCmb.SelectedIndex != -1;
