@@ -72,6 +72,9 @@ namespace PL_VehicleRental.Forms
             _validator.Required(txtUserName, "Username is required.", lblUsernameError);
             _validator.Custom(txtUserName, () => txtUserName.Text.Trim().Length >= 5, "Username must be at least 5 characters.", lblUsernameError);
             _validator.Custom(txtUserName, () => Regex.IsMatch(txtUserName.Text.Trim(), @"^[a-zA-Z0-9]+$"), "Username can only contain letters and numbers.", lblUsernameError);
+            _validator.Custom(txtFullName, () => txtFullName.Text.Trim().Length >= 5, "Name must be atleast 5 characters.", lblFullNameError);
+            _validator.Custom(txtFullName, () => Regex.IsMatch(txtFullName.Text.Trim(), @"^[a-zA-Z\s\-']+$"), "Invalid character.", lblFullNameError);
+            _validator.Custom(txtAddress, () => Regex.IsMatch(txtAddress.Text.Trim(), @"^[a-zA-Z0-9\s.,'#-]+$"), "Invalid character.", lblAddressError);
 
             _validator.Required(txtFullName, "Full name is required.", lblFullNameError);
             _validator.Required(txtEmail, "Email is required.", lblEmailError);
@@ -87,11 +90,24 @@ namespace PL_VehicleRental.Forms
             return !string.IsNullOrWhiteSpace(username) && username.Length >= 5 && Regex.IsMatch(username, @"^[a-zA-Z0-9]+$");
         }
 
+        private bool IsFullNameInputValid()
+        {
+            string fullName = txtFullName.Text.Trim();
+            return !string.IsNullOrWhiteSpace(fullName) && fullName.Length >= 5 && Regex.IsMatch(fullName, @"^[a-zA-Z\s\-']+$");
+        }
+
         private bool IsEmailInputValid()
         {
             string email = txtEmail.Text.Trim();
             return !string.IsNullOrWhiteSpace(email)
                 && Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        private bool IsAddressInputValid()
+        {
+            string address = txtAddress.Text.Trim();
+            return !string.IsNullOrWhiteSpace(address)
+                && Regex.IsMatch(address, @"^[a-zA-Z0-9\s.,'#-]+$");
         }
 
         private bool IsPhoneInputValid()
@@ -103,6 +119,7 @@ namespace PL_VehicleRental.Forms
             }
             return text.Length == 10 && Regex.IsMatch(text, @"^\d{10}$");
         }
+
 
         private bool HasUserDataChanged()
         {
@@ -122,11 +139,11 @@ namespace PL_VehicleRental.Forms
             if (_isBindingData) return;
 
             bool basicValid =
-            IsUsernameInputValid() &&
-                !string.IsNullOrWhiteSpace(txtFullName.Text) &&
+                IsUsernameInputValid() &&
+                IsFullNameInputValid() &&
                 IsEmailInputValid() &&
                 IsPhoneInputValid() &&
-                !string.IsNullOrWhiteSpace(txtAddress.Text) &&
+                IsAddressInputValid() &&
                 genderCmb.SelectedIndex != -1 &&
                 roleCmb.SelectedIndex != -1 &&
                 statusCmb.SelectedIndex != -1;
@@ -569,6 +586,20 @@ namespace PL_VehicleRental.Forms
 
         private void txtFullName_TextChanged(object sender, EventArgs e)
         {
+            int cursorPosition = txtFullName.SelectionStart;
+            string text = txtFullName.Text;
+
+            if (!string.IsNullOrEmpty(text) && cursorPosition > 0)
+            {
+                string capitalizedText = char.ToUpper(text[0]) + text.Substring(1).ToLower();
+
+                if(capitalizedText != text)
+                {
+                    txtFullName.Text = capitalizedText;
+                    txtFullName.SelectionStart = cursorPosition;
+                }
+            }
+
             _validator.ValidateControl(txtFullName);
             UpdateAddButtonState();
         }

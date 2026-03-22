@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.WinForms;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace Dshboard
 {
