@@ -25,7 +25,7 @@ namespace VehicleManagementSystem.Presenters {
                 if (documents.Count > 0) {
                     _view.DisplayDocuments(documents);
                 } else {
-                    _view.ToggleNoDocumentDisplay();
+                    _view.ToggleNoDocumentDisplay(false);
                 }
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
@@ -34,12 +34,17 @@ namespace VehicleManagementSystem.Presenters {
 
 
         public void SearchDocument() {
+            if (string.IsNullOrWhiteSpace(_view.SearchInput)) {
+                LoadAllDocuments();
+                return;
+            }
+
             try {
                 var documents = _services.GetSearchedVehicleDocument(_view.SearchInput, _view.VehiclePlateNum);
                 if (documents.Count > 0) {
                     _view.DisplayDocuments(documents);
                 } else {
-                    _view.ToggleNoDocumentDisplay();
+                    _view.ToggleNoDocumentDisplay(false);
                 }
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);

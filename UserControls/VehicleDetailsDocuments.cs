@@ -34,10 +34,10 @@ namespace VehicleManagementSystem.UserControls {
             MessageBox.Show(error, "Error");
         }
 
-        public void ToggleNoDocumentDisplay() {
-            tableMain.Visible = !tableMain.Visible;
-            tableHeader.Visible = !tableHeader.Visible;
-            labelNoDocument.Visible = !labelNoDocument.Visible;
+        public void ToggleNoDocumentDisplay(bool IsNotVisible) {
+            tableMain.Visible = IsNotVisible;
+            tableHeader.Visible = IsNotVisible;
+            labelNoDocument.Visible = !IsNotVisible;
         }
 
         public void DisplayDocuments(List<VehicleDocumentDto> documents) {
@@ -79,7 +79,7 @@ namespace VehicleManagementSystem.UserControls {
                 if (result != DialogResult.OK) return;
 
                 _presenter.LoadAllDocuments();
-                if(!tableMain.Visible) ToggleNoDocumentDisplay(); 
+                if(!tableMain.Visible) ToggleNoDocumentDisplay(true); 
             }
         }
 

@@ -11,7 +11,7 @@ namespace VehicleManagementSystem.View.Interfaces {
 
         string SearchInput { get; }
 
-        void ToggleNoDocumentDisplay();
+        void ToggleNoDocumentDisplay(bool IsNotVisible);
         void DisplayDocuments(List<VehicleDocumentDto> documents);
         void ShowError(string error);
     }
