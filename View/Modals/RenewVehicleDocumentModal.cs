@@ -122,6 +122,8 @@ namespace VehicleManagementSystem.View.Modals {
             saveBtn.Click -= saveBtn_Click;
 
             if (String.IsNullOrEmpty(_tempSelectedFilePath)) {
+                saveBtn.Text = "Renew Document";
+                saveBtn.Click += saveBtn_Click;
                 return;
             }
 

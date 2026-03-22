@@ -311,6 +311,7 @@
     <Compile Include="Presenters\addNewVehiclePresenter.cs" />
     <Compile Include="Presenters\maintenanceManagementPresenter.cs" />
     <Compile Include="Presenters\vehicleDetailsDocumentPresenter.cs" />
+    <Compile Include="Presenters\vehicleDetailsMaintenancePresenter.cs" />
     <Compile Include="Presenters\vehicleManagementPresenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -482,6 +483,7 @@
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
     <Compile Include="View\Interfaces\IVehicleDetailsDocumentView.cs" />
     <Compile Include="View\Interfaces\IMaintenanceManagementView.cs" />
+    <Compile Include="View\Interfaces\IVehicleDetialsMaintenanceView.cs" />
     <Compile Include="View\Modals\AddNewVehicleMaintenanceTypeModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -523,6 +525,12 @@
     </Compile>
     <Compile Include="View\Modals\UpdateVehicleDocumentModal.Designer.cs">
       <DependentUpon>UpdateVehicleDocumentModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ViewVehicleMaintenanceModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Modals\ViewVehicleMaintenanceModal.Designer.cs">
+      <DependentUpon>ViewVehicleMaintenanceModal.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UserControls\MaintenanceCardControl.resx">
       <DependentUpon>MaintenanceCardControl.cs</DependentUpon>
@@ -623,6 +631,9 @@
     <EmbeddedResource Include="View\Modals\UpdateVehicleDocumentModal.resx">
       <DependentUpon>UpdateVehicleDocumentModal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Modals\ViewVehicleMaintenanceModal.resx">
+      <DependentUpon>ViewVehicleMaintenanceModal.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -644,6 +655,9 @@
     <Content Include=".gitignore" />
     <None Include="Resources\pngtree-modern-silver-toyota-fortuner-suv-studio-shot-png-image_16472540.png" />
     <None Include="Resources\logo-test.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\edit.png" />
     <None Include="Resources\logout_24dp_FF4433_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\edit_square_24dp_3333FF_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\delete_24dp_FF4433_FILL0_wght400_GRAD0_opsz24.png" />

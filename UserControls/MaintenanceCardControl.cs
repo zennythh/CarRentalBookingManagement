@@ -8,9 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
+using VehicleManagementSystem.View.Modals;
 
 namespace VehicleManagementSystem.UserControls {
     public partial class MaintenanceCardControl : UserControl {
+        VehicleMaintenanceScheduleDto _maintenanceSchedule;
+
         public MaintenanceCardControl() {
             InitializeComponent();
         }
@@ -20,8 +23,12 @@ namespace VehicleManagementSystem.UserControls {
                 return;
             }
 
+            _maintenanceSchedule = maintenanceSchedule;
+
             int mileageInt = (int)maintenanceSchedule.CurrentVehicleMileage;
-            string currentStatus = maintenanceSchedule.Status;
+            string currentStatus = maintenanceSchedule.IsUpcoming ? "Upcoming" :
+                                   maintenanceSchedule.IsDueSoon ? "Due Soon" :
+                                   maintenanceSchedule.IsOverdue ? "Over Due" : "";
 
             if(maintenanceSchedule.ScheduleType == "OneTime") {
                 labelInterval.Text = "One time maintenance";
@@ -30,16 +37,15 @@ namespace VehicleManagementSystem.UserControls {
             }
 
             labelMaintenanceType.Text = maintenanceSchedule.MaintenanceName.ToString();
-            labelMaintenanceType.ForeColor = GetStatusColor(currentStatus);
+            labelMaintenanceType.ForeColor = GetStatusColor(maintenanceSchedule);
             
             labelStatus.Text = currentStatus;
-            labelStatus.ForeColor = GetStatusColor(currentStatus);
+            labelStatus.ForeColor = GetStatusColor(maintenanceSchedule);
 
-            progressCIrcle.ProgressColor = GetStatusColor(currentStatus);
-            progressCIrcle.ProgressColor2 = GetStatusColor(currentStatus);
-
-            //double progress = CalculateOverallProgress(maintenanceSchedule, mileageInt);
-            //progressCIrcle.Value = (int)progress;
+            progressCIrcle.ProgressColor = GetStatusColor(maintenanceSchedule);
+            progressCIrcle.ProgressColor2 = GetStatusColor(maintenanceSchedule);
+            
+            progressCIrcle.Value = maintenanceSchedule.MaintenanceProgressPercentage;
 
             labelDueDate.Text = maintenanceSchedule.NextDueDate?
                                 .ToString("MMM dd, yyyy")
@@ -49,7 +55,7 @@ namespace VehicleManagementSystem.UserControls {
                                 "—";
             
 
-            labelDueOdometer.Text = $"{maintenanceSchedule.MilesUntilDue} (At {nextDueMillage})";
+            labelDueOdometer.Text = $"In {maintenanceSchedule.MilesUntilDue}Km (At {nextDueMillage})";
             ;
         }
 
@@ -68,16 +74,16 @@ namespace VehicleManagementSystem.UserControls {
                     return Math.Round(progress, 2);
         }
 
-        private Color GetStatusColor(string status) {
-            if (status == "Upcoming") {
+        private Color GetStatusColor(VehicleMaintenanceScheduleDto maintenanceSchedule) {
+            if (maintenanceSchedule.Status == "Completed") {
+                return Color.SeaGreen;
+            } else if (maintenanceSchedule.IsUpcoming) {
                 return Color.SteelBlue; 
-            } else if (status == "Due Soon") {
+            } else if (maintenanceSchedule.IsDueSoon) {
                 return Color.Goldenrod; 
-            } else if (status == "Overdue") {
+            } else if (maintenanceSchedule.IsOverdue) {
                 return Color.IndianRed; 
-            } else if (status == "Completed") {
-                return Color.SeaGreen; 
-            } else {
+            }  else {
                 return Color.Gray; 
             }
         }
@@ -89,7 +95,7 @@ namespace VehicleManagementSystem.UserControls {
                 parts.Add($"{maintenanceSchedule.MileageInterval.Value:N0} km");
 
             if (maintenanceSchedule.MonthInterval.HasValue)
-                parts.Add($"{maintenanceSchedule.MonthInterval.Value} months");
+                parts.Add($"{maintenanceSchedule.MonthInterval.Value} month/s");
 
             if (parts.Count == 0)
                 return "—";
@@ -97,5 +103,10 @@ namespace VehicleManagementSystem.UserControls {
             return "Every " + string.Join(" or ", parts);
         }
 
+        private void Card_Click(object sender, EventArgs e) {
+            using(var viewCardModal = new ViewVehicleMaintenanceModal(_maintenanceSchedule)) {
+                DialogResult dialogResult = viewCardModal.ShowDialog();
+            }
+        }
     }
 }

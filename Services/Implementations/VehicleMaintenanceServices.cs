@@ -61,31 +61,210 @@ namespace VehicleManagementSystem.Services.Implementations {
             return tasks;
         }
 
-        public void AddMaintenanceSchedule(VehicleMaintenanceScheduleDto schedule) {
+        public List<VehicleMaintenanceScheduleDto> GetMaintenanceSchedulesByVehicle(string vehiclePlateNum) {
+            var schedules = new List<VehicleMaintenanceScheduleDto>();
+
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
                 string sql = @"
-            INSERT INTO VehicleMaintenanceSchedules 
-            (VehiclePlateNum, TypeId, CustomMileageInterval, CustomMonthInterval, 
-             LastServiceOdometer, LastServiceDate, NextServiceOdometer, NextServiceDate) 
-            VALUES 
-            (@Plate, @TypeId, @IntervalKm, @IntervalMonths, 
-             @LastOdo, @LastDate, @NextOdo, @NextDate);";
+            SELECT 
+                ms.ScheduleID,
+                ms.VehiclePlateNum,
+                ms.MaintenanceTypeID,
+                ms.ScheduleType,
+                ms.Status,
+                ms.DueDate,
+                ms.DueMileage,
+                ms.MileageInterval,
+                ms.MonthInterval,
+                ms.LastServiceMileage,
+                ms.LastServiceDate,
+                ms.CompletedDate,
+                ms.IsActive,
+                ms.CreatedDate,
+                ms.LastModifiedDate,
+                mt.MaintenanceName,
+                mt.Description AS MaintenanceDescription,
+                v.CurrentOdometerReading
+            FROM VehicleMaintenanceSchedules ms
+            INNER JOIN VehicleMaintenanceTypes mt 
+                ON ms.MaintenanceTypeID = mt.MaintenanceTypeID
+            INNER JOIN Vehicles v 
+                ON ms.VehiclePlateNum = v.LicensePlate
+            WHERE ms.VehiclePlateNum = @VehiclePlateNum
+              AND ms.IsActive = 1
+            ORDER BY 
+                CASE ms.Status
+                    WHEN 'Scheduled' THEN 1
+                    WHEN 'Completed' THEN 2
+                    WHEN 'Cancelled' THEN 3
+                    ELSE 4
+                END,
+                ms.DueDate ASC,
+                ms.DueMileage ASC";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
-                    cmd.Parameters.AddWithValue("@Plate", schedule.VehiclePlateNum);
-                    cmd.Parameters.AddWithValue("@TypeId", schedule.MaintenanceTypeID);
+                    cmd.Parameters.AddWithValue("@VehiclePlateNum", vehiclePlateNum);
 
-                    cmd.Parameters.AddWithValue("@IntervalKm", (object)schedule.MileageInterval ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@IntervalMonths", (object)schedule.MonthInterval ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@LastOdo", schedule.LastServiceMileage);
-                    cmd.Parameters.AddWithValue("@LastDate", schedule.LastServiceDate);
+                    conn.Open();
 
-                    cmd.Parameters.AddWithValue("@NextOdo", (object)schedule.NextDueMileage ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@NextDate", (object)schedule.NextDueDate ?? DBNull.Value);
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            schedules.Add(new VehicleMaintenanceScheduleDto {
+                                ScheduleID = reader.GetInt32("ScheduleID"),
+                                VehiclePlateNum = reader.GetString("VehiclePlateNum"),
+                                MaintenanceTypeID = reader.GetInt32("MaintenanceTypeID"),
+                                MaintenanceName = reader.GetString("MaintenanceName"),
+
+                                ScheduleType = reader.GetString("ScheduleType"),
+                                Status = reader.GetString("Status"),
+
+                                // One-time schedule fields
+                                DueDate = reader.IsDBNull(reader.GetOrdinal("DueDate"))
+                                         ? (DateTime?)null
+                                         : reader.GetDateTime("DueDate"),
+                                DueMileage = reader.IsDBNull(reader.GetOrdinal("DueMileage"))
+                                            ? (decimal?)null
+                                            : reader.GetDecimal("DueMileage"),
+
+                                // Recurring schedule fields
+                                MileageInterval = reader.IsDBNull(reader.GetOrdinal("MileageInterval"))
+                                                 ? (int?)null
+                                                 : reader.GetInt32("MileageInterval"),
+                                MonthInterval = reader.IsDBNull(reader.GetOrdinal("MonthInterval"))
+                                               ? (int?)null
+                                               : reader.GetInt32("MonthInterval"),
+                                LastServiceMileage = reader.IsDBNull(reader.GetOrdinal("LastServiceMileage"))
+                                                    ? (decimal?)null
+                                                    : reader.GetDecimal("LastServiceMileage"),
+                                LastServiceDate = reader.IsDBNull(reader.GetOrdinal("LastServiceDate"))
+                                                 ? (DateTime?)null
+                                                 : reader.GetDateTime("LastServiceDate"),
+
+                                CompletedDate = reader.IsDBNull(reader.GetOrdinal("CompletedDate"))
+                                               ? (DateTime?)null
+                                               : reader.GetDateTime("CompletedDate"),
+
+
+                                CurrentVehicleMileage = reader.GetDecimal("CurrentOdometerReading")
+                            });
+                        }
+                    }
+                }
+            }
+
+            return schedules;
+        }
+
+        public void AddMaintenanceSchedule(VehicleMaintenanceScheduleDto schedule) {
+            ValidateScheduleDto(schedule);
+
+            using (MySqlConnection conn = MySQLConnectionContext.Create()) {
+                string sql = BuildInsertSql(schedule.ScheduleType);
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
+                    // Common parameters for both types
+                    cmd.Parameters.AddWithValue("@VehiclePlateNum", schedule.VehiclePlateNum);
+                    cmd.Parameters.AddWithValue("@MaintenanceTypeID", schedule.MaintenanceTypeID);
+                    cmd.Parameters.AddWithValue("@ScheduleType", schedule.ScheduleType);
+                    cmd.Parameters.AddWithValue("@Status", schedule.Status ?? "Scheduled");
+                    cmd.Parameters.AddWithValue("@Priority", schedule.Priority ?? "Normal");
+                    cmd.Parameters.AddWithValue("@IsActive", 1);
+
+                    // Type-specific parameters
+                    if (schedule.ScheduleType == "Recurring") {
+                        cmd.Parameters.AddWithValue("@MileageInterval", (object)schedule.MileageInterval ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@MonthInterval", (object)schedule.MonthInterval ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@LastServiceMileage", (object)schedule.LastServiceMileage ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@LastServiceDate", (object)schedule.LastServiceDate ?? DBNull.Value);
+                    } else if (schedule.ScheduleType == "OneTime") {
+                        cmd.Parameters.AddWithValue("@DueDate", (object)schedule.DueDate ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@DueMileage", (object)schedule.DueMileage ?? DBNull.Value);
+                    }
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
+            }
+        }
+
+        private string BuildInsertSql(string scheduleType) {
+            if (scheduleType == "Recurring") {
+                return @"
+            INSERT INTO VehicleMaintenanceSchedules 
+            (
+                VehiclePlateNum, 
+                MaintenanceTypeID, 
+                ScheduleType,
+                Status,
+                MileageInterval, 
+                MonthInterval, 
+                LastServiceMileage, 
+                LastServiceDate,
+                IsActive
+            ) 
+            VALUES 
+            (
+                @VehiclePlateNum, 
+                @MaintenanceTypeID, 
+                @ScheduleType,
+                @Status,
+                @MileageInterval, 
+                @MonthInterval, 
+                @LastServiceMileage, 
+                @LastServiceDate,
+                @IsActive
+            );";
+            } else if (scheduleType == "OneTime") {
+                return @"
+            INSERT INTO VehicleMaintenanceSchedules 
+            (
+                VehiclePlateNum, 
+                MaintenanceTypeID, 
+                ScheduleType,
+                Status,
+                DueDate,
+                DueMileage,
+                IsActive
+            ) 
+            VALUES 
+            (
+                @VehiclePlateNum, 
+                @MaintenanceTypeID, 
+                @ScheduleType,
+                @Status,
+                @DueDate,
+                @DueMileage,
+                @IsActive
+            );";
+            } else {
+                throw new ArgumentException($"Invalid schedule type: {scheduleType}");
+            }
+        }
+
+        private void ValidateScheduleDto(VehicleMaintenanceScheduleDto schedule) {
+            if (string.IsNullOrWhiteSpace(schedule.VehiclePlateNum))
+                throw new ArgumentException("Vehicle plate number is required.");
+
+            if (schedule.MaintenanceTypeID <= 0)
+                throw new ArgumentException("Valid maintenance type must be selected.");
+
+            if (string.IsNullOrWhiteSpace(schedule.ScheduleType))
+                throw new ArgumentException("Schedule type is required.");
+
+            if (schedule.ScheduleType == "Recurring") {
+                if (!schedule.MileageInterval.HasValue && !schedule.MonthInterval.HasValue)
+                    throw new ArgumentException("Recurring maintenance requires at least one interval (mileage or time).");
+
+                if (!schedule.LastServiceDate.HasValue)
+                    throw new ArgumentException("Last service date is required for recurring maintenance.");
+
+                if (schedule.MileageInterval.HasValue && !schedule.LastServiceMileage.HasValue)
+                    throw new ArgumentException("Last service mileage is required when using mileage intervals.");
+            } else if (schedule.ScheduleType == "OneTime") {
+                if (!schedule.DueDate.HasValue && !schedule.DueMileage.HasValue)
+                    throw new ArgumentException("One-time maintenance requires at least one due condition (date or mileage).");
+            } else {
+                throw new ArgumentException($"Invalid schedule type: {schedule.ScheduleType}. Must be 'Recurring' or 'OneTime'.");
             }
         }
 

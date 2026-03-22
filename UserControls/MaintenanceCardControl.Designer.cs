@@ -45,6 +45,7 @@
             this.labelMaintenanceType.Size = new System.Drawing.Size(185, 24);
             this.labelMaintenanceType.TabIndex = 41;
             this.labelMaintenanceType.Text = "Change Engine Oil";
+            this.labelMaintenanceType.Click += new System.EventHandler(this.Card_Click);
             // 
             // labelInterval
             // 
@@ -77,6 +78,7 @@
             this.progressCIrcle.Text = "guna2CircleProgressBar2";
             this.progressCIrcle.TextMode = Guna.UI2.WinForms.Enums.ProgressBarTextMode.Value;
             this.progressCIrcle.Value = 50;
+            this.progressCIrcle.Click += new System.EventHandler(this.Card_Click);
             // 
             // guna2Panel1
             // 
@@ -97,6 +99,7 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(376, 182);
             this.guna2Panel1.TabIndex = 42;
+            this.guna2Panel1.Click += new System.EventHandler(this.Card_Click);
             // 
             // labelStatus
             // 
@@ -111,6 +114,7 @@
             this.labelStatus.TabIndex = 48;
             this.labelStatus.Text = "Status";
             this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelStatus.Click += new System.EventHandler(this.Card_Click);
             // 
             // labelDueDate
             // 
@@ -123,6 +127,7 @@
             this.labelDueDate.Size = new System.Drawing.Size(59, 19);
             this.labelDueDate.TabIndex = 47;
             this.labelDueDate.Text = "236km";
+            this.labelDueDate.Click += new System.EventHandler(this.Card_Click);
             // 
             // label4
             // 
@@ -147,6 +152,7 @@
             this.labelDueOdometer.Size = new System.Drawing.Size(183, 19);
             this.labelDueOdometer.TabIndex = 45;
             this.labelDueOdometer.Text = "in 236km (at 12000km)";
+            this.labelDueOdometer.Click += new System.EventHandler(this.Card_Click);
             // 
             // label1
             // 

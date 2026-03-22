@@ -11,6 +11,8 @@ namespace VehicleManagementSystem.View.Interfaces {
         string Description { get;}
         int MaintenanceTypeID { get; }
 
+        decimal VehicleCurrentOdometer { get; }
+
         string ScheduleType { get; }
 
         DateTime? DueDate { get; }
@@ -23,6 +25,7 @@ namespace VehicleManagementSystem.View.Interfaces {
         DateTime LastServiceDate { get; }
 
         void CloseModal();
+        void ShowSuccess(string message);
         void ShowError(string message);
         void LoadMaintenanceTypes(List<VehicleMaintenanceTypeDto> tasks);
     }

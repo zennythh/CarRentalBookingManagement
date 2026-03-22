@@ -28,14 +28,14 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelType = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
-            this.btnRenew = new Guna.UI2.WinForms.Guna2Button();
-            this.viewBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panelStatus = new Guna.UI2.WinForms.Guna2Panel();
             this.labelStatus = new System.Windows.Forms.Label();
             this.labelExpirationDate = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
+            this.btnRenew = new Guna.UI2.WinForms.Guna2Button();
+            this.viewBtn = new Guna.UI2.WinForms.Guna2Button();
             this.tableMain.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.panelStatus.SuspendLayout();
@@ -120,10 +120,63 @@
             this.guna2Panel2.Size = new System.Drawing.Size(228, 58);
             this.guna2Panel2.TabIndex = 4;
             // 
+            // panelStatus
+            // 
+            this.panelStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelStatus.BorderRadius = 10;
+            this.panelStatus.Controls.Add(this.labelStatus);
+            this.panelStatus.FillColor = System.Drawing.Color.DarkOrange;
+            this.panelStatus.ForeColor = System.Drawing.Color.White;
+            this.panelStatus.Location = new System.Drawing.Point(784, 17);
+            this.panelStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelStatus.Name = "panelStatus";
+            this.panelStatus.Size = new System.Drawing.Size(131, 45);
+            this.panelStatus.TabIndex = 0;
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelStatus.AutoEllipsis = true;
+            this.labelStatus.BackColor = System.Drawing.Color.Transparent;
+            this.labelStatus.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.ForeColor = System.Drawing.Color.White;
+            this.labelStatus.Location = new System.Drawing.Point(-6, 0);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(146, 45);
+            this.labelStatus.TabIndex = 0;
+            this.labelStatus.Text = "Expires Soon";
+            this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelExpirationDate
+            // 
+            this.labelExpirationDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelExpirationDate.AutoEllipsis = true;
+            this.labelExpirationDate.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelExpirationDate.ForeColor = System.Drawing.Color.Gray;
+            this.labelExpirationDate.Location = new System.Drawing.Point(647, 19);
+            this.labelExpirationDate.Name = "labelExpirationDate";
+            this.labelExpirationDate.Size = new System.Drawing.Size(113, 41);
+            this.labelExpirationDate.TabIndex = 3;
+            this.labelExpirationDate.Text = "2/28/2026";
+            this.labelExpirationDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.BorderRadius = 12;
+            this.guna2Panel3.Controls.Add(this.tableMain);
+            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel3.FillColor = System.Drawing.Color.White;
+            this.guna2Panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(1152, 80);
+            this.guna2Panel3.TabIndex = 1;
+            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnDelete.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.deleteIcon;
+            this.btnDelete.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.delete;
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDelete.BorderColor = System.Drawing.Color.Silver;
             this.btnDelete.BorderRadius = 10;
@@ -145,7 +198,7 @@
             // btnEdit
             // 
             this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnEdit.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.editIcon;
+            this.btnEdit.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.edit;
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEdit.BorderColor = System.Drawing.Color.Silver;
             this.btnEdit.BorderRadius = 10;
@@ -208,59 +261,6 @@
             this.viewBtn.Size = new System.Drawing.Size(47, 42);
             this.viewBtn.TabIndex = 0;
             this.viewBtn.Click += new System.EventHandler(this.viewBtn_Click);
-            // 
-            // panelStatus
-            // 
-            this.panelStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelStatus.BorderRadius = 10;
-            this.panelStatus.Controls.Add(this.labelStatus);
-            this.panelStatus.FillColor = System.Drawing.Color.DarkOrange;
-            this.panelStatus.ForeColor = System.Drawing.Color.White;
-            this.panelStatus.Location = new System.Drawing.Point(784, 17);
-            this.panelStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(131, 45);
-            this.panelStatus.TabIndex = 0;
-            // 
-            // labelStatus
-            // 
-            this.labelStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelStatus.AutoEllipsis = true;
-            this.labelStatus.BackColor = System.Drawing.Color.Transparent;
-            this.labelStatus.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatus.ForeColor = System.Drawing.Color.White;
-            this.labelStatus.Location = new System.Drawing.Point(-6, 0);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(146, 45);
-            this.labelStatus.TabIndex = 0;
-            this.labelStatus.Text = "Expires Soon";
-            this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelExpirationDate
-            // 
-            this.labelExpirationDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelExpirationDate.AutoEllipsis = true;
-            this.labelExpirationDate.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelExpirationDate.ForeColor = System.Drawing.Color.Gray;
-            this.labelExpirationDate.Location = new System.Drawing.Point(647, 19);
-            this.labelExpirationDate.Name = "labelExpirationDate";
-            this.labelExpirationDate.Size = new System.Drawing.Size(113, 41);
-            this.labelExpirationDate.TabIndex = 3;
-            this.labelExpirationDate.Text = "2/28/2026";
-            this.labelExpirationDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.BorderRadius = 12;
-            this.guna2Panel3.Controls.Add(this.tableMain);
-            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.FillColor = System.Drawing.Color.White;
-            this.guna2Panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(1152, 80);
-            this.guna2Panel3.TabIndex = 1;
             // 
             // VehicleDocumentCardControl
             // 
