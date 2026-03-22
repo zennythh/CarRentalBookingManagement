@@ -32,17 +32,14 @@ namespace VehicleManagementSystem.Presenters {
 
         public void SaveMaintenanceSchedule() {
             var newMaintenanceSchedule = new VehicleMaintenanceScheduleDto {
-                TypeId = _view.TypeId,
-                Description = _view.Description,
+                MaintenanceTypeID = _view.MaintenanceTypeID,
 
-                IntervalKm = _view.IntervalKm,
-                IntervalMonths = _view.IntervalMonths,
+                MileageInterval = _view.MonthInterval,
+                MonthInterval = _view.MonthInterval,
 
-                LastPerformedDate = _view.LastPerformedDate,
-                NextDueOdometer = _view.NextDueOdometer,
-                NextDueDate = _view.NextDueDate,
+                LastServiceDate = _view.LastServiceDate,
 
-                PlateNumber = _view.PlateNumber
+                VehiclePlateNum = _view.VehiclePlateNum
             };
 
             try {

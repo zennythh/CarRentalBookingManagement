@@ -137,7 +137,7 @@ namespace VehicleManagementSystem.UserControls {
                 }
 
                 var card = new MaintenanceCardControl();
-                card.Bind(vehicleMaintenanceSchedule, _vehicle.CurrentOdometerReading);
+                card.Bind(vehicleMaintenanceSchedule);
                 card.Dock = DockStyle.Fill;
                 card.Margin = new Padding(10);
 

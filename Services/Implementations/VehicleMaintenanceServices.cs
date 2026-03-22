@@ -1,9 +1,6 @@
 ﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VehicleManagementSystem.Data;
 using VehicleManagementSystem.Dto;
 
@@ -35,7 +32,7 @@ namespace VehicleManagementSystem.Services.Implementations {
             var tasks = new List<VehicleMaintenanceTypeDto>();
 
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
-                string sql = "SELECT * FROM VehicleMaintenanceType ORDER BY MaintenanceName ASC";
+                string sql = "SELECT * FROM VehicleMaintenanceTypes ORDER BY MaintenanceName ASC";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
                     conn.Open();
@@ -44,6 +41,7 @@ namespace VehicleManagementSystem.Services.Implementations {
                             tasks.Add(new VehicleMaintenanceTypeDto {
                                 MaintenanceTypeID = reader.GetInt32("MaintenanceTypeID"),
                                 MaintenanceName = reader.GetString("MaintenanceName"),
+                                Priority = reader.GetString("Priority"),
                                 Description = reader.IsDBNull(reader.GetOrdinal("Description"))
                                               ? ""
                                               : reader.GetString("Description"),
@@ -74,15 +72,15 @@ namespace VehicleManagementSystem.Services.Implementations {
              @LastOdo, @LastDate, @NextOdo, @NextDate);";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
-                    cmd.Parameters.AddWithValue("@Plate", schedule.PlateNumber);
-                    cmd.Parameters.AddWithValue("@TypeId", schedule.TypeId);
+                    cmd.Parameters.AddWithValue("@Plate", schedule.VehiclePlateNum);
+                    cmd.Parameters.AddWithValue("@TypeId", schedule.MaintenanceTypeID);
 
-                    cmd.Parameters.AddWithValue("@IntervalKm", (object)schedule.IntervalKm ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@IntervalMonths", (object)schedule.IntervalMonths ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@LastOdo", schedule.LastPerformedOdometer);
-                    cmd.Parameters.AddWithValue("@LastDate", schedule.LastPerformedDate);
+                    cmd.Parameters.AddWithValue("@IntervalKm", (object)schedule.MileageInterval ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@IntervalMonths", (object)schedule.MonthInterval ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@LastOdo", schedule.LastServiceMileage);
+                    cmd.Parameters.AddWithValue("@LastDate", schedule.LastServiceDate);
 
-                    cmd.Parameters.AddWithValue("@NextOdo", (object)schedule.NextDueOdometer ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@NextOdo", (object)schedule.NextDueMileage ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@NextDate", (object)schedule.NextDueDate ?? DBNull.Value);
 
                     conn.Open();

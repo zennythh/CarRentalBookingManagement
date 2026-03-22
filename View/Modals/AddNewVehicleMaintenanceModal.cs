@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
 using VehicleManagementSystem.Models;
@@ -13,29 +11,32 @@ namespace VehicleManagementSystem.View.Modals {
         AddNewVehicleMaintenancePresenter _presenter;
         VehicleDto _vehicle;
 
-        public string PlateNumber => _vehicle.LicensePlate;
-        public int TypeId => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.MaintenanceTypeID ?? 0;
+        public string VehiclePlateNum => _vehicle.LicensePlate;
+        public int MaintenanceTypeID => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.MaintenanceTypeID ?? 0;
+        public string ScheduleType => inputScheduleType.Text;
         public string Description => (inputType.SelectedItem as VehicleMaintenanceTypeDto)?.Description.ToString() ?? " ";
 
-        public int? IntervalKm { get {
+        // One time
+        public DateTime? DueDate => inputDueDate.Value;
+        public int? DueMileage => int.TryParse(inputDueMileige.Text, out int res) ? res : (int?)null;
+
+
+        // Recuurence
+        public int? MileageInterval { get {
                 if (int.TryParse(inputMilleageInterval.Text, out int result)) return result;
                 return null;
             }
         }
 
-        public int? IntervalMonths { get {
+        public int? MonthInterval { get {
                 if (int.TryParse(inputMonthlyInterval.Text, out int result)) return result;
                 return null;
             }
         }
 
-        public int StartingMileage {
-            get {
-                if (decimal.TryParse(inputStartingMileage.Text, out decimal result)) return (int)result;
-                return 0;
-            }
-        }
-        
+        public string MaintenanceName => inputType.Text;
+
+
         public void CloseModal() {
             this.Close();
         }
@@ -44,19 +45,11 @@ namespace VehicleManagementSystem.View.Modals {
             MessageBox.Show(message, "Error");
         }
 
-        public DateTime LastPerformedDate => inputLastServiceDate.Value;
-
-        public int? NextDueOdometer => StartingMileage + IntervalKm;
-
-        public DateTime? NextDueDate => IntervalMonths.HasValue
-            ? LastPerformedDate.AddMonths(IntervalMonths.Value)
-            : (DateTime?)null;
+        public DateTime LastServiceDate => inputLastServiceDate.Value;
 
         public VehicleMaintenanceTypeDto SelectedType {
             get { return inputType.SelectedItem as VehicleMaintenanceTypeDto; }
         }
-
-        
 
         public AddNewVehicleMaintenanceModal(VehicleDto vehicle) {
             InitializeComponent();
@@ -66,27 +59,28 @@ namespace VehicleManagementSystem.View.Modals {
             inputLastServiceDate.Value = DateTime.Today;
             inputLastServiceDate.MaxDate = DateTime.Today;
             labelHeader.Text = "Adding new maintenance schedule to " + _vehicle.LicensePlate;
-            inputStartingMileage.Text = _vehicle.CurrentOdometerReading.ToString();
+
+            string[] priorities = { "Recurring", "OneTime" };
+            inputScheduleType.Items.AddRange(priorities);
+            inputScheduleType.SelectedIndex = 0;
         }
 
         private void LoadPreviewCard() {
-       
             var newMaintenanceSchedule = new VehicleMaintenanceScheduleDto {
-                TypeId = TypeId,
-                Description = SelectedType?.Description,
-
-                IntervalKm = IntervalKm,
-                IntervalMonths =IntervalMonths,
-
-                LastPerformedOdometer = StartingMileage,
-                LastPerformedDate = LastPerformedDate,
-                NextDueOdometer = NextDueOdometer,
-                NextDueDate = NextDueDate,
-
-                PlateNumber = _vehicle.LicensePlate 
+                MaintenanceTypeID = MaintenanceTypeID,
+                MaintenanceName = MaintenanceName,
+                ScheduleType = ScheduleType,
+                DueDate = DueDate,
+                DueMileage = DueMileage,
+                MileageInterval = MileageInterval,
+                MonthInterval = MonthInterval,
+                LastServiceDate = LastServiceDate,
+                VehiclePlateNum = _vehicle.LicensePlate,
+                CurrentVehicleMileage = _vehicle.CurrentOdometerReading,
+                Status = "Upcoming"
             };
 
-            maintenanceCardControl.Bind(newMaintenanceSchedule, _vehicle.CurrentOdometerReading);
+            maintenanceCardControl.Bind(newMaintenanceSchedule);
         }
 
         public void LoadMaintenanceTypes(List<VehicleMaintenanceTypeDto> tasks) {
@@ -123,5 +117,18 @@ namespace VehicleManagementSystem.View.Modals {
             saveBtn.Text = "Save Schedule";
             saveBtn.Click += saveBtn_Click;
         }
+
+        private void inputScheduleType_SelectedIndexChanged(object sender, EventArgs e) {
+            if(ScheduleType == "OneTime") {
+                panelIntervalSettings.Visible = false;
+                panelDueSettings.Visible = true;
+            } else {
+                panelDueSettings.Visible = false;
+                panelIntervalSettings.Visible = true;
+            }
+
+            LoadPreviewCard();
+        }
+
     }
 }

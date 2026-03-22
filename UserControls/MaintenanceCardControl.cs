@@ -15,31 +15,42 @@ namespace VehicleManagementSystem.UserControls {
             InitializeComponent();
         }
 
-        public void Bind(VehicleMaintenanceScheduleDto maintenanceSchedule, decimal currentMileage) {
+        public void Bind(VehicleMaintenanceScheduleDto maintenanceSchedule) {
             if (maintenanceSchedule == null) {
                 return;
             }
-            int mileageInt = (int)currentMileage;
-            string currentStatus = maintenanceSchedule.GetStatus(mileageInt);
 
-            labelMaintenanceType.Text = maintenanceSchedule.TypeId.ToString();
+            int mileageInt = (int)maintenanceSchedule.CurrentVehicleMileage;
+            string currentStatus = maintenanceSchedule.Status;
+
+            if(maintenanceSchedule.ScheduleType == "OneTime") {
+                labelInterval.Text = "One time maintenance";
+            } else {
+                labelInterval.Text = GetInterval(maintenanceSchedule);
+            }
+
+            labelMaintenanceType.Text = maintenanceSchedule.MaintenanceName.ToString();
             labelMaintenanceType.ForeColor = GetStatusColor(currentStatus);
-            labelInterval.Text = GetInterval(maintenanceSchedule);
+            
             labelStatus.Text = currentStatus;
             labelStatus.ForeColor = GetStatusColor(currentStatus);
 
             progressCIrcle.ProgressColor = GetStatusColor(currentStatus);
             progressCIrcle.ProgressColor2 = GetStatusColor(currentStatus);
 
-            double progress = CalculateOverallProgress(maintenanceSchedule, mileageInt);
-            progressCIrcle.Value = (int)progress;
+            //double progress = CalculateOverallProgress(maintenanceSchedule, mileageInt);
+            //progressCIrcle.Value = (int)progress;
 
             labelDueDate.Text = maintenanceSchedule.NextDueDate?
                                 .ToString("MMM dd, yyyy")
                                 ?? "—";
-            labelDueOdometer.Text = maintenanceSchedule.NextDueOdometer != null ?
-                                maintenanceSchedule.NextDueOdometer.ToString() + " km" :
+            string nextDueMillage = maintenanceSchedule.NextDueMileage != null ?
+                                maintenanceSchedule.NextDueMileage.ToString() + " km" :
                                 "—";
+            
+
+            labelDueOdometer.Text = $"{maintenanceSchedule.MilesUntilDue} (At {nextDueMillage})";
+            ;
         }
 
         private double GetOdometerIntervalPercentage( int startKm,int intervalKm, int currentKm) {
@@ -74,11 +85,11 @@ namespace VehicleManagementSystem.UserControls {
         private string GetInterval(VehicleMaintenanceScheduleDto maintenanceSchedule) {
             var parts = new List<string>();
 
-            if (maintenanceSchedule.IntervalKm.HasValue)
-                parts.Add($"{maintenanceSchedule.IntervalKm.Value:N0} km");
+            if (maintenanceSchedule.MileageInterval.HasValue)
+                parts.Add($"{maintenanceSchedule.MileageInterval.Value:N0} km");
 
-            if (maintenanceSchedule.IntervalMonths.HasValue)
-                parts.Add($"{maintenanceSchedule.IntervalMonths.Value} months");
+            if (maintenanceSchedule.MonthInterval.HasValue)
+                parts.Add($"{maintenanceSchedule.MonthInterval.Value} months");
 
             if (parts.Count == 0)
                 return "—";
@@ -86,42 +97,5 @@ namespace VehicleManagementSystem.UserControls {
             return "Every " + string.Join(" or ", parts);
         }
 
-
-        private double CalculateOverallProgress(VehicleMaintenanceScheduleDto schedule, int currentKm) {
-            // 1. Priority: Mileage
-            if (schedule.IntervalKm.HasValue && schedule.LastPerformedOdometer.HasValue) {
-                return GetOdometerIntervalPercentage(
-                    schedule.LastPerformedOdometer.Value,
-                    schedule.IntervalKm.Value,
-                    currentKm
-                );
-            }
-
-            // 2. Fallback: Date
-            if (schedule.IntervalMonths.HasValue && schedule.LastPerformedDate.HasValue) {
-                return GetDateIntervalPercentage(
-                    schedule.LastPerformedDate.Value,
-                    schedule.IntervalMonths.Value
-                );
-            }
-
-            return 0;
-        }
-
-        private double GetDateIntervalPercentage(DateTime startDate, int intervalMonths) {
-            DateTime dueDate = startDate.AddMonths(intervalMonths);
-            DateTime today = DateTime.Today;
-
-            if (today <= startDate) return 0;
-            if (today >= dueDate) return 100;
-
-            double totalDays = (dueDate - startDate).TotalDays;
-            double daysElapsed = (today - startDate).TotalDays;
-
-            if (totalDays <= 0) return 0;
-
-            double progress = (daysElapsed / totalDays) * 100;
-            return Math.Round(progress, 2);
-        }
     }
 }

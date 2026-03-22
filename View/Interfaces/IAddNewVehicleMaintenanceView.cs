@@ -7,17 +7,20 @@ using VehicleManagementSystem.Dto;
 
 namespace VehicleManagementSystem.View.Interfaces {
     internal interface IAddNewVehicleMaintenanceView {
-        string PlateNumber { get; }
+        string VehiclePlateNum { get; }
         string Description { get;}
-        int TypeId { get; }
+        int MaintenanceTypeID { get; }
 
-        int? IntervalKm { get;}
-        int? IntervalMonths { get; }
+        string ScheduleType { get; }
 
-        DateTime LastPerformedDate { get; }
+        DateTime? DueDate { get; }
+        int? DueMileage { get; }
 
-        DateTime? NextDueDate { get; }
-        int? NextDueOdometer { get; }
+        // Recurrence
+        int? MileageInterval { get;}
+        int? MonthInterval { get; }
+
+        DateTime LastServiceDate { get; }
 
         void CloseModal();
         void ShowError(string message);
