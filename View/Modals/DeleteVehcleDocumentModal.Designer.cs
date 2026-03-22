@@ -27,6 +27,7 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.labelHeader = new System.Windows.Forms.Label();
             this.cancelBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
@@ -45,7 +46,6 @@
             this.labelIssueDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
-            this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             this.panelPreview.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -82,6 +82,26 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(533, 4);
             this.guna2Panel2.TabIndex = 104;
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeBtn.BackColor = System.Drawing.Color.White;
+            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeBtn.ForeColor = System.Drawing.Color.White;
+            this.closeBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
+            this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
+            this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.closeBtn.IconSize = 28;
+            this.closeBtn.Location = new System.Drawing.Point(518, 11);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(43, 30);
+            this.closeBtn.TabIndex = 11;
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // labelHeader
             // 
@@ -340,9 +360,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.label3.Location = new System.Drawing.Point(24, 287);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 23);
+            this.label3.Size = new System.Drawing.Size(85, 23);
             this.label3.TabIndex = 132;
-            this.label3.Text = "Reason:";
+            this.label3.Text = "Reason*";
             // 
             // btnDelete
             // 
@@ -365,26 +385,6 @@
             this.btnDelete.TabIndex = 133;
             this.btnDelete.Text = "Delete Document";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.BackColor = System.Drawing.Color.White;
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBtn.ForeColor = System.Drawing.Color.White;
-            this.closeBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
-            this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
-            this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.closeBtn.IconSize = 28;
-            this.closeBtn.Location = new System.Drawing.Point(518, 11);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(43, 30);
-            this.closeBtn.TabIndex = 11;
-            this.closeBtn.UseVisualStyleBackColor = false;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // DeleteVehcleDocumentModal
             // 

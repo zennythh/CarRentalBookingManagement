@@ -252,7 +252,9 @@
   <ItemGroup>
     <Compile Include="Classes\DataGridViewStyle.cs" />
     <Compile Include="Data\Enums\VehicleDocumentEnums.cs" />
+    <Compile Include="Data\Enums\VehicleMaintenanceEnums.cs" />
     <Compile Include="Dto\VehicleDocumentDto.cs" />
+    <Compile Include="Dto\VehicleMaintenanceTypeDto.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Classes\UIRenderer.cs" />
     <Compile Include="Classes\NavigationHelper.cs" />
@@ -270,7 +272,9 @@
     <Compile Include="Models\CreateUserResult.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Presenters\addNewVehicleDocumentPresenter.cs" />
+    <Compile Include="Presenters\addNewVehicleMaintenanceTypePresenter.cs" />
     <Compile Include="Presenters\addNewVehiclePresenter.cs" />
+    <Compile Include="Presenters\maintenanceManagementPresenter.cs" />
     <Compile Include="Presenters\vehicleDetailsDocumentPresenter.cs" />
     <Compile Include="Presenters\vehicleManagementPresenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -280,6 +284,7 @@
     </Compile>
     <Compile Include="Services\AuditService.cs" />
     <Compile Include="Services\Implementations\VehicleDocumentServices.cs" />
+    <Compile Include="Services\Implementations\VehicleMaintenanceServices.cs" />
     <Compile Include="Services\Implementations\VehicleServices.cs" />
     <Compile Include="Services\Interfaces\IVehicleService.cs" />
     <Compile Include="Services\Security\AuthorizationService.cs" />
@@ -425,8 +430,16 @@
       <DependentUpon>frmUserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Interfaces\IAddNewVehicleDocumentView.cs" />
+    <Compile Include="View\Interfaces\IAddNewVehicleMaintenanceTypeView.cs" />
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
     <Compile Include="View\Interfaces\IVehicleDetailsDocumentView.cs" />
+    <Compile Include="View\Interfaces\IMaintenanceManagementView.cs" />
+    <Compile Include="View\Modals\AddNewVehicleMaintenanceTypeModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Modals\AddNewVehicleMaintenanceTypeModal.Designer.cs">
+      <DependentUpon>AddNewVehicleMaintenanceTypeModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Modals\AddNewVehicleMaintenanceModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -534,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\frmUserManagement.resx">
       <DependentUpon>frmUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Modals\AddNewVehicleMaintenanceTypeModal.resx">
+      <DependentUpon>AddNewVehicleMaintenanceTypeModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Modals\AddNewVehicleMaintenanceModal.resx">
       <DependentUpon>AddNewVehicleMaintenanceModal.cs</DependentUpon>

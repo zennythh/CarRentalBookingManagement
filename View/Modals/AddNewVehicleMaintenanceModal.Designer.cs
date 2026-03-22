@@ -64,7 +64,7 @@
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(687, 71);
+            this.panelTop.Size = new System.Drawing.Size(577, 71);
             this.panelTop.TabIndex = 103;
             // 
             // guna2Panel2
@@ -76,7 +76,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(28, 52);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(578, 4);
+            this.guna2Panel2.Size = new System.Drawing.Size(468, 4);
             this.guna2Panel2.TabIndex = 104;
             // 
             // closeBtn
@@ -91,7 +91,7 @@
             this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
             this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.closeBtn.IconSize = 28;
-            this.closeBtn.Location = new System.Drawing.Point(627, 11);
+            this.closeBtn.Location = new System.Drawing.Point(517, 11);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(48, 40);
@@ -107,9 +107,9 @@
             this.labelHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.labelHeader.Location = new System.Drawing.Point(24, 17);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(317, 24);
+            this.labelHeader.Size = new System.Drawing.Size(248, 24);
             this.labelHeader.TabIndex = 104;
-            this.labelHeader.Text = "Adding new vehicle document to";
+            this.labelHeader.Text = "Adding New Maintenance";
             // 
             // guna2BorderlessForm1
             // 
@@ -136,7 +136,7 @@
             this.inputCategory.Location = new System.Drawing.Point(29, 119);
             this.inputCategory.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.inputCategory.Name = "inputCategory";
-            this.inputCategory.Size = new System.Drawing.Size(293, 50);
+            this.inputCategory.Size = new System.Drawing.Size(183, 50);
             this.inputCategory.TabIndex = 104;
             // 
             // label10
@@ -171,7 +171,7 @@
             this.inputPurchaseDate.MaxDate = new System.DateTime(2026, 2, 2, 1, 16, 31, 598);
             this.inputPurchaseDate.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
             this.inputPurchaseDate.Name = "inputPurchaseDate";
-            this.inputPurchaseDate.Size = new System.Drawing.Size(293, 44);
+            this.inputPurchaseDate.Size = new System.Drawing.Size(183, 44);
             this.inputPurchaseDate.TabIndex = 106;
             this.inputPurchaseDate.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
             // 
@@ -206,7 +206,7 @@
             this.guna2DateTimePicker1.MaxDate = new System.DateTime(2026, 2, 2, 1, 16, 31, 598);
             this.guna2DateTimePicker1.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
             this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(293, 44);
+            this.guna2DateTimePicker1.Size = new System.Drawing.Size(183, 44);
             this.guna2DateTimePicker1.TabIndex = 108;
             this.guna2DateTimePicker1.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
             // 
@@ -242,7 +242,7 @@
             this.guna2ComboBox1.Location = new System.Drawing.Point(28, 210);
             this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(293, 50);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(183, 50);
             this.guna2ComboBox1.TabIndex = 110;
             // 
             // label2
@@ -301,7 +301,7 @@
             this.closeImageBtn.IconColor = System.Drawing.Color.RosyBrown;
             this.closeImageBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.closeImageBtn.IconSize = 28;
-            this.closeImageBtn.Location = new System.Drawing.Point(598, 379);
+            this.closeImageBtn.Location = new System.Drawing.Point(488, 379);
             this.closeImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeImageBtn.Name = "closeImageBtn";
             this.closeImageBtn.Size = new System.Drawing.Size(37, 30);
@@ -327,7 +327,7 @@
             this.addImageBtn.Location = new System.Drawing.Point(29, 367);
             this.addImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addImageBtn.Name = "addImageBtn";
-            this.addImageBtn.Size = new System.Drawing.Size(619, 201);
+            this.addImageBtn.Size = new System.Drawing.Size(509, 201);
             this.addImageBtn.TabIndex = 114;
             this.addImageBtn.Text = "Click here to add documents file.";
             // 
@@ -345,7 +345,7 @@
             this.saveBtn.ForeColor = System.Drawing.Color.White;
             this.saveBtn.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
             this.saveBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.saveBtn.Location = new System.Drawing.Point(444, 588);
+            this.saveBtn.Location = new System.Drawing.Point(334, 588);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(204, 44);
@@ -366,7 +366,7 @@
             this.cancelBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkGray;
             this.cancelBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.cancelBtn.Location = new System.Drawing.Point(318, 588);
+            this.cancelBtn.Location = new System.Drawing.Point(208, 588);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(105, 44);
@@ -395,7 +395,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(687, 663);
+            this.ClientSize = new System.Drawing.Size(577, 717);
             this.ControlBox = false;
             this.Controls.Add(this.guna2CheckBox1);
             this.Controls.Add(this.saveBtn);

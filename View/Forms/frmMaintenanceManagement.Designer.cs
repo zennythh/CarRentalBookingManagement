@@ -25,7 +25,9 @@
         private void InitializeComponent() {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.panelBg = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnAddType = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
+            this.panelBg.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
@@ -40,8 +42,9 @@
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
             this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(1274, 683);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(1132, 546);
             this.guna2GradientPanel1.TabIndex = 0;
             // 
             // panelBg
@@ -53,22 +56,47 @@
             this.panelBg.BackColor = System.Drawing.Color.Transparent;
             this.panelBg.BorderRadius = 5;
             this.panelBg.BorderThickness = 10;
+            this.panelBg.Controls.Add(this.btnAddType);
             this.panelBg.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
-            this.panelBg.Location = new System.Drawing.Point(25, 0);
+            this.panelBg.Location = new System.Drawing.Point(22, 0);
+            this.panelBg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelBg.Name = "panelBg";
-            this.panelBg.Size = new System.Drawing.Size(1249, 683);
+            this.panelBg.Size = new System.Drawing.Size(1110, 546);
             this.panelBg.TabIndex = 0;
+            // 
+            // btnAddType
+            // 
+            this.btnAddType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddType.BorderRadius = 10;
+            this.btnAddType.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddType.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddType.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddType.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddType.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnAddType.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddType.ForeColor = System.Drawing.Color.White;
+            this.btnAddType.Image = global::VehicleManagementSystem.Properties.Resources.add_circle_icon;
+            this.btnAddType.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnAddType.Location = new System.Drawing.Point(783, 20);
+            this.btnAddType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddType.Name = "btnAddType";
+            this.btnAddType.Size = new System.Drawing.Size(305, 48);
+            this.btnAddType.TabIndex = 47;
+            this.btnAddType.Text = "Add New Maintenance Type";
+            this.btnAddType.Click += new System.EventHandler(this.btnAddType_Click);
             // 
             // frmMaintenanceManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1274, 683);
+            this.ClientSize = new System.Drawing.Size(1132, 546);
             this.Controls.Add(this.guna2GradientPanel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMaintenanceManagement";
             this.Text = "MaintenanceManagement";
             this.guna2GradientPanel1.ResumeLayout(false);
+            this.panelBg.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -77,5 +105,6 @@
 
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2Panel panelBg;
+        private Guna.UI2.WinForms.Guna2Button btnAddType;
     }
 }

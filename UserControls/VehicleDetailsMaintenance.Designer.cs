@@ -56,6 +56,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.addNewVehBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panelMillage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2CircleProgressBar1.SuspendLayout();
@@ -542,11 +543,32 @@
             this.addNewVehBtn.Text = "Add Maintenance Schedule";
             this.addNewVehBtn.Click += new System.EventHandler(this.addNewVehBtn_Click);
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button1.BorderRadius = 10;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = global::VehicleManagementSystem.Properties.Resources.add_circle_icon;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button1.Location = new System.Drawing.Point(479, 15);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(305, 48);
+            this.guna2Button1.TabIndex = 46;
+            this.guna2Button1.Text = "Add Maintenance Schedule";
+            // 
             // VehicleDetailsMaintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.tableMain);
             this.Controls.Add(this.addNewVehBtn);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -614,5 +636,6 @@
         private Guna.UI2.WinForms.Guna2Button addNewVehBtn;
         private System.Windows.Forms.TableLayoutPanel tableMain;
         private System.Windows.Forms.Label label14;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

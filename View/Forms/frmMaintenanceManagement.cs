@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehicleManagementSystem.View.Modals;
 
 namespace VehicleManagementSystem.Forms {
     public partial class frmMaintenanceManagement : Form {
@@ -23,5 +24,13 @@ namespace VehicleManagementSystem.Forms {
                 return cp;
             }
         }
+
+        private void btnAddType_Click(object sender, EventArgs e) {
+            using (var AddNewVehicleMaintenanceTypeModal = new AddNewVehicleMaintenanceTypeModal()) {
+                AddNewVehicleMaintenanceTypeModal.ShowDialog();
+            }
+        }
+
+
     }
 }

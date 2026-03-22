@@ -27,7 +27,6 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.labelHeader = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.label10 = new System.Windows.Forms.Label();
@@ -47,12 +46,13 @@
             this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2RadioButton2 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
-            this.closeImageBtn = new FontAwesome.Sharp.IconButton();
             this.panelFile = new Guna.UI2.WinForms.Guna2Panel();
             this.labelFileName = new System.Windows.Forms.Label();
+            this.closeImageBtn = new FontAwesome.Sharp.IconButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.documentPictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.saveBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             this.panelPreview.SuspendLayout();
             this.panelFile.SuspendLayout();
@@ -91,26 +91,6 @@
             this.guna2Panel2.Size = new System.Drawing.Size(533, 4);
             this.guna2Panel2.TabIndex = 104;
             // 
-            // closeBtn
-            // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.BackColor = System.Drawing.Color.White;
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBtn.ForeColor = System.Drawing.Color.White;
-            this.closeBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
-            this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
-            this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.closeBtn.IconSize = 28;
-            this.closeBtn.Location = new System.Drawing.Point(518, 11);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(43, 30);
-            this.closeBtn.TabIndex = 11;
-            this.closeBtn.UseVisualStyleBackColor = false;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
-            // 
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
@@ -141,9 +121,9 @@
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.label10.Location = new System.Drawing.Point(25, 82);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(148, 23);
+            this.label10.Size = new System.Drawing.Size(155, 23);
             this.label10.TabIndex = 105;
-            this.label10.Text = "Document Type";
+            this.label10.Text = "Document Type*";
             // 
             // inputExpirationDate
             // 
@@ -175,9 +155,9 @@
             this.labelExpirationDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.labelExpirationDate.Location = new System.Drawing.Point(291, 264);
             this.labelExpirationDate.Name = "labelExpirationDate";
-            this.labelExpirationDate.Size = new System.Drawing.Size(144, 23);
+            this.labelExpirationDate.Size = new System.Drawing.Size(151, 23);
             this.labelExpirationDate.TabIndex = 107;
-            this.labelExpirationDate.Text = "Expiration Date";
+            this.labelExpirationDate.Text = "Expiration Date*";
             this.labelExpirationDate.Visible = false;
             // 
             // inputIssueDate
@@ -209,9 +189,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.label1.Location = new System.Drawing.Point(25, 264);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 23);
+            this.label1.Size = new System.Drawing.Size(110, 23);
             this.label1.TabIndex = 109;
-            this.label1.Text = "Issue Date";
+            this.label1.Text = "Issue Date*";
             // 
             // label2
             // 
@@ -224,9 +204,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.label2.Location = new System.Drawing.Point(291, 176);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 23);
+            this.label2.Size = new System.Drawing.Size(161, 23);
             this.label2.TabIndex = 111;
-            this.label2.Text = "Issuing Authority";
+            this.label2.Text = "Issuing Authority*";
             // 
             // label3
             // 
@@ -352,9 +332,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.label5.Location = new System.Drawing.Point(26, 176);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 23);
+            this.label5.Size = new System.Drawing.Size(150, 23);
             this.label5.TabIndex = 119;
-            this.label5.Text = "Document TItle";
+            this.label5.Text = "Document TItle*";
             // 
             // radioPermanent
             // 
@@ -428,29 +408,6 @@
             this.panelPreview.Size = new System.Drawing.Size(520, 236);
             this.panelPreview.TabIndex = 125;
             // 
-            // closeImageBtn
-            // 
-            this.closeImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeImageBtn.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.closeImageBtn.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.closeImageBtn.FlatAppearance.BorderColor = System.Drawing.Color.RosyBrown;
-            this.closeImageBtn.FlatAppearance.BorderSize = 2;
-            this.closeImageBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.closeImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeImageBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.closeImageBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
-            this.closeImageBtn.IconColor = System.Drawing.Color.RosyBrown;
-            this.closeImageBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.closeImageBtn.IconSize = 28;
-            this.closeImageBtn.Location = new System.Drawing.Point(469, 13);
-            this.closeImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.closeImageBtn.Name = "closeImageBtn";
-            this.closeImageBtn.Size = new System.Drawing.Size(37, 30);
-            this.closeImageBtn.TabIndex = 115;
-            this.closeImageBtn.UseVisualStyleBackColor = false;
-            this.closeImageBtn.Visible = false;
-            this.closeImageBtn.Click += new System.EventHandler(this.closeImageBtn_Click);
-            // 
             // panelFile
             // 
             this.panelFile.BackColor = System.Drawing.Color.Transparent;
@@ -478,6 +435,29 @@
             this.labelFileName.TabIndex = 106;
             this.labelFileName.Text = "Document Type";
             this.labelFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // closeImageBtn
+            // 
+            this.closeImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeImageBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.closeImageBtn.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.closeImageBtn.FlatAppearance.BorderColor = System.Drawing.Color.RosyBrown;
+            this.closeImageBtn.FlatAppearance.BorderSize = 2;
+            this.closeImageBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.closeImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeImageBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.closeImageBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
+            this.closeImageBtn.IconColor = System.Drawing.Color.RosyBrown;
+            this.closeImageBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.closeImageBtn.IconSize = 28;
+            this.closeImageBtn.Location = new System.Drawing.Point(469, 13);
+            this.closeImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeImageBtn.Name = "closeImageBtn";
+            this.closeImageBtn.Size = new System.Drawing.Size(37, 30);
+            this.closeImageBtn.TabIndex = 115;
+            this.closeImageBtn.UseVisualStyleBackColor = false;
+            this.closeImageBtn.Visible = false;
+            this.closeImageBtn.Click += new System.EventHandler(this.closeImageBtn_Click);
             // 
             // guna2PictureBox1
             // 
@@ -526,6 +506,26 @@
             this.saveBtn.TabIndex = 117;
             this.saveBtn.Text = "Save Document";
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeBtn.BackColor = System.Drawing.Color.White;
+            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeBtn.ForeColor = System.Drawing.Color.White;
+            this.closeBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
+            this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
+            this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.closeBtn.IconSize = 28;
+            this.closeBtn.Location = new System.Drawing.Point(518, 11);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(43, 30);
+            this.closeBtn.TabIndex = 11;
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // AddNewVehicleDocumentModal
             // 
