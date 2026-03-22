@@ -42,6 +42,8 @@
             this.inputSuggestedMonthly = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.inputPriotiyLevel = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,12 +124,12 @@
             this.inputTaskName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.inputTaskName.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputTaskName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputTaskName.Location = new System.Drawing.Point(26, 100);
+            this.inputTaskName.Location = new System.Drawing.Point(28, 100);
             this.inputTaskName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.inputTaskName.Name = "inputTaskName";
             this.inputTaskName.PlaceholderText = "";
             this.inputTaskName.SelectedText = "";
-            this.inputTaskName.Size = new System.Drawing.Size(488, 44);
+            this.inputTaskName.Size = new System.Drawing.Size(293, 44);
             this.inputTaskName.TabIndex = 120;
             // 
             // label5
@@ -338,12 +340,50 @@
             this.label6.TabIndex = 143;
             this.label6.Text = "Ex: every 6 months";
             // 
+            // inputPriotiyLevel
+            // 
+            this.inputPriotiyLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputPriotiyLevel.BackColor = System.Drawing.Color.Transparent;
+            this.inputPriotiyLevel.BorderRadius = 10;
+            this.inputPriotiyLevel.BorderThickness = 2;
+            this.inputPriotiyLevel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.inputPriotiyLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputPriotiyLevel.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputPriotiyLevel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputPriotiyLevel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputPriotiyLevel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.inputPriotiyLevel.IntegralHeight = false;
+            this.inputPriotiyLevel.ItemHeight = 44;
+            this.inputPriotiyLevel.Location = new System.Drawing.Point(336, 100);
+            this.inputPriotiyLevel.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.inputPriotiyLevel.Name = "inputPriotiyLevel";
+            this.inputPriotiyLevel.Size = new System.Drawing.Size(177, 50);
+            this.inputPriotiyLevel.TabIndex = 144;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.label7.Location = new System.Drawing.Point(332, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 23);
+            this.label7.TabIndex = 145;
+            this.label7.Text = "Priority Level*";
+            // 
             // AddNewVehicleMaintenanceTypeModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(540, 581);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.inputPriotiyLevel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.inputSuggestedMonthly);
@@ -388,5 +428,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox inputSuggestedMonthly;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI2.WinForms.Guna2ComboBox inputPriotiyLevel;
     }
 }

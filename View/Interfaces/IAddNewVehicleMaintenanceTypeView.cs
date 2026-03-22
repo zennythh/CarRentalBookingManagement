@@ -9,6 +9,8 @@ namespace VehicleManagementSystem.View.Interfaces {
         string MaintenanceName { get; }
         string Description { get; }
 
+        string Priority { get; }
+
         int? SuggestedMileageInterval { get; } 
         int? SuggestedMonthInterval { get; }
 

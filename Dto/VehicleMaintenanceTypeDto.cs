@@ -10,6 +10,8 @@ namespace VehicleManagementSystem.Dto {
         public string MaintenanceName { get; set; }
         public string Description { get; set; }
 
+        public string Priority { get; set; }
+
         public int? SuggestedMileageInterval { get; set; }
         public int? SuggestedMonthInterval { get; set; }
 

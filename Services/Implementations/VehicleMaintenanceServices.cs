@@ -13,13 +13,14 @@ namespace VehicleManagementSystem.Services.Implementations {
         public void AddNewMaintenanceType(VehicleMaintenanceTypeDto task) {
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
                 string sql = @"
-                    INSERT INTO VehicleMaintenanceType 
-                        (MaintenanceName, Description, SuggestedMileageInterval, SuggestedMonthInterval) 
+                    INSERT INTO VehicleMaintenanceTypes
+                        (MaintenanceName, Description, Priority, SuggestedMileageInterval, SuggestedMonthInterval) 
                     VALUES 
-                        (@Name, @Desc, @Mileage, @Months);";
+                        (@Name, @Desc, @Priority, @Mileage, @Months);";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
                     cmd.Parameters.AddWithValue("@Name", task.MaintenanceName.Trim());
+                    cmd.Parameters.AddWithValue("@Priority", task.Priority.Trim());
                     cmd.Parameters.AddWithValue("@Desc", (object)task.Description ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@Mileage", task.SuggestedMileageInterval);
                     cmd.Parameters.AddWithValue("@Months", task.SuggestedMonthInterval);

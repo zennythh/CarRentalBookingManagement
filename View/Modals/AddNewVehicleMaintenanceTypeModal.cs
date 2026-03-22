@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Presenters;
 using VehicleManagementSystem.View.Interfaces;
@@ -16,6 +9,7 @@ namespace VehicleManagementSystem.View.Modals {
 
         public string MaintenanceName => inputTaskName.Text.Trim();
         public string Description => inputDescription.Text.Trim();
+        public string Priority => inputPriotiyLevel.Text.Trim();
 
         public int? SuggestedMileageInterval { get {
             if (int.TryParse(inputSuggestedMilleage.Text.Trim(), out int result)) {
@@ -46,6 +40,9 @@ namespace VehicleManagementSystem.View.Modals {
         public AddNewVehicleMaintenanceTypeModal() {
             InitializeComponent();
             _presenter = new addNewVehicleMaintenanceTypePresenter(this, new Services.Implementations.VehicleMaintenanceServices());
+
+            string[] priorities = { "Critical", "High", "Normal", "Low" };
+            inputPriotiyLevel.Items.AddRange(priorities);
         }
 
         private void closeBtn_Click(object sender, EventArgs e) {

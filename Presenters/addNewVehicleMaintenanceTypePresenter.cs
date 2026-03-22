@@ -23,9 +23,10 @@ namespace VehicleManagementSystem.Presenters {
             try {
                 var newTask = new Dto.VehicleMaintenanceTypeDto {
                     MaintenanceName = _view.MaintenanceName,
+                    Priority = _view.Priority,
                     Description = _view.Description,
                     SuggestedMileageInterval = _view.SuggestedMileageInterval,
-                    SuggestedMonthInterval = _view.SuggestedMonthInterval    
+                    SuggestedMonthInterval = _view.SuggestedMonthInterval
                 };
 
                 _vehicleMaintenanceServices.AddNewMaintenanceType(newTask);
