@@ -158,7 +158,7 @@
             this.labelCurrentOdometer.Name = "labelCurrentOdometer";
             this.labelCurrentOdometer.Size = new System.Drawing.Size(239, 31);
             this.labelCurrentOdometer.TabIndex = 0;
-            this.labelCurrentOdometer.Text = "12000";
+            this.labelCurrentOdometer.Text = "0";
             this.labelCurrentOdometer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
@@ -225,7 +225,7 @@
             this.labelOverDueCount.Name = "labelOverDueCount";
             this.labelOverDueCount.Size = new System.Drawing.Size(140, 31);
             this.labelOverDueCount.TabIndex = 1;
-            this.labelOverDueCount.Text = "1";
+            this.labelOverDueCount.Text = "0";
             this.labelOverDueCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label17
@@ -278,7 +278,7 @@
             this.labelUpcomingCount.Name = "labelUpcomingCount";
             this.labelUpcomingCount.Size = new System.Drawing.Size(140, 31);
             this.labelUpcomingCount.TabIndex = 1;
-            this.labelUpcomingCount.Text = "5";
+            this.labelUpcomingCount.Text = "0";
             this.labelUpcomingCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label15
@@ -309,15 +309,13 @@
             // 
             // labelMostUpcomingDetials
             // 
-            this.labelMostUpcomingDetials.AutoSize = true;
             this.labelMostUpcomingDetials.BackColor = System.Drawing.Color.Transparent;
             this.labelMostUpcomingDetials.Font = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMostUpcomingDetials.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.labelMostUpcomingDetials.Location = new System.Drawing.Point(14, 58);
             this.labelMostUpcomingDetials.Name = "labelMostUpcomingDetials";
-            this.labelMostUpcomingDetials.Size = new System.Drawing.Size(164, 17);
+            this.labelMostUpcomingDetials.Size = new System.Drawing.Size(218, 17);
             this.labelMostUpcomingDetials.TabIndex = 2;
-            this.labelMostUpcomingDetials.Text = "in 120km (at 12120km)";
             // 
             // labelMostUpcomingName
             // 
@@ -328,7 +326,7 @@
             this.labelMostUpcomingName.Name = "labelMostUpcomingName";
             this.labelMostUpcomingName.Size = new System.Drawing.Size(218, 18);
             this.labelMostUpcomingName.TabIndex = 1;
-            this.labelMostUpcomingName.Text = "Change Engine oil";
+            this.labelMostUpcomingName.Text = "---";
             // 
             // label12
             // 
@@ -390,9 +388,9 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label9.Location = new System.Drawing.Point(11, 33);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(148, 31);
+            this.label9.Size = new System.Drawing.Size(169, 31);
             this.label9.TabIndex = 1;
-            this.label9.Text = "Jan. 26, 2026";
+            this.label9.Text = "---";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // guna2Panel2
@@ -445,7 +443,7 @@
             this.labelTotalCount.Name = "labelTotalCount";
             this.labelTotalCount.Size = new System.Drawing.Size(140, 31);
             this.labelTotalCount.TabIndex = 1;
-            this.labelTotalCount.Text = "8";
+            this.labelTotalCount.Text = "0";
             this.labelTotalCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // guna2Panel1
@@ -486,7 +484,7 @@
             this.labelDueSoonCount.Name = "labelDueSoonCount";
             this.labelDueSoonCount.Size = new System.Drawing.Size(140, 31);
             this.labelDueSoonCount.TabIndex = 1;
-            this.labelDueSoonCount.Text = "2";
+            this.labelDueSoonCount.Text = "0";
             this.labelDueSoonCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4

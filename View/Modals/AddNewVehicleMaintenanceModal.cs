@@ -64,6 +64,9 @@ namespace VehicleManagementSystem.View.Modals {
 
             inputLastServiceDate.Value = DateTime.Today;
             inputLastServiceDate.MaxDate = DateTime.Today;
+
+            inputDueDate.MinDate = DateTime.Today;
+
             labelHeader.Text = "Adding new maintenance schedule to " + _vehicle.LicensePlate;
 
             string[] priorities = { "Recurring", "OneTime" };
