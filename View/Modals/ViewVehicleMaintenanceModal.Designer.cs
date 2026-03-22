@@ -29,7 +29,6 @@
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.labelHeader = new System.Windows.Forms.Label();
             this.panelIntervalSettings = new Guna.UI2.WinForms.Guna2Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -73,7 +72,6 @@
             this.panelTop.Controls.Add(this.guna2Button1);
             this.panelTop.Controls.Add(this.guna2Panel2);
             this.panelTop.Controls.Add(this.btnDelete);
-            this.panelTop.Controls.Add(this.btnEdit);
             this.panelTop.Controls.Add(this.labelHeader);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
@@ -129,33 +127,12 @@
             this.btnDelete.FillColor = System.Drawing.Color.Transparent;
             this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.btnDelete.Location = new System.Drawing.Point(385, 11);
+            this.btnDelete.Location = new System.Drawing.Point(436, 11);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(48, 42);
             this.btnDelete.TabIndex = 164;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.edit;
-            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEdit.BorderColor = System.Drawing.Color.Silver;
-            this.btnEdit.BorderRadius = 10;
-            this.btnEdit.BorderThickness = 3;
-            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEdit.FillColor = System.Drawing.Color.Transparent;
-            this.btnEdit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.btnEdit.Location = new System.Drawing.Point(442, 9);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(49, 44);
-            this.btnEdit.TabIndex = 163;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // labelHeader
             // 
@@ -500,6 +477,7 @@
             this.saveBtn.Size = new System.Drawing.Size(191, 44);
             this.saveBtn.TabIndex = 162;
             this.saveBtn.Text = "Save Schedule";
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // maintenanceCardControl
             // 
@@ -566,7 +544,6 @@
         private Guna.UI2.WinForms.Guna2Button saveBtn;
         private Guna.UI2.WinForms.Guna2Button cancelBtn;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
-        private Guna.UI2.WinForms.Guna2Button btnEdit;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelMaintenanceType;
         private System.Windows.Forms.Label label5;

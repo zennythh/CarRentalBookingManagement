@@ -34,7 +34,9 @@ namespace VehicleManagementSystem.UserControls {
             int mileageInt = (int)maintenanceSchedule.CurrentVehicleMileage;
             string currentStatus = maintenanceSchedule.IsUpcoming ? "Upcoming" :
                                    maintenanceSchedule.IsDueSoon ? "Due Soon" :
-                                   maintenanceSchedule.IsOverdue ? "Over Due" : "";
+                                   maintenanceSchedule.IsOverdue ? "Over Due" :
+                                   maintenanceSchedule.Status == "Completed" ? "Completed" 
+                                   : "Cancelled";
 
             if(maintenanceSchedule.ScheduleType == "OneTime") {
                 labelInterval.Text = "One time maintenance";

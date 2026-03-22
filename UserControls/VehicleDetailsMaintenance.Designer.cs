@@ -56,6 +56,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.addNewVehBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAddType = new Guna.UI2.WinForms.Guna2Button();
             this.panelMillage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2CircleProgressBar1.SuspendLayout();
@@ -539,11 +540,35 @@
             this.addNewVehBtn.Text = "Add Maintenance Schedule";
             this.addNewVehBtn.Click += new System.EventHandler(this.addNewVehBtn_Click);
             // 
+            // btnAddType
+            // 
+            this.btnAddType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnAddType.BorderRadius = 10;
+            this.btnAddType.BorderThickness = 3;
+            this.btnAddType.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnAddType.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddType.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddType.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddType.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddType.FillColor = System.Drawing.Color.Transparent;
+            this.btnAddType.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnAddType.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnAddType.Location = new System.Drawing.Point(499, 15);
+            this.btnAddType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddType.Name = "btnAddType";
+            this.btnAddType.Size = new System.Drawing.Size(294, 48);
+            this.btnAddType.TabIndex = 48;
+            this.btnAddType.Text = "Register new Maintenance Type";
+            this.btnAddType.Click += new System.EventHandler(this.btnAddType_Click);
+            // 
             // VehicleDetailsMaintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
+            this.Controls.Add(this.btnAddType);
             this.Controls.Add(this.tableMain);
             this.Controls.Add(this.addNewVehBtn);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -611,5 +636,6 @@
         private Guna.UI2.WinForms.Guna2Button addNewVehBtn;
         private System.Windows.Forms.TableLayoutPanel tableMain;
         private System.Windows.Forms.Label label14;
+        private Guna.UI2.WinForms.Guna2Button btnAddType;
     }
 }

@@ -32,7 +32,6 @@ namespace VehicleManagementSystem {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.activityLogsBtn = new FontAwesome.Sharp.IconButton();
             this.userManagementBtn = new FontAwesome.Sharp.IconButton();
-            this.maintenanceMangementBtn = new FontAwesome.Sharp.IconButton();
             this.vehManagementBtn = new FontAwesome.Sharp.IconButton();
             this.dashboardBtn = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -66,7 +65,6 @@ namespace VehicleManagementSystem {
             this.panelMenu.BackColor = System.Drawing.Color.White;
             this.panelMenu.Controls.Add(this.activityLogsBtn);
             this.panelMenu.Controls.Add(this.userManagementBtn);
-            this.panelMenu.Controls.Add(this.maintenanceMangementBtn);
             this.panelMenu.Controls.Add(this.vehManagementBtn);
             this.panelMenu.Controls.Add(this.dashboardBtn);
             this.panelMenu.Controls.Add(this.panelLogo);
@@ -94,7 +92,7 @@ namespace VehicleManagementSystem {
             this.activityLogsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.activityLogsBtn.IconSize = 50;
             this.activityLogsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.activityLogsBtn.Location = new System.Drawing.Point(0, 510);
+            this.activityLogsBtn.Location = new System.Drawing.Point(0, 428);
             this.activityLogsBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.activityLogsBtn.Name = "activityLogsBtn";
             this.activityLogsBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
@@ -122,7 +120,7 @@ namespace VehicleManagementSystem {
             this.userManagementBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.userManagementBtn.IconSize = 50;
             this.userManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.userManagementBtn.Location = new System.Drawing.Point(0, 430);
+            this.userManagementBtn.Location = new System.Drawing.Point(0, 348);
             this.userManagementBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.userManagementBtn.Name = "userManagementBtn";
             this.userManagementBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
@@ -133,34 +131,6 @@ namespace VehicleManagementSystem {
             this.userManagementBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.userManagementBtn.UseVisualStyleBackColor = false;
             this.userManagementBtn.Click += new System.EventHandler(this.userManagementBtn_Click);
-            // 
-            // maintenanceMangementBtn
-            // 
-            this.maintenanceMangementBtn.BackColor = System.Drawing.Color.Transparent;
-            this.maintenanceMangementBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Transition1.SetDecoration(this.maintenanceMangementBtn, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.maintenanceMangementBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maintenanceMangementBtn.FlatAppearance.BorderSize = 0;
-            this.maintenanceMangementBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.maintenanceMangementBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.maintenanceMangementBtn.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maintenanceMangementBtn.ForeColor = System.Drawing.Color.Gray;
-            this.maintenanceMangementBtn.IconChar = FontAwesome.Sharp.IconChar.Wrench;
-            this.maintenanceMangementBtn.IconColor = System.Drawing.Color.DarkGray;
-            this.maintenanceMangementBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.maintenanceMangementBtn.IconSize = 50;
-            this.maintenanceMangementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.maintenanceMangementBtn.Location = new System.Drawing.Point(0, 348);
-            this.maintenanceMangementBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.maintenanceMangementBtn.Name = "maintenanceMangementBtn";
-            this.maintenanceMangementBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
-            this.maintenanceMangementBtn.Size = new System.Drawing.Size(317, 82);
-            this.maintenanceMangementBtn.TabIndex = 2;
-            this.maintenanceMangementBtn.Text = "Maintenance Management";
-            this.maintenanceMangementBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.maintenanceMangementBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.maintenanceMangementBtn.UseVisualStyleBackColor = false;
-            this.maintenanceMangementBtn.Click += new System.EventHandler(this.maintenanceMangementBtn_Click);
             // 
             // vehManagementBtn
             // 
@@ -518,7 +488,6 @@ namespace VehicleManagementSystem {
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelLogo;
         private FontAwesome.Sharp.IconButton vehManagementBtn;
-        private FontAwesome.Sharp.IconButton maintenanceMangementBtn;
         private System.Windows.Forms.Panel panelHeader;
         private FontAwesome.Sharp.IconButton closeBtn;
         private FontAwesome.Sharp.IconButton maximizeBtn;

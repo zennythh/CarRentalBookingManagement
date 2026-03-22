@@ -1062,7 +1062,7 @@
             this.saveBtn.ForeColor = System.Drawing.Color.White;
             this.saveBtn.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
             this.saveBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.saveBtn.Location = new System.Drawing.Point(908, 15);
+            this.saveBtn.Location = new System.Drawing.Point(527, 15);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(204, 48);
@@ -1090,6 +1090,7 @@
             this.editBtn.Size = new System.Drawing.Size(183, 48);
             this.editBtn.TabIndex = 26;
             this.editBtn.Text = "Edit Details";
+            this.editBtn.Visible = false;
             this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
             // tableMiddle

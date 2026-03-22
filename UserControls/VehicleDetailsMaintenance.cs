@@ -119,7 +119,10 @@ namespace VehicleManagementSystem.UserControls {
             
         }
 
-
-
+        private void btnAddType_Click(object sender, EventArgs e) {
+            using (var AddNewVehicleMaintenanceTypeModal = new AddNewVehicleMaintenanceTypeModal()) {
+                AddNewVehicleMaintenanceTypeModal.ShowDialog();
+            }
+        }
     }
 }
