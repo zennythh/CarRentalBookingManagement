@@ -1,14 +1,16 @@
 ﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using VehicleManagementSystem.Data;
 using VehicleManagementSystem.Dto;
 
 namespace VehicleManagementSystem.Services.Implementations {
     internal class VehicleMaintenanceServices {
 
-        public void AddNewMaintenanceType(VehicleMaintenanceTypeDto task) {
+        public async Task AddNewMaintenanceType(VehicleMaintenanceTypeDto task) {
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
+                await conn.OpenAsync();
                 string sql = @"
                     INSERT INTO VehicleMaintenanceTypes
                         (MaintenanceName, Description, Priority, SuggestedMileageInterval, SuggestedMonthInterval) 
@@ -22,21 +24,20 @@ namespace VehicleManagementSystem.Services.Implementations {
                     cmd.Parameters.AddWithValue("@Mileage", task.SuggestedMileageInterval);
                     cmd.Parameters.AddWithValue("@Months", task.SuggestedMonthInterval);
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public List<VehicleMaintenanceTypeDto> GetAllTaskDefinitions() {
+        public async Task<List<VehicleMaintenanceTypeDto>> GetAllTaskDefinitions() {
             var tasks = new List<VehicleMaintenanceTypeDto>();
 
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
                 string sql = "SELECT * FROM VehicleMaintenanceTypes ORDER BY MaintenanceName ASC";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
-                    conn.Open();
-                    using (var reader = cmd.ExecuteReader()) {
+                    await conn.OpenAsync();
+                    using (var reader = await cmd.ExecuteReaderAsync()) {
                         while (reader.Read()) {
                             tasks.Add(new VehicleMaintenanceTypeDto {
                                 MaintenanceTypeID = reader.GetInt32("MaintenanceTypeID"),
@@ -61,10 +62,11 @@ namespace VehicleManagementSystem.Services.Implementations {
             return tasks;
         }
 
-        public List<VehicleMaintenanceScheduleDto> GetMaintenanceSchedulesByVehicle(string vehiclePlateNum) {
+        public async Task<List<VehicleMaintenanceScheduleDto>> GetMaintenanceSchedulesByVehicle(string vehiclePlateNum) {
             var schedules = new List<VehicleMaintenanceScheduleDto>();
 
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
+                await conn.OpenAsync();
                 string sql = @"
             SELECT 
                 ms.ScheduleID,
@@ -105,9 +107,7 @@ namespace VehicleManagementSystem.Services.Implementations {
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
                     cmd.Parameters.AddWithValue("@VehiclePlateNum", vehiclePlateNum);
 
-                    conn.Open();
-
-                    using (var reader = cmd.ExecuteReader()) {
+                    using (var reader = await cmd.ExecuteReaderAsync()) {
                         while (reader.Read()) {
                             schedules.Add(new VehicleMaintenanceScheduleDto {
                                 ScheduleID = reader.GetInt32("ScheduleID"),
@@ -155,14 +155,14 @@ namespace VehicleManagementSystem.Services.Implementations {
             return schedules;
         }
 
-        public void AddMaintenanceSchedule(VehicleMaintenanceScheduleDto schedule) {
+        public async Task AddMaintenanceSchedule(VehicleMaintenanceScheduleDto schedule) {
             ValidateScheduleDto(schedule);
 
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
                 string sql = BuildInsertSql(schedule.ScheduleType);
+                await conn.OpenAsync();
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
-                    // Common parameters for both types
                     cmd.Parameters.AddWithValue("@VehiclePlateNum", schedule.VehiclePlateNum);
                     cmd.Parameters.AddWithValue("@MaintenanceTypeID", schedule.MaintenanceTypeID);
                     cmd.Parameters.AddWithValue("@ScheduleType", schedule.ScheduleType);
@@ -170,7 +170,6 @@ namespace VehicleManagementSystem.Services.Implementations {
                     cmd.Parameters.AddWithValue("@Priority", schedule.Priority ?? "Normal");
                     cmd.Parameters.AddWithValue("@IsActive", 1);
 
-                    // Type-specific parameters
                     if (schedule.ScheduleType == "Recurring") {
                         cmd.Parameters.AddWithValue("@MileageInterval", (object)schedule.MileageInterval ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@MonthInterval", (object)schedule.MonthInterval ?? DBNull.Value);
@@ -181,8 +180,7 @@ namespace VehicleManagementSystem.Services.Implementations {
                         cmd.Parameters.AddWithValue("@DueMileage", (object)schedule.DueMileage ?? DBNull.Value);
                     }
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }

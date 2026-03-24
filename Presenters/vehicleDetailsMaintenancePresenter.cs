@@ -16,9 +16,9 @@ namespace VehicleManagementSystem.Presenters {
             _services = services;
         }
 
-        public void LoadMaintenance() {
+        public async void LoadMaintenance() {
             try {
-                var schedules = _services.GetMaintenanceSchedulesByVehicle(_view.VehiclePlateNum);
+                var schedules = await _services.GetMaintenanceSchedulesByVehicle(_view.VehiclePlateNum);
                 _view.DisplayDashboard(schedules);
                 _view.DisplayMaintenanceSchedule(schedules);
             } catch (Exception ex) { 
@@ -26,9 +26,9 @@ namespace VehicleManagementSystem.Presenters {
             }
         }
 
-        public void LoadDashboard() {
+        public async void LoadDashboard() {
             try {
-                var schedules = _services.GetMaintenanceSchedulesByVehicle(_view.VehiclePlateNum);
+                var schedules = await _services.GetMaintenanceSchedulesByVehicle(_view.VehiclePlateNum);
                 _view.DisplayDashboard(schedules);
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
