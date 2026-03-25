@@ -16,10 +16,13 @@ namespace VehicleManagementSystem.Presenters {
 
         public async void LoadAllVehicles() {
             try {
+                _view.SetLoadingState(true);
                 var vehicles = await _vehicleServices.GetAllVehicles();
                 _view.DisplayVehicles(vehicles);
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
+            } finally {
+                _view.SetLoadingState(false);
             }
         }
 

@@ -16,6 +16,7 @@ namespace VehicleManagementSystem.Forms {
 
         private vehicleManagementPresenter _presenter;
         private Timer _searchTimer;
+        private ucLoadingOverlay _loader = new ucLoadingOverlay();
 
         public string SearchQuery => searchBox.Text;
 
@@ -42,6 +43,14 @@ namespace VehicleManagementSystem.Forms {
             InitializeComponent();
             //InitializeColoredStatus();
             _presenter = new vehicleManagementPresenter(this, new VehicleServices());
+        }
+
+        public void SetLoadingState(bool isLoading) {
+            if (isLoading) {
+                _loader.ShowLoading(panelMain);
+            } else {
+                _loader.HideLoading();
+            }
         }
 
         public void DisplayVehicles(List<VehicleDto> vehicles) {

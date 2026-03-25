@@ -27,14 +27,13 @@ namespace VehicleManagementSystem.Forms {
         private void InitializeComponent() {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.panelMain = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.tableLayoutVehicles = new System.Windows.Forms.TableLayoutPanel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.progressBar = new Guna.UI2.WinForms.Guna2CircleProgressBar();
-            this.searchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.addNewVehBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutVehicles = new System.Windows.Forms.TableLayoutPanel();
+            this.searchBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.addNewVehBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -78,32 +77,9 @@ namespace VehicleManagementSystem.Forms {
             this.panelMain.Size = new System.Drawing.Size(1113, 546);
             this.panelMain.TabIndex = 3;
             // 
-            // tableLayoutVehicles
-            // 
-            this.tableLayoutVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutVehicles.AutoSize = true;
-            this.tableLayoutVehicles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutVehicles.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutVehicles.ColumnCount = 3;
-            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutVehicles.Location = new System.Drawing.Point(19, 91);
-            this.tableLayoutVehicles.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutVehicles.Name = "tableLayoutVehicles";
-            this.tableLayoutVehicles.RowCount = 3;
-            this.tableLayoutVehicles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 320F));
-            this.tableLayoutVehicles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 320F));
-            this.tableLayoutVehicles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 320F));
-            this.tableLayoutVehicles.Size = new System.Drawing.Size(1068, 960);
-            this.tableLayoutVehicles.TabIndex = 2;
-            // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.Controls.Add(this.progressBar);
             this.guna2Panel2.Controls.Add(this.searchBox);
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.Controls.Add(this.label3);
@@ -112,59 +88,8 @@ namespace VehicleManagementSystem.Forms {
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1092, 88);
+            this.guna2Panel2.Size = new System.Drawing.Size(1113, 88);
             this.guna2Panel2.TabIndex = 1;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Animated = true;
-            this.progressBar.BackColor = System.Drawing.Color.Transparent;
-            this.progressBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.progressBar.FillThickness = 8;
-            this.progressBar.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.progressBar.ForeColor = System.Drawing.Color.White;
-            this.progressBar.Location = new System.Drawing.Point(237, 20);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.progressBar.Minimum = 0;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.progressBar.ProgressEndCap = System.Drawing.Drawing2D.LineCap.Round;
-            this.progressBar.ProgressStartCap = System.Drawing.Drawing2D.LineCap.Round;
-            this.progressBar.ProgressThickness = 8;
-            this.progressBar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.progressBar.Size = new System.Drawing.Size(60, 60);
-            this.progressBar.TabIndex = 0;
-            this.progressBar.Text = "guna2CircleProgressBar1";
-            this.progressBar.Value = 75;
-            this.progressBar.Visible = false;
-            // 
-            // searchBox
-            // 
-            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.BorderColor = System.Drawing.Color.White;
-            this.searchBox.BorderRadius = 10;
-            this.searchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchBox.DefaultText = "";
-            this.searchBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.searchBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.searchBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchBox.FillColor = System.Drawing.SystemColors.Control;
-            this.searchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBox.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.searchBox.ForeColor = System.Drawing.Color.DimGray;
-            this.searchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBox.IconRight = global::VehicleManagementSystem.Properties.Resources.magnifying_glass;
-            this.searchBox.IconRightOffset = new System.Drawing.Point(10, 0);
-            this.searchBox.IconRightSize = new System.Drawing.Size(25, 25);
-            this.searchBox.Location = new System.Drawing.Point(548, 20);
-            this.searchBox.Margin = new System.Windows.Forms.Padding(0);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.PlaceholderText = "";
-            this.searchBox.SelectedText = "";
-            this.searchBox.Size = new System.Drawing.Size(354, 48);
-            this.searchBox.TabIndex = 8;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // label2
             // 
@@ -190,6 +115,64 @@ namespace VehicleManagementSystem.Forms {
             this.label3.TabIndex = 6;
             this.label3.Text = "Vehicles List";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 471);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1113, 75);
+            this.panel1.TabIndex = 3;
+            // 
+            // tableLayoutVehicles
+            // 
+            this.tableLayoutVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutVehicles.AutoSize = true;
+            this.tableLayoutVehicles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutVehicles.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutVehicles.ColumnCount = 3;
+            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutVehicles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutVehicles.Location = new System.Drawing.Point(19, 91);
+            this.tableLayoutVehicles.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutVehicles.Name = "tableLayoutVehicles";
+            this.tableLayoutVehicles.RowCount = 1;
+            this.tableLayoutVehicles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+            this.tableLayoutVehicles.Size = new System.Drawing.Size(1068, 320);
+            this.tableLayoutVehicles.TabIndex = 2;
+            // 
+            // searchBox
+            // 
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBox.BorderColor = System.Drawing.Color.White;
+            this.searchBox.BorderRadius = 10;
+            this.searchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchBox.DefaultText = "";
+            this.searchBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.searchBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.searchBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchBox.FillColor = System.Drawing.SystemColors.Control;
+            this.searchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchBox.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.searchBox.ForeColor = System.Drawing.Color.DimGray;
+            this.searchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchBox.IconRight = global::VehicleManagementSystem.Properties.Resources.magnifying_glass;
+            this.searchBox.IconRightOffset = new System.Drawing.Point(10, 0);
+            this.searchBox.IconRightSize = new System.Drawing.Size(25, 25);
+            this.searchBox.Location = new System.Drawing.Point(569, 20);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(0);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.PlaceholderText = "";
+            this.searchBox.SelectedText = "";
+            this.searchBox.Size = new System.Drawing.Size(354, 48);
+            this.searchBox.TabIndex = 8;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            // 
             // addNewVehBtn
             // 
             this.addNewVehBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -203,23 +186,13 @@ namespace VehicleManagementSystem.Forms {
             this.addNewVehBtn.ForeColor = System.Drawing.Color.White;
             this.addNewVehBtn.Image = global::VehicleManagementSystem.Properties.Resources.add_circle_icon;
             this.addNewVehBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.addNewVehBtn.Location = new System.Drawing.Point(920, 20);
+            this.addNewVehBtn.Location = new System.Drawing.Point(941, 20);
             this.addNewVehBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addNewVehBtn.Name = "addNewVehBtn";
             this.addNewVehBtn.Size = new System.Drawing.Size(169, 48);
             this.addNewVehBtn.TabIndex = 0;
             this.addNewVehBtn.Text = "Add Vehicle";
             this.addNewVehBtn.Click += new System.EventHandler(this.addNewVehBtn_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 1051);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1092, 179);
-            this.panel1.TabIndex = 3;
             // 
             // frmVehicleManagement
             // 
@@ -250,7 +223,6 @@ namespace VehicleManagementSystem.Forms {
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Button addNewVehBtn;
-        private Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
         private System.Windows.Forms.Panel panel1;
     }
 }

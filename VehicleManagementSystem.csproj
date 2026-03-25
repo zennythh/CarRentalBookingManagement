@@ -354,6 +354,12 @@
     <Compile Include="UserControls\ucItemControl.Designer.cs">
       <DependentUpon>ucItemControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucLoadingOverlay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucLoadingOverlay.Designer.cs">
+      <DependentUpon>ucLoadingOverlay.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\VehicleDetailsDocuments.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -548,6 +554,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucItemControl.resx">
       <DependentUpon>ucItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucLoadingOverlay.resx">
+      <DependentUpon>ucLoadingOverlay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VehicleDetailsDocuments.resx">
       <DependentUpon>VehicleDetailsDocuments.cs</DependentUpon>
