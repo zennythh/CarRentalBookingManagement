@@ -1,11 +1,11 @@
-﻿namespace VehicleManagementSystem.View.Forms {
-    partial class frmOutbound {
-        /// <summary>
+﻿namespace VehicleManagementSystem.UserControls.BookingTab {
+    partial class ucApproved {
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -16,21 +16,22 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
             this.SuspendLayout();
             // 
-            // frmOutbound
+            // ucApproved
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1132, 546);
-            this.Name = "frmOutbound";
-            this.Text = "frmOutbound";
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
+            this.Name = "ucApproved";
+            this.Size = new System.Drawing.Size(1113, 1051);
             this.ResumeLayout(false);
 
         }

@@ -13,7 +13,7 @@ namespace VehicleManagementSystem.Presenters {
             _view = view;
         }
 
-        public void SaveMaintenanceType() {
+        public async void SaveMaintenanceType() {
             if (!IsAllInputsValid(_view)) return;
 
             if (_view.SuggestedMileageInterval <= 0 && _view.SuggestedMonthInterval <= 0) {
@@ -30,7 +30,7 @@ namespace VehicleManagementSystem.Presenters {
                     SuggestedMonthInterval = _view.SuggestedMonthInterval
                 };
 
-                _vehicleMaintenanceServices.AddNewMaintenanceType(newTask);
+                await _vehicleMaintenanceServices.AddNewMaintenanceType(newTask);
 
                 _view.ShowSuccess("Maintenance type successfully created!");
 

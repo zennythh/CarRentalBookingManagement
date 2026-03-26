@@ -86,7 +86,7 @@ namespace VehicleManagementSystem.UserControls {
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e) {
+        private async void btnDelete_Click(object sender, EventArgs e) {
             using (var DeleteDocumentModal = new DeleteVehcleDocumentModal(_document)) {
                 DialogResult result = DeleteDocumentModal.ShowDialog();
 
@@ -99,7 +99,7 @@ namespace VehicleManagementSystem.UserControls {
                         File.Delete(fullPath);
                     }
    
-                    _vehicleDocumentServices.DeleteVehicleDocument(_document.DocumentID);
+                    await _vehicleDocumentServices.DeleteVehicleDocument(_document.DocumentID);
                     ReloadDocuments?.Invoke();
 
                 } catch (IOException ex) {

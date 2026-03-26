@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VehicleManagementSystem.Dto {
+    internal class PendingInfosDto {
+        // Identification
+        public string BookingID { get; set; }
+        public DateTime DateSubmitted { get; set; }
+
+        // Customer Details
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string LicenseNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+
+        // Vehicle Details 
+        public string VehicleVIN { get; set; }
+        public string VehicleName { get; set; }
+        public string LicensePlate { get; set; }
+        public string ImagePath { get; set; }
+        public string FullImagePath => System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CarRentalApp", ImagePath);
+
+        public decimal ProjectedPrice { get; set; }
+        public decimal DailyRate { get; set; }
+
+        // Schedule Details
+        public DateTime DateSchedOut { get; set; }
+        public DateTime DateDue { get; set; }
+
+        // UI Helper for Age (Useful for insurance verification)
+        // Inside PendingInfos.cs
+        public int Age {
+            get {
+                int age = DateTime.Now.Year - DateOfBirth.Year;
+                if (DateOfBirth.Date > DateTime.Now.AddYears(-age)) age--;
+                return age;
+            }
+        }
+    }
+}

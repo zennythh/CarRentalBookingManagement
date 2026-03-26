@@ -170,7 +170,7 @@ namespace VehicleManagementSystem.View.Modals {
         }
 
         // REQUIRE ITS OWN PRESENTER AND INTERFACE
-        private void saveBtn_Click(object sender, EventArgs e) {
+        private async void saveBtn_Click(object sender, EventArgs e) {
             string message = $"Are you sure you want to update this {DocumentType} document?";
             if (System.Windows.Forms.MessageBox.Show(message, "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
 
@@ -217,7 +217,7 @@ namespace VehicleManagementSystem.View.Modals {
                     return;
                 }
 
-                _vehicleDocumentServices.UpdateVehicleDocument(updatedData);
+                await _vehicleDocumentServices.UpdateVehicleDocument(updatedData);
 
                 //System.Windows.Forms.MessageBox.Show("Document updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

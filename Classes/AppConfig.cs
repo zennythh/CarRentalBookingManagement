@@ -16,7 +16,7 @@ namespace VehicleManagementSystem.Classes {
             public const string MaintenanceManagement = "Maintenance Management";
             public const string UserManagement = "User Management";
             public const string Dashboard = "Dashboard";
-            public const string Bookings = "Bookings";
+            public const string Bookings = "Bookings Management";
             public const string ActivityLogs = "Activity Logs";
             public const string OutBound = "Outbound Vehicles";
             public const string InBound = "InboundVehicles";

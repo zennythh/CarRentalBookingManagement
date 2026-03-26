@@ -30,7 +30,6 @@ namespace PL_VehicleRental.Forms
         private readonly Validator _validator;
         private readonly UserService _userService;
         private readonly userRepository _repository = new userRepository();
-        private readonly int _userId;
         private CancellationTokenSource _usernameCts;
         private CancellationTokenSource _emailCts;
         private bool _isUsernameAvailable;

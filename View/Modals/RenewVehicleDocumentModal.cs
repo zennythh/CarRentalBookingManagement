@@ -116,8 +116,7 @@ namespace VehicleManagementSystem.View.Modals {
             inputExpirationDate.Value = inputExpirationDate.Value.AddYears(1);
         }
 
-        // REQUIRE ITS OWN PRESENTER AND INTERFACE
-        private void saveBtn_Click(object sender, EventArgs e) {
+        private async void saveBtn_Click(object sender, EventArgs e) {
             saveBtn.Text = "Updating...";
             saveBtn.Click -= saveBtn_Click;
 
@@ -163,7 +162,7 @@ namespace VehicleManagementSystem.View.Modals {
                     Extension = extension
                 };
 
-                _vehicleDocumentServices.UpdateVehicleDocument(updatedData);
+                await _vehicleDocumentServices.UpdateVehicleDocument(updatedData);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             } catch (Exception ex) {

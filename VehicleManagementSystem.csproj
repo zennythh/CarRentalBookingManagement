@@ -284,11 +284,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BookingHandler.cs" />
     <Compile Include="Classes\DataGridViewStyle.cs" />
     <Compile Include="Data\Enums\VehicleDocumentEnums.cs" />
     <Compile Include="Data\Enums\VehicleMaintenanceEnums.cs" />
+    <Compile Include="Dto\BookingDto.cs" />
+    <Compile Include="Dto\PendingInfosDto.cs" />
     <Compile Include="Dto\VehicleDocumentDto.cs" />
     <Compile Include="Dto\VehicleMaintenanceTypeDto.cs" />
+    <Compile Include="Helpers\BookingHelpers.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Classes\UIRenderer.cs" />
     <Compile Include="Classes\NavigationHelper.cs" />
@@ -330,11 +334,29 @@
     <Compile Include="Services\Security\Session.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="UI\Layout\UserTableLayout.cs" />
+    <Compile Include="UserControls\BookingTab\ucApproved.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BookingTab\ucApproved.Designer.cs">
+      <DependentUpon>ucApproved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BookingTab\ucPendings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BookingTab\ucPendings.Designer.cs">
+      <DependentUpon>ucPendings.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MaintenanceCardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MaintenanceCardControl.Designer.cs">
       <DependentUpon>MaintenanceCardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucBookingCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucBookingCard.Designer.cs">
+      <DependentUpon>ucBookingCard.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucEmptyState.cs">
       <SubType>UserControl</SubType>
@@ -561,8 +583,17 @@
     <Compile Include="View\Modals\ViewVehicleMaintenanceModal.Designer.cs">
       <DependentUpon>ViewVehicleMaintenanceModal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\BookingTab\ucApproved.resx">
+      <DependentUpon>ucApproved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BookingTab\ucPendings.resx">
+      <DependentUpon>ucPendings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MaintenanceCardControl.resx">
       <DependentUpon>MaintenanceCardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucBookingCard.resx">
+      <DependentUpon>ucBookingCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucEmptyState.resx">
       <DependentUpon>ucEmptyState.cs</DependentUpon>

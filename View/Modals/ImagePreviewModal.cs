@@ -57,8 +57,8 @@ namespace VehicleManagementSystem.View.Modals {
             this.Close();
         }
 
-        private void maximizeBtn_Click(object sender, EventArgs e) {
-            WindowActions.ToggleMaximize(maximizeBtn);
+        private async void maximizeBtn_Click(object sender, EventArgs e) {
+            await WindowActions.ToggleMaximize(maximizeBtn);
         }
     }
 }
