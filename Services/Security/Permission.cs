@@ -13,6 +13,7 @@ namespace PL_VehicleRental.Services.Security
         EditUser,
         DeleteUser,
         ManageVehicles,
-        ViewReports
+        ViewReports,
+        DeleteVehicle
     }
 }
