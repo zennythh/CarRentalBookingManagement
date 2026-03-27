@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VehicleManagementSystem.View.Forms
 {
-    public partial class frmBookingDetails : Form
+    public partial class frmPendingBooking : Form
     {
-        public frmBookingDetails()
+        public frmPendingBooking()
         {
             InitializeComponent();
         }
