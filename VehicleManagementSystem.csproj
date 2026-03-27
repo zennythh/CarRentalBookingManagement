@@ -560,6 +560,12 @@
     <Compile Include="View\Modals\DeleteVehcleDocumentModal.Designer.cs">
       <DependentUpon>DeleteVehcleDocumentModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Modals\DeleteVehicleModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Modals\DeleteVehicleModal.Designer.cs">
+      <DependentUpon>DeleteVehicleModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Modals\ImagePreviewModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -696,6 +702,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Modals\DeleteVehcleDocumentModal.resx">
       <DependentUpon>DeleteVehcleDocumentModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Modals\DeleteVehicleModal.resx">
+      <DependentUpon>DeleteVehicleModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Modals\ImagePreviewModal.resx">
       <DependentUpon>ImagePreviewModal.cs</DependentUpon>

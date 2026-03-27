@@ -27,6 +27,11 @@ namespace VehicleManagementSystem.View.Modals {
         }
 
         private void btnDelete_Click(object sender, EventArgs e) {
+            if (string.IsNullOrWhiteSpace(inputReason.Text)) {
+                MessageBox.Show("Reason is required.");
+                return;
+            }
+
             string message = $"Are you sure you want to delete this {_document.Category} document?";
             if (System.Windows.Forms.MessageBox.Show(message, "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
             this.DialogResult = DialogResult.OK;
