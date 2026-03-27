@@ -413,6 +413,12 @@
     <Compile Include="View\Forms\frmAddUser.Designer.cs">
       <DependentUpon>frmAddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\frmBookingDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\frmBookingDetails.Designer.cs">
+      <DependentUpon>frmBookingDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\frmBookings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -621,6 +627,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\frmAddUser.resx">
       <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\frmBookingDetails.resx">
+      <DependentUpon>frmBookingDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\frmBookings.resx">
       <DependentUpon>frmBookings.cs</DependentUpon>

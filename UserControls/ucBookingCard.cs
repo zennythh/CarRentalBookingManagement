@@ -25,7 +25,6 @@ namespace VehicleManagementSystem.UserControls {
             lblBookingID.Text = $"ID: {booking.BookingID}";
             lblCustomerName.Text = $"{booking.FirstName} {booking.LastName}";
             lblVehicle.Text = booking.VehicleName;
-            //lblVehicleInfo.Text = $"Vehicle VIN: {booking.VehicleVIN}";
 
             if (booking.Status != "Completed"){
                 lblPrice.Text = $"Total: {booking.ProjectedPrice:C2}";
@@ -37,7 +36,7 @@ namespace VehicleManagementSystem.UserControls {
 
             lblDates.Text = $"{booking.DateSchedOut:MMM dd hh:mm tt} - {booking.DateDue:MMM dd, yyyy hh:mm tt}";
 
-            UpdateStatusUI(booking.Status);
+            UpdateStatusUI(booking.Status); 
         }
 
         private void UpdateStatusUI(string status) {

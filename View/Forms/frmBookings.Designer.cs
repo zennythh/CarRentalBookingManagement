@@ -24,11 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             this.panelNav = new Guna.UI2.WinForms.Guna2Panel();
-            this.allBtn = new Guna.UI2.WinForms.Guna2Button();
             this.pendingBtn = new Guna.UI2.WinForms.Guna2Button();
             this.approvedBtn = new Guna.UI2.WinForms.Guna2Button();
             this.rejectedBtn = new Guna.UI2.WinForms.Guna2Button();
             this.completedBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.allBtn = new Guna.UI2.WinForms.Guna2Button();
             this.hr = new Guna.UI2.WinForms.Guna2Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,24 +53,6 @@
             this.panelNav.Name = "panelNav";
             this.panelNav.Size = new System.Drawing.Size(810, 61);
             this.panelNav.TabIndex = 35;
-            // 
-            // allBtn
-            // 
-            this.allBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.allBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.allBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.allBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.allBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.allBtn.FillColor = System.Drawing.Color.Transparent;
-            this.allBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.allBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.allBtn.Location = new System.Drawing.Point(651, 0);
-            this.allBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.allBtn.Name = "allBtn";
-            this.allBtn.Size = new System.Drawing.Size(159, 61);
-            this.allBtn.TabIndex = 6;
-            this.allBtn.Text = "All";
-            this.allBtn.Click += new System.EventHandler(this.allBtn_Click);
             // 
             // pendingBtn
             // 
@@ -144,6 +126,24 @@
             this.completedBtn.Text = "Completed";
             this.completedBtn.Click += new System.EventHandler(this.completedBtn_Click);
             // 
+            // allBtn
+            // 
+            this.allBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.allBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.allBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.allBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.allBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.allBtn.FillColor = System.Drawing.Color.Transparent;
+            this.allBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.allBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.allBtn.Location = new System.Drawing.Point(651, 0);
+            this.allBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.allBtn.Name = "allBtn";
+            this.allBtn.Size = new System.Drawing.Size(159, 61);
+            this.allBtn.TabIndex = 6;
+            this.allBtn.Text = "All";
+            this.allBtn.Click += new System.EventHandler(this.allBtn_Click);
+            // 
             // hr
             // 
             this.hr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -185,7 +185,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.label3.Location = new System.Drawing.Point(25, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(211, 35);
+            this.label3.Size = new System.Drawing.Size(173, 29);
             this.label3.TabIndex = 39;
             this.label3.Text = "Bookings List";
             // 
