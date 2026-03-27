@@ -27,6 +27,6 @@ namespace VehicleManagementSystem.View.Interfaces {
         void CloseModal();
         void ShowSuccess(string message);
         void ShowError(string message);
-        void LoadMaintenanceTypes(List<VehicleMaintenanceTypeDto> tasks);
+        void LoadMaintenanceTypesInInput(List<VehicleMaintenanceTypeDto> tasks);
     }
 }
