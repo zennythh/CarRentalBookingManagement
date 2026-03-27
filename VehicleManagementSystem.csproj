@@ -284,6 +284,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\MaintenanceDashboardPresenter.cs" />
     <Compile Include="Services\BookingServices.cs" />
     <Compile Include="Classes\DataGridViewStyle.cs" />
     <Compile Include="Data\Enums\VehicleDocumentEnums.cs" />
@@ -388,6 +389,12 @@
     </Compile>
     <Compile Include="UserControls\ucLoadingOverlay.Designer.cs">
       <DependentUpon>ucLoadingOverlay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucMaintenanceDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucMaintenanceDashboard.Designer.cs">
+      <DependentUpon>ucMaintenanceDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\VehicleDetailsTab\VehicleDetailsDocuments.cs">
       <SubType>UserControl</SubType>
@@ -545,6 +552,7 @@
     <Compile Include="View\Interfaces\IAddNewVehicleMaintenanceTypeView.cs" />
     <Compile Include="View\Interfaces\IAddNewVehicleMaintenanceView.cs" />
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
+    <Compile Include="View\Interfaces\IMaintenanceDashboardView.cs" />
     <Compile Include="View\Interfaces\IVehicleDetailsDocumentView.cs" />
     <Compile Include="View\Interfaces\IMaintenanceManagementView.cs" />
     <Compile Include="View\Interfaces\IVehicleDetialsMaintenanceView.cs" />
@@ -628,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucLoadingOverlay.resx">
       <DependentUpon>ucLoadingOverlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucMaintenanceDashboard.resx">
+      <DependentUpon>ucMaintenanceDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VehicleDetailsTab\VehicleDetailsDocuments.resx">
       <DependentUpon>VehicleDetailsDocuments.cs</DependentUpon>

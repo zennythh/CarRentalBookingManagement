@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.WinForms;
-using MySql.Data.MySqlClient;
 using PL_VehicleRental.Services.Security;
 using VehicleManagementSystem.Dto;
 using MySqlConnector;

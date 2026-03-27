@@ -285,5 +285,9 @@ namespace VehicleManagementSystem.View.Forms
         {
             NavigationHelper.OpenForm(new frmBookings());
         }
+
+        private void label2_Click(object sender, EventArgs e) {
+
+        }
     }
 }
