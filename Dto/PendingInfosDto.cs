@@ -7,11 +7,12 @@ using VehicleManagementSystem.Classes;
 
 namespace VehicleManagementSystem.Dto
 {
-    internal class PendingInfosDto
+    public class PendingInfosDto
     {
         // Identification
         public string BookingID { get; set; }
         public DateTime DateSubmitted { get; set; }
+        public string Status { get; set; }
 
         // Customer Details
         public string FirstName { get; set; }

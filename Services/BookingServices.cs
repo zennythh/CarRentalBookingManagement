@@ -145,7 +145,7 @@ namespace VehicleManagementSystem.Services {
                             FROM Bookings b
                             JOIN Vehicles v ON b.VehicleVIN = v.VIN
                             WHERE b.VehicleVIN = @vin 
-                            AND b.Status IN ('Pending', 'Approved', 'Out')
+                            AND b.Status IN ('Pending', 'Approved', 'Ongoing')
                             AND @RequestedStart < DATE_ADD(b.DateDue, INTERVAL @Buffer HOUR)
                             AND @RequestedEnd > b.DateSchedOut
                             AND b.BookingID != @CurrentBookingID 
@@ -179,7 +179,7 @@ namespace VehicleManagementSystem.Services {
                         var bookingsToReject = conflicts.Where(c => c.Status == "Pending").ToList();
 
                         bool hasHardDirectConflict = conflicts.Any(c =>
-                            (c.Status == "Approved" || c.Status == "Out") &&
+                            (c.Status == "Approved" || c.Status == "Ongoing") &&
                             info.DateSchedOut < c.DateDue);
 
                         if (hasHardDirectConflict) {
