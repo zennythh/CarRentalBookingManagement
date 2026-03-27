@@ -17,11 +17,6 @@ namespace VehicleManagementSystem {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //frmMain mainForm = new frmMain();
-
-            //var context = new ApplicationContext(mainForm);
-
-            //Application.Run(mainForm);
 
             while (true)
             {

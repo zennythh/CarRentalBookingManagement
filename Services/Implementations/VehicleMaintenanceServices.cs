@@ -29,7 +29,7 @@ namespace VehicleManagementSystem.Services.Implementations {
             }
         }
 
-        public async Task<List<VehicleMaintenanceTypeDto>> GetAllTaskDefinitions() {
+        public async Task<List<VehicleMaintenanceTypeDto>> GetAllMaintenanceTypes() {
             var tasks = new List<VehicleMaintenanceTypeDto>();
 
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {

@@ -117,29 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="resource.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAATxJREFUSEvt
-        lTFLA0EQhV+ljZ2NKCIIaYJIQAsttLKyixALf4YWSaEgWAiilfhzbKxC8A9Y2IRYKoqFdsrA7PHy2FkI
-        nKn8YCD33ty+yWbvAvwzAd8AzlWsi3UAP14acgDgg/xU7wA60ltkOwh5yiyudU/9RfaCkBX6nNgCMJCg
-        hjYp+3IDhzyQ/gZgkbwRebukj7FETRdByLMMsEbeLelzpFck88avm0GIsUwecxnoOHPxS/R2IeTKddtW
-        5tP1UxbTIrMsAuiRpyEt16yHmcl9ixMX7Gwz+qNriB3hTbo2XrzvWvRqgbtAj0KYtNVj0yfmyeT0jUxA
-        LqRL3qp4FTvUNCR9IXhdcEjftUPSsvARtHrMPDw8CIeEk+ew94tOHJVu10QcBdvzCuC4rpASpSe+NqYa
-        Yv+Mf4aFTJdfYICfHBpE/TcAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="resource.Image1" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAATxJREFUSEvt
-        lTFLA0EQhV+ljZ2NKCIIaYJIQAsttLKyixALf4YWSaEgWAiilfhzbKxC8A9Y2IRYKoqFdsrA7PHy2FkI
-        nKn8YCD33ty+yWbvAvwzAd8AzlWsi3UAP14acgDgg/xU7wA60ltkOwh5yiyudU/9RfaCkBX6nNgCMJCg
-        hjYp+3IDhzyQ/gZgkbwRebukj7FETRdByLMMsEbeLelzpFck88avm0GIsUwecxnoOHPxS/R2IeTKddtW
-        5tP1UxbTIrMsAuiRpyEt16yHmcl9ixMX7Gwz+qNriB3hTbo2XrzvWvRqgbtAj0KYtNVj0yfmyeT0jUxA
-        LqRL3qp4FTvUNCR9IXhdcEjftUPSsvARtHrMPDw8CIeEk+ew94tOHJVu10QcBdvzCuC4rpASpSe+NqYa
-        Yv+Mf4aFTJdfYICfHBpE/TcAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="guna2BorderlessForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

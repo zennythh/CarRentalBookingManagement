@@ -31,7 +31,7 @@
             this.labelHeader = new System.Windows.Forms.Label();
             this.cancelBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
-            this.inputDocumentTitle = new Guna.UI2.WinForms.Guna2TextBox();
+            this.inputReason = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,9 +66,9 @@
             this.panelTop.Controls.Add(this.labelHeader);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(577, 71);
+            this.panelTop.Size = new System.Drawing.Size(691, 175);
             this.panelTop.TabIndex = 104;
             // 
             // guna2Panel2
@@ -77,10 +77,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel2.BorderRadius = 5;
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(28, 52);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Panel2.Location = new System.Drawing.Point(34, 62);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(533, 4);
+            this.guna2Panel2.Size = new System.Drawing.Size(628, 6);
             this.guna2Panel2.TabIndex = 104;
             // 
             // closeBtn
@@ -95,10 +95,10 @@
             this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
             this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.closeBtn.IconSize = 28;
-            this.closeBtn.Location = new System.Drawing.Point(518, 11);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeBtn.Location = new System.Drawing.Point(606, 16);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(43, 30);
+            this.closeBtn.Size = new System.Drawing.Size(52, 36);
             this.closeBtn.TabIndex = 11;
             this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
@@ -109,9 +109,10 @@
             this.labelHeader.BackColor = System.Drawing.Color.Transparent;
             this.labelHeader.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.labelHeader.Location = new System.Drawing.Point(24, 17);
+            this.labelHeader.Location = new System.Drawing.Point(29, 20);
+            this.labelHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(317, 24);
+            this.labelHeader.Size = new System.Drawing.Size(391, 29);
             this.labelHeader.TabIndex = 104;
             this.labelHeader.Text = "Adding new vehicle document to";
             // 
@@ -129,10 +130,10 @@
             this.cancelBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkGray;
             this.cancelBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.cancelBtn.Location = new System.Drawing.Point(209, 546);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cancelBtn.Location = new System.Drawing.Point(249, 671);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(117, 44);
+            this.cancelBtn.Size = new System.Drawing.Size(140, 53);
             this.cancelBtn.TabIndex = 119;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -140,39 +141,40 @@
             // panelPreview
             // 
             this.panelPreview.BorderRadius = 15;
-            this.panelPreview.Controls.Add(this.inputDocumentTitle);
+            this.panelPreview.Controls.Add(this.inputReason);
             this.panelPreview.Controls.Add(this.guna2TextBox1);
-            this.panelPreview.Location = new System.Drawing.Point(25, 314);
+            this.panelPreview.Location = new System.Drawing.Point(30, 377);
+            this.panelPreview.Margin = new System.Windows.Forms.Padding(4);
             this.panelPreview.Name = "panelPreview";
-            this.panelPreview.Size = new System.Drawing.Size(523, 217);
+            this.panelPreview.Size = new System.Drawing.Size(628, 260);
             this.panelPreview.TabIndex = 126;
             // 
-            // inputDocumentTitle
+            // inputReason
             // 
-            this.inputDocumentTitle.AcceptsReturn = true;
-            this.inputDocumentTitle.AutoSize = true;
-            this.inputDocumentTitle.BackColor = System.Drawing.SystemColors.Control;
-            this.inputDocumentTitle.BorderRadius = 10;
-            this.inputDocumentTitle.BorderThickness = 2;
-            this.inputDocumentTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.inputDocumentTitle.DefaultText = "";
-            this.inputDocumentTitle.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.inputDocumentTitle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.inputDocumentTitle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.inputDocumentTitle.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.inputDocumentTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputDocumentTitle.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputDocumentTitle.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputDocumentTitle.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputDocumentTitle.Location = new System.Drawing.Point(0, 0);
-            this.inputDocumentTitle.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.inputDocumentTitle.Multiline = true;
-            this.inputDocumentTitle.Name = "inputDocumentTitle";
-            this.inputDocumentTitle.PlaceholderText = "";
-            this.inputDocumentTitle.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.inputDocumentTitle.SelectedText = "";
-            this.inputDocumentTitle.Size = new System.Drawing.Size(523, 217);
-            this.inputDocumentTitle.TabIndex = 2;
+            this.inputReason.AcceptsReturn = true;
+            this.inputReason.AutoSize = true;
+            this.inputReason.BackColor = System.Drawing.SystemColors.Control;
+            this.inputReason.BorderRadius = 10;
+            this.inputReason.BorderThickness = 2;
+            this.inputReason.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.inputReason.DefaultText = "";
+            this.inputReason.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.inputReason.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.inputReason.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.inputReason.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.inputReason.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputReason.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputReason.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputReason.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputReason.Location = new System.Drawing.Point(0, 0);
+            this.inputReason.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.inputReason.Multiline = true;
+            this.inputReason.Name = "inputReason";
+            this.inputReason.PlaceholderText = "";
+            this.inputReason.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.inputReason.SelectedText = "";
+            this.inputReason.Size = new System.Drawing.Size(628, 260);
+            this.inputReason.TabIndex = 2;
             // 
             // guna2TextBox1
             // 
@@ -185,12 +187,12 @@
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(276, 75);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2TextBox1.Location = new System.Drawing.Point(331, 90);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(8, 8);
+            this.guna2TextBox1.Size = new System.Drawing.Size(10, 10);
             this.guna2TextBox1.TabIndex = 0;
             // 
             // label5
@@ -200,9 +202,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(3, 46);
+            this.label5.Location = new System.Drawing.Point(4, 55);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 19);
+            this.label5.Size = new System.Drawing.Size(166, 24);
             this.label5.TabIndex = 127;
             this.label5.Text = "Document TItle :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -222,7 +225,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.labelExtension, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelIssueDate, 1, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 76);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(34, 91);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -230,7 +234,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 188);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(624, 226);
             this.tableLayoutPanel1.TabIndex = 128;
             // 
             // labelDocumentTitle
@@ -239,9 +243,10 @@
             this.labelDocumentTitle.AutoSize = true;
             this.labelDocumentTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelDocumentTitle.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDocumentTitle.Location = new System.Drawing.Point(174, 37);
+            this.labelDocumentTitle.Location = new System.Drawing.Point(210, 45);
+            this.labelDocumentTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDocumentTitle.Name = "labelDocumentTitle";
-            this.labelDocumentTitle.Size = new System.Drawing.Size(343, 37);
+            this.labelDocumentTitle.Size = new System.Drawing.Size(410, 45);
             this.labelDocumentTitle.TabIndex = 133;
             this.labelDocumentTitle.Text = "label6";
             this.labelDocumentTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -252,9 +257,10 @@
             this.labelIssuingAuthority.AutoSize = true;
             this.labelIssuingAuthority.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelIssuingAuthority.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIssuingAuthority.Location = new System.Drawing.Point(174, 111);
+            this.labelIssuingAuthority.Location = new System.Drawing.Point(210, 135);
+            this.labelIssuingAuthority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelIssuingAuthority.Name = "labelIssuingAuthority";
-            this.labelIssuingAuthority.Size = new System.Drawing.Size(343, 37);
+            this.labelIssuingAuthority.Size = new System.Drawing.Size(410, 45);
             this.labelIssuingAuthority.TabIndex = 134;
             this.labelIssuingAuthority.Text = "label7";
             this.labelIssuingAuthority.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -266,9 +272,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(3, 120);
+            this.label2.Location = new System.Drawing.Point(4, 145);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 19);
+            this.label2.Size = new System.Drawing.Size(183, 24);
             this.label2.TabIndex = 129;
             this.label2.Text = "Issuing Authority :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -280,9 +287,10 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(3, 9);
+            this.label10.Location = new System.Drawing.Point(4, 10);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(142, 19);
+            this.label10.Size = new System.Drawing.Size(171, 24);
             this.label10.TabIndex = 130;
             this.label10.Text = "Document Type :";
             // 
@@ -292,9 +300,10 @@
             this.labelDocumentType.AutoSize = true;
             this.labelDocumentType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelDocumentType.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDocumentType.Location = new System.Drawing.Point(174, 0);
+            this.labelDocumentType.Location = new System.Drawing.Point(210, 0);
+            this.labelDocumentType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDocumentType.Name = "labelDocumentType";
-            this.labelDocumentType.Size = new System.Drawing.Size(343, 37);
+            this.labelDocumentType.Size = new System.Drawing.Size(410, 45);
             this.labelDocumentType.TabIndex = 132;
             this.labelDocumentType.Text = "label4";
             this.labelDocumentType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -306,9 +315,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(3, 83);
+            this.label4.Location = new System.Drawing.Point(4, 100);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 19);
+            this.label4.Size = new System.Drawing.Size(117, 24);
             this.label4.TabIndex = 136;
             this.label4.Text = "Extension :";
             // 
@@ -319,9 +329,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(3, 158);
+            this.label1.Location = new System.Drawing.Point(4, 191);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 19);
+            this.label1.Size = new System.Drawing.Size(122, 24);
             this.label1.TabIndex = 131;
             this.label1.Text = "Issue Date :";
             // 
@@ -331,9 +342,10 @@
             this.labelExtension.AutoSize = true;
             this.labelExtension.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelExtension.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelExtension.Location = new System.Drawing.Point(174, 74);
+            this.labelExtension.Location = new System.Drawing.Point(210, 90);
+            this.labelExtension.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelExtension.Name = "labelExtension";
-            this.labelExtension.Size = new System.Drawing.Size(343, 37);
+            this.labelExtension.Size = new System.Drawing.Size(410, 45);
             this.labelExtension.TabIndex = 137;
             this.labelExtension.Text = "label8";
             this.labelExtension.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -344,9 +356,10 @@
             this.labelIssueDate.AutoSize = true;
             this.labelIssueDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelIssueDate.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIssueDate.Location = new System.Drawing.Point(174, 148);
+            this.labelIssueDate.Location = new System.Drawing.Point(210, 180);
+            this.labelIssueDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelIssueDate.Name = "labelIssueDate";
-            this.labelIssueDate.Size = new System.Drawing.Size(343, 40);
+            this.labelIssueDate.Size = new System.Drawing.Size(410, 46);
             this.labelIssueDate.TabIndex = 135;
             this.labelIssueDate.Text = "label8";
             this.labelIssueDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -358,9 +371,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label3.Location = new System.Drawing.Point(24, 287);
+            this.label3.Location = new System.Drawing.Point(29, 346);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 23);
+            this.label3.Size = new System.Drawing.Size(96, 26);
             this.label3.TabIndex = 132;
             this.label3.Text = "Reason*";
             // 
@@ -378,20 +392,20 @@
             this.btnDelete.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(57)))), ((int)(((byte)(70)))));
             this.btnDelete.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnDelete.Location = new System.Drawing.Point(347, 546);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Location = new System.Drawing.Point(415, 671);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(199, 44);
+            this.btnDelete.Size = new System.Drawing.Size(239, 53);
             this.btnDelete.TabIndex = 133;
             this.btnDelete.Text = "Delete Document";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // DeleteVehcleDocumentModal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(577, 611);
+            this.ClientSize = new System.Drawing.Size(691, 764);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -399,6 +413,7 @@
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.panelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DeleteVehcleDocumentModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteVehcleDocumentModal";
@@ -433,7 +448,7 @@
         private System.Windows.Forms.Label labelIssuingAuthority;
         private System.Windows.Forms.Label labelDocumentTitle;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
-        private Guna.UI2.WinForms.Guna2TextBox inputDocumentTitle;
+        private Guna.UI2.WinForms.Guna2TextBox inputReason;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private System.Windows.Forms.Label labelExtension;
         private System.Windows.Forms.Label label4;

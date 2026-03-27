@@ -17,7 +17,7 @@ namespace VehicleManagementSystem.Presenters {
         public async void LoadAllVehicles() {
             try {
                 _view.SetLoadingState(true);
-                var vehicles = await _vehicleServices.GetAllVehicles();
+                var vehicles = await _vehicleServices.GetAllActiveVehicles();
                 _view.DisplayVehicles(vehicles);
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);

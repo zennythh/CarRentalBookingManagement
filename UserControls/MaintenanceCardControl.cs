@@ -16,6 +16,7 @@ namespace VehicleManagementSystem.UserControls {
 
         public MaintenanceCardControl() {
             InitializeComponent();
+            this.Cursor = Cursors.Hand;
         }
 
         private Action _reloadDisplay;
@@ -57,13 +58,13 @@ namespace VehicleManagementSystem.UserControls {
 
             labelDueDate.Text = maintenanceSchedule.NextDueDate?
                                 .ToString("MMM dd, yyyy")
-                                ?? "—";
+                                ?? "—-";
             string nextDueMillage = maintenanceSchedule.NextDueMileage != null ?
                                 maintenanceSchedule.NextDueMileage.ToString() + " km" :
-                                "—";
+                                null;
             
 
-            labelDueOdometer.Text = $"In {maintenanceSchedule.MilesUntilDue}Km (At {nextDueMillage})";
+            labelDueOdometer.Text = nextDueMillage != null ? $"In {maintenanceSchedule.MilesUntilDue}Km (At {nextDueMillage})" : "--";
             ;
         }
 

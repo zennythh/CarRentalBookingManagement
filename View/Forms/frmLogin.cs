@@ -164,5 +164,13 @@ namespace PL_VehicleRental.Forms
             }
             base.WndProc(ref m);
         }
+
+        private void lblLogin_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e) {
+
+        }
     }
 }

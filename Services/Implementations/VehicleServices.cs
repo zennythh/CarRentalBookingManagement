@@ -1,4 +1,7 @@
 ﻿using MySqlConnector;
+using Spire.Doc;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VehicleManagementSystem.Data;
@@ -109,6 +112,64 @@ namespace VehicleManagementSystem.Services.Implementations {
             return vehicles;
         }
 
+        public async Task<List<VehicleDto>> GetAllActiveVehicles() {
+            var vehicles = new List<VehicleDto>();
+
+            using (MySqlConnection conn = MySQLConnectionContext.Create()) {
+                await conn.OpenAsync();
+
+                string sql = "SELECT * FROM Vehicles WHERE IsActive = 1 ORDER BY CreatedDate DESC";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                using (var reader = await cmd.ExecuteReaderAsync()) {
+
+                    // 4. Await the reading process
+                    while (await reader.ReadAsync()) {
+                        vehicles.Add(new VehicleDto {
+                            VIN = reader.GetString("VIN"),
+                            LicensePlate = reader.GetString("LicensePlate"),
+                            Manufacturer = reader.GetString("Manufacturer"),
+                            Model = reader.GetString("Model"),
+                            YearModel = reader.GetInt32("YearModel"),
+                            Color = reader.GetString("Color"),
+                            Category = reader.GetString("Category"),
+                            FuelType = reader.GetString("FuelType"),
+                            Transmission = reader.GetString("Transmission"),
+                            SeatingCapacity = reader.GetInt32("SeatingCapacity"),
+                            PurchaseDate = reader.GetDateTime("PurchaseDate"),
+                            PurchasePrice = reader.GetDecimal("PurchasePrice"),
+                            CurrentOdometerReading = reader.GetDecimal("CurrentOdometerReading"),
+                            CurrentStatus = reader.GetString("CurrentStatus"),
+                            DailyRate = reader.GetDecimal("DailyRate"),
+                            // Use IsDBNull check if ImagePath can be null in DB
+                            ImagePath = reader.IsDBNull(reader.GetOrdinal("ImagePath")) ? null : reader.GetString("ImagePath"),
+                            IsActive = reader.GetBoolean("IsActive"),
+                            CreatedDate = reader.GetDateTime("CreatedDate"),
+                            LastModifiedDate = reader.GetDateTime("LastModifiedDate")
+                        });
+                    }
+                }
+            }
+
+            return vehicles;
+        }
+
+        public async Task SoftDeleteVehicle(string plateNum) {
+            MySqlConnection conn = MySQLConnectionContext.Create();
+            await conn.OpenAsync();
+
+            string sql = @"
+                UPDATE Vehicles 
+                SET IsActive = 0
+                WHERE LicensePlate = @plateNum;
+            ";
+
+            using (var cmd = new MySqlCommand(sql, conn)) {
+                cmd.Parameters.AddWithValue("@plateNum", plateNum);
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
 
         public void AddVehicle(Vehicle vehicle) {
             MySqlConnection conn = MySQLConnectionContext.Create();

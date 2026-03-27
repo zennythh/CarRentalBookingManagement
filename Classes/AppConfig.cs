@@ -19,7 +19,7 @@ namespace VehicleManagementSystem.Classes {
             public const string Bookings = "Bookings Management";
             public const string ActivityLogs = "Activity Logs";
             public const string OutBound = "Outbound Vehicles";
-            public const string InBound = "InboundVehicles";
+            public const string InBound = "Inbound Vehicles";
         }
 
         public static class SubTitles {

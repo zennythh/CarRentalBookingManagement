@@ -32,10 +32,11 @@ namespace VehicleManagementSystem {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.activityLogsBtn = new FontAwesome.Sharp.IconButton();
             this.userManagementBtn = new FontAwesome.Sharp.IconButton();
+            this.maintenanceBtn = new FontAwesome.Sharp.IconButton();
+            this.vehManagementBtn = new FontAwesome.Sharp.IconButton();
             this.inboundBtn = new FontAwesome.Sharp.IconButton();
             this.outboundBtn = new FontAwesome.Sharp.IconButton();
             this.bookingsBtn = new FontAwesome.Sharp.IconButton();
-            this.vehManagementBtn = new FontAwesome.Sharp.IconButton();
             this.dashboardBtn = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelMenuLine = new Guna.UI2.WinForms.Guna2Panel();
@@ -68,10 +69,11 @@ namespace VehicleManagementSystem {
             this.panelMenu.BackColor = System.Drawing.Color.White;
             this.panelMenu.Controls.Add(this.activityLogsBtn);
             this.panelMenu.Controls.Add(this.userManagementBtn);
+            this.panelMenu.Controls.Add(this.maintenanceBtn);
+            this.panelMenu.Controls.Add(this.vehManagementBtn);
             this.panelMenu.Controls.Add(this.inboundBtn);
             this.panelMenu.Controls.Add(this.outboundBtn);
             this.panelMenu.Controls.Add(this.bookingsBtn);
-            this.panelMenu.Controls.Add(this.vehManagementBtn);
             this.panelMenu.Controls.Add(this.dashboardBtn);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.guna2Transition1.SetDecoration(this.panelMenu, Guna.UI2.AnimatorNS.DecorationType.None);
@@ -79,7 +81,7 @@ namespace VehicleManagementSystem {
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(317, 755);
+            this.panelMenu.Size = new System.Drawing.Size(317, 825);
             this.panelMenu.TabIndex = 0;
             // 
             // activityLogsBtn
@@ -98,7 +100,7 @@ namespace VehicleManagementSystem {
             this.activityLogsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.activityLogsBtn.IconSize = 50;
             this.activityLogsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.activityLogsBtn.Location = new System.Drawing.Point(0, 674);
+            this.activityLogsBtn.Location = new System.Drawing.Point(0, 756);
             this.activityLogsBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.activityLogsBtn.Name = "activityLogsBtn";
             this.activityLogsBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
@@ -126,7 +128,7 @@ namespace VehicleManagementSystem {
             this.userManagementBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.userManagementBtn.IconSize = 50;
             this.userManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.userManagementBtn.Location = new System.Drawing.Point(0, 594);
+            this.userManagementBtn.Location = new System.Drawing.Point(0, 676);
             this.userManagementBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.userManagementBtn.Name = "userManagementBtn";
             this.userManagementBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
@@ -137,6 +139,62 @@ namespace VehicleManagementSystem {
             this.userManagementBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.userManagementBtn.UseVisualStyleBackColor = false;
             this.userManagementBtn.Click += new System.EventHandler(this.userManagementBtn_Click);
+            // 
+            // maintenanceBtn
+            // 
+            this.maintenanceBtn.BackColor = System.Drawing.Color.Transparent;
+            this.maintenanceBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.maintenanceBtn, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.maintenanceBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.maintenanceBtn.FlatAppearance.BorderSize = 0;
+            this.maintenanceBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.maintenanceBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.maintenanceBtn.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maintenanceBtn.ForeColor = System.Drawing.Color.Gray;
+            this.maintenanceBtn.IconChar = FontAwesome.Sharp.IconChar.ScrewdriverWrench;
+            this.maintenanceBtn.IconColor = System.Drawing.Color.DarkGray;
+            this.maintenanceBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.maintenanceBtn.IconSize = 50;
+            this.maintenanceBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.maintenanceBtn.Location = new System.Drawing.Point(0, 594);
+            this.maintenanceBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.maintenanceBtn.Name = "maintenanceBtn";
+            this.maintenanceBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
+            this.maintenanceBtn.Size = new System.Drawing.Size(317, 82);
+            this.maintenanceBtn.TabIndex = 11;
+            this.maintenanceBtn.Text = "Maintenace Management";
+            this.maintenanceBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.maintenanceBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.maintenanceBtn.UseVisualStyleBackColor = false;
+            this.maintenanceBtn.Click += new System.EventHandler(this.maintenanceBtn_Click);
+            // 
+            // vehManagementBtn
+            // 
+            this.vehManagementBtn.BackColor = System.Drawing.Color.Transparent;
+            this.vehManagementBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.vehManagementBtn, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.vehManagementBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.vehManagementBtn.FlatAppearance.BorderSize = 0;
+            this.vehManagementBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.vehManagementBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vehManagementBtn.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehManagementBtn.ForeColor = System.Drawing.Color.Gray;
+            this.vehManagementBtn.IconChar = FontAwesome.Sharp.IconChar.Car;
+            this.vehManagementBtn.IconColor = System.Drawing.Color.DarkGray;
+            this.vehManagementBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.vehManagementBtn.IconSize = 50;
+            this.vehManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vehManagementBtn.Location = new System.Drawing.Point(0, 512);
+            this.vehManagementBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.vehManagementBtn.Name = "vehManagementBtn";
+            this.vehManagementBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
+            this.vehManagementBtn.Size = new System.Drawing.Size(317, 82);
+            this.vehManagementBtn.TabIndex = 1;
+            this.vehManagementBtn.Text = "Vehicle Management";
+            this.vehManagementBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vehManagementBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.vehManagementBtn.UseVisualStyleBackColor = false;
+            this.vehManagementBtn.Click += new System.EventHandler(this.vehManagementBtn_Click);
             // 
             // inboundBtn
             // 
@@ -154,7 +212,7 @@ namespace VehicleManagementSystem {
             this.inboundBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.inboundBtn.IconSize = 50;
             this.inboundBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.inboundBtn.Location = new System.Drawing.Point(0, 512);
+            this.inboundBtn.Location = new System.Drawing.Point(0, 430);
             this.inboundBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inboundBtn.Name = "inboundBtn";
             this.inboundBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
@@ -182,7 +240,7 @@ namespace VehicleManagementSystem {
             this.outboundBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.outboundBtn.IconSize = 50;
             this.outboundBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.outboundBtn.Location = new System.Drawing.Point(0, 430);
+            this.outboundBtn.Location = new System.Drawing.Point(0, 348);
             this.outboundBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.outboundBtn.Name = "outboundBtn";
             this.outboundBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
@@ -210,7 +268,7 @@ namespace VehicleManagementSystem {
             this.bookingsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bookingsBtn.IconSize = 50;
             this.bookingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bookingsBtn.Location = new System.Drawing.Point(0, 348);
+            this.bookingsBtn.Location = new System.Drawing.Point(0, 266);
             this.bookingsBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bookingsBtn.Name = "bookingsBtn";
             this.bookingsBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
@@ -221,34 +279,6 @@ namespace VehicleManagementSystem {
             this.bookingsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bookingsBtn.UseVisualStyleBackColor = false;
             this.bookingsBtn.Click += new System.EventHandler(this.bookingsBtn_Click);
-            // 
-            // vehManagementBtn
-            // 
-            this.vehManagementBtn.BackColor = System.Drawing.Color.Transparent;
-            this.vehManagementBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Transition1.SetDecoration(this.vehManagementBtn, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.vehManagementBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.vehManagementBtn.FlatAppearance.BorderSize = 0;
-            this.vehManagementBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.vehManagementBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vehManagementBtn.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehManagementBtn.ForeColor = System.Drawing.Color.Gray;
-            this.vehManagementBtn.IconChar = FontAwesome.Sharp.IconChar.Car;
-            this.vehManagementBtn.IconColor = System.Drawing.Color.DarkGray;
-            this.vehManagementBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.vehManagementBtn.IconSize = 50;
-            this.vehManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vehManagementBtn.Location = new System.Drawing.Point(0, 266);
-            this.vehManagementBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.vehManagementBtn.Name = "vehManagementBtn";
-            this.vehManagementBtn.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
-            this.vehManagementBtn.Size = new System.Drawing.Size(317, 82);
-            this.vehManagementBtn.TabIndex = 1;
-            this.vehManagementBtn.Text = "Vehicle Management";
-            this.vehManagementBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.vehManagementBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.vehManagementBtn.UseVisualStyleBackColor = false;
-            this.vehManagementBtn.Click += new System.EventHandler(this.vehManagementBtn_Click);
             // 
             // dashboardBtn
             // 
@@ -487,7 +517,7 @@ namespace VehicleManagementSystem {
             this.panelDesktop.Location = new System.Drawing.Point(317, 73);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1095, 682);
+            this.panelDesktop.Size = new System.Drawing.Size(1095, 752);
             this.panelDesktop.TabIndex = 2;
             // 
             // userMenuStrip
@@ -549,7 +579,7 @@ namespace VehicleManagementSystem {
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1412, 755);
+            this.ClientSize = new System.Drawing.Size(1412, 825);
             this.ControlBox = false;
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelHeader);
@@ -601,5 +631,6 @@ namespace VehicleManagementSystem {
         private IconButton outboundBtn;
         private IconButton inboundBtn;
         private IconButton bookingsBtn;
+        private IconButton maintenanceBtn;
     }
 }

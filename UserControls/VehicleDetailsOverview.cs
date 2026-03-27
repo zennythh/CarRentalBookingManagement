@@ -1,37 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
 using VehicleManagementSystem.Classes;
 using VehicleManagementSystem.Data;
 using VehicleManagementSystem.Dto;
-using VehicleManagementSystem.View.Forms;
+using VehicleManagementSystem.Forms;
+using VehicleManagementSystem.Services.Implementations;
+using VehicleManagementSystem.View.Modals;
+
+
+using MySqlX.XDevAPI;
+using PL_VehicleRental.Services.Security;
 
 namespace VehicleManagementSystem.UserControls {
     public partial class VehicleDetailsOverview : UserControl {
         private VehicleDto _vehicle;
+        private VehicleServices _vehicleServices;
 
         public VehicleDetailsOverview(VehicleDto vehicle) {
             _vehicle = vehicle;
+            _vehicleServices = new VehicleServices();
             InitializeComponent();
             LoadVehicleImage();
             InitializeCombos();
 
             LoadVehicleInformation();
             LoadComboBoxInformation();
+            deleteBtn.Visible = PL_VehicleRental.Services.Security.Session.User.Role != UserRole.Staff;
         }
 
         private void editBtn_Click(object sender, EventArgs e) {        
             ToggleUIVisibility();
             ToggleInputsEnable();
-        }
-
-        private void cancelBtn_Click(object sender, EventArgs e) {
-            ToggleUIVisibility();
-            ToggleInputsEnable();
-
-            LoadVehicleInformation();
-            LoadComboBoxInformation();
         }
 
         private void saveBtn_Click(object sender, EventArgs e) {
@@ -94,7 +94,7 @@ namespace VehicleManagementSystem.UserControls {
             //labelEdittingModeNotice.Visible = !labelEdittingModeNotice.Visible;
             editBtn.Visible = !editBtn.Visible;
             saveBtn.Visible = !saveBtn.Visible;
-            cancelBtn.Visible = !cancelBtn.Visible;
+            deleteBtn.Visible = !deleteBtn.Visible;
         }
 
         private void ToggleInputsEnable() {
@@ -136,5 +136,33 @@ namespace VehicleManagementSystem.UserControls {
         private void viewMaintenanceBtn_Click(object sender, EventArgs e) {
          //   frmVehicleDetails.Instance.OpenSubPanel(new VehicleDetailsDocuments(_vehicle));
         }
+
+        private void deleteBtn_Click(object sender, EventArgs e) {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete this vehicle? This action will be recorded in the system audit logs.",
+                "Confirm Deletion",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes) return;
+            
+            using (var DeleteVehicleModal = new DeleteVehicleModal(_vehicle)) {
+                if (DeleteVehicleModal.ShowDialog() == DialogResult.OK) {
+                    DeleteVehicleByPlateNum(_vehicle.LicensePlate);
+                }
+            }
+
+        }
+
+        private async void DeleteVehicleByPlateNum(string plateNumber) {
+            try {
+                await _vehicleServices.SoftDeleteVehicle(plateNumber);
+                NavigationHelper.OpenForm(new frmVehicleManagement());
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

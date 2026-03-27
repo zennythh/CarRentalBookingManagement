@@ -21,10 +21,18 @@ namespace VehicleManagementSystem.Presenters {
             _service = service;
         }
 
-        public async void LoadMaintenanceTypes() {
+        public async void LoadMaintenanceTypes(bool isRecurring, string VehiclePlateNum) {
             try {
-                var maintenanceTypes = await _service.GetAllTaskDefinitions();
-                _view.LoadMaintenanceTypes(maintenanceTypes);
+                var maintenanceTypes = await _service.GetAllMaintenanceTypes();
+                var maintenanceSchedule = await _service.GetMaintenanceSchedulesByVehicle(VehiclePlateNum);
+
+                if (isRecurring) {
+                    maintenanceTypes = maintenanceTypes
+                        .Where(type => !maintenanceSchedule.Any(sch => sch.MaintenanceName == type.MaintenanceName))
+                        .ToList();
+                }
+
+                _view.LoadMaintenanceTypesInInput(maintenanceTypes);
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
             }

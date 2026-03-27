@@ -32,21 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.pnlBase = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.pnlLogo = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblLogin = new System.Windows.Forms.Label();
-            this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.chkShowPassword = new Guna.UI2.WinForms.Guna2ImageCheckBox();
             this.passwordTxt = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.lblLogin = new System.Windows.Forms.Label();
+            this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.usernameTxt = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.pnlBase.SuspendLayout();
             this.pnlLogo.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBase
@@ -58,9 +58,8 @@
             this.pnlBase.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.pnlBase.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(167)))), ((int)(((byte)(161)))));
             this.pnlBase.Location = new System.Drawing.Point(0, 0);
-            this.pnlBase.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBase.Name = "pnlBase";
-            this.pnlBase.Size = new System.Drawing.Size(592, 344);
+            this.pnlBase.Size = new System.Drawing.Size(703, 373);
             this.pnlBase.TabIndex = 0;
             // 
             // pnlLogo
@@ -71,10 +70,34 @@
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLogo.FillColor = System.Drawing.Color.Transparent;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogo.Margin = new System.Windows.Forms.Padding(2);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(298, 344);
+            this.pnlLogo.Size = new System.Drawing.Size(363, 373);
             this.pnlLogo.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(120, 263);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 41);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Carizmo";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Black;
+            this.guna2PictureBox1.Image = global::VehicleManagementSystem.Properties.Resources.pngtree_modern_silver_toyota_fortuner_suv_studio_shot_png_image_16472540;
+            this.guna2PictureBox1.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.InitialImage = null;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(38, 5);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(309, 320);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // guna2Panel1
             // 
@@ -89,87 +112,10 @@
             this.guna2Panel1.CustomBorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel1.Location = new System.Drawing.Point(297, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel1.Location = new System.Drawing.Point(331, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(295, 344);
+            this.guna2Panel1.Size = new System.Drawing.Size(372, 373);
             this.guna2Panel1.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(40, 87);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Enter your credentials to access the system.";
-            // 
-            // lblLogin
-            // 
-            this.lblLogin.AutoSize = true;
-            this.lblLogin.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblLogin.Location = new System.Drawing.Point(104, 54);
-            this.lblLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(87, 32);
-            this.lblLogin.TabIndex = 3;
-            this.lblLogin.Text = "LOGIN";
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BorderRadius = 2;
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(140)))));
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(86, 229);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(126, 39);
-            this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 20;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(101, 213);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 32);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Carizmo";
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Black;
-            this.guna2PictureBox1.Image = global::VehicleManagementSystem.Properties.Resources.pngtree_modern_silver_toyota_fortuner_suv_studio_shot_png_image_16472540;
-            this.guna2PictureBox1.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.InitialImage = null;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(40, 25);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(238, 243);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
             // 
             // chkShowPassword
             // 
@@ -179,10 +125,10 @@
             this.chkShowPassword.Image = global::VehicleManagementSystem.Properties.Resources.showPassIcon;
             this.chkShowPassword.ImageOffset = new System.Drawing.Point(0, 0);
             this.chkShowPassword.ImageRotate = 0F;
-            this.chkShowPassword.Location = new System.Drawing.Point(225, 167);
-            this.chkShowPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.chkShowPassword.Location = new System.Drawing.Point(297, 205);
+            this.chkShowPassword.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(22, 26);
+            this.chkShowPassword.Size = new System.Drawing.Size(33, 40);
             this.chkShowPassword.TabIndex = 6;
             this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
             this.chkShowPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chkShowPassword_MouseDown);
@@ -190,7 +136,8 @@
             // 
             // passwordTxt
             // 
-            this.passwordTxt.BackColor = System.Drawing.SystemColors.Control;
+            this.passwordTxt.BackColor = System.Drawing.Color.Transparent;
+            this.passwordTxt.BorderRadius = 10;
             this.passwordTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.passwordTxt.DefaultText = "";
             this.passwordTxt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -202,13 +149,24 @@
             this.passwordTxt.ForeColor = System.Drawing.Color.Gray;
             this.passwordTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.passwordTxt.IconLeft = global::VehicleManagementSystem.Properties.Resources.passwordIcon;
-            this.passwordTxt.Location = new System.Drawing.Point(44, 163);
-            this.passwordTxt.Margin = new System.Windows.Forms.Padding(2);
+            this.passwordTxt.Location = new System.Drawing.Point(58, 197);
+            this.passwordTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.passwordTxt.Name = "passwordTxt";
             this.passwordTxt.PlaceholderText = "Password";
             this.passwordTxt.SelectedText = "";
-            this.passwordTxt.Size = new System.Drawing.Size(208, 31);
+            this.passwordTxt.Size = new System.Drawing.Size(281, 48);
             this.passwordTxt.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label2.Location = new System.Drawing.Point(38, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(320, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Enter your credentials to access the system.";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // exitBtn
             // 
@@ -221,16 +179,47 @@
             this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.exitBtn.ForeColor = System.Drawing.Color.White;
             this.exitBtn.Image = global::VehicleManagementSystem.Properties.Resources.closeIcon;
-            this.exitBtn.Location = new System.Drawing.Point(260, 3);
-            this.exitBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.exitBtn.Location = new System.Drawing.Point(319, 5);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(33, 27);
+            this.exitBtn.Size = new System.Drawing.Size(53, 42);
             this.exitBtn.TabIndex = 4;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            // 
+            // lblLogin
+            // 
+            this.lblLogin.AutoSize = true;
+            this.lblLogin.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogin.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblLogin.Location = new System.Drawing.Point(149, 28);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(110, 41);
+            this.lblLogin.TabIndex = 3;
+            this.lblLogin.Text = "LOGIN";
+            this.lblLogin.Click += new System.EventHandler(this.lblLogin_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BorderRadius = 10;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(140)))));
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(57, 289);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(282, 50);
+            this.btnLogin.TabIndex = 2;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // usernameTxt
             // 
             this.usernameTxt.BackColor = System.Drawing.Color.Transparent;
+            this.usernameTxt.BorderRadius = 10;
             this.usernameTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.usernameTxt.DefaultText = "";
             this.usernameTxt.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -242,23 +231,29 @@
             this.usernameTxt.ForeColor = System.Drawing.Color.Gray;
             this.usernameTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.usernameTxt.IconLeft = global::VehicleManagementSystem.Properties.Resources.personIcon;
-            this.usernameTxt.Location = new System.Drawing.Point(44, 118);
-            this.usernameTxt.Margin = new System.Windows.Forms.Padding(2);
+            this.usernameTxt.Location = new System.Drawing.Point(58, 129);
+            this.usernameTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.usernameTxt.Name = "usernameTxt";
             this.usernameTxt.PlaceholderText = "Email or username";
             this.usernameTxt.SelectedText = "";
-            this.usernameTxt.Size = new System.Drawing.Size(208, 31);
+            this.usernameTxt.Size = new System.Drawing.Size(281, 48);
             this.usernameTxt.TabIndex = 0;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 20;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(592, 344);
+            this.ClientSize = new System.Drawing.Size(703, 373);
             this.Controls.Add(this.pnlBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
@@ -267,9 +262,9 @@
             this.pnlBase.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             this.pnlLogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

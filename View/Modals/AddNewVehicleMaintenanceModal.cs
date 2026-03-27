@@ -92,9 +92,9 @@ namespace VehicleManagementSystem.View.Modals {
             maintenanceCardControl.Bind(newMaintenanceSchedule);
         }
 
-        public void LoadMaintenanceTypes(List<VehicleMaintenanceTypeDto> tasks) {
+        public void LoadMaintenanceTypesInInput(List<VehicleMaintenanceTypeDto> types) {
             inputType.DataSource = null; 
-            inputType.DataSource = tasks;
+            inputType.DataSource = types;
         }
 
         private void closeBtn_Click(object sender, EventArgs e) {
@@ -102,7 +102,7 @@ namespace VehicleManagementSystem.View.Modals {
         }
 
         private void AddNewVehicleMaintenanceModal_Load(object sender, EventArgs e) {
-            _presenter.LoadMaintenanceTypes();
+            _presenter.LoadMaintenanceTypes(true, VehiclePlateNum);
             LoadPreviewCard();
         }
 
@@ -131,9 +131,11 @@ namespace VehicleManagementSystem.View.Modals {
             if(ScheduleType == "OneTime") {
                 panelIntervalSettings.Visible = false;
                 panelDueSettings.Visible = true;
+                _presenter.LoadMaintenanceTypes(false, VehiclePlateNum);
             } else {
                 panelDueSettings.Visible = false;
                 panelIntervalSettings.Visible = true;
+                _presenter.LoadMaintenanceTypes(true, VehiclePlateNum);
             }
 
             LoadPreviewCard();
