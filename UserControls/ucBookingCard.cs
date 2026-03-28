@@ -23,7 +23,8 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         public void BindData(BookingDto booking) {
-            BookingID = booking.BookingID; 
+            BookingID = booking.BookingID;
+            bookingData = booking;
 
             lblBookingID.Text = $"ID: {booking.BookingID}";
             lblCustomerName.Text = $"{booking.FirstName} {booking.LastName}";

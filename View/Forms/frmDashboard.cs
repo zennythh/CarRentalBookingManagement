@@ -18,7 +18,7 @@ namespace VehicleManagementSystem {
         private Timer pollingTimer;
         private string currentPeriod = "Monthly";
         private bool isRefreshing = false;
-        private int lastBookingId = 0;
+        private string lastBookingId;
         private int lastVehicleCount = 0;
 
         public frmDashboard()
@@ -157,17 +157,19 @@ namespace VehicleManagementSystem {
                                             (card.Height - valueLabel.Height) / 2 + 5);
         }
 
-        private async Task<int> GetLatestBookingIdAsync()
+        private async Task<string> GetLatestBookingIdAsync()
         {
             return await Task.Run(() =>
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
-                    new MySqlCommand("SET SESSION sql_mode = ''", conn).ExecuteNonQuery();
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT IFNULL(MAX(BookingID), 0) FROM Bookings", conn))
+
+                    using (MySqlCommand cmd = new MySqlCommand(
+                        "SELECT BookingID FROM Bookings ORDER BY BookingID DESC LIMIT 1", conn))
                     {
-                        return Convert.ToInt32(cmd.ExecuteScalar());
+                        var result = cmd.ExecuteScalar();
+                        return result?.ToString() ?? "BK000";
                     }
                 }
             });
@@ -193,7 +195,7 @@ namespace VehicleManagementSystem {
         {
             if (isRefreshing) return;
 
-            int newBookingId = await GetLatestBookingIdAsync();
+            string newBookingId = await GetLatestBookingIdAsync();
             int newVehicleCount = await GetVehicleCountAsync();
 
             if (newBookingId != lastBookingId || newVehicleCount != lastVehicleCount)
